@@ -1,0 +1,192 @@
+@charset "utf-8";
+$color: #282828;
+$colorRed: #EF533F;
+$colorCCC: #CCCCCC;
+$colorGrey: #667085;
+$colorBlue: #095C9A;
+$colorGreen: #0f6567;
+$colorYellow: #FF931E;
+
+
+$maxWidth: 1440;
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+@mixin family {
+    font-family: 'Source Sans Pro', "Arial Narrow", Arial, Helvetica, sans-serif;
+
+
+}
+
+
+@mixin Inter {
+    font-family: 'Inter Variable', sans-serif;
+}
+
+@mixin Roboto {
+    font-family: 'Roboto Flex Variable', sans-serif;
+}
+.button {
+    height: 46px;
+    border: 1px solid $colorBlue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    background: $colorBlue;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+
+    &:hover {
+        border: 1px solid #0c88e5;
+        color: #0c88e5;
+        background: #fff;
+    }
+}
+
+.button_big {
+    height: 60px;
+
+}
+
+.button_normal {
+    height: 51px;
+
+}
+
+.button_small {
+
+}
+
+.button_mini {
+
+}
+
+/* цвет */
+.button_green {
+    border: 1px solid $colorGreen;
+    background: $colorGreen;
+
+    &:hover {
+        border: 1px solid $colorGreen;
+        color: $colorGreen;
+        background: #fff;
+    }
+}
+
+
+
+
+.button_white {
+    background: #fff;
+    color: $color;
+    text-decoration: none;
+    display: inline-table;
+    padding: 0 26px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    transition: 0.2s;
+
+    &:hover {
+        border: 1px solid #fff;
+        background: $colorBlue;
+        color: #fff;
+    }
+}
+
+.button_white_red {
+    background: #fff;
+    color: $color;
+    text-decoration: none;
+    display: inline-table;
+    padding: 0 26px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 6px;
+    border: 1px solid $colorBlue;
+    transition: 0.2s;
+
+    &:hover {
+        border: 1px solid #fff;
+        background: $colorBlue;
+        color: #fff;
+    }
+}
+
+
+.button_red {
+    background: $colorBlue;
+    color: #fff;
+    text-decoration: none;
+    display: inline-table;
+    padding: 0 26px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    transition: 0.2s;
+
+    &:hover {
+        border: 1px solid $color;
+        background: $colorBlue;
+        color:  $color;
+    }
+}
+
+
+@media (max-width: 793px) {
+    .button_big {
+        height: 46px;
+        font-size: 16px;
+
+
+    }
+    .button_normal {
+        height: 36px;
+        font-size: 15px;
+
+
+    }
+    .button_small {
+
+    }
+    .button_mini {
+
+    }
+    .button_white ,.button_red ,.button_white_red{
+        height: 40px;
+        font-size: 16px;
+        line-height: 40px;
+
+
+    }
+}
+
+@media (max-width: 416px) {
+
+    .button_white ,.button_red ,.button_white_red{
+        height: 40px;
+        font-size: 16px;
+        line-height: 40px;
+        padding: 0 16px;
+
+
+    }
+
+}
+
+

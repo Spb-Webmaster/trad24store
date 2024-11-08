@@ -1,0 +1,94 @@
+.F_form {
+  padding: 0 !important;
+  border-radius: 12px !important;
+  min-width: 600px; }
+  .F_form .F_form__body {
+    padding: 24px; }
+
+.F_form_474 {
+  min-width: 474px; }
+  .F_form_474 .F_form__body {
+    padding: 0; }
+  .F_form_474 .formLogin__wrapp {
+    box-shadow: none !important; }
+
+.F_form__left {
+  padding: 0 0 24px 0; }
+
+.F_form_gr-app {
+  max-width: 422px;
+  min-width: 422px; }
+  .F_form_gr-app .F_form__body {
+    padding: 0 !important; }
+
+/*  */
+.F_responce {
+  background: #ffffff;
+  border-radius: 12px;
+  display: none; }
+  .F_responce .af-message {
+    text-align: center;
+    padding: 24px; }
+  .F_responce .font_24 {
+    font-size: 24px;
+    padding: 0 0 20px 0; }
+  .F_responce .ccent {
+    padding: 20px; }
+
+._r_field span {
+  color: #EF533F;
+  padding: 9px 0;
+  display: block; }
+
+.F_form_blue {
+  padding: 40px 0 !important; }
+  .F_form_blue .new__temp_middle {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1200px;
+    height: auto; }
+
+.new__temp_middle_blue {
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+  background: #095C9A;
+  padding: 50px 44px; }
+  .new__temp_middle_blue .form_text {
+    color: #fff;
+    max-width: 410px;
+    line-height: 1.4em;
+    padding: 0 0 20px 0;
+    font-size: 24px; }
+  .new__temp_middle_blue .alax_inputs__flex {
+    display: flex; }
+    .new__temp_middle_blue .alax_inputs__flex .i__left {
+      display: flex;
+      justify-content: center;
+      width: 50%; }
+      .new__temp_middle_blue .alax_inputs__flex .i__left .text_input {
+        width: 50%;
+        padding-left: 5px;
+        padding-right: 5px; }
+    .new__temp_middle_blue .alax_inputs__flex .i__right {
+      display: flex;
+      justify-content: center;
+      width: 50%; }
+      .new__temp_middle_blue .alax_inputs__flex .i__right .text_input {
+        width: 50%;
+        padding-left: 5px;
+        padding-right: 5px; }
+    .new__temp_middle_blue .alax_inputs__flex input[type="text"],
+    .new__temp_middle_blue .alax_inputs__flex input[type="phone"],
+    .new__temp_middle_blue .alax_inputs__flex input[type="email"] {
+      background-color: #fff !important; }
+    .new__temp_middle_blue .alax_inputs__flex .labelInput {
+      z-index: 10; }
+    .new__temp_middle_blue .alax_inputs__flex .button_normal {
+      height: 46px !important;
+      margin: 2px 0;
+      background: #FF931E;
+      border: 1px solid #FF931E;
+      position: relative; }
+
+/*# sourceMappingURL=form_modal.css.map */

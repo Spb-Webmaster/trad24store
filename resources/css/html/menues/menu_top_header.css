@@ -1,0 +1,22 @@
+.menu_top_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 68px; }
+  .menu_top_header ul {
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 32px; }
+    .menu_top_header ul li a {
+      color: #667085;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 10px; }
+    .menu_top_header ul li.active a {
+      color: #EF533F; }
+
+/*# sourceMappingURL=menu_top_header.css.map */

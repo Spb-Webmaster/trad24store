@@ -1,0 +1,174 @@
+@charset "utf-8";
+$color: #282828;
+$colorRed: #EF533F;
+$colorCCC: #CCCCCC;
+$colorGrey: #667085;
+$colorBlue: #095C9A;
+$colorGreen: #0f6567;
+$colorYellow: #FF931E;
+
+
+$maxWidth: 1440;
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+@mixin family {
+    font-family: 'Source Sans Pro', "Arial Narrow", Arial, Helvetica, sans-serif;
+
+
+}
+
+
+@mixin Inter {
+    font-family: 'Inter Variable', sans-serif;
+}
+
+@mixin Roboto {
+    font-family: 'Roboto Flex Variable', sans-serif;
+}
+
+.F_form {
+padding: 0 !important;
+    border-radius: 12px !important;
+    min-width: 600px;
+    .F_form__body {
+        padding: 24px;
+    }
+}
+.F_form_474 {
+
+    min-width: 474px;
+    .F_form__body {
+        padding: 0;
+    }
+    .formLogin__wrapp {
+
+        box-shadow: none !important;
+    }
+}
+
+.F_form__left {
+    padding: 0 0 24px 0;
+
+}
+
+
+.new__temp_middle {
+
+}
+
+
+.F_form_gr-app {
+    max-width: 422px;
+    min-width: 422px;
+    .F_form__body {
+        padding: 0 !important;
+    }
+}
+
+/*  */
+.F_responce {
+    background: #ffffff;
+    border-radius: 12px;
+    display: none;
+
+    .af-message {
+        text-align: center;
+        padding: 24px;
+    }
+
+    .font_24 {
+
+        font-size: 24px;
+        padding: 0 0 20px 0;
+
+    }
+
+    .ccent {
+        padding: 20px;
+    }
+}
+
+._r_field {
+    span {
+            color: $colorRed;
+            padding: 9px 0;
+            display: block;
+
+    }
+}
+
+.F_form_blue {
+    padding: 40px 0 !important;
+    .new__temp_middle {
+        position: relative;
+        margin: 0 auto;
+        max-width: 1200px;
+        height: auto;
+    }
+}
+.new__temp_middle_blue {
+width: 100%;
+    position: relative;
+    border-radius: 12px;
+    background: $colorBlue;
+    padding:50px 44px;
+    .form_text {
+        color: #fff;
+        max-width: 410px;
+        line-height: 1.4em;
+        padding: 0 0 20px 0;
+        font-size: 24px;
+    }
+.alax_inputs__flex {
+
+
+    display: flex;
+
+    .i__left {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+
+        .text_input {
+            width: 50%;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    .i__right {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+
+        .text_input {
+            width: 50%;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    input[type="text"],
+    input[type="phone"],
+    input[type="email"] {
+        background-color: #fff !important;
+    }
+
+    .labelInput {
+
+        z-index: 10;
+    }
+
+    .button_normal {
+        height: 46px !important;
+        margin: 2px 0;
+        background: $colorYellow;
+        border:1px solid $colorYellow;
+        position: relative;
+    }
+}
+}
