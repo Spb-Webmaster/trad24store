@@ -1,4 +1,4 @@
-import { call_me, reserve } from './include/ajax';
+import { call_me, send_blue_form } from './include/ajax';
 import { imask } from './include/imask';
 import { input_label, _iserror } from './include/input';
 import { close_flash } from './include/flash';
@@ -9,12 +9,13 @@ import {yandex_map_object} from "./include/yandex_map";
 import {mobile_menu, add__mobile_menu, mobile_menu_close} from "./include/mobile";
 import {slick} from "./include/slick";
 import {translate} from "./include/translate";
+import {faq} from "./include/faq";
 
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    call_me() // отправка заявки
-    reserve() // отправка заявки
+    call_me() // отправка заявки модальное окно
+    send_blue_form() // отправка заявки статическая синяя
     translate() // зперевод translate
     imask() // маска на поле input input[name="phone"]
     input_label() // input движение label
@@ -27,4 +28,5 @@ document.addEventListener('DOMContentLoaded', function () {
     add__mobile_menu() // добавить нужные пункты в меню
     mobile_menu_close() // закрытие мобильного меню
     slick() // слайдер
+    faq() // faq
 });

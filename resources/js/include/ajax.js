@@ -11,6 +11,20 @@ function url() {
 }
 
 
+function printErrorMsg(Parents, msg) {
+    $.each(msg, function (key, value) {
+
+        console.log(key);
+        console.log(' -- ');
+        console.log(msg);
+
+        Parents.find('.error_' + key).text(value);
+        Parents.find('input.' + key).addClass('_is-error');
+        Parents.find('textarea.' + key).addClass('_is-error');
+    });
+}
+
+
 export function call_me() {
     /* call_me__js Звонок  (mini форма на главной)*/
     $('body').on('click', '.call_me__js', function (event) {
@@ -51,27 +65,10 @@ export function call_me() {
 
 }
 
-export function reserve() {
-    /* */
 
-
-    $('body').on('click', '.reserve_button__js', function (event) {
-
-        let Title = $('._t_title__js').text();
-        let Img = $('.img__js').attr('src');
-        let Price = $('.__t_css__js').text();
-
-            $('.res_title__js').text(Title);
-            $('.res_img__js').attr('src', Img);
-            $('.res_price__js').text(Price);
-    });
-
-
-    $('body').on('click', '.reserve__js', function (event) {
-
-        var Title = $('.res_title__js').text();
-        var Price = $('.res_price__js').text();
-
+export function send_blue_form() {
+    /* send_form__js Звонок  (mini форма на главной)*/
+    $('body').on('click', '.send_form__js', function (event) {
 
         var Parents = $(this).parents('.F_form');
         var Name = Parents.find('input[name="name"]').val();
@@ -79,16 +76,16 @@ export function reserve() {
         var Email = Parents.find('input[name="email"]').val();
         loader(Parents);
 
+
+
         $.ajax({
-            url: "/send-mail/reserve",
+            url: "/send-mail/order-call-blue-form",
             method: "POST",
             data: {
                 "_token": $('meta[name="csrf-token"]').attr('content'),
                 "name": Name,
                 "phone": Phone,
                 "email": Email,
-                "title": Title,
-                "price": Price,
                 "url": url(),
             },
             success: function (response) {
@@ -100,6 +97,9 @@ export function reserve() {
 
                 } else {
                     setTimeout(function () {
+
+                        Parents.find('.new__temp_middle_blue ').css('display', 'none');
+
                         Parents.find('.wrapper_loader ').css('display', 'none');
                         Parents.find('.F_form__body').hide();
                         Parents.find('.F_responce').show();
@@ -109,6 +109,7 @@ export function reserve() {
         });
 
     });
-    /* */
+    /* send_form__js Звонок (mini форма на главной)*/
 
 }
+

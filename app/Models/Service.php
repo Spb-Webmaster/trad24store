@@ -42,6 +42,22 @@ class Service extends Model
         'module' => 'collection',
     ];
 
+    public function getModelNameAttribute()
+    {
+
+        return $this->getTable();
+    }
+
+    public function getRouteItemAttribute()
+    {
+
+        return 'service';
+    }
+    public function getRouteItemsAttribute()
+    {
+
+        return 'services';
+    }
 
     public function getArrayModulesAttribute()
     {

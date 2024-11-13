@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace App\Providers;
 
 
+use App\MoonShine\Pages\IndexPage;
+use App\MoonShine\Pages\ServicePage;
+use App\MoonShine\Pages\TrainingPage;
 use App\MoonShine\Resources\PageResource;
+use App\MoonShine\Resources\PartnerResource;
 use App\MoonShine\Resources\ServiceResource;
 use App\MoonShine\Resources\TrainingResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -57,24 +61,46 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 
 
                 MenuItem::make(
+                    static fn() => __('Главная стрнаица сайта'),
+                    new IndexPage()
+                )->icon('heroicons.outline.bars-3'),
+                MenuItem::make(
                     static fn() => __('Материалы'),
                     new PageResource()
                 )->icon('heroicons.outline.bars-3'),
+                MenuGroup::make(static fn() => __('Обучение'), [
 
-                MenuItem::make(
+                    MenuItem::make(
+                        static fn() => __('Главная'),
+                        new TrainingPage()
+                    )->icon('heroicons.outline.bars-3'),
+                    MenuItem::make(
                     static fn() => __('Обучение'),
                     new TrainingResource()
                 )->icon('heroicons.outline.building-office'),
-
+                ]),
+                MenuGroup::make(static fn() => __('Услуги'), [
+                    MenuItem::make(
+                        static fn() => __('Главная'),
+                        new ServicePage()
+                    )->icon('heroicons.outline.bars-3'),
                 MenuItem::make(
                     static fn() => __('Услуги'),
                     new ServiceResource()
                 )->icon('heroicons.outline.building-office-2'),
+                ]),
 
 
             ]),
 
-        ];
+            MenuGroup::make(static fn() => __('Ресурсы'), [
+                MenuItem::make(
+                    static fn() => __('Парнтеры'),
+                    new PartnerResource()
+                )->icon('heroicons.outline.building-office-2'),
+            ]),
+
+            ];
     }
 
     /**

@@ -71,6 +71,22 @@ class Training extends Model
 
         return $mod;
     }
+    public function getModelNameAttribute()
+    {
+
+                return $this->getTable();
+    }
+
+     public function getRouteItemAttribute()
+    {
+
+                return 'training';
+    }
+     public function getRouteItemsAttribute()
+    {
+
+                return 'trainings';
+    }
 
     protected static function boot()
     {

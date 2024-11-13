@@ -219,8 +219,15 @@ textarea.input  {
     background: #fff;
     left: 10px;
     z-index: 11;
+
 }
 
+.new__temp_middle_blue {
+    .errorBlade {
+
+        border-radius: 12px;
+    }
+}
 /* ошибки */
 
 @media (max-width: 793px) {

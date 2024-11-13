@@ -32,6 +32,7 @@
 @import "./forms/select.css";
 @import "./templates/header.scss";
 @import "./templates/footer.scss";
+@import "./templates/page.scss";
 @import "./chosen/chosen.scss";
 
 @import "html/faq/faq.scss";
