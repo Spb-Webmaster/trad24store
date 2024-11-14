@@ -5,9 +5,14 @@ declare(strict_types=1);
 namespace App\Providers;
 
 
+use App\MoonShine\Pages\ChangeContactPage;
 use App\MoonShine\Pages\IndexPage;
 use App\MoonShine\Pages\ServicePage;
+use App\MoonShine\Pages\SettingPage;
 use App\MoonShine\Pages\TrainingPage;
+
+use App\MoonShine\Resources\CityResource;
+use App\MoonShine\Resources\ContactResource;
 use App\MoonShine\Resources\PageResource;
 use App\MoonShine\Resources\PartnerResource;
 use App\MoonShine\Resources\ServiceResource;
@@ -90,9 +95,30 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 )->icon('heroicons.outline.building-office-2'),
                 ]),
 
+                MenuItem::make(
+                    static fn() => __('Города'),
+                    new CityResource()
+                )->icon('heroicons.outline.building-office-2'),
+                MenuItem::make(
+                    static fn() => __('Контакты'),
+                    new ContactResource()
+                )->icon('heroicons.outline.map-pin'),
 
             ]),
 
+            MenuGroup::make(static fn() => __('Настройки'), [
+
+
+                MenuItem::make(
+                    static fn() => __('Фронт'),
+                    new SettingPage()
+                )->icon('heroicons.outline.cog'),
+               MenuItem::make(
+                    static fn() => __('Режимы показа'),
+                    new ChangeContactPage()
+                )->icon('heroicons.cog'),
+
+            ]),
             MenuGroup::make(static fn() => __('Ресурсы'), [
                 MenuItem::make(
                     static fn() => __('Парнтеры'),

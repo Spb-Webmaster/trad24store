@@ -10,6 +10,9 @@ import {mobile_menu, add__mobile_menu, mobile_menu_close} from "./include/mobile
 import {slick} from "./include/slick";
 import {translate} from "./include/translate";
 import {faq} from "./include/faq";
+import { canche_contacts, toggle_contacts } from './include/canche_contacts';
+import { city } from './include/city';
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -29,4 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mobile_menu_close() // закрытие мобильного меню
     slick() // слайдер
     faq() // faq
+    canche_contacts() // смена контактов на сайте
+    toggle_contacts() //  управление иконками connect
+    city() //  смена городов
 });

@@ -5,16 +5,11 @@
             <div class="f_top__left">
 
 
-                    <div class="F_tel"><span><a href="tel:+ 7 727 224 21 21">+ 7 727 224 21 21</a></span></div>
-                    <div class="F_email"><span>info@mediator.kz</span></div>
+                    <div class="F_tel"><span><a href="tel:{{ config2('moonshine.setting.phone1') }}">{{ config2('moonshine.setting.phone1') }}</a></span></div>
+                    <div class="F_email"><span>{{ config2('moonshine.setting.email') }}</span></div>
 
                     <div class="I_Social">
-                        <a href="https://www.facebook.com/www.hseipaa.kz/" target="_blank"><img src="{{ Storage::url('/images/axeld/icons/facebook-bottom.svg') }}" alt="-"></a>
-                        <a href="https://www.youtube.com/hseipaa/" target="_blank"><img src="{{ Storage::url('/images/axeld/icons/youtube-bottom.svg') }}" alt="-"></a>
-                        <a href="https://instagram.com/mediatorkz?igshid=MWZjMTM2ODFkZg==" target="_blank"><img src="{{ Storage::url('/images/axeld/icons/instagramm-bottom.svg') }}" alt="-"></a>
-                        <a href="https://api.whatsapp.com/send?phone=87074092266" target="_blank"><img src="{{ Storage::url('/images/axeld/icons/wup-bottom.svg') }}" alt="-"></a>
-                        <a href="https://t.me/hseipaa.kz/" target="_blank"><img src="{{ Storage::url('/images/axeld/icons/telegremm-bottom.svg') }}" alt="-"></a>
-                        <a href="mailto:info@mediator.kz" target="_blank"><img src="{{ Storage::url('/images/axeld/icons/mail-bottom.svg') }}" alt="-"></a>
+                      @include('include.blocks.social.social_bottom')
                     </div>
 
             </div>
@@ -60,8 +55,8 @@
         </div>
         <div class="f_bottom_flex">
             <div class="f_bottom__left">© 1998 - {{ date("Y") }} <br>
-                Ассосация Медиаторов Республики Казахстан</div>
-            <div class="f_bottom__right">Реестр Медиаторов Республики Казахстан</div>
+                {{ config2('moonshine.setting.contact_copy') }}</div>
+            <div class="f_bottom__right">{{ config2('moonshine.setting.contact_copy2') }}</div>
 
         </div>
     </div>

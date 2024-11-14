@@ -84,6 +84,28 @@ class AjaxController extends Controller
     }
 
 
+    /**
+     * Метод  получения session (город)
+     */
+
+    public function city(Request $request)
+    {
+
+        session(['city_city' => $request->city]);
+        session(['city_phone' => $request->phone]);
+
+        /**
+         * возвращаем назад в браузер
+         */
+
+        return response()->json([
+            'city' => $request->city
+        ]);
+
+    }
+
+
+
 
     /**
      * Метод загрузки Аватара

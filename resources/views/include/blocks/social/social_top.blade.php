@@ -1,12 +1,12 @@
 <a class="icon-top1" target="_blank"
-   href="https://www.facebook.com/www.hseipaa.kz/"><img
+   href="{{ config2('moonshine.setting.facebook') }}"><img
         src="{{ Storage::url('/images/axeld/icons/facebook-bottom.svg') }}"
         class="">
 </a>
-<a class="icon-top2" target="_blank" href="https://www.youtube.com/hseipaa/"><img
+<a class="icon-top2" target="_blank" href="{{ config2('moonshine.setting.youtube') }}"><img
         src="{{ Storage::url('/images/axeld/icons/youtube-bottom.svg') }}" class="">
 </a>
 <a class="icon-top3" target="_blank"
-   href="https://instagram.com/mediatorkz?igshid=MWZjMTM2ODFkZg=="><img
+   href="{{ config2('moonshine.setting.instagram') }}"><img
         src="{{ Storage::url('/images/axeld/icons/instagramm-bottom.svg') }}" class="">
 </a>
