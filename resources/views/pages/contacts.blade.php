@@ -24,8 +24,9 @@
                     @foreach($contacts as $k=>$contact)
 
                         <div data-tab="G_tab{{$k}}" class="G_tab{{$k}}
-                         @if(isset($session_city))
-                                 @if($session_city == $contact->city->city)
+                         @if(isset($session_city_city))
+
+                                 @if($session_city_city == 'г. '.$contact->city->city)
                                  active
                                  @endif
                              @elseif($k==0)
@@ -43,8 +44,8 @@
                     @foreach($contacts as $k=>$contact)
                         <div
                             class="G_tab{{$k}}
-                              @if(isset($session_city))
-                                 @if($session_city == $contact->city->city)
+                              @if(isset($session_city_city))
+                                 @if($session_city_city == 'г. '.$contact->city->city)
                                  active
                                  @endif
                              @elseif($k==0)
@@ -92,22 +93,22 @@
         </div>
     </section>
 
-    <div style="background:#949491" id="loader_wrapper" class="loader_wrapper active ">
-        <div style="color:#ffffff" class="loader_map">Loading...</div>
-    </div>
+
     @php
         foreach ($contacts as $k=>$contact)
         {
-
-            if(isset($session_city)) {
-            if($session_city == $contact->city->city)
+            if(isset($session_city_city)) {
+            if($session_city_city == 'г. '.$contact->city->city)
                 {
                     $point = $contact->yandex_map;
                 }
             }
         }
     @endphp
-    <div class="JFormFieldMap_wrapper">
+    <div class="JFormFieldMap_wrapper" style="position: relative">
+        <div style="background:rgb(232, 240, 254)" id="loader_wrapper" class="loader_wrapper active ">
+            <div style="color:#ffffff" class="loader_map">Loading...</div>
+        </div>
         <div id="JFormFieldMap" class="JFormFieldMap" style="width: 100%; height: 450px"></div>
     </div>
     <script>

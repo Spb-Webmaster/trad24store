@@ -34,12 +34,24 @@ export function input_label() {
         $(this).trigger('checkval');
     });
 }
+
+
 export function _iserror() {
     /* удаление  рамки при error */
     $('input[type="text"], input[type="date"], input[type="password"], input[type="email"]').focus(
         function () {
             $(this).parents('.text_input').find('.errorBlade').text('');
             $(this).removeClass('_is-error');
+
         }
     );
+    /* удаление  рамки при error */
+
+    $('body').on('click', '.selectClass', function (event) {
+        $(this).find('a.chosen-single').removeClass('_is-error');
+        $(this).find('.errorBlade').text('');
+    });
+
+
 }
+

@@ -31,6 +31,17 @@ class SendMails
     }
 
 
+    public function sendBidForm($data):void
+    {
+        $view = 'html.email.order_bid_form';
+        $subject = 'Форма заявки на обучение или услугу  ' . $data['phone'];
+
+        Mail::send($view, ['data' => $data],  function ($message) use ($subject){
+            $message->to(config('app.mail_username'), 'Admin')->subject($subject);
+        });
+    }
+
+
 
 
 }

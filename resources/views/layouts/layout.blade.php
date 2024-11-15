@@ -33,6 +33,8 @@
 {{--@include('html.mobile.bottom')--}}
 @include('include.connect.connect')
 @include('include.modals.temp_forms.call_me')
+@include('include.modals.temp_forms.bid')
+
 
 </body>
 </html>

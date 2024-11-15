@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-
-
-
-
 use App\View\Composers\ChangeContactComposer;
 use App\View\Composers\CityComposer;
 use App\View\Composers\PartnersComposer;
@@ -37,12 +33,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['modules.module_6'], PartnersComposer::class);
         View::composer(['modules.module_6'], PartnersComposer::class);
         View::composer('include.connect._change_contacts', ChangeContactComposer::class);
-        View::composer('include.blocks.cities.top_cities', CityComposer::class);
-
-
-
-
-
+        View::composer(['include.blocks.cities.top_cities', 'pages.contacts'], CityComposer::class);
 
 
     }

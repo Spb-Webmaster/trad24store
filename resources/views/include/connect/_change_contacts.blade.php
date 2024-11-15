@@ -1,8 +1,8 @@
 {{--View::composer('include.connect._change_contacts', ChangeContactComposer::class);--}}
 
 
-<a href="#insure" data-fancybox="" data-touch="false" class="con_item con_item__1">
-    <div class="con_item__left"><span>{{__('Застраховать')}}</span></div>
+<a href="#bid" data-fancybox="" data-touch="false" class="con_item con_item__1">
+    <div class="con_item__left"><span>{{__('Заявка на обучение')}}</span></div>
     <div class="con_item__right"><div class="con_item__strach"></div></div>
 
 </a>

@@ -1,28 +1,5 @@
-function loader(Parents) {
-    Parents.find('.wrapper_loader ').css('display', 'flex');
-}
+import { loader, loaderHide, url, printErrorMsg } from './loader';
 
-function loaderHide(Parents) {
-    Parents.find('.wrapper_loader ').css('display', 'none');
-}
-
-function url() {
-    return window.location.href;
-}
-
-
-function printErrorMsg(Parents, msg) {
-    $.each(msg, function (key, value) {
-
-        console.log(key);
-        console.log(' -- ');
-        console.log(msg);
-
-        Parents.find('.error_' + key).text(value);
-        Parents.find('input.' + key).addClass('_is-error');
-        Parents.find('textarea.' + key).addClass('_is-error');
-    });
-}
 
 
 export function call_me() {

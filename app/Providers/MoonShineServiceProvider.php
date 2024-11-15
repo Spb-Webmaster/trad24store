@@ -13,6 +13,7 @@ use App\MoonShine\Pages\TrainingPage;
 
 use App\MoonShine\Resources\CityResource;
 use App\MoonShine\Resources\ContactResource;
+use App\MoonShine\Resources\DiplomResource;
 use App\MoonShine\Resources\PageResource;
 use App\MoonShine\Resources\PartnerResource;
 use App\MoonShine\Resources\ServiceResource;
@@ -123,6 +124,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make(
                     static fn() => __('Парнтеры'),
                     new PartnerResource()
+                )->icon('heroicons.outline.building-office-2'),
+                MenuItem::make(
+                    static fn() => __('Дипломы'),
+                    new DiplomResource()
                 )->icon('heroicons.outline.building-office-2'),
             ]),
 

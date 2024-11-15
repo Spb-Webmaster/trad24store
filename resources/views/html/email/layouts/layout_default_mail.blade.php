@@ -353,7 +353,7 @@
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                                     <tr>
                                         <td style="text-align: left; padding-right: 10px;">
-                                            <h3 class="heading">© 1993 - {{  now()->year }} GeneralRe</h3>
+                                            <h3 class="heading">© 1993 - {{  now()->year }} Mediator.kz</h3>
                                             <p></p>
                                         </td>
                                     </tr>

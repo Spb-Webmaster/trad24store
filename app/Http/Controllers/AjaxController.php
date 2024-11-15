@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BidFormEvent;
 use App\Events\OrderCallBlueFormEvent;
 use App\Events\OrderCallEvent;
 
@@ -68,6 +69,43 @@ class AjaxController extends Controller
              */
 
             OrderCallBlueFormEvent::dispatch($request);
+
+            /**
+             * возвращаем назад в браузер
+             */
+
+            return response()->json([
+                'request' => $request
+
+            ]);
+        }
+
+        return response()->json(['error' => $validator->errors()]);
+
+    }
+
+
+    /**
+     * Метод отправки сообщения "Отправить заявку" мадальное окно -  форма
+     */
+
+    public function bid(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'phone' => ['required', 'string', 'min:5'],
+            'email' => ['required', 'email', 'email:dns'],
+        ]);
+
+        if ($validator->passes()) {
+
+
+
+            /**
+             * Событие отправка сообщения админу (Отправить заявку)
+             */
+
+            BidFormEvent::dispatch($request);
 
             /**
              * возвращаем назад в браузер

@@ -132,23 +132,34 @@ class SettingPage extends Page
 
 
                                     Block::make([
+                                        Json::make('Обучение', 'json_training')->fields([
 
-
-                                        Json::make('Типы', 'json_insure')->fields([
-
-                                            Text::make('', 'json_insure_label')->hint('Название'),
+                                            Text::make('', 'json_training_label')->hint('Название'),
 
                                         ])->vertical()->creatable(limit: 30)
-                                            ->removable()->default((isset($json_insure))? $json_insure : ''),
+                                            ->removable()->default((isset($json_training))? $json_training : ''),
 
+                                    ]),
 
+                                ])->columnSpan(6),
 
+                                Column::make([
+
+                                    Block::make([
+
+                                        Json::make('Услуги', 'json_service')->fields([
+
+                                            Text::make('', 'json_service_label')->hint('Название'),
+
+                                        ])->vertical()->creatable(limit: 30)
+                                            ->removable()->default((isset($json_service))? $json_service : ''),
 
 
                                     ]),
 
+                                ])->columnSpan(6),
 
-                                ])->columnSpan(12),
+
                             ])
 
 

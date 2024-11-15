@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Pages\ServiceController;
 use App\Http\Controllers\Pages\TrainingController;
 use App\Http\Controllers\Pages\PageController;
+use App\Http\Controllers\TestController;
 use App\MoonShine\Controllers\MoonshineChangeContactController;
 use App\MoonShine\Controllers\MoonshineIndex;
 use App\MoonShine\Controllers\MoonshineService;
@@ -45,6 +46,7 @@ Route::controller(AjaxController::class)->group(function () {
 
     Route::post('/send-mail/order-call', 'OrderCall');
     Route::post('/send-mail/order-call-blue-form', 'OrderCallBlue_form');
+    Route::post('/send-mail/bid', 'bid');
     Route::post('/set-city/city-action', 'city');
 
 
@@ -68,6 +70,13 @@ Route::post('/moonshine/setting', MoonshineSetting::class);
 /**
  * /////контроллеры Moonshine
  */
+
+
+Route::controller(TestController::class)->group(function () {
+
+    Route::get('/test', 'test')->name('test');
+
+});
 
 
 /**

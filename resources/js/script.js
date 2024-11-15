@@ -12,6 +12,8 @@ import {translate} from "./include/translate";
 import {faq} from "./include/faq";
 import { canche_contacts, toggle_contacts } from './include/canche_contacts';
 import { city } from './include/city';
+import { chosen } from './include/select';
+import { bid } from './include/bid';
 
 
 
@@ -22,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
     translate() // зперевод translate
     imask() // маска на поле input input[name="phone"]
     input_label() // input движение label
-    _iserror() // input удаление  рамки при error
     close_flash() // закрытие flash
     autocomplete() // autocomplete-ajax
     menu_js() // манипуляции с меню
@@ -35,4 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     canche_contacts() // смена контактов на сайте
     toggle_contacts() //  управление иконками connect
     city() //  смена городов
+    chosen() //  селекты
+    bid() //  заявка в форме
+    _iserror() // input удаление  рамки при error
+
 });
