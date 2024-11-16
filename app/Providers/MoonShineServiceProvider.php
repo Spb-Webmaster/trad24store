@@ -17,6 +17,8 @@ use App\MoonShine\Resources\DiplomResource;
 use App\MoonShine\Resources\PageResource;
 use App\MoonShine\Resources\PartnerResource;
 use App\MoonShine\Resources\ServiceResource;
+use App\MoonShine\Resources\TimeTableCityResource;
+use App\MoonShine\Resources\TimeTableLessonResource;
 use App\MoonShine\Resources\TrainingResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
@@ -120,6 +122,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 )->icon('heroicons.cog'),
 
             ]),
+
             MenuGroup::make(static fn() => __('Ресурсы'), [
                 MenuItem::make(
                     static fn() => __('Парнтеры'),
@@ -129,6 +132,17 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('Дипломы'),
                     new DiplomResource()
                 )->icon('heroicons.outline.building-office-2'),
+                MenuGroup::make(static fn() => __('Расписание'), [
+                    MenuItem::make(
+                        static fn() => __('Города'),
+                        new TimeTableCityResource()
+                    )->icon('heroicons.outline.building-office-2'),
+                    MenuItem::make(
+                        static fn() => __('Предметы'),
+                        new TimeTableLessonResource()
+                    )->icon('heroicons.outline.building-office-2'),
+
+                    ]),
             ]),
 
             ];

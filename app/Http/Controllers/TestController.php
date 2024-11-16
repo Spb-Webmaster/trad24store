@@ -17,12 +17,12 @@ public function test() {
 
 
 
-            $article = Diplom::create([
+  /*          $article = Diplom::create([
                 'title' => $diplom['number'],
                 'name' => $diplom['fio'],
                 'date' => $diplom['date'],
                 'training' => $diplom['training'],
-            ]);
+            ]);*/
 
 
    }

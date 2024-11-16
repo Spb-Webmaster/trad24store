@@ -1,0 +1,73 @@
+.content_Flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 40px; }
+  .content_Flex .left_bar {
+    width: 30%;
+    min-width: 393px;
+    padding: 20px 0; }
+    .content_Flex .left_bar .left_m {
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+      width: 90%; }
+      .content_Flex .left_bar .left_m li {
+        padding: 0 16px;
+        border-left: 3px solid #e0e0e0; }
+        .content_Flex .left_bar .left_m li a {
+          color: #282828;
+          font-size: 18px;
+          height: 56px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          text-decoration: none;
+          box-sizing: border-box;
+          transition: 0.3s;
+          border-bottom: 1px solid #e0e0e0; }
+      .content_Flex .left_bar .left_m a:hover,
+      .content_Flex .left_bar .left_m li.active a {
+        background: #F5F5F7; }
+      .content_Flex .left_bar .left_m li:hover,
+      .content_Flex .left_bar .left_m li.active {
+        background: #F5F5F7; }
+      .content_Flex .left_bar .left_m li.active {
+        border-left: 3px solid #095C9A; }
+      .content_Flex .left_bar .left_m li:first-child a:hover, .content_Flex .left_bar .left_m li:first-child a {
+        border-top: none; }
+      .content_Flex .left_bar .left_m li:last-child a:hover, .content_Flex .left_bar .left_m li:last-child a {
+        border-bottom: none; }
+  .content_Flex .center_content {
+    width: 100%;
+    padding: 20px 0 20px 30px; }
+
+.subtitle {
+  font-size: 14px;
+  color: #667085;
+  line-height: 1.2em;
+  position: relative;
+  top: -17px; }
+
+.page_content__img {
+  padding: 24px 0;
+  width: 100%;
+  position: relative; }
+  .page_content__img img {
+    max-width: 100%; }
+
+.page_content table {
+  width: 100% !important;
+  margin: 16px 0; }
+  .page_content table tr td {
+    border: 1px solid #E0E0E0;
+    padding: 7px; }
+    .page_content table tr td p {
+      padding: 0;
+      margin: 0; }
+  .page_content table tr.info {
+    background: #095C9A;
+    color: #fff; }
+  .page_content table .t_grey {
+    color: #667085;
+    font-size: 14px; }
+
+/*# sourceMappingURL=page.css.map */

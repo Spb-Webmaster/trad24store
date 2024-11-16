@@ -8,6 +8,7 @@ use App\Http\Controllers\Pages\ServiceController;
 use App\Http\Controllers\Pages\TrainingController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TimeTable\TimeTableController;
 use App\MoonShine\Controllers\MoonshineChangeContactController;
 use App\MoonShine\Controllers\MoonshineIndex;
 use App\MoonShine\Controllers\MoonshineService;
@@ -36,9 +37,23 @@ Route::controller(ServiceController::class)->group(function () {
     Route::get('/uslugi/{slug}', 'service')->name('service');
     Route::get('/uslugi', 'services')->name('services');
 });
+
 Route::controller(ContactController::class)->group(function () {
     Route::get('/kontakty', 'page')->name('contacts');
 });
+
+/**
+ * расписание
+ */
+
+Route::controller(TimeTableController::class)->group(function () {
+    Route::get('/raspisanie', 'index')->name('timetable');
+    Route::get('/raspisanie/{slug}', 'city')->name('timetable_city');
+});
+
+/**
+ * расписание
+ *
 /**
  * AjaxController
  */

@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 <x-seo.meta
-    title=""
-    description=""
-    keywords=""
+    title="{{ (config2('moonshine.training.metatitle'))?:'' }}"
+    description="{{ (config2('moonshine.training.description'))?:'' }}"
+    keywords="{{ (config2('moonshine.training.keywords'))?:'' }}"
 />
 
 @section('content')
