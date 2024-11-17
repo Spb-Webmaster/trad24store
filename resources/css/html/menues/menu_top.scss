@@ -3,8 +3,9 @@ $color: #282828;
 $colorRed: #EF533F;
 $colorCCC: #CCCCCC;
 $colorGrey: #667085;
-$colorBlue: #00AFEF;
+$colorBlue: #095C9A;
 $colorGreen: #0f6567;
+$colorYellow: #FF931E;
 
 
 $maxWidth: 1440;
@@ -17,6 +18,7 @@ $maxWidth: 1440;
 @mixin family {
     font-family: 'Source Sans Pro', "Arial Narrow", Arial, Helvetica, sans-serif;
 
+
 }
 
 
@@ -27,6 +29,7 @@ $maxWidth: 1440;
 @mixin Roboto {
     font-family: 'Roboto Flex Variable', sans-serif;
 }
+
 nav {
     padding: 3px 0;
     box-sizing: border-box;
@@ -58,7 +61,7 @@ nav {
 
 .top_menu li:first-child {
     a {
-          padding-left: 0;
+        padding-left: 0;
     }
 }
 
@@ -93,8 +96,8 @@ nav {
 
 .top_menu {
     li.active > a {
-/*        background-color: #4b4b4b;
-        border-radius: 20px;*/
+        /*        background-color: #4b4b4b;
+                border-radius: 20px;*/
         color: $colorRed;
     }
 
@@ -202,4 +205,41 @@ nav {
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, 0);
+}
+
+
+.dj-megamenu-wrapper {
+    height: 80px;
+
+    // $colorYellow
+
+    .top_menu {
+        min-height: 78px;
+
+        .submenu {
+
+            top: 105%;
+
+            li.active a {
+                background: none;
+                color: $colorYellow;
+            }
+
+            li a:hover {
+                background: none;
+                color: $colorYellow;
+            }
+        }
+
+        li.active > a {
+            color: $colorYellow;
+        }
+
+        li {
+            ul li.active a {
+                color: $colorRed;
+            }
+        }
+    }
+
 }

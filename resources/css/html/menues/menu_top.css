@@ -119,4 +119,21 @@ nav {
   opacity: 1;
   transform: translate(-50%, 0); }
 
+.dj-megamenu-wrapper {
+  height: 80px; }
+  .dj-megamenu-wrapper .top_menu {
+    min-height: 78px; }
+    .dj-megamenu-wrapper .top_menu .submenu {
+      top: 105%; }
+      .dj-megamenu-wrapper .top_menu .submenu li.active a {
+        background: none;
+        color: #FF931E; }
+      .dj-megamenu-wrapper .top_menu .submenu li a:hover {
+        background: none;
+        color: #FF931E; }
+    .dj-megamenu-wrapper .top_menu li.active > a {
+      color: #FF931E; }
+    .dj-megamenu-wrapper .top_menu li ul li.active a {
+      color: #EF533F; }
+
 /*# sourceMappingURL=menu_top.css.map */

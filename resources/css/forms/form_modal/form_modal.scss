@@ -31,19 +31,23 @@ $maxWidth: 1440;
 }
 
 .F_form {
-padding: 0 !important;
+    padding: 0 !important;
     border-radius: 12px !important;
     min-width: 600px;
+
     .F_form__body {
         padding: 24px;
     }
 }
+
 .F_form_474 {
 
     min-width: 474px;
+
     .F_form__body {
         padding: 0;
     }
+
     .formLogin__wrapp {
 
         box-shadow: none !important;
@@ -64,6 +68,7 @@ padding: 0 !important;
 .F_form_gr-app {
     max-width: 422px;
     min-width: 422px;
+
     .F_form__body {
         padding: 0 !important;
     }
@@ -94,15 +99,17 @@ padding: 0 !important;
 
 ._r_field {
     span {
-            color: $colorRed;
-            padding: 9px 0;
-            display: block;
+        color: $colorRed;
+        padding: 9px 0;
+        display: block;
 
     }
 }
 
+
 .F_form_blue {
     padding: 40px 0 !important;
+
     .new__temp_middle {
         position: relative;
         margin: 0 auto;
@@ -110,12 +117,14 @@ padding: 0 !important;
         height: auto;
     }
 }
+
 .new__temp_middle_blue {
-width: 100%;
+    width: 100%;
     position: relative;
     border-radius: 12px;
     background: $colorBlue;
-    padding:50px 44px;
+    padding: 50px 44px;
+
     .form_text {
         color: #fff;
         max-width: 410px;
@@ -123,58 +132,134 @@ width: 100%;
         padding: 0 0 20px 0;
         font-size: 24px;
     }
-.alax_inputs__flex {
+
+    .alax_inputs__flex {
 
 
-    display: flex;
-
-    .i__left {
         display: flex;
-        justify-content: center;
-        width: 50%;
 
-        .text_input {
+        .i__left {
+            display: flex;
+            justify-content: center;
             width: 50%;
-            padding-left: 5px;
-            padding-right: 5px;
+
+            .text_input {
+                width: 50%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+        .i__right {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+
+            .text_input {
+                width: 50%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+        input[type="text"],
+        input[type="phone"],
+        input[type="email"] {
+            background-color: #fff !important;
+        }
+
+        .labelInput {
+
+            z-index: 10;
+        }
+
+        .button_normal {
+            height: 46px !important;
+            margin: 2px 0;
+            background: $colorYellow;
+            border: 1px solid $colorYellow;
+            position: relative;
         }
     }
-
-    .i__right {
-        display: flex;
-        justify-content: center;
-        width: 50%;
-
-        .text_input {
-            width: 50%;
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-    }
-
-    input[type="text"],
-    input[type="phone"],
-    input[type="email"] {
-        background-color: #fff !important;
-    }
-
-    .labelInput {
-
-        z-index: 10;
-    }
-
-    .button_normal {
-        height: 46px !important;
-        margin: 2px 0;
-        background: $colorYellow;
-        border:1px solid $colorYellow;
-        position: relative;
-    }
 }
-}
+
 .F_form_blue {
     .F_responce {
         border-radius: 12px;
         border: 4px solid $colorBlue;
+    }
+}
+
+
+.F_form_search_diplom {
+    .new__temp_middle_search_diplom {
+
+        width: 100%;
+        position: relative;
+        border-radius: 12px;
+
+
+        .form_text {
+            color: #fff;
+            max-width: 410px;
+            line-height: 1.4em;
+            padding: 0 0 20px 0;
+            font-size: 24px;
+        }
+
+        .alax_inputs__flex {
+
+
+            display: flex;
+
+            .i__left {
+                display: flex;
+                justify-content: center;
+                width: 60%;
+
+                .text_input {
+                    width: 50%;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+
+            .i__right {
+                display: flex;
+                justify-content: center;
+                width: 40%;
+
+                .text_input {
+                    width: 50%;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+
+            input[type="text"],
+            input[type="phone"],
+            input[type="email"] {
+                background-color: #fff !important;
+            }
+
+            .labelInput {
+
+                z-index: 10;
+            }
+
+            .button_normal {
+                height: 46px !important;
+                margin: 2px 0;
+                position: relative;
+            }
+            .button_normal.form_clear {
+                height: 46px !important;
+                margin: 2px 0;
+                position: relative;
+                border: 1px solid #ccc;
+                background: #ccc;
+            }
+        }
+
     }
 }

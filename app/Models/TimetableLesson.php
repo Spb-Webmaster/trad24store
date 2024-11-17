@@ -27,13 +27,19 @@ class TimetableLesson extends Model
         'params',
         'month',
         'module',
+        'date',
+        'message',
+        'time',
+        'price',
+        'a_hour',
     ];
     protected $casts = [
         'module' => 'collection',
         'params' => 'collection',
         'month' => 'collection',
     ];
-    public function timetable_city():BelongsTo
+
+    public function timetable_city(): BelongsTo
     {
         return $this->belongsTo(TimetableCity::class);
     }

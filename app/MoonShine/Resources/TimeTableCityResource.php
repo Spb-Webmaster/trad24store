@@ -17,6 +17,7 @@ use MoonShine\Enums\ClickAction;
 use MoonShine\Fields\Date;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Json;
+use MoonShine\Fields\Number;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
@@ -76,9 +77,11 @@ class TimeTableCityResource extends ModelResource
             Date::make(__('Дата создания'), 'created_at')
                 ->format("d.m.Y"),
             Switcher::make('Публикация', 'published')->updateOnPreview(),
+            Number::make('Сортировка','sorting'),
             Switcher::make('Title', 'metatitle'),
             Switcher::make('Desc', 'description'),
             Switcher::make('Key', 'keywords'),
+
 
 
         ];
@@ -117,6 +120,8 @@ class TimeTableCityResource extends ModelResource
                                     Text::make('Мета тэг (description) ', 'description')->unescape(),
                                     Text::make('Мета тэг (keywords) ', 'keywords')->unescape(),
                                     Switcher::make('Публикация', 'published')->default(1),
+                                    Number::make('Сортировка','sorting')->buttons()->default(999)
+
 
                                 ]),
 

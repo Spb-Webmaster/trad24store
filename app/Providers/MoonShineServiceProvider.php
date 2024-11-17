@@ -6,6 +6,7 @@ namespace App\Providers;
 
 
 use App\MoonShine\Pages\ChangeContactPage;
+use App\MoonShine\Pages\DiplomPage;
 use App\MoonShine\Pages\IndexPage;
 use App\MoonShine\Pages\ServicePage;
 use App\MoonShine\Pages\SettingPage;
@@ -85,7 +86,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     MenuItem::make(
                     static fn() => __('Обучение'),
                     new TrainingResource()
-                )->icon('heroicons.outline.building-office'),
+                )->icon('heroicons.outline.book-open'),
                 ]),
                 MenuGroup::make(static fn() => __('Услуги'), [
                     MenuItem::make(
@@ -95,7 +96,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make(
                     static fn() => __('Услуги'),
                     new ServiceResource()
-                )->icon('heroicons.outline.building-office-2'),
+                )->icon('heroicons.outline.bolt'),
                 ]),
 
                 MenuItem::make(
@@ -115,7 +116,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make(
                     static fn() => __('Фронт'),
                     new SettingPage()
-                )->icon('heroicons.outline.cog'),
+                )->icon('heroicons.adjustments-vertical'),
                MenuItem::make(
                     static fn() => __('Режимы показа'),
                     new ChangeContactPage()
@@ -127,11 +128,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make(
                     static fn() => __('Парнтеры'),
                     new PartnerResource()
-                )->icon('heroicons.outline.building-office-2'),
+                )->icon('heroicons.outline.hand-thumb-up'),
+                MenuItem::make(
+                    static fn() => __('Поиск диплома'),
+                    new DiplomPage()
+                )->icon('heroicons.outline.academic-cap'),
                 MenuItem::make(
                     static fn() => __('Дипломы'),
                     new DiplomResource()
-                )->icon('heroicons.outline.building-office-2'),
+                )->icon('heroicons.outline.academic-cap'),
                 MenuGroup::make(static fn() => __('Расписание'), [
                     MenuItem::make(
                         static fn() => __('Города'),
@@ -140,7 +145,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     MenuItem::make(
                         static fn() => __('Предметы'),
                         new TimeTableLessonResource()
-                    )->icon('heroicons.outline.building-office-2'),
+                    )->icon('heroicons.outline.document'),
 
                     ]),
             ]),

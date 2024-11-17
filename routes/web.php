@@ -10,6 +10,7 @@ use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeTable\TimeTableController;
 use App\MoonShine\Controllers\MoonshineChangeContactController;
+use App\MoonShine\Controllers\MoonshineDiplom;
 use App\MoonShine\Controllers\MoonshineIndex;
 use App\MoonShine\Controllers\MoonshineService;
 use App\MoonShine\Controllers\MoonshineSetting;
@@ -48,7 +49,8 @@ Route::controller(ContactController::class)->group(function () {
 
 Route::controller(TimeTableController::class)->group(function () {
     Route::get('/raspisanie', 'index')->name('timetable');
-    Route::get('/raspisanie/{slug}', 'city')->name('timetable_city');
+    Route::get('/raspisanie/diplom', 'timetable_diplom')->name('timetable_diplom');
+    Route::get('/raspisanie/{slug}', 'timetable_city')->name('timetable_city');
 });
 
 /**
@@ -81,6 +83,7 @@ Route::post('/moonshine/index', MoonshineIndex::class);
 Route::post('/moonshine/training', MoonshineTraining::class);
 Route::post('/moonshine/service', MoonshineService::class);
 Route::post('/moonshine/setting', MoonshineSetting::class);
+Route::post('/moonshine/diplom', MoonshineDiplom::class);
 
 /**
  * /////контроллеры Moonshine

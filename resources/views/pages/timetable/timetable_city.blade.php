@@ -11,23 +11,17 @@
             <div class="brod pad_b1_important">
                 <ul>
                     <li><a href="{{route('home')}}">{{__('Главная')}}</a> •</li>
-                    <li><span>{{ __('Расписание')}}</span></li>
-                    <li><span>Алматы</span></li>
+                    <li><a href="{{route('timetable')}}">{{__('Расписание')}}</a> •</li>
+                    <li><span>Город</span></li>
                 </ul>
 
             </div>
         </div>
         <div class="block">
             <h1 class="h1">Расписание</h1>
-            <div class="content_Flex">
-                <div class="left_bar">
-                    @include('pages.partial.left_menu', ['route' => 'service'])
-                </div>
-                <div class="center_content">
 
+            <div class="row_100">
 
-
-                </div>
             </div>
 
         </div>

@@ -18,16 +18,11 @@
         </div>
         <div class="block">
             <h1 class="h1">Расписание</h1>
-            <div class="content_Flex">
-                <div class="left_bar">
-                    @include('pages.partial.left_menu', ['route' => 'service'])
-                </div>
-                <div class="center_content">
 
+            <div class="row_100">
 
-
-                </div>
             </div>
+
 
         </div>
 

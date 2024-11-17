@@ -18,6 +18,7 @@
                     <div class="block_1_center top_menu">
                         <div class="dj-megamenu-wrapper">
 
+                            @include('include.menu.menu_top')
 
                         </div>
                     </div><!--.col-->
