@@ -28,3 +28,12 @@ export function printErrorMsg(Parents, msg) {
         Parents.find('textarea.' + key).addClass('_is-error');
     });
 }
+
+export function MyscrollTop(id) {
+
+    var elementClick = $('#'+ id);
+    var destination = $(elementClick).offset().top;
+    $("html, body").animate({ scrollTop: destination }, 1100); //1100 - скорость прокрутки
+
+    return false;
+}

@@ -42,6 +42,14 @@ export function _iserror() {
         function () {
             $(this).parents('.text_input').find('.errorBlade').text('');
             $(this).removeClass('_is-error');
+            /* используется не всегда*/
+            $('.labelInput').each(function(){
+                if ($(this).css('display') == 'none')
+                {
+                    $(this).show();
+                }
+            });
+            /* используется не всегда*/
 
         }
     );

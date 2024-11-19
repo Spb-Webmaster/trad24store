@@ -14,42 +14,83 @@ class TimeTableController extends Controller
     public function index()
     {
 
-        $timetable = '';
-        $items = TimetableViewModel::make()->timetable_cities();
+        $timetable_cities = TimetableViewModel::make()->timetable_cities();
 
 
 
         return view('pages.timetable.timetable',
             [
-                'timetable' => $timetable,
-                'items' => $items,
+                'timetable_cities' => $timetable_cities,
             ]);
     }
 
     public function timetable_city($slug)
     {
 
-        $timetable = '';
-        $items = TimetableViewModel::make()->timetable_cities();
+        $timetable_cities = TimetableViewModel::make()->timetable_cities();
+        $timetable_city = TimetableViewModel::make()->timetable_city($slug);
+
+        if(!$timetable_city) {
+            abort(404);
+        }
+
+        $mounth =  null;
+
+        if(session('mounth')) {
+            $mounth = session('mounth'); // если в сессии mounth, то получаем результаты вместе с mounth
+            session()->forget('mounth'); // удалим
+        }
+
+        $lessons_month = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city->id, $mounth);
 
         return view('pages.timetable.timetable_city',
             [
-                'timetable' => $timetable,
-                'items' => $items,
+                'timetable_city' => $timetable_city,
+                'timetable_cities' => $timetable_cities,
+                'lessons_month' => $lessons_month,
+                'session_mounth' => $mounth
             ]);
     }
+
+
+
+      public function timetable_city_lesson($slug, $lesson)
+    {
+
+        $timetable_cities = TimetableViewModel::make()->timetable_cities();
+        $timetable_city = TimetableViewModel::make()->timetable_city($slug);
+
+        if(!$timetable_city) {
+            abort(404);
+        }
+
+        $mounth =  null;
+
+        if(session('mounth')) {
+            $mounth = session('mounth'); // если в сессии mounth, то получаем результаты вместе с mounth
+            session()->forget('mounth'); // удалим
+        }
+
+        $lessons_month = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city->id, $mounth);
+        $lesson        = TimetableViewModel::make()->timetable_lesson($lesson);
+
+        return view('pages.timetable.timetable_city_lesson',
+            [
+                'timetable_city' => $timetable_city,
+                'timetable_cities' => $timetable_cities,
+                'lessons_month' => $lessons_month,
+                'session_mounth' => $mounth,
+                'lesson' => $lesson
+            ]);
+    }
+
+
 
     public function timetable_diplom()
     {
 
-        $timetable = '';
-        $items = TimetableViewModel::make()->timetable_cities();
 
-        return view('pages.timetable.timetable_diplom',
-            [
-                'timetable' => $timetable,
-                'items' => $items,
-            ]);
+        return view('pages.timetable.timetable_diplom');
     }
 
 

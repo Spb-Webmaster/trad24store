@@ -106,6 +106,9 @@ $maxWidth: 1440;
     }
 }
 
+/**
+Форма голубая для  mediatop
+ */
 
 .F_form_blue {
     padding: 40px 0 !important;
@@ -192,6 +195,12 @@ $maxWidth: 1440;
 
 
 .F_form_search_diplom {
+    .new__temp_middle {
+        position: relative;
+        padding-bottom: 17px;
+
+    }
+
     .new__temp_middle_search_diplom {
 
         width: 100%;
@@ -239,19 +248,15 @@ $maxWidth: 1440;
             input[type="text"],
             input[type="phone"],
             input[type="email"] {
-                background-color: #fff !important;
             }
 
-            .labelInput {
-
-                z-index: 10;
-            }
 
             .button_normal {
                 height: 46px !important;
                 margin: 2px 0;
                 position: relative;
             }
+
             .button_normal.form_clear {
                 height: 46px !important;
                 margin: 2px 0;
@@ -262,4 +267,187 @@ $maxWidth: 1440;
         }
 
     }
+
+    .F_form_search_diplom__result {
+        margin: 20px 0;
+
+
+    .wrap_th {
+        width: 100%;
+        min-height: 56px;
+        background: #F5F5F7;
+        border-top: 1px solid #E0E0E0;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .wrap_tr {
+
+        padding: 10px;
+    }
+
+    .flex_th {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        min-height: 40px;
+    }
+
+    .flex_tr {
+        display: flex;
+        align-items: center;
+        min-height: 60px;
+    }
+
+    .th1, .td1 {
+        width: 15%;
+        min-width: 185px;
+    }
+
+    .th2, .td2 {
+        width: 15%;
+
+        min-width: 185px;
+    }
+
+    .th3, .td3 {
+        width: 30%
+    }
+
+    .th4, .td4 {
+        width: 60%
+    }
+
 }
+
+
+
+    .td__, .th__ {
+        padding: 0 8px
+    }
+
+    .td__ a {
+        text-decoration: none;
+        font-size: 18px
+    }
+
+    .td__ a:hover {
+        text-decoration: underline
+    }
+}
+
+/**
+Форма расписания mediatop
+ */
+
+.F_form_timetable__result {
+    margin: 20px 0;
+min-height: 200px;
+    position: relative;
+    .F_form_timetable__data {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrap_th {
+        width: 100%;
+        min-height: 56px;
+        background: #F5F5F7;
+        border-top: 1px solid #E0E0E0;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .wrap_tr {
+
+        padding: 10px;
+        border-bottom: 1px solid #E0E0E0;
+    }
+
+    .flex_th {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        min-height: 40px;
+    }
+
+    .flex_tr {
+        display: flex;
+        align-items: center;
+        min-height: 60px;
+    }
+
+    .th1, .td1 {
+        width: 15%;
+        min-width: 185px;
+    }
+
+    .th2, .td2 {
+        width: 25%;
+        min-width: 185px;
+    }
+
+    .th3, .td3 {
+        width: 20%
+    }
+
+    .th4, .td4 {
+        width: 15%;
+        min-width: 150px;
+    }
+
+    .th5, .td5 {
+        width: 15%;
+        min-width: 150px;
+
+    }
+
+    .th6, .td6 {
+        width: 10%;
+        min-width: 150px;
+
+    }
+
+
+}
+
+.form_lesson_flex {
+    padding: 0 0 16px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #EF533F;
+     span {
+        color: $color;
+    }
+    i {
+        font-style: normal;
+    }
+    .date_lesson {
+        width: 50%;
+    }
+    .price_lesson {
+        width: 50%;
+    }
+}
+
+span.link {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    left: 5px;
+    .modal__link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 21px;
+        height: 21px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPg0KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBkPSJNMTYuMTkgMkg3LjgxQzQuMTcgMiAyIDQuMTcgMiA3LjgxVjE2LjE4QzIgMTkuODMgNC4xNyAyMiA3LjgxIDIySDE2LjE4QzE5LjgyIDIyIDIxLjk5IDE5LjgzIDIxLjk5IDE2LjE5VjcuODFDMjIgNC4xNyAxOS44MyAyIDE2LjE5IDJaTTguMTggMTYuNzdDOC4xNiAxNi43NyA4LjEzIDE2Ljc3IDguMTEgMTYuNzdDNy4xNCAxNi42OCA2LjIzIDE2LjIzIDUuNTUgMTUuNTFDMy45NSAxMy44MyAzLjk1IDExLjEgNS41NSA5LjQyTDcuNzQgNy4xMkM4LjUyIDYuMyA5LjU3IDUuODQgMTAuNjkgNS44NEMxMS44MSA1Ljg0IDEyLjg2IDYuMjkgMTMuNjQgNy4xMkMxNS4yNCA4LjggMTUuMjQgMTEuNTMgMTMuNjQgMTMuMjFMMTIuNTUgMTQuMzZDMTIuMjYgMTQuNjYgMTEuNzkgMTQuNjcgMTEuNDkgMTQuMzlDMTEuMTkgMTQuMSAxMS4xOCAxMy42MyAxMS40NiAxMy4zM0wxMi41NSAxMi4xOEMxMy42MSAxMS4wNyAxMy42MSA5LjI2IDEyLjU1IDguMTZDMTEuNTYgNy4xMiA5LjgyIDcuMTIgOC44MiA4LjE2TDYuNjMgMTAuNDZDNS41NyAxMS41NyA1LjU3IDEzLjM4IDYuNjMgMTQuNDhDNy4wNiAxNC45NCA3LjY0IDE1LjIyIDguMjUgMTUuMjhDOC42NiAxNS4zMiA4Ljk2IDE1LjY5IDguOTIgMTYuMUM4Ljg5IDE2LjQ4IDguNTYgMTYuNzcgOC4xOCAxNi43N1pNMTguNDUgMTQuNTlMMTYuMjYgMTYuODlDMTUuNDggMTcuNzEgMTQuNDMgMTguMTcgMTMuMzEgMTguMTdDMTIuMTkgMTguMTcgMTEuMTQgMTcuNzIgMTAuMzYgMTYuODlDOC43NiAxNS4yMSA4Ljc2IDEyLjQ4IDEwLjM2IDEwLjhMMTEuNDUgOS42NUMxMS43NCA5LjM1IDEyLjIxIDkuMzQgMTIuNTEgOS42MkMxMi44MSA5LjkxIDEyLjgyIDEwLjM4IDEyLjU0IDEwLjY4TDExLjQ1IDExLjgzQzEwLjM5IDEyLjk0IDEwLjM5IDE0Ljc1IDExLjQ1IDE1Ljg1QzEyLjQ0IDE2Ljg5IDE0LjE4IDE2LjkgMTUuMTggMTUuODVMMTcuMzcgMTMuNTVDMTguNDMgMTIuNDQgMTguNDMgMTAuNjMgMTcuMzcgOS41M0MxNi45NCA5LjA3IDE2LjM2IDguNzkgMTUuNzUgOC43M0MxNS4zNCA4LjY5IDE1LjA0IDguMzIgMTUuMDggNy45MUMxNS4xMiA3LjUgMTUuNDggNy4xOSAxNS45IDcuMjRDMTYuODcgNy4zNCAxNy43OCA3Ljc4IDE4LjQ2IDguNUMyMC4wNSAxMC4xNyAyMC4wNSAxMi45MSAxOC40NSAxNC41OVoiIGZpbGw9IiNGRjkzMUUiLz4NCjwvc3ZnPg==');
+        text-decoration: none;
+    }
+}
+

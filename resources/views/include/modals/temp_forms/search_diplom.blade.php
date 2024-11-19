@@ -16,26 +16,24 @@
             <div class="alax_inputs__flex">
                 <div class="i__left">
 
-                    <div class="text_input">
+                    <div class="text_input _diplom_title">
                         <x-forms.text-input_fromLabel
                             type="text"
                             name="diplom_title"
                             placeholder="Номер диплома"
                             value="{{ old('Номер диплома')?:'' }}"
-                            required="true"
                             class="input diplom_title"
                         />
                         <x-forms.error class="error_diplom_title"/>
 
 
                     </div>
-                    <div class="text_input">
+                    <div class="text_input _diplom_name">
                         <x-forms.text-input_fromLabel
                             type="text"
                             name="diplom_name"
                             placeholder="ФИО слушателя"
                             value="{{ old('ФИО слушателя')?:'' }}"
-                            required="true"
                             class="input diplom_name"
                         />
                         <x-forms.error class="error_diplom_name"/>
@@ -47,7 +45,7 @@
                 <div class="i__right">
 
                     <div class="text_input">
-                        <x-forms.button_call_me class="button_normal clear_form__js">
+                        <x-forms.button_call_me class="button_normal search_diplom__js">
                             {{__('Искать')}}
                         </x-forms.button_call_me>
 
@@ -66,6 +64,10 @@
         </div>
     </div><!--.new__temp_middle-->
 
-</div><!--.F_form_blue-->
+   <div class="F_form_search_diplom__result" id="diplom__result">
+
+   </div>
+
+</div><!--.F_form_search_diplom-->
 
 

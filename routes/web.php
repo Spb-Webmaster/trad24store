@@ -51,6 +51,7 @@ Route::controller(TimeTableController::class)->group(function () {
     Route::get('/raspisanie', 'index')->name('timetable');
     Route::get('/raspisanie/diplom', 'timetable_diplom')->name('timetable_diplom');
     Route::get('/raspisanie/{slug}', 'timetable_city')->name('timetable_city');
+    Route::get('/raspisanie/{slug}/{lesson}', 'timetable_city_lesson')->name('timetable_city_lesson');
 });
 
 /**
@@ -64,7 +65,11 @@ Route::controller(AjaxController::class)->group(function () {
     Route::post('/send-mail/order-call', 'OrderCall');
     Route::post('/send-mail/order-call-blue-form', 'OrderCallBlue_form');
     Route::post('/send-mail/bid', 'bid');
-    Route::post('/set-city/city-action', 'city');
+    Route::post('/set-city/city-action', 'city'); // записать город
+    Route::post('/search/search-diplom-form', 'search_diplom'); // поиск диплома
+    Route::post('/redirect/redirect-city-mounth', 'redirect_city_mounth'); // переадресация на стрнаицу города с нужным месяцем
+    Route::post('/redirect/redirect-mounth-city', 'redirect_mounth_city'); // выдача расписания с нужным месяцем
+    Route::post('/send-mail/order-sing-up-lesson', 'sing_up_lesson'); // запись на курсы
 
 
 

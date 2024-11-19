@@ -31,7 +31,14 @@ return new class extends Migration
             $table->json('params')->nullable();
             $table->json('module')->nullable();
             $table->json('month')->nullable();
-
+            $table->string('date')->nullable();
+            $table->text('message')->nullable();
+            $table->string('time')->nullable();
+            $table->string('price')->nullable();
+            $table->integer('price_prefix')->default(0);
+            $table->string('a_hour')->nullable();
+            $table->integer('allmonths')->default(0);
+            $table->integer('allcities')->default(0);
             $table->text('text')->nullable();
             $table->integer('sorting')->default(999);
             $table->timestamps();

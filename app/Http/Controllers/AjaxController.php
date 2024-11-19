@@ -6,8 +6,12 @@ use App\Events\BidFormEvent;
 use App\Events\OrderCallBlueFormEvent;
 use App\Events\OrderCallEvent;
 
+use App\Events\SingUpLessonFormEvent;
+use App\Http\Render\AjaxDataRender;
 use App\Models\User;
 
+use Domain\Diplom\ViewModels\DiplomViewModel;
+use Domain\Timetable\ViewModels\TimetableViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -122,6 +126,8 @@ class AjaxController extends Controller
     }
 
 
+
+
     /**
      * Метод  получения session (город)
      */
@@ -143,6 +149,124 @@ class AjaxController extends Controller
     }
 
 
+    /**
+     * Метод  поиска дипломов
+     */
+
+    public function search_diplom(Request $request)
+    {
+
+        $title = ($request->title)?:null; // номер диплома
+        $name = ($request->name)?:null; // ФИО
+
+        $result = DiplomViewModel::make()->search($title, $name);
+
+        $str = DiplomViewModel::make()->render($result);
+
+
+        /**
+         * возвращаем назад в браузер
+         */
+
+        return response()->json([
+            'result' => $result,
+            'html' => $str,
+        ]);
+
+    }
+
+
+    /**
+     * Метод  переадресации на стрнаицу горола с  месяцем в расписании
+     */
+
+    public function redirect_city_mounth(Request $request)
+    {
+
+        $city = ($request->city)?:null; // город
+        $mounth = ($request->mounth)?:null; // месяц
+        if($mounth) {
+            session(['mounth' => $mounth]);
+        }
+
+        $route = route('timetable_city', ['slug' => $city]);
+
+
+        /**
+         * возвращаем назад в браузер
+         */
+
+        return response()->json([
+            'route' => $route,
+        ]);
+
+
+    }
+
+    /**
+     * Метод  вывода расписания  на стрнаицу города с  месяцем
+     */
+
+    public function redirect_mounth_city(Request $request)
+    {
+
+        $city = ($request->city)?:null; // город
+        $mounth = ($request->mounth)?:null; // месяц
+
+        $timetable_city = TimetableViewModel::make()->timetable_city($city);
+        $str= TimetableViewModel::make()->timetable_city_lessons_month($timetable_city->id, $mounth);
+
+
+
+
+        /**
+         * возвращаем назад в браузер
+         */
+
+        return response()->json([
+            'html' => $str,
+        ]);
+
+
+    }
+
+
+    /**
+     * Метод отправки сообщения "Отправить заявку" мадальное окно -  форма
+     */
+
+    public function sing_up_lesson(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'phone' => ['required', 'string', 'min:5'],
+            'email' => ['required', 'email', 'email:dns'],
+        ]);
+
+        if ($validator->passes()) {
+
+
+
+
+            /**
+             * Событие отправка сообщения админу (Отправить заявку)
+             */
+
+            SingUpLessonFormEvent::dispatch($request);
+
+            /**
+             * возвращаем назад в браузер
+             */
+
+            return response()->json([
+                'request' => $request
+
+            ]);
+        }
+
+        return response()->json(['error' => $validator->errors()]);
+
+    }
 
 
     /**
@@ -212,6 +336,7 @@ class AjaxController extends Controller
         ]);
 
     }
+
 
 
 

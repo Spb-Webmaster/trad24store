@@ -42,6 +42,17 @@ class SendMails
     }
 
 
+    public function sendSingUpLessonForm($data):void
+    {
+        $view = 'html.email.order_sing_up_lesson_form';
+        $subject = 'Форма заявки на обучение  - ' . $data['title'];
+
+        Mail::send($view, ['data' => $data],  function ($message) use ($subject){
+            $message->to(config('app.mail_username'), 'Admin')->subject($subject);
+        });
+    }
+
+
 
 
 }

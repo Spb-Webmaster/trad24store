@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TimetableCity extends Model
@@ -28,6 +29,7 @@ class TimetableCity extends Model
         'params',
         'module',
     ];
+
     protected $casts = [
         'module' => 'collection',
         'params' => 'collection',
@@ -37,6 +39,12 @@ class TimetableCity extends Model
     {
         return $this->belongsTo(Timetable::class);
     }
+
+    public function timetable_lesson():BelongsToMany
+    {
+        return $this->belongsToMany(TimetableLesson::class);
+    }
+
 
 
 }

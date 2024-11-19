@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TimetableLesson extends Model
 {
@@ -32,6 +33,8 @@ class TimetableLesson extends Model
         'time',
         'price',
         'a_hour',
+        'allmonths',
+        'allcities',
     ];
     protected $casts = [
         'module' => 'collection',
@@ -39,9 +42,12 @@ class TimetableLesson extends Model
         'month' => 'collection',
     ];
 
-    public function timetable_city(): BelongsTo
+
+    public function timetable_city():BelongsToMany
     {
-        return $this->belongsTo(TimetableCity::class);
+        return $this->belongsToMany(TimetableCity::class);
     }
+
+
 
 }

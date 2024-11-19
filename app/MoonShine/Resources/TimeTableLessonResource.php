@@ -17,6 +17,8 @@ use MoonShine\Enums\ClickAction;
 use MoonShine\Fields\Date;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsTo;
+use MoonShine\Fields\Relationships\BelongsToMany;
+
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
@@ -57,7 +59,6 @@ class TimeTableLessonResource extends ModelResource
             Text::make('Название', 'title')
                 ->useOnImport()
                 ->showOnExport(),
-            BelongsTo::make('Город', 'timetable_city', resource: new TimeTableCityResource())->nullable()->searchable(),
 
         ];
     }
@@ -74,13 +75,14 @@ class TimeTableLessonResource extends ModelResource
                 ->sortable(),
 
             Text::make(__('Заголовок'), 'title'),
-            BelongsTo::make('Город', 'timetable_city', resource: new TimeTableCityResource())->nullable()->searchable(),
             Switcher::make(__('Месяц'), 'month'),
             Switcher::make('Дата', 'date'),
             Switcher::make('Время', 'time'),
             Switcher::make('Цена', 'price'),
             Switcher::make('Часы', 'a_hour'),
             Switcher::make('Публикация', 'published')->updateOnPreview(),
+            Switcher::make('Все месяцы', 'allmonths')->updateOnPreview(),
+            Switcher::make('Все города', 'allcities')->updateOnPreview(),
 
 
         ];
@@ -107,24 +109,7 @@ class TimeTableLessonResource extends ModelResource
 
 
 
-                                Text::make(__('Подзаголовок'), 'subtitle'),
 
-                                   Select::make('Месяцы', 'month')
-                                   ->options([
-                                       'january' => 'Январь',
-                                       'february' => 'Февраль',
-                                       'march' => 'Март',
-                                       'april' => 'Апрель',
-                                       'may' => 'Май',
-                                       'june' => 'Июнь',
-                                       'july' => 'Июль',
-                                       'august' => 'Август',
-                                       'september' => 'Сентябрь',
-                                       'october' => 'Октябрь',
-                                       'november' => 'Ноябрь',
-                                       'december' => 'Декабрь'
-                                   ])
-                                   ->multiple(),
 ]),
 
                             ])->columnSpan(6),
@@ -135,7 +120,7 @@ class TimeTableLessonResource extends ModelResource
                                     Text::make('Мета тэг (description) ', 'description')->unescape(),
                                     Text::make('Мета тэг (keywords) ', 'keywords')->unescape(),
                                     Switcher::make('Публикация', 'published')->default(1),
-                                 BelongsTo::make('Город', 'timetable_city', resource: new TimeTableCityResource())->nullable()->searchable(),
+
 
                                 ]),
 
@@ -146,6 +131,29 @@ class TimeTableLessonResource extends ModelResource
                         ]),
                         Grid::make([
                             Column::make([
+                                Collapse::make('Проведение по месяцам', [
+                                    Switcher::make('Все месяцы!', 'allmonths')->default(1),
+
+                        Select::make('Месяцы', 'month')
+                            ->options(config('site.year'))
+                            ->multiple(),
+                                ]),
+                            ])  ->columnSpan(6),
+                            Column::make([
+                                Collapse::make('Проведение в городах', [
+                                    Switcher::make('Все города!', 'allcities')->default(1),
+
+
+                                    BelongsToMany::make('Город', 'timetable_city', 'title', resource: new TimeTableCityResource() )->selectMode(),
+
+
+                                ]),
+                            ])  ->columnSpan(6),
+
+                        ]),
+
+                        Grid::make([
+                            Column::make([
                                 Collapse::make('Детали', [
 
 
@@ -153,6 +161,8 @@ class TimeTableLessonResource extends ModelResource
                                     Text::make('Дата проведения', 'date'),
                                     Textarea::make('Примечание', 'message'),
                                     Text::make('Время проведения', 'time'),
+                                    Switcher::make('Цена от ...', 'price_prefix')->default(0),
+
                                     Number::make('Стоимость', 'price'),
                                     Text::make('Академ.ч.', 'a_hour'),
 
