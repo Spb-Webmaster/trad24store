@@ -36,22 +36,22 @@
                         <div class="selectClass timetable_month">
                             <select class="js-chosen" name="timetable_month" id="registerTimetable_month">
 
-                                @if(config('site.year'))
+                                @if(isset($timetable_months))
                                     <option value="">Выбрать месяц</option>
 
-                                    @foreach(config('site.year') as $k =>$month)
+                                    @foreach($timetable_months as $k =>$month)
                                         <option
                                             @if(isset($session_mounth))
-                                                @if(strtolower($session_mounth) ==  $k )
+                                                @if(strtolower($session_mounth) ==  $month->slug )
                                                     selected
                                                  @endif
                                             @else
-                                                @if(strtolower(Carbon\Carbon::now()->format('F')) ==  $k )
+                                                @if(strtolower(Carbon\Carbon::now()->format('F')) ==  $month->slug )
                                                     selected
                                                  @endif
                                             @endif
 
-                                                value="{{ $k }}">{{  $month }}</option>
+                                                value="{{ $month->slug }}">{{  $month->title }}</option>
                                     @endforeach
                                 @endif
 

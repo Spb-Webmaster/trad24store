@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 
+use App\Models\MediatorCategory;
+use App\Models\MediatorProduct;
 use App\MoonShine\Pages\ChangeContactPage;
 use App\MoonShine\Pages\DiplomPage;
 use App\MoonShine\Pages\IndexPage;
@@ -15,12 +17,16 @@ use App\MoonShine\Pages\TrainingPage;
 use App\MoonShine\Resources\CityResource;
 use App\MoonShine\Resources\ContactResource;
 use App\MoonShine\Resources\DiplomResource;
+use App\MoonShine\Resources\MediatorCategoryResource;
+use App\MoonShine\Resources\MediatorProductResource;
 use App\MoonShine\Resources\PageResource;
 use App\MoonShine\Resources\PartnerResource;
 use App\MoonShine\Resources\ServiceResource;
 use App\MoonShine\Resources\TimeTableCityResource;
 use App\MoonShine\Resources\TimeTableLessonResource;
+use App\MoonShine\Resources\TimeTableMonthResource;
 use App\MoonShine\Resources\TrainingResource;
+use App\MoonShine\Resources\UserResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -62,6 +68,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     new MoonShineUserResource()
                 ),
                 MenuItem::make(
+                    static fn() => __('Пользователи'),
+                    new UserResource()
+                )->icon('heroicons.outline.user-group'),
+                MenuItem::make(
                     static fn() => __('moonshine::ui.resource.role_title'),
                     new MoonShineUserRoleResource()
                 ),
@@ -74,9 +84,20 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     new IndexPage()
                 )->icon('heroicons.outline.bars-3'),
                 MenuItem::make(
-                    static fn() => __('Материалы'),
+                    static fn() => __('Страницы'),
                     new PageResource()
                 )->icon('heroicons.outline.bars-3'),
+                MenuGroup::make(static fn() => __('О нас'), [
+
+                    MenuItem::make(
+                        static fn() => __('Категории'),
+                        new MediatorCategoryResource()
+                    )->icon('heroicons.outline.bars-3'),
+                    MenuItem::make(
+                    static fn() => __('Материалы'),
+                    new MediatorProductResource()
+                )->icon('heroicons.outline.book-open'),
+                ]),
                 MenuGroup::make(static fn() => __('Обучение'), [
 
                     MenuItem::make(
@@ -142,6 +163,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                         static fn() => __('Города'),
                         new TimeTableCityResource()
                     )->icon('heroicons.outline.building-office-2'),
+     /*               MenuItem::make(
+                        static fn() => __('Месяцы'),
+                        new TimeTableMonthResource()
+                    )->icon('heroicons.outline.building-office-2'),*/
                     MenuItem::make(
                         static fn() => __('Предметы'),
                         new TimeTableLessonResource()

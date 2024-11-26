@@ -6,8 +6,8 @@
                 @foreach($trainings5 as $k=>$training)
 
                     <div class="az_item az_item1">
-                        <a href="#" class="az_i_top"><img src="{{ Storage::url($training->img_teaser) }}" alt="{{ ($training->title_teaser)?:$training->title_teaser }}"></a>
-                        <div class="az_i_middle"><h2>{{ ($training->title_teaser)?:$training->title_teaser }}</h2></div>
+                        <a href="#" class="az_i_top"><img src="{{ Storage::url($training->img_teaser) }}" alt="{{ ($training->title_teaser)?:$training->title }}"></a>
+                        <div class="az_i_middle"><h2>{{ ($training->title_teaser)?:$training->title }}</h2></div>
 
                         <div class="az2_i_bottom"><div class="item_buttom2"><a href="{{ route('training', ['slug' => $training->slug ]) }}"><span>Посмотреть курс</span></a></div></div>
                     </div>

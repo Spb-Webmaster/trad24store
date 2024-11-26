@@ -21,6 +21,7 @@ class TimetableLesson extends Model
         'text',
         'sorting',
         'timetable_city_id',
+        'timetable_month_id',
         'metatitle',
         'description',
         'keywords',
@@ -33,8 +34,7 @@ class TimetableLesson extends Model
         'time',
         'price',
         'a_hour',
-        'allmonths',
-        'allcities',
+
     ];
     protected $casts = [
         'module' => 'collection',
@@ -46,6 +46,37 @@ class TimetableLesson extends Model
     public function timetable_city():BelongsToMany
     {
         return $this->belongsToMany(TimetableCity::class);
+    }
+
+
+    public function timetable_month():BelongsToMany
+    {
+        return $this->belongsToMany(TimetableMonth::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        # Проверка данных  перед сохранением
+         static::saving(function ($Moonshine) {
+
+         });
+
+
+        static::created(function () {
+            cache_clear();
+        });
+
+        static::updated(function () {
+            cache_clear();
+        });
+
+        static::deleted(function () {
+            cache_clear();
+        });
+
+
     }
 
 

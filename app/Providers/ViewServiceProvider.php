@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\View\Composers\ChangeContactComposer;
 use App\View\Composers\CityComposer;
+use App\View\Composers\MenuComposer;
 use App\View\Composers\MenuTopComposer;
 use App\View\Composers\PartnersComposer;
 use App\View\Composers\Service5Composer;
@@ -35,7 +36,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['modules.module_6'], PartnersComposer::class);
         View::composer('include.connect._change_contacts', ChangeContactComposer::class);
         View::composer(['include.blocks.cities.top_cities', 'pages.contacts'], CityComposer::class);
-        View::composer(['include.menu.menu_top'], MenuTopComposer::class);
+        View::composer(['include.menu.menu_top','templates.axeld.footer'], MenuComposer::class);
 
 
     }

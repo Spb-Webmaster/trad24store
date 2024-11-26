@@ -214,7 +214,7 @@ class AjaxController extends Controller
         $mounth = ($request->mounth)?:null; // месяц
 
         $timetable_city = TimetableViewModel::make()->timetable_city($city);
-        $str= TimetableViewModel::make()->timetable_city_lessons_month($timetable_city->id, $mounth);
+        $str= TimetableViewModel::make()->timetable_city_lessons_month($timetable_city, $mounth);
 
 
 

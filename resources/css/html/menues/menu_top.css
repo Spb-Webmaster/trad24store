@@ -24,7 +24,7 @@ nav {
 
 .top_menu > li > a {
   position: relative;
-  height: 68px;
+  height: 78px;
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -124,7 +124,7 @@ nav {
   .dj-megamenu-wrapper .top_menu {
     min-height: 78px; }
     .dj-megamenu-wrapper .top_menu .submenu {
-      top: 105%; }
+      top: 72px; }
       .dj-megamenu-wrapper .top_menu .submenu li.active a {
         background: none;
         color: #FF931E; }

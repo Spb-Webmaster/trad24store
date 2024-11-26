@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\Models\TimetableCity;
+use App\MoonShine\Enum\StatusEmun;
+use App\MoonShine\Fields\Months;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TimeTableLesson;
 
+use MoonShine\Components\Badge;
+use MoonShine\Components\Link;
 use MoonShine\Decorations\Collapse;
 use MoonShine\Decorations\Column;
 use MoonShine\Decorations\Divider;
@@ -15,6 +20,7 @@ use MoonShine\Decorations\Tab;
 use MoonShine\Decorations\Tabs;
 use MoonShine\Enums\ClickAction;
 use MoonShine\Fields\Date;
+use MoonShine\Fields\Enum;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\BelongsToMany;
@@ -75,14 +81,28 @@ class TimeTableLessonResource extends ModelResource
                 ->sortable(),
 
             Text::make(__('Заголовок'), 'title'),
-            Switcher::make(__('Месяц'), 'month'),
-            Switcher::make('Дата', 'date'),
+
+
+            BelongsToMany::make('Месяцы', 'timetable_month', 'title', resource: new TimeTableMonthResource())   ->inLine(
+                separator: '<br>',
+                badge: fn($model, $value) => Badge::make($value, 'success'),
+
+            ),
+            BelongsToMany::make('Город', 'timetable_city', 'title', resource: new TimeTableCityResource() )   ->inLine(
+                separator: '<br>',
+                badge: fn($model, $value) => Badge::make($value, 'success'),
+
+            ),
+          Switcher::make('Дата', 'date'),
+
+
+
+
             Switcher::make('Время', 'time'),
             Switcher::make('Цена', 'price'),
             Switcher::make('Часы', 'a_hour'),
             Switcher::make('Публикация', 'published')->updateOnPreview(),
-            Switcher::make('Все месяцы', 'allmonths')->updateOnPreview(),
-            Switcher::make('Все города', 'allcities')->updateOnPreview(),
+
 
 
         ];
@@ -120,32 +140,22 @@ class TimeTableLessonResource extends ModelResource
                                     Text::make('Мета тэг (description) ', 'description')->unescape(),
                                     Text::make('Мета тэг (keywords) ', 'keywords')->unescape(),
                                     Switcher::make('Публикация', 'published')->default(1),
-
-
                                 ]),
-
-
-                            ])
-                                ->columnSpan(6),
+                            ])->columnSpan(6),
 
                         ]),
                         Grid::make([
                             Column::make([
                                 Collapse::make('Проведение по месяцам', [
-                                    Switcher::make('Все месяцы!', 'allmonths')->default(1),
 
-                        Select::make('Месяцы', 'month')
-                            ->options(config('site.year'))
-                            ->multiple(),
+                                    BelongsToMany::make('Месяц', 'timetable_month', 'title', resource: new TimeTableMonthResource() )->selectMode(),
+
                                 ]),
                             ])  ->columnSpan(6),
                             Column::make([
                                 Collapse::make('Проведение в городах', [
-                                    Switcher::make('Все города!', 'allcities')->default(1),
-
 
                                     BelongsToMany::make('Город', 'timetable_city', 'title', resource: new TimeTableCityResource() )->selectMode(),
-
 
                                 ]),
                             ])  ->columnSpan(6),

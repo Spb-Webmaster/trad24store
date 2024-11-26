@@ -150,7 +150,20 @@ export function search_diplom_form() {
     });
     /*  search_diplom__js поиск диплама  */
 
-}
+
+    $('body').on('click', '.clear_form__js', function (event) {
+
+        var Parents = $(this).parents('.F_form');
+        Parents.find('input[type="text"]').val('');
+        Parents.find('#diplom__result').html('');
+
+
+    });
+
+
+
+
+    }
 
 
 export function search_lessons() {

@@ -15,12 +15,14 @@ class TimeTableController extends Controller
     {
 
         $timetable_cities = TimetableViewModel::make()->timetable_cities();
+        $timetable_months = TimetableViewModel::make()->timetable_months();
 
 
 
         return view('pages.timetable.timetable',
             [
                 'timetable_cities' => $timetable_cities,
+                'timetable_months' => $timetable_months,
             ]);
     }
 
@@ -28,7 +30,10 @@ class TimeTableController extends Controller
     {
 
         $timetable_cities = TimetableViewModel::make()->timetable_cities();
+        $timetable_months = TimetableViewModel::make()->timetable_months();
+
         $timetable_city = TimetableViewModel::make()->timetable_city($slug);
+
 
         if(!$timetable_city) {
             abort(404);
@@ -41,13 +46,19 @@ class TimeTableController extends Controller
             session()->forget('mounth'); // удалим
         }
 
-        $lessons_month = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city->id, $mounth);
+
+        $lessons_month = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city, $mounth);
+
+
+
+
 
         return view('pages.timetable.timetable_city',
             [
                 'timetable_city' => $timetable_city,
                 'timetable_cities' => $timetable_cities,
                 'lessons_month' => $lessons_month,
+                'timetable_months' => $timetable_months,
                 'session_mounth' => $mounth
             ]);
     }
@@ -57,8 +68,11 @@ class TimeTableController extends Controller
       public function timetable_city_lesson($slug, $lesson)
     {
 
+
+
         $timetable_cities = TimetableViewModel::make()->timetable_cities();
         $timetable_city = TimetableViewModel::make()->timetable_city($slug);
+        $timetable_months = TimetableViewModel::make()->timetable_months();
 
         if(!$timetable_city) {
             abort(404);
@@ -71,16 +85,19 @@ class TimeTableController extends Controller
             session()->forget('mounth'); // удалим
         }
 
-        $lessons_month = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city->id, $mounth);
-        $lesson        = TimetableViewModel::make()->timetable_lesson($lesson);
+        $lesson_item        = TimetableViewModel::make()->timetable_lesson($lesson);
+        $lessons_month = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city, $mounth, $lesson_item);
+
+
 
         return view('pages.timetable.timetable_city_lesson',
             [
                 'timetable_city' => $timetable_city,
                 'timetable_cities' => $timetable_cities,
                 'lessons_month' => $lessons_month,
+                'timetable_months' => $timetable_months,
                 'session_mounth' => $mounth,
-                'lesson' => $lesson
+                'lesson_item' => $lesson_item
             ]);
     }
 

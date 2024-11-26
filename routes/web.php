@@ -4,6 +4,8 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ChangeContacts\ChangeContactsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Pages\CategoryController;
+use App\Http\Controllers\Pages\ProductController;
 use App\Http\Controllers\Pages\ServiceController;
 use App\Http\Controllers\Pages\TrainingController;
 use App\Http\Controllers\Pages\PageController;
@@ -79,6 +81,33 @@ Route::controller(AjaxController::class)->group(function () {
 });
 /**
  * /// AjaxController
+ */
+
+
+/**
+ * Категории
+ */
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/o-nas/{slug}', 'category')->name('category');
+    Route::get('/o-nas', 'categories')->name('categories');
+
+});
+
+
+/**
+ * /////Категории
+ */
+
+/**
+ * Продукты
+ */
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/o-nas/{gategory}/{slug}', 'product')->name('product');
+
+});
+
+/**
+ * /////Продукты
  */
 
 /**

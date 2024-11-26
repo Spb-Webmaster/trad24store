@@ -5,7 +5,7 @@
         @foreach($items as $item)
 
                 @if($item->published_menu)
-                    <li class="{{ active_linkParse(asset(route($route, ['slug' => $item->slug]), 'find'))  }}">
+                    <li class="{{ active_linkMenu(asset(route($route, ['slug' => $item->slug])), 'find')  }}">
                         <a href="{{ route($route, ['slug' => $item->slug]) }}">{{ ($item->title_menu)?: $item->title }}</a>
                     </li>
                 @endif

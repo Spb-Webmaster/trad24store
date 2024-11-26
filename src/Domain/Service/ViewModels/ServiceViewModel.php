@@ -25,21 +25,27 @@ class ServiceViewModel
 
     public function services() :Collection | null
     {
+        $service = Cache::rememberForever('service', function () {
 
-       return Service::query()
-            ->where('published', true)
-            ->orderBy('sorting')
-            ->get();
+            return Service::query()
+                ->where('published', true)
+                ->orderBy('sorting')
+                ->get();
+        });
+        return $service;
     }
 
     public function services5() :Collection | null
     {
+        $service5 = Cache::rememberForever('service5', function () {
 
        return Service::query()
             ->where('published', true)
             ->orderBy('sorting')
            ->take(5)
             ->get();
+        });
+        return $service5;
     }
 
 

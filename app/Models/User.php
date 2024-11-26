@@ -21,8 +21,55 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
+        'username',
+        'company',
+        'avatar',
+        'city',
+
+        'home',
+        'street',
+        'office',
+
+        'oput',
+        'dop',
+
+        'phone',
+        'telegram',
+        'whatsapp',
+        'instagram',
+        'social',
+        'website',
+
+
+        'user_idcard', //1
+        'user_judge', //2
+        'user_crazy', //3
+        'user_diplom', //4
+        'user_cert_mediator', //5
+        'user_special_cert_mediator', //6
+        'user_mediator_trener', //7
+        'user_registered', //8
+        'user_statute', //9
+        'user_order_head', //10
+
+        'published',
+        'params',
     ];
 
+    protected $casts = [
+        'params' => 'collection',
+        'user_idcard' => 'collection', //1
+        'user_judge' => 'collection', //2
+        'user_crazy' => 'collection', //3
+        'user_diplom' => 'collection', //4
+        'user_cert_mediator' => 'collection', //5
+        'user_special_cert_mediator' => 'collection', //6
+        'user_mediator_trener' => 'collection', //7
+        'user_registered' => 'collection', //8
+        'user_statute' => 'collection', //9
+        'user_order_head' => 'collection', //10
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -45,4 +92,32 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        # Проверка данных  перед сохранением
+        static::saving(function ($Moonshine) {
+
+            $Moonshine->phone = phone($Moonshine->phone);
+
+        });
+
+
+        static::created(function () {
+            cache_clear();
+        });
+
+        static::updated(function () {
+            cache_clear();
+        });
+
+        static::deleted(function () {
+            cache_clear();
+        });
+
+
+    }
+
 }

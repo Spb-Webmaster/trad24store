@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 <x-seo.meta
-    title=""
-    description=""
-    keywords=""
+    title="{{($timetable_city->metatitle)?:$timetable_city->title}}"
+    description="{{$timetable_city->description}}"
+    keywords="{{$timetable_city->keywords}}"
 />
 
 @section('content')
@@ -19,9 +19,20 @@
         </div>
         <div class="block">
             <h1 class="h1">Расписание — {{ $timetable_city->title }}</h1>
+            @if($timetable_city->subtitle)
+                <div class="subtitle">{{ $timetable_city->subtitle }}</div>
+            @endif
+
 
             <div class="row_100">
                 @include('include.modals.temp_forms.timetable')
+            </div>
+            <div class="row_100">
+                @if($timetable_city->text)
+                    <div class="desc border_b pad_t17">
+                        {!! $timetable_city->text !!}
+                    </div>
+                @endif
             </div>
 
 

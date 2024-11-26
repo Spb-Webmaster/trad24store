@@ -5,12 +5,14 @@
             <div class="f_top__left">
 
 
-                    <div class="F_tel"><span><a href="tel:{{ config2('moonshine.setting.phone1') }}">{{ config2('moonshine.setting.phone1') }}</a></span></div>
-                    <div class="F_email"><span>{{ config2('moonshine.setting.email') }}</span></div>
+                <div class="F_tel"><span><a
+                            href="tel:{{ config2('moonshine.setting.phone1') }}">{{ config2('moonshine.setting.phone1') }}</a></span>
+                </div>
+                <div class="F_email"><span>{{ config2('moonshine.setting.email') }}</span></div>
 
-                    <div class="I_Social">
-                      @include('include.blocks.social.social_bottom')
-                    </div>
+                <div class="I_Social">
+                    @include('include.blocks.social.social_bottom')
+                </div>
 
             </div>
 
@@ -18,36 +20,58 @@
 
 
                 <div class="f1">
-                    <ul class=""><li  class="item-160"><a href="/reestr/neprofessionalnye-mediatory">Общественные медиаторы</a></li><li  class="item-161"><a href="/reestr/professionalnye-mediatory">Профессиональные медиаторы</a></li><li  class="item-265"><a href="/reestr/organizatsii-mediatorov">Организации Медиаторов</a></li><li  class="item-162"><a href="/raspisanie/diplom">Поиск диплома </a></li></ul>
+                    <ul class="">
+                        <li><a href="#">Общественные медиаторы</a></li>
+                        <li class=""><a href="#">Профессиональные медиаторы</a></li>
+                        <li class=""><a href="#">Организации Медиаторов</a></li>
+                        <li class="{{ active_linkMenu(asset(route('timetable_diplom'))) }}"><a href="{{ route('timetable_diplom') }}">Поиск диплома </a></li>
+                    </ul>
                     <div class="codehtml">
                     </div>
-
-
-
-
 
 
                 </div>
 
                 <div class="f2">
-                    <ul class=""><li  class="item-175"><a href="/o-nas/assotsiatsiya">Ассоциация</a></li><li  class="item-176"><a href="/o-nas/struktura">Структура</a></li><li  class="item-177"><a href="/o-nas/dokumenty">Документы</a></li><li  class="item-191"><a href="/o-nas/partnery">Парнеры </a></li><li  class="item-193"><a href="/o-nas/komanda">Команда</a></li></ul>
+
+                    @if(isset($categories))
+                        <ul class="">
+
+                            @foreach($categories as $item)
+
+                                @if($item->published_menu)
+                                    <li class="{{ active_linkMenu(asset(route('category', ['slug' => $item->slug])), 'find')  }}">
+                                        <a href="{{ route('category', ['slug' => $item->slug]) }}">{{ ($item->title_menu)?: $item->title }}</a>
+                                    </li>
+                                @endif
+
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <div class="codehtml">
                     </div>
-
-
-
-
 
 
                 </div>
                 <div class="f3">
-                    <ul class=""><li  class="item-180"><a href="/uslugi/korporativnye-spory">Корпоративные споры </a></li><li  class="item-181"><a href="/uslugi/bankovskie-spory">Банковские споры</a></li><li  class="item-182"><a href="/uslugi/ugolovnye-spory">Уголовные споры </a></li><li  class="item-183"><a href="/uslugi/trudovye-spory">Трудовые споры </a></li><li  class="item-184"><a href="/uslugi/semejnye-spory">Семейные споры </a></li><li  class="item-187"><a href="/uslugi/razdel-imushchestva">Раздел имущества </a></li><li  class="item-186"><a href="/uslugi/spory-mezhdu-yur-litsami">Споры между юр. лицами </a></li></ul>
+                    @if(isset($services))
+                        <ul class="">
+
+                            @foreach($services as $item)
+
+                                @if($item->published_menu)
+                                    <li class="{{ active_linkMenu(asset(route('service', ['slug' => $item->slug])), 'find')  }}">
+                                        <a href="{{ route('service', ['slug' => $item->slug]) }}">{{ ($item->title_menu)?: $item->title }}</a>
+                                    </li>
+                                @endif
+
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <div class="codehtml">
                     </div>
-
-
-
-
 
 
                 </div>

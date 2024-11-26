@@ -17,10 +17,10 @@
     <title>@yield('title', config('seo.seo.title'))</title>
     <meta name="description" content="@yield('description',  config('seo.seo.description'))"/>
     <meta name="keywords" content="@yield('keywords',  config('seo.seo.keywords'))"/>
+    @yield('canonical', '')
+
 </head>
 <body>
-
-
 <div id="content" class="content_ {{ route_name() }} ">
     <x-message.message/>
     <x-message.message_error/>

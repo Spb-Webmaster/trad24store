@@ -25,20 +25,28 @@ class TrainingViewModel
 
     public function trainings() :Collection | null
     {
+        $training = Cache::rememberForever('training', function () {
 
         return Training::query()
             ->where('published', true)
             ->orderBy('sorting')
             ->get();
+        });
+
+        return $training;
+
     }
     public function trainings5() :Collection | null
     {
+        $training5 = Cache::rememberForever('training5', function () {
 
         return Training::query()
             ->where('published', true)
             ->orderBy('sorting')
             ->take(5)
             ->get();
+        });
+        return $training5;
     }
 
 

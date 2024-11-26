@@ -1,4 +1,5 @@
 <?php
+
 namespace Domain\Partner\ViewModels;
 
 
@@ -13,13 +14,18 @@ class PartnerViewModel
 {
     use Makeable;
 
-    public function partners() :Collection | null
+    public function partners(): Collection|null
     {
+        $partners = Cache::rememberForever('partners', function () {
 
-       return Partner::query()
-            ->orderBy('sorting')
-            ->take(50)
-            ->get();
+            return Partner::query()
+                ->orderBy('sorting')
+                ->take(50)
+                ->get();
+        });
+        return $partners;
+
     }
+
 
 }

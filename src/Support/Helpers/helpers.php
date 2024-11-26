@@ -142,10 +142,15 @@ if (!function_exists('cache_clear ')) {
 
     function cache_clear($model = null)
     {
-        Cache::forget('home');
-        Cache::forget('cities');
-        Cache::forget('companies');
-        Cache::forget('companies_options');
+        Cache::forget('categories');
+        Cache::forget('contacts');
+        Cache::forget('partners');
+        Cache::forget('service');
+        Cache::forget('service5');
+        Cache::forget('timetablecity');
+        Cache::forget('timetablemonth');
+        Cache::forget('training');
+        Cache::forget('training5');
 
     }
 }
@@ -275,16 +280,18 @@ if (!function_exists('active_link')) {
     }
 }
 
-
 if (!function_exists('active_linkMenu')) {
     function active_linkMenu($url, string $find = null, string $class = 'active'): string|null
     {
+
         if ($find) {
 
             if (str_starts_with(url()->current(), trim($url))) {
                 return $class;
             }
-            return null;
+
+            return  str_starts_with(url()->current(), trim($url));
+           // return null;
 
         }
 
@@ -292,6 +299,7 @@ if (!function_exists('active_linkMenu')) {
         return ($url == url()->current()) ? $class : null;
     }
 }
+
 if (!function_exists('active_linkParse')) {
     function active_linkParse($url, string $find = null, string $class = 'active'): string|null
     {

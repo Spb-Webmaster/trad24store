@@ -37,6 +37,7 @@
 
 @import "html/faq/faq.scss";
 @import "html/logo/logo.scss";
+@import "html/downloads/downloads.scss";
 @import "html/menues/menu_top.scss";
 @import "html/translate/translate.css";
 @import "general-style/paddind.scss";

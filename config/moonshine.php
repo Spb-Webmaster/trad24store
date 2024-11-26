@@ -33,7 +33,7 @@ return [
 
     'layout' => MoonShineLayout::class,
 
-    'disk' => 'public',
+    'disk' => 'moonshine',
 
     'disk_options' => [],
 
