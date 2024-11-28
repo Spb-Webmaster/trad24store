@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -26,6 +28,7 @@ class User extends Authenticatable
         'company',
         'avatar',
         'city',
+        'sphere',
 
         'home',
         'street',
@@ -41,7 +44,6 @@ class User extends Authenticatable
         'social',
         'website',
 
-
         'user_idcard', //1
         'user_judge', //2
         'user_crazy', //3
@@ -52,6 +54,10 @@ class User extends Authenticatable
         'user_registered', //8
         'user_statute', //9
         'user_order_head', //10
+
+        'user_type_id',
+        'user_list_id',
+        'status',
 
         'published',
         'params',
@@ -79,6 +85,22 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+    public function user_type():BelongsTo
+    {
+        return $this->belongsTo(UserType::class);
+    }
+
+    public function user_list():BelongsToMany
+    {
+        return $this->belongsToMany(UserList::class);
+    }
+
+    public function user_language():BelongsToMany
+    {
+        return $this->belongsToMany(UserLanguage::class);
+    }
 
     /**
      * Get the attributes that should be cast.

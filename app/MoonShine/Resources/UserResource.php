@@ -23,6 +23,7 @@ use MoonShine\Fields\Number;
 use MoonShine\Fields\Password;
 use MoonShine\Fields\PasswordRepeat;
 use MoonShine\Fields\Relationships\BelongsTo;
+use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
@@ -46,7 +47,7 @@ class UserResource extends ModelResource
 
     protected string $title = 'Пользователи сайта';
 
-    protected string $column = 'avatar';
+    protected string $column = 'name';
 
     protected string $sortColumn = 'updated_at';
 
@@ -66,6 +67,7 @@ class UserResource extends ModelResource
             Text::make('Email', 'email')
                 ->useOnImport()
                 ->showOnExport(),
+            BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
 
 
         ];
@@ -86,8 +88,7 @@ class UserResource extends ModelResource
             Text::make(__('Имя'), 'name')->sortable(),
             Slug::make(__('Телефон'), 'phone'),
             Slug::make(__('Email'), 'email'),
-            Date::make(__('Дата регистрации'), 'created_at')
-                ->format("d.m.Y"),
+            Switcher::make('Статус', 'status'),
             Switcher::make('Публикация', 'published')->updateOnPreview(),
 
 
@@ -133,6 +134,11 @@ class UserResource extends ModelResource
 
                                     Switcher::make('Публикация', 'published')->default(1),
 
+                                    Switcher::make('Статус действующий', 'status')->default(1),
+
+                                    BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
+
+
                                 ]),
 
 
@@ -143,6 +149,20 @@ class UserResource extends ModelResource
                         Grid::make([
                             Column::make([
                                 Collapse::make('Основное', [
+                                    Text::make('Организация', 'company'),
+                                    Textarea::make('Сфера деятельности', 'sphere'),
+                                    Textarea::make('Опыт работы', 'oput'),
+                                    Textarea::make('Дополнительно', 'dop'),
+                                    Collapse::make('Виды медиации', [
+
+                                        BelongsToMany::make('', 'user_list', 'title', resource: new UserListResource() )->selectMode(),
+
+                                    ]),
+                                    Collapse::make('Язык медиации', [
+
+                                        BelongsToMany::make('', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
+
+                                    ]),
 
 
                                 ]),
@@ -159,6 +179,14 @@ class UserResource extends ModelResource
                                     Text::make('Instagram', 'instagram'),
                                     Text::make('FaceBook', 'social'),
                                     Text::make('Website', 'website'),
+                                ]),
+
+                                Collapse::make('Адрес', [
+
+                                    Text::make('Улица', 'street'),
+                                    Text::make('Дом', 'home'),
+                                    Text::make('Офис/Квартира', 'office'),
+
                                 ]),
                             ])->columnSpan(6),
                             Column::make([
