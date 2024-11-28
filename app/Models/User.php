@@ -57,10 +57,14 @@ class User extends Authenticatable
 
         'user_type_id',
         'user_list_id',
+        'user_city_id',
         'status',
 
         'published',
         'params',
+        'teacher',
+        'sex',
+        'active_contact',
     ];
 
     protected $casts = [
@@ -101,6 +105,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(UserLanguage::class);
     }
+    public function user_city():BelongsToMany
+    {
+        return $this->belongsToMany(UserCity::class);
+    }
+
 
     /**
      * Get the attributes that should be cast.

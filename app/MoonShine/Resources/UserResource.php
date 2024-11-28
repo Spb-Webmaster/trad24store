@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
+use MoonShine\Components\Badge;
 use MoonShine\Decorations\Collapse;
 use MoonShine\Decorations\Column;
 use MoonShine\Decorations\Divider;
@@ -49,7 +50,7 @@ class UserResource extends ModelResource
 
     protected string $column = 'name';
 
-    protected string $sortColumn = 'updated_at';
+    protected string $sortColumn = 'id';
 
     protected ?ClickAction $clickAction = ClickAction::EDIT;
 
@@ -68,8 +69,9 @@ class UserResource extends ModelResource
                 ->useOnImport()
                 ->showOnExport(),
             BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
-
-
+            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
+            BelongsToMany::make('Города', 'user_city', 'title', resource: new UserCityResource() )->selectMode(),
+            BelongsToMany::make('Виды медиации', 'user_list', 'title', resource: new UserListResource() )->selectMode(),
         ];
     }
 
@@ -89,9 +91,14 @@ class UserResource extends ModelResource
             Slug::make(__('Телефон'), 'phone'),
             Slug::make(__('Email'), 'email'),
             Switcher::make('Статус', 'status'),
-            Switcher::make('Публикация', 'published')->updateOnPreview(),
+            Switcher::make('Публ.', 'published')->updateOnPreview(),
+            Switcher::make('Публ. контактов', 'active_contact'),
+            Text::make('Пол', 'sex'),
+            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )   ->inLine(
+                separator: '<br>',
+                badge: fn($model, $value) => Badge::make($value, 'success'),
 
-
+            ),
 
         ];
     }
@@ -113,6 +120,10 @@ class UserResource extends ModelResource
                                 Collapse::make('Имя/Email', [
                                     Text::make('Имя', 'name')->required(),
                                     Text::make(__('Email'), 'email'),
+                                    Select::make('Пол', 'sex')->options([
+                                        'Мужчина' => 'Мужчина',
+                                        'Женщина' => 'Женщина'
+                                    ])
 
                                 ]),
 
@@ -133,6 +144,8 @@ class UserResource extends ModelResource
                                 Collapse::make('Публикация', [
 
                                     Switcher::make('Публикация', 'published')->default(1),
+
+                                    Switcher::make('Публикация контактов', 'active_contact')->default(1),
 
                                     Switcher::make('Статус действующий', 'status')->default(1),
 
@@ -161,6 +174,11 @@ class UserResource extends ModelResource
                                     Collapse::make('Язык медиации', [
 
                                         BelongsToMany::make('', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
+
+                                    ]),
+                                   Collapse::make('Города медиации', [
+
+                                        BelongsToMany::make('', 'user_city', 'title', resource: new UserCityResource() )->selectMode(),
 
                                     ]),
 

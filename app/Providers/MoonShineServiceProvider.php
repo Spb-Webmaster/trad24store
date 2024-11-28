@@ -26,6 +26,7 @@ use App\MoonShine\Resources\TimeTableCityResource;
 use App\MoonShine\Resources\TimeTableLessonResource;
 use App\MoonShine\Resources\TimeTableMonthResource;
 use App\MoonShine\Resources\TrainingResource;
+use App\MoonShine\Resources\UserCityResource;
 use App\MoonShine\Resources\UserLanguageResource;
 use App\MoonShine\Resources\UserListResource;
 use App\MoonShine\Resources\UserResource;
@@ -177,10 +178,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                         MenuItem::make(
                         static fn() => __('Выды медиации'),
                         new UserListResource()
-                    )->icon('heroicons.outline.document'),*/
+                    )->icon('heroicons.outline.document'),
                     MenuItem::make(
                         static fn() => __('Языки медиации'),
                         new UserLanguageResource()
+                    )->icon('heroicons.outline.document'),*/
+                    MenuItem::make(
+                        static fn() => __('Города  медиации'),
+                        new UserCityResource()
                     )->icon('heroicons.outline.document'),
                     MenuItem::make(
                         static fn() => __('Предметы'),

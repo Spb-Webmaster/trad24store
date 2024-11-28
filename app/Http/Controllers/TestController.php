@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Diplom;
 use App\Models\User;
+use App\Models\UserCity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -21,15 +22,22 @@ class TestController extends Controller
 
 dd(config2('moonshine.user.users'));
 
+
+
+
         foreach (config2('moonshine.user.users') as $user) {
 
 
 
-                $vidy_medi = $user['vidy_medi'];
-            $language= $user['language'];
 
-         //   $this->belongs_to_many_list($vidy_medi, $user['email']);
-            $this->belongs_to_many_language($language, $user['email']);
+                $vidy_medi = $user['vidy_medi'];
+                $language = $user['language'];
+                $city = $user['sity'];
+
+
+                // $this->belongs_to_many_list($vidy_medi, $user['email']);
+              //  $this->belongs_to_many_language($language, $user['email']);
+                //  $this->belongs_to_many_city($city, $user['email']);
 
 
                 $users[] = User::updateOrCreate([
@@ -37,8 +45,11 @@ dd(config2('moonshine.user.users'));
                 ], [
                     'name' => $user['username'],
                     'username' => $user['username'],
-                 //   'sphere' => $user['sfera'],
-                  //  'user_type_id' => 1,
+                  // 'sex' => $user['sex'],
+                   // 'teacher' => ($user['prepodav'])?1:0,
+                    'active_contact' => $user['switch_1'],
+                    //   'sphere' => $user['sfera'],
+                    //  'user_type_id' => 1,
                     //  'password' => ($user['password'])?bcrypt($user['password']):'511111',
                     //   'email' => $user['email'],
                     /*                    'phone' => phone($user['phone']),
@@ -69,6 +80,7 @@ dd(config2('moonshine.user.users'));
                 ]);
 
             }
+
 
 
 
@@ -126,9 +138,34 @@ dd(config2('moonshine.user.users'));
             }
 
         }
+
+
+
         if($list) {
             $us = User::query()->where('email', $email)->first();
             $us->user_language()->sync($list);
+        }
+    }
+
+    public function belongs_to_many_city($city, $email) {
+
+
+        $user_cities = UserCity::query()->get();
+        $list = array();
+
+        foreach ($user_cities as $k=>$v) {
+
+            if($v->title == $city) {
+                $list[$k] = $v->id;
+
+
+            }
+
+        }
+
+        if($list) {
+            $us = User::query()->where('email', $email)->first();
+            $us->user_city()->sync($list);
         }
     }
 

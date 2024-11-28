@@ -11,6 +11,7 @@ use App\Http\Controllers\Pages\TrainingController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeTable\TimeTableController;
+use App\Http\Controllers\Users\UserController;
 use App\MoonShine\Controllers\MoonshineChangeContactController;
 use App\MoonShine\Controllers\MoonshineDiplom;
 use App\MoonShine\Controllers\MoonshineIndex;
@@ -108,6 +109,21 @@ Route::controller(ProductController::class)->group(function () {
 
 /**
  * /////Продукты
+ */
+
+/**
+ * Медиаторы
+ */
+Route::controller(UserController::class)->group(function () {
+    Route::get('/reestr', 'reestr')->name('reestr');
+    Route::get('/reestr/professionalnye-mediatory', 'prof_mediators')->name('prof_mediators');
+    Route::get('/reestr/organizatsii-mediatorov', 'company_mediators')->name('company_mediators');
+    Route::get('/reestr/neprofessionalnye-mediatory', 'notprof_mediators')->name('notprof_mediators');
+
+});
+
+/**
+ * /////Медиаторы
  */
 
 /**

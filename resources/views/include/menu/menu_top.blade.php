@@ -73,6 +73,27 @@
                 </ul>
             @endif
         </li>
+        <li class="{{ active_linkMenu(asset(route('reestr')), 'find') }}">
+            <a href="{{ route('reestr')}}" class="add__mobile_menu down">Реестр</a>
+
+
+                <ul class="submenu">
+                       <li class="{{ active_linkMenu(asset(route('prof_mediators')), 'find') }}">
+                            <a class="{{ active_linkMenu(asset(route('prof_mediators')), 'find') }}"
+                               href="{{ route('prof_mediators')  }}">{{ config('links.link.prof_mediators') }}</a>
+                       </li>
+                       <li class="{{ active_linkMenu(asset(route('company_mediators')), 'find') }}">
+                            <a class="{{ active_linkMenu(asset(route('company_mediators')), 'find') }}"
+                               href="{{ route('company_mediators')  }}">{{ config('links.link.company_mediators') }}</a>
+                       </li>
+                       <li class="{{ active_linkMenu(asset(route('notprof_mediators')), 'find') }}">
+                            <a class="{{ active_linkMenu(asset(route('notprof_mediators')), 'find') }}"
+                               href="{{ route('notprof_mediators')  }}">{{ config('links.link.notprof_mediators') }}</a>
+                       </li>
+
+                </ul>
+
+        </li>
 
         <li class="{{ active_linkMenu(asset('/kontakty')) }}"><a class="add__mobile_menu "
                                                                  href="{{ asset('/kontakty') }}">{{ __('Контакты') }}</a>
