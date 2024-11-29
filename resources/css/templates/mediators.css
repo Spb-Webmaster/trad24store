@@ -1,0 +1,11 @@
+.row_flex {
+  width: 100%;
+  position: relative; }
+  .row_flex .col_ava {
+    width: 200px;
+    position: relative; }
+  .row_flex .col_content {
+    width: 100%;
+    position: relative; }
+
+/*# sourceMappingURL=mediators.css.map */

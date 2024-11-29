@@ -52,7 +52,7 @@
                         @if(isset($product->komanda_email))
                         <div class="n_full_komanda_option">
                             <div class="k_label">Email:</div>
-                            <div class="k_result">{{ $product->komanda_phone3 }}</div>
+                            <div class="k_result">{{ $product->komanda_email }}</div>
                         </div>
                     @endif
 

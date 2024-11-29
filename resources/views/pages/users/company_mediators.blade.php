@@ -22,8 +22,10 @@
                 <div class="left_bar">
                     @include('pages.users.partial.left_menu', ['route' => 'prof_mediators'])
 
+
                 </div>
                 <div class="center_content">
+
 
 
                 </div>
