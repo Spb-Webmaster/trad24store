@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 <x-seo.meta
-    title="{{(isset($item->metatitle))?:$item->title}}"
+    title="{{(isset($item->metatitle))?$item->metatitle:$item->title}}"
     description="{{$item->description}}"
     keywords="{{$item->keywords}}"
 />
