@@ -105,6 +105,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(UserLanguage::class);
     }
+
     public function user_city():BelongsToMany
     {
         return $this->belongsToMany(UserCity::class);
@@ -123,6 +124,45 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+
+    public function getUserListVisibleAttribute()
+    {
+
+        if($this->user_list) {
+            foreach ($this->user_list as $g) {
+                if ($g->title) { // если хоть одно фото, то нужно!
+                    return true;
+                }
+
+            }
+        }
+        return false;
+
+    }
+    public function getUserFirstCityAttribute()
+    {
+
+        if($this->user_city) {
+
+
+            foreach ($this->user_city as $g) {
+
+                if ($g->title) { // нашли первый город
+                   return $g->title;
+                }
+
+            }
+        }
+        return false;
+
+    }
+
+
+
+
+
 
     protected static function boot()
     {

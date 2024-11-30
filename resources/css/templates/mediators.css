@@ -1,11 +1,88 @@
+.m_option_m {
+  background: #F5F5F7;
+  border-radius: 4px;
+  padding: 0 0 20px 0;
+  margin-bottom: 20px; }
+  .m_option_m .m_avamed {
+    width: 123px;
+    height: 123px;
+    position: relative;
+    background-size: cover;
+    border-bottom: 1px solid #E0E0E0;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: 0 auto; }
+  .m_option_m .row_h_m {
+    padding: 20px 0 0 0; }
+  .m_option_m .row_content_flex_1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    padding: 0 0 10px 0; }
+    .m_option_m .row_content_flex_1 .s_stars_s {
+      position: relative;
+      left: -10px; }
+    .m_option_m .row_content_flex_1 .m_tleft {
+      width: 200px;
+      min-width: 200px;
+      position: relative; }
+    .m_option_m .row_content_flex_1 .m_tright {
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      font-size: 12px;
+      height: 32px; }
+      .m_option_m .row_content_flex_1 .m_tright span {
+        padding: 0 0 0 10px; }
+  .m_option_m .row_username {
+    line-height: 100%;
+    padding: 5px 0 20px 0;
+    position: relative;
+    width: 100%; }
+    .m_option_m .row_username a {
+      display: block;
+      width: 100%;
+      position: relative;
+      color: #095C9A;
+      font-size: 24px;
+      text-decoration: none;
+      font-weight: 600; }
+    .m_option_m .row_username a:hover {
+      color: #EF533F;
+      text-decoration: underline; }
+  .m_option_m .row_sphere {
+    padding: 5px 0 20px 0;
+    position: relative;
+    width: 100%;
+    line-height: 1.3em; }
+    .m_option_m .row_sphere .sp_sphere {
+      color: #667085; }
+  .m_option_m .row_address {
+    padding: 5px 0 0 0;
+    position: relative;
+    width: 100%;
+    line-height: 1.3em; }
+    .m_option_m .row_address i {
+      font-style: normal;
+      color: #667085; }
+    .m_option_m .row_address .blue_color {
+      color: #095C9A; }
+
 .row_flex {
   width: 100%;
-  position: relative; }
+  position: relative;
+  display: flex; }
   .row_flex .col_ava {
     width: 200px;
+    min-width: 200px;
     position: relative; }
   .row_flex .col_content {
     width: 100%;
-    position: relative; }
+    position: relative;
+    padding: 20px 20px 0 20px; }
 
 /*# sourceMappingURL=mediators.css.map */

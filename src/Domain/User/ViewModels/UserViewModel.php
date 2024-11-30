@@ -14,6 +14,9 @@ class UserViewModel
         $users = User::query()
             ->where('published', 1)
             ->where('user_type_id', 1)
+            ->with('user_list')
+             ->withAggregate('user_list','title')
+            ->orderBy('user_list_title', 'desc')
             ->paginate(20);
         return $users;
     }
@@ -22,6 +25,9 @@ class UserViewModel
         $users = User::query()
             ->where('published', 1)
             ->where('user_type_id', 2)
+            ->with('user_list')
+            ->withAggregate('user_list','title')
+            ->orderBy('user_list_title', 'desc')
             ->paginate(20);
         return $users;
     }
@@ -30,6 +36,9 @@ class UserViewModel
         $users = User::query()
             ->where('published', 1)
             ->where('user_type_id', 3)
+            ->with('user_list')
+            ->withAggregate('user_list','title')
+            ->orderBy('user_list_title', 'desc')
             ->paginate(20);
         return $users;
     }
@@ -38,6 +47,9 @@ class UserViewModel
     public function mediators() {
         $users = User::query()
             ->where('published', 1)
+            ->with('user_list')
+            ->withAggregate('user_list','title')
+            ->orderBy('user_list_title', 'desc')
             ->paginate(20);
         return $users;
     }

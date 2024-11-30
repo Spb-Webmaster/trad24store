@@ -20,11 +20,17 @@
             <h1 class="h1">Общественные медиаторы</h1>
             <div class="content_Flex">
                 <div class="left_bar">
-                    @include('pages.users.partial.left_menu', ['route' => 'prof_mediators'])
+                    @include('pages.users.partial.left_menu', ['route' => 'notprof_mediators'])
 
                 </div>
                 <div class="center_content">
+                    @foreach($items as $item)
 
+                        @include('pages.users.partial.teaser', ['route' => 'notprof_mediators'])
+
+                    @endforeach
+
+                    {{ $items->withQueryString()->links('pagination::default') }}
 
                 </div>
             </div>

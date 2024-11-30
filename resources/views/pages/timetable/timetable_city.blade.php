@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 <x-seo.meta
-    title="{{($timetable_city->metatitle)?:$timetable_city->title}}"
+    title="{{(isset($timetable_city->metatitle))?:$timetable_city->title}}"
     description="{{$timetable_city->description}}"
     keywords="{{$timetable_city->keywords}}"
 />

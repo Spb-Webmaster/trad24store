@@ -36,6 +36,7 @@
 @import "./templates/page.scss";
 @import "./chosen/chosen.scss";
 
+@import "html/stars/stars.scss";
 @import "html/faq/faq.scss";
 @import "html/logo/logo.scss";
 @import "html/downloads/downloads.scss";
