@@ -46,9 +46,8 @@ class UserTypeResource extends ModelResource
                 ->useOnImport()
                 ->showOnExport(),
 
-            Text::make('Название', 'title')
-                ->useOnImport()
-                ->showOnExport(),
+            Text::make('Название', 'title'),
+
         ];
     }
 
@@ -65,7 +64,9 @@ class UserTypeResource extends ModelResource
 
             Text::make('Заголовок', 'title')->required(),
             Slug::make('Алиас', 'slug')
-                ->from('title')->unique()
+                ->from('title')->unique(),
+            Text::make('Единственное число', 'type')
+
 
 
 
@@ -91,7 +92,9 @@ class UserTypeResource extends ModelResource
 
                                     Text::make('Заголовок', 'title')->required(),
                                     Slug::make('Алиас', 'slug')
-                                        ->from('title')->unique()
+                                        ->from('title')->unique(),
+                                    Text::make('Единственное число', 'type')
+
                                 ]),
 
 

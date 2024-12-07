@@ -140,6 +140,8 @@
       position: relative;
       border: 1px solid #ccc;
       background: #ccc; }
+    .F_form_search_diplom .new__temp_middle_search_diplom .alax_inputs__flex .button_normal.form_clear:hover {
+      color: #095C9A !important; }
 .F_form_search_diplom .F_form_search_diplom__result {
   margin: 20px 0; }
   .F_form_search_diplom .F_form_search_diplom__result .wrap_th {

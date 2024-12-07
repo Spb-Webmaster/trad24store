@@ -10,7 +10,8 @@ class UserType extends Model
   protected $table = 'user_types';
   protected $fillable = [
       'title',
-      'slug'
+      'slug',
+      'type',
   ];
     public function user():BelongsToMany
     {

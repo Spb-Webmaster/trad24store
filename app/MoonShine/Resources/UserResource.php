@@ -72,6 +72,12 @@ class UserResource extends ModelResource
             BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
             BelongsToMany::make('Города', 'user_city', 'title', resource: new UserCityResource() )->selectMode(),
             BelongsToMany::make('Виды медиации', 'user_list', 'title', resource: new UserListResource() )->selectMode(),
+            Number::make('Звезды', 'stars')
+                ->stars()
+                ->min(0)
+                ->max(5)
+            ,
+
         ];
     }
 
@@ -99,6 +105,7 @@ class UserResource extends ModelResource
                 badge: fn($model, $value) => Badge::make($value, 'success'),
 
             ),
+
 
         ];
     }
@@ -150,6 +157,19 @@ class UserResource extends ModelResource
                                     Switcher::make('Статус действующий', 'status')->default(1),
 
                                     BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
+
+
+                                ]),
+
+                                Collapse::make('Звезды', [
+
+
+                                    Number::make('', 'stars')
+                                        ->min(0)
+                                        ->max(5)
+                                        ->step(1)->default(0),
+
+
 
 
                                 ]),

@@ -31,6 +31,7 @@
 @import "./forms/input.scss";
 @import "./forms/select.css";
 @import "./templates/mediators.scss";
+@import "./templates/mediator.scss";
 @import "./templates/header.scss";
 @import "./templates/footer.scss";
 @import "./templates/page.scss";

@@ -11,6 +11,7 @@ use App\Http\Controllers\Pages\TrainingController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeTable\TimeTableController;
+use App\Http\Controllers\Users\Search\MediatorSearchController;
 use App\Http\Controllers\Users\UserController;
 use App\MoonShine\Controllers\MoonshineChangeContactController;
 use App\MoonShine\Controllers\MoonshineDiplom;
@@ -73,6 +74,7 @@ Route::controller(AjaxController::class)->group(function () {
     Route::post('/redirect/redirect-city-mounth', 'redirect_city_mounth'); // переадресация на стрнаицу города с нужным месяцем
     Route::post('/redirect/redirect-mounth-city', 'redirect_mounth_city'); // выдача расписания с нужным месяцем
     Route::post('/send-mail/order-sing-up-lesson', 'sing_up_lesson'); // запись на курсы
+    Route::post('/send-mail/feedback', 'feedback'); // оставление отзывы о медиаторе
 
 
 
@@ -120,6 +122,12 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/reestr/organizatsii-mediatorov', 'company_mediators')->name('company_mediators');
     Route::get('/reestr/neprofessionalnye-mediatory', 'notprof_mediators')->name('notprof_mediators');
 
+    Route::get('/reestr/professionalnye-mediatory/{id}', 'prof_mediator')->name('prof_mediator');
+    Route::get('/reestr/organizatsii-mediatorov/{id}', 'company_mediator')->name('company_mediator');
+    Route::get('/reestr/neprofessionalnye-mediatory/{id}', 'notprof_mediator')->name('notprof_mediator');
+
+
+
 });
 
 /**
@@ -138,6 +146,15 @@ Route::post('/moonshine/diplom', MoonshineDiplom::class);
 /**
  * /////контроллеры Moonshine
  */
+
+
+Route::controller(MediatorSearchController::class)->group(function () {
+
+    Route::post('/reestr/professionalnye-mediatory/search', 'prof_mediators_search')->name('prof_mediators_search');
+    Route::post('/reestr/organizatsii-mediatorov/search', 'company_mediators_search')->name('company_mediators_search');
+    Route::post('/reestr/neprofessionalnye-mediatory/search', 'notprof_mediators_search')->name('notprof_mediators_search');
+
+});
 
 
 Route::controller(TestController::class)->group(function () {

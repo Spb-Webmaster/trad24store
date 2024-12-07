@@ -35,6 +35,7 @@
 @include('include.modals.temp_forms.call_me')
 @include('include.modals.temp_forms.sign_up')
 @include('include.modals.temp_forms.bid')
+@include('include.modals.temp_forms.feedback')
 
 
 </body>

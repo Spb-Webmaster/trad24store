@@ -27,8 +27,10 @@ use App\MoonShine\Resources\TimeTableLessonResource;
 use App\MoonShine\Resources\TimeTableMonthResource;
 use App\MoonShine\Resources\TrainingResource;
 use App\MoonShine\Resources\UserCityResource;
+use App\MoonShine\Resources\UserCommentResource;
 use App\MoonShine\Resources\UserLanguageResource;
 use App\MoonShine\Resources\UserListResource;
+use App\MoonShine\Resources\UserMediatorResource;
 use App\MoonShine\Resources\UserResource;
 use App\MoonShine\Resources\UserTypeResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -76,6 +78,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     new UserResource()
                 )->icon('heroicons.outline.user-group'),
                 MenuItem::make(
+                    static fn() => __('Отзывы'),
+                    new UserCommentResource()
+                )->icon('heroicons.outline.chat-bubble-left'),
+                MenuItem::make(
                     static fn() => __('moonshine::ui.resource.role_title'),
                     new MoonShineUserRoleResource()
                 ),
@@ -84,7 +90,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 
 
                 MenuItem::make(
-                    static fn() => __('Главная стрнаица сайта'),
+                    static fn() => __('Главная страница сайта'),
                     new IndexPage()
                 )->icon('heroicons.outline.bars-3'),
                 MenuItem::make(
@@ -98,9 +104,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                         new MediatorCategoryResource()
                     )->icon('heroicons.outline.bars-3'),
                     MenuItem::make(
-                    static fn() => __('Материалы'),
-                    new MediatorProductResource()
-                )->icon('heroicons.outline.book-open'),
+                        static fn() => __('Материалы'),
+                        new MediatorProductResource()
+                    )->icon('heroicons.outline.book-open'),
                 ]),
                 MenuGroup::make(static fn() => __('Обучение'), [
 
@@ -109,19 +115,19 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                         new TrainingPage()
                     )->icon('heroicons.outline.bars-3'),
                     MenuItem::make(
-                    static fn() => __('Обучение'),
-                    new TrainingResource()
-                )->icon('heroicons.outline.book-open'),
+                        static fn() => __('Обучение'),
+                        new TrainingResource()
+                    )->icon('heroicons.outline.book-open'),
                 ]),
                 MenuGroup::make(static fn() => __('Услуги'), [
                     MenuItem::make(
                         static fn() => __('Главная'),
                         new ServicePage()
                     )->icon('heroicons.outline.bars-3'),
-                MenuItem::make(
-                    static fn() => __('Услуги'),
-                    new ServiceResource()
-                )->icon('heroicons.outline.bolt'),
+                    MenuItem::make(
+                        static fn() => __('Услуги'),
+                        new ServiceResource()
+                    )->icon('heroicons.outline.bolt'),
                 ]),
 
                 MenuItem::make(
@@ -142,7 +148,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('Фронт'),
                     new SettingPage()
                 )->icon('heroicons.adjustments-vertical'),
-               MenuItem::make(
+                MenuItem::make(
                     static fn() => __('Режимы показа'),
                     new ChangeContactPage()
                 )->icon('heroicons.cog'),
@@ -167,35 +173,43 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                         static fn() => __('Города'),
                         new TimeTableCityResource()
                     )->icon('heroicons.outline.building-office-2'),
-     /*               MenuItem::make(
-                        static fn() => __('Месяцы'),
-                        new TimeTableMonthResource()
-                    )->icon('heroicons.outline.building-office-2'),
-                    MenuItem::make(
-                        static fn() => __('Типы медиаторов'),
-                        new UserTypeResource()
-                    )->icon('heroicons.outline.document'),
-                        MenuItem::make(
-                        static fn() => __('Выды медиации'),
-                        new UserListResource()
-                    )->icon('heroicons.outline.document'),
-                    MenuItem::make(
-                        static fn() => __('Языки медиации'),
-                        new UserLanguageResource()
-                    )->icon('heroicons.outline.document'),*/
-                    MenuItem::make(
-                        static fn() => __('Города  медиации'),
-                        new UserCityResource()
-                    )->icon('heroicons.outline.document'),
+                    /*               MenuItem::make(
+                                       static fn() => __('Месяцы'),
+                                       new TimeTableMonthResource()
+                                   )->icon('heroicons.outline.building-office-2'),
+                                   MenuItem::make(
+                                       static fn() => __('Типы медиаторов'),
+                                       new UserTypeResource()
+                                   )->icon('heroicons.outline.document'),
+                                       MenuItem::make(
+                                       static fn() => __('Выды медиации'),
+                                       new UserListResource()
+                                   )->icon('heroicons.outline.document'),
+                                   MenuItem::make(
+                                       static fn() => __('Языки медиации'),
+                                       new UserLanguageResource()
+                                   )->icon('heroicons.outline.document'),
+                                   MenuItem::make(
+                                       static fn() => __('Города  медиации'),
+                                       new UserCityResource()
+                                   )->icon('heroicons.outline.document'),*/
+
                     MenuItem::make(
                         static fn() => __('Предметы'),
                         new TimeTableLessonResource()
                     )->icon('heroicons.outline.document'),
 
-                    ]),
+                ]),
+            ]),
+            MenuGroup::make(static fn() => __('Медиации'), [
+                MenuItem::make(
+                    static fn() => __('Проведенные медиации'),
+                    new UserMediatorResource()
+                )->icon('heroicons.outline.hand-thumb-up'),
+
             ]),
 
-            ];
+        ];
     }
 
     /**

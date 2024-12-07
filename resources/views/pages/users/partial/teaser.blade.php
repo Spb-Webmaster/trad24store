@@ -3,7 +3,7 @@
         <div class="col_ava">
 
             <div class="row_h_m">
-                <a href="#">
+                <a href="{{ route($route, ['id' => $item->id]) }}">
                     <div class="m_avamed"
                          style="background-image: url('{{Storage::url($item->avatar)}}')"></div>
                 </a>
@@ -16,31 +16,18 @@
             <div class="row_content_flex_1">
 
                 <div class="m_tleft">
-                    <div class="s_stars_s">
-                        <div class="rating-area_survey" id="">
-                            <input type="radio" value="5">
-                            <label></label>
-                            <input type="radio" checked value="4">
-                            <label></label>
-                            <input type="radio" value="3">
-                            <label></label>
-                            <input type="radio" value="2">
-                            <label></label>
-                            <input type="radio" value="1">
-                            <label></label>
-                        </div>
-                    </div>
+                    @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
                 </div>
 
                 <div class="m_tright">
-                    Количество проведенных медиаций: <span>0</span>
+                    Количество проведенных медиаций: <span>{{ $item->user_mediator_sum }}</span>
                 </div>
 
             </div>
 
 
             <div class="row_username">
-                <a href="#"><span>{{ $item->username }}</span></a>
+                <a href="{{ route($route, ['id' => $item->id]) }}"><span>{{ $item->username }}</span></a>
             </div>
 
 

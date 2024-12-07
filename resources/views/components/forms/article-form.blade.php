@@ -9,7 +9,7 @@
           action="{{ $action }}"
           method="{{ $method }}"
 
-    >
+    >   @honeypot
         @csrf
         {{ $slot  }}
         {{ $buttons  }}

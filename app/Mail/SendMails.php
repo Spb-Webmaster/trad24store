@@ -20,6 +20,16 @@ class SendMails
         });
     }
 
+    public function feedback($data):void
+    {
+        $view = 'html.email.feedback';
+        $subject = 'Отзыв о медиаторе: ' . $data['mediator_name'];
+
+        Mail::send($view, ['data' => $data],  function ($message) use ($subject){
+            $message->to(config('app.mail_username'), 'Admin')->subject($subject);
+        });
+    }
+
     public function sendOrderBlueFormCall($data):void
     {
         $view = 'html.email.order_call_blue';

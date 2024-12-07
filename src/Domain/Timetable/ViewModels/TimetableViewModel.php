@@ -119,7 +119,7 @@ class TimetableViewModel
             // dd($item->timetable_city);
 
 
-            $fancy = '<a href="#sign_up" data-options=\'{"slug" : "' . $item->slug . '","city" : "' . $city->title . '","title" : "' . $item->title . '", "date" : "' . (($item->date) ?: ' - ') . '", "price" : "' . (($item->price) ? (($item->price_prefix) ? 'от ' : '') . price($item->price) . ' ' . config('currency.currency.KZT') : ' - ') . '"}\' data-fancybox>' . $item->title . '</a>';
+            $fancy = '<a id="course_sign_up" href="#sign_up" data-options=\'{"slug" : "' . $item->slug . '","city" : "' . $city->title . '","title" : "' . $item->title . '", "date" : "' . (($item->date) ?: ' - ') . '", "price" : "' . (($item->price) ? (($item->price_prefix) ? 'от ' : '') . price($item->price) . ' ' . config('currency.currency.KZT') : ' - ') . '"}\' data-fancybox>' . $item->title . '</a>';
             if ($link) {
 
 

@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Events\BidFormEvent;
+use App\Events\FeedbackFormEvent;
 use App\Events\OrderCallBlueFormEvent;
 use App\Events\OrderCallEvent;
 
 use App\Events\SingUpLessonFormEvent;
-use App\Http\Render\AjaxDataRender;
 use App\Models\User;
 
+use Domain\Comment\ViewModels\CommentViewModel;
 use Domain\Diplom\ViewModels\DiplomViewModel;
 use Domain\Timetable\ViewModels\TimetableViewModel;
+use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -104,7 +106,6 @@ class AjaxController extends Controller
         if ($validator->passes()) {
 
 
-
             /**
              * Событие отправка сообщения админу (Отправить заявку)
              */
@@ -124,8 +125,6 @@ class AjaxController extends Controller
         return response()->json(['error' => $validator->errors()]);
 
     }
-
-
 
 
     /**
@@ -156,8 +155,8 @@ class AjaxController extends Controller
     public function search_diplom(Request $request)
     {
 
-        $title = ($request->title)?:null; // номер диплома
-        $name = ($request->name)?:null; // ФИО
+        $title = ($request->title) ?: null; // номер диплома
+        $name = ($request->name) ?: null; // ФИО
 
         $result = DiplomViewModel::make()->search($title, $name);
 
@@ -183,9 +182,9 @@ class AjaxController extends Controller
     public function redirect_city_mounth(Request $request)
     {
 
-        $city = ($request->city)?:null; // город
-        $mounth = ($request->mounth)?:null; // месяц
-        if($mounth) {
+        $city = ($request->city) ?: null; // город
+        $mounth = ($request->mounth) ?: null; // месяц
+        if ($mounth) {
             session(['mounth' => $mounth]);
         }
 
@@ -210,13 +209,11 @@ class AjaxController extends Controller
     public function redirect_mounth_city(Request $request)
     {
 
-        $city = ($request->city)?:null; // город
-        $mounth = ($request->mounth)?:null; // месяц
+        $city = ($request->city) ?: null; // город
+        $mounth = ($request->mounth) ?: null; // месяц
 
         $timetable_city = TimetableViewModel::make()->timetable_city($city);
-        $str= TimetableViewModel::make()->timetable_city_lessons_month($timetable_city, $mounth);
-
-
+        $str = TimetableViewModel::make()->timetable_city_lessons_month($timetable_city, $mounth);
 
 
         /**
@@ -246,8 +243,6 @@ class AjaxController extends Controller
         if ($validator->passes()) {
 
 
-
-
             /**
              * Событие отправка сообщения админу (Отправить заявку)
              */
@@ -261,6 +256,58 @@ class AjaxController extends Controller
             return response()->json([
                 'request' => $request
 
+            ]);
+        }
+
+        return response()->json(['error' => $validator->errors()]);
+
+    }
+
+
+    /**
+     * Метод отправки сообщения "Отзыв" мадальное окно -  форма
+     */
+
+    public function feedback(Request $request)
+    {
+
+
+
+        $user = UserViewModel::make()->feedback_user_session();
+
+        if (count($user)) {
+            $request->request->add($user);
+            $stars = CommentViewModel::make()->rating($user['user_id']); // пересчет рейтинга
+
+        }
+
+
+
+
+        $validator = Validator::make($request->all(), [
+            'phone' => ['required', 'string', 'min:5'],
+            'email' => ['required', 'email', 'email:dns'],
+            'feedback' => ['required'],
+        ]);
+
+        if ($validator->passes()) {
+
+
+
+            /**
+             * Событие отправка сообщения админу (Отзыв о медиаторе)
+             */
+
+            FeedbackFormEvent::dispatch($request);
+
+            CommentViewModel::make()->store($request);
+
+            /**
+             * возвращаем назад в браузер
+             */
+
+            return response()->json([
+                'request' => $request
             ]);
         }
 
@@ -336,8 +383,6 @@ class AjaxController extends Controller
         ]);
 
     }
-
-
 
 
 }

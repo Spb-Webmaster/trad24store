@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Carbon\Carbon;
+use cijic\phpMorphy\Facade\Morphy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
@@ -54,20 +55,7 @@ if (!function_exists('phone')) {
     }
 }
 
-/**
- * Более корректная дата рождения birthdate
- */
-if (!function_exists('birthdate')) {
-    function birthdate(string $birthdate = null): string|int|null
-    {
-        if($birthdate == '1970-01-01') {
-            return null;
-        }
-        $date = new DateTime($birthdate);
-        $formattedDate = $date->format('d.m.Y');
-        return $formattedDate;
-    }
-}
+
 
 /**
  * Slug Формируем slug  Версия 1
@@ -179,7 +167,20 @@ if (!function_exists('birthdate')) {
         return '';
     }
 }
-
+/**
+ * Более корректная дата рождения birthdate
+ */
+if (!function_exists('birthdate2')) {
+    function birthdate2(string $birthdate = null): string|int|null
+    {
+        if($birthdate == '1970-01-01') {
+            return null;
+        }
+        $date = new DateTime($birthdate);
+        $formattedDate = $date->format('d.m.Y');
+        return $formattedDate;
+    }
+}
 if (!function_exists('rusbirthdate')) {
 
     function rusbirthdate($birthdate): string
@@ -418,6 +419,22 @@ if (!function_exists('rusdate3')) {
 
     }
 }
+if (!function_exists('rusdate_month')) {
+    function rusdate_month($date): string|null
+    {
+        $timestump = strtotime($date);
+        $month = [1 => "Январь", 2 => "Феврал", 3 => "Март", 4 => "Апрель", 5 => "Май", 6 => "Июнь", 7 => "Июль", 8 => "Август", 9 => "Сентябрь", 10 => "Октябрь", 11 => "Ноябрь", 12 => "Декабрь"];
+        $y = date('Y', $timestump);
+
+
+
+        $m = $month[date('n', $timestump)];
+
+
+        return $m . ' '. $y;
+
+    }
+}
 
 
 /**
@@ -580,6 +597,22 @@ if (!function_exists('intervention')) {
 
 
         return 'storage/' . $resultPaht;
+
+    }
+}
+
+
+
+
+/**
+ * cijic склонение
+ */
+
+if (!function_exists('getPseudo')) {
+    function getPseudo($str)
+    {
+
+      //  return Morphy::getPseudoRoot($str);
 
     }
 }

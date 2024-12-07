@@ -1,4 +1,12 @@
-import { call_me, send_blue_form, search_diplom_form, search_lessons, send_sign_up } from './include/ajax';
+import {
+    call_me,
+    send_blue_form,
+    search_diplom_form,
+    search_lessons,
+    send_sign_up,
+    replace,
+    feedback
+} from './include/ajax';
 import { imask } from './include/imask';
 import { input_label, _iserror } from './include/input';
 import { close_flash } from './include/flash';
@@ -42,5 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     search_diplom_form() // поиск диплома
     search_lessons() // вывод расписания предметов
     send_sign_up() // отправка заявки на обучение
+    feedback() // отзыв для пользователя
+    replace() // перезагрузка js на определенную страницу
 
 });

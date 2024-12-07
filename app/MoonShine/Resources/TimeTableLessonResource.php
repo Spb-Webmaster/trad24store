@@ -62,9 +62,7 @@ class TimeTableLessonResource extends ModelResource
                 ->useOnImport()
                 ->showOnExport(),
 
-            Text::make('Название', 'title')
-                ->useOnImport()
-                ->showOnExport(),
+             Text::make('Название', 'title'),
 
         ];
     }

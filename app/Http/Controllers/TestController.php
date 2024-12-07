@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Diplom;
 use App\Models\User;
 use App\Models\UserCity;
+use App\Models\UserComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -20,9 +21,25 @@ class TestController extends Controller
     public function test()
     {
 
-dd(config2('moonshine.user.users'));
+dd(config2('moonshine.responce.responce'));
+
+        foreach (config2('moonshine.responce.responce') as $res) {
+
+           $user = User::query()->where('old_id', $res['user_id'])->first();
 
 
+  /*          UserComment::query()->create([
+                'user_id'=> $user->id,
+                'stars'=> $res['rating'],
+                'title'=> $res['title'],
+                'phone'=> phone($res['phone']),
+                'email'=> $res['email'],
+                'desc'=> $res['responce'],
+            ]);*/
+
+        }
+
+        dd('ok');
 
 
         foreach (config2('moonshine.user.users') as $user) {
@@ -35,24 +52,27 @@ dd(config2('moonshine.user.users'));
                 $city = $user['sity'];
 
 
-                // $this->belongs_to_many_list($vidy_medi, $user['email']);
-              //  $this->belongs_to_many_language($language, $user['email']);
-                //  $this->belongs_to_many_city($city, $user['email']);
+/*                $this->belongs_to_many_list($vidy_medi, $user['email']);
+                $this->belongs_to_many_language($language, $user['email']);
+                $this->belongs_to_many_city($city, $user['email']);*/
 
 
-                $users[] = User::updateOrCreate([
+                $users[] = UserComment::updateOrCreate([
                     'email' => $user['email']
                 ], [
                     'name' => $user['username'],
+                    'old_id' => $user['id'],
                     'username' => $user['username'],
-                  // 'sex' => $user['sex'],
-                   // 'teacher' => ($user['prepodav'])?1:0,
+    /*                'birthday' => preg_replace('/\s+/', '', $user['datepicker'])
+                    'certificate' => $user['certificate'],
+                   'sex' => $user['sex'],
+                    'teacher' => ($user['prepodav'])?1:0,
                     'active_contact' => $user['switch_1'],
-                    //   'sphere' => $user['sfera'],
-                    //  'user_type_id' => 1,
-                    //  'password' => ($user['password'])?bcrypt($user['password']):'511111',
-                    //   'email' => $user['email'],
-                    /*                    'phone' => phone($user['phone']),
+                       'sphere' => $user['sfera'],
+                      'user_type_id' => 1,
+                      'password' => ($user['password'])?bcrypt($user['password']):'511111',
+                       'email' => $user['email'],
+                                       'phone' => phone($user['phone']),
                                         'user_idcard' => $this->files($user['doc1']),
                                         'user_judge' => $this->files($user['doc2']),
                                         'user_crazy' => $this->files($user['doc3']),
@@ -64,9 +84,8 @@ dd(config2('moonshine.user.users'));
                                         'user_statute' => $this->files($user['doc9']),
                                         'user_order_head' => $this->files($user['doc10']),*/
 
-                    /* 'avatar' => $p,
-                                  'company' => $user['company'],
-                                   'city' => $user['sity'],
+                   /*  'avatar' => $p,*/
+                    /*              'company' => $user['company'],
                                    'home' => $user['home'],
                                    'street' => $user['street'],
                                    'office' => $user['office'],
@@ -117,7 +136,10 @@ dd(config2('moonshine.user.users'));
         }
         if($list) {
             $us = User::query()->where('email', $email)->first();
-            $us->user_list()->sync($list);
+            if(isset($us->user_list)) {
+
+                $us->user_list()->sync($list);
+            }
         }
     }
 
@@ -143,7 +165,9 @@ dd(config2('moonshine.user.users'));
 
         if($list) {
             $us = User::query()->where('email', $email)->first();
-            $us->user_language()->sync($list);
+            if(isset($us->user_language)) {
+                $us->user_language()->sync($list);
+            }
         }
     }
 
@@ -165,7 +189,9 @@ dd(config2('moonshine.user.users'));
 
         if($list) {
             $us = User::query()->where('email', $email)->first();
-            $us->user_city()->sync($list);
+            if(isset($us->user_city)) {
+                $us->user_city()->sync($list);
+            }
         }
     }
 

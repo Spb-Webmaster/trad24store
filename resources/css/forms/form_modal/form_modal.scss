@@ -264,6 +264,9 @@ $maxWidth: 1440;
                 border: 1px solid #ccc;
                 background: #ccc;
             }
+            .button_normal.form_clear:hover {
+              color: $colorBlue !important;
+            }
         }
 
     }

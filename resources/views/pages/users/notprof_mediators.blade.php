@@ -24,9 +24,14 @@
 
                 </div>
                 <div class="center_content">
+                    @include('pages.users.partial.search', ['route' => 'notprof_mediators_search',
+                    'mediator_search' => (isset($mediator_search))?$mediator_search:'',
+                    'mediator_city' => (isset($mediator_city))?$mediator_city:'',
+                    'cities' => $cities,
+                    'reload' => 'notprof_mediators'])
                     @foreach($items as $item)
 
-                        @include('pages.users.partial.teaser', ['route' => 'notprof_mediators'])
+                        @include('pages.users.partial.teaser', ['route' => 'notprof_mediator'])
 
                     @endforeach
 

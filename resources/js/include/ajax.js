@@ -43,6 +43,7 @@ export function call_me() {
 }
 
 
+
 export function send_blue_form() {
     /* send_form__js Звонок  (mini форма на главной)*/
     $('body').on('click', '.send_form__js', function (event) {
@@ -233,13 +234,16 @@ export function search_lessons() {
         });
 
     });
-
-    Fancybox.bind("[data-fancybox]", {
+// нажатие "Записаться на курс" - из раздела расписание
+    Fancybox.bind("#course_sign_up", {
         on: {
             reveal: (fancybox, slide) => {
                 // Содержимое этого слайда загружено и готово к показу
                 //slide.contentEl.style.filter = "brightness(1.25) contrast(1.25)";
                 const obj = JSON.parse(slide.options);
+
+
+
                 $('.lesson__js').text(obj.title)
                 $('.date_lesson_js').text(obj.date)
                 $('.price_lesson__js').text(obj.price)
@@ -305,3 +309,94 @@ export function  send_sign_up() {
 
 }
 
+
+export function  replace() {
+    /* перезагрузка */
+    $('body').on('click', '.clear_form_2__js', function (event) {
+
+        let url = $(this).data('replace')
+        window.location.replace(url);
+        return false;
+
+    });
+    /* перезагрузка */
+
+}
+
+export function feedback() {
+
+
+        $.fn.extend({
+
+            addTemporaryClass: function(className, duration) {
+                var elements = this;
+                setTimeout(function() {
+                    elements.removeClass(className);
+                }, duration);
+
+                return this.each(function() {
+                    $(this).addClass(className);
+                });
+            }
+        });
+
+
+
+    /* оставить отзыв для медиатора */
+    $('body').on('click', '.feedback__js', function (event) {
+
+        var Parents = $(this).parents('.F_form');
+        var Name = Parents.find('input[name="name"]').val();
+        var Phone = Parents.find('input[name="phone"]').val();
+        var Email = Parents.find('input[name="email"]').val();
+        var Feedback = Parents.find('textarea[name="feedback"]').val();
+
+        var Feedback_star;
+        if (Parents.find('input[name="feedback_star"]').is(':checked')) {
+             Feedback_star = Parents.find('input[name="feedback_star"]:checked').val();
+        } else {
+            alert('Необходимо поставить оценку!');
+            Parents.find('.rating-area').addTemporaryClass("alert", 2000);
+
+            return false;
+        }
+
+
+
+        loader(Parents);
+
+
+
+        $.ajax({
+            url: "/send-mail/feedback",
+            method: "POST",
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                "name": Name,
+                "phone": Phone,
+                "email": Email,
+                "feedback": Feedback,
+                "feedback_star": Feedback_star,
+                "url": url(),
+            },
+            success: function (response) {
+                if (response.error) {
+                    setTimeout(function () {
+                        Parents.find('.wrapper_loader ').css('display', 'none');
+                        printErrorMsg(Parents, response.error);
+                    }, 1000);
+
+                } else {
+                    setTimeout(function () {
+                        Parents.find('.wrapper_loader ').css('display', 'none');
+                        Parents.find('.F_form__body').hide();
+                        Parents.find('.F_responce').show();
+                    }, 1000);
+                }
+            }
+        });
+
+    });
+    /* оставить отзыв для медиатора */
+
+}
