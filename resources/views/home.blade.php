@@ -5,7 +5,7 @@
     keywords="{{config2('moonshine.index.keywords') }}"
 />
 @section('content')
-    <main>
+    <main class="www">
 
         <section class="home_section__slider h_sl">
             @include('modules.mod_slider')
