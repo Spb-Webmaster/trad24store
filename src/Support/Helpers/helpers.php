@@ -150,6 +150,7 @@ if (!function_exists('birthdate')) {
 
     function birthdate($birthdate, $integer = null): string
     {
+
         if ($birthdate) {
 
             $birthday = new DateTime($birthdate);
@@ -161,7 +162,6 @@ if (!function_exists('birthdate')) {
             $date = new DateTime($birthdate);
             $formattedDate = $date->format('d.m.Y');
             return $formattedDate . ' (' . $int . ')';
-
 
         }
         return '';
@@ -604,15 +604,69 @@ if (!function_exists('intervention')) {
 
 
 
+
+
 /**
- * cijic склонение
+ * определение пола
  */
 
-if (!function_exists('getPseudo')) {
-    function getPseudo($str)
+if (!function_exists('sex')) {
+    function sex($sex): string
     {
 
-      //  return Morphy::getPseudoRoot($str);
+        if(is_string($sex)) {
+            if (mb_strtolower($sex) == 'мужчина') {
+                return 'Мужчина';
+            }
+            if (mb_strtolower($sex) == 'женщина') {
+                return 'Женщина';
+            }
+        }
+        return '';
+
+    }
+}
+
+
+/**
+ * определение статуса медиатора
+ */
+
+if (!function_exists('status')) {
+    function status($status): string
+    {
+        if(is_string($status)) {
+
+            if (mb_strtolower($status) == '0') { // Приостановлен
+                return '0';
+            }
+            if (mb_strtolower($status) == '1') { // Действующий
+                return '1';
+            }
+            if (mb_strtolower($status) == '2') { // Пока не используется
+                return '2';
+            }
+        }
+        return '';
+
+    }
+}
+
+
+
+/**
+ * textarea оствляем некоторрые теги
+ */
+
+if (!function_exists('textarea')) {
+    function textarea($str): string
+    {
+        if(is_string($str)) {
+            $result = strip_tags(nl2br($str), '<code><p><br><br /><br/><b><i><strong>');
+            return $result;
+        }
+
+        return  '';
 
     }
 }

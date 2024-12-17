@@ -27,7 +27,7 @@ class FeedbackFormHandlerListener
         $data['name'] = $event->request->name;
         $data['phone'] = $event->request->phone;
         $data['email'] = $event->request->email;
-        $data['feedback'] = strip_tags(nl2br($event->request->feedback),'<code><p><br><br /><br/><b><i><strong>');
+        $data['feedback'] = textarea($event->request->feedback);
         $data['url'] = $event->request->url;
         $data['mediator_name'] = ($event->request->user_name)?:' - ';
         $data['mediator_phone'] = ($event->request->user_phone)?:' - ';

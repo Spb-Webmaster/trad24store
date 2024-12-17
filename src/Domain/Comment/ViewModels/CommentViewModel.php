@@ -26,7 +26,7 @@ class CommentViewModel
             'title' => ($request->name) ?: '',
             'phone' => ($request->phone) ? phone($request->phone) : '',
             'email' => ($request->email) ?: '',
-            'desc' => ($request->feedback) ? strip_tags(nl2br($request->feedback), '<code><p><br><br /><br/><b><i><strong>') : '',
+            'desc' => textarea($request->feedback)
         ]);
 
 

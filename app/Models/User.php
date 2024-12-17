@@ -299,6 +299,51 @@ class User extends Authenticatable
 
     }
 
+    public function getCitiesAttribute()
+    {
+
+      return UserCity::query()->select('id','title')->get();
+
+    }
+
+    public function getLanguagesAttribute()
+    {
+
+      return UserLanguage::query()->select('id','title')->get();
+
+    }
+
+    public function getListsAttribute()
+    {
+
+      return UserList::query()->select('id','title')->get();
+
+    }
+
+    public function getTypesAttribute()
+    {
+
+      return UserType::query()->select('id','title')->get();
+
+    }
+
+
+    public function getCityAttribute(): array | bool
+    {
+        if (count($this->user_city)) {
+
+            foreach ($this->user_city as $item) {
+                $result[$item->id] = $item->title;
+            }
+
+        return $result;
+
+        }
+        return false;
+
+
+    }
+
     public function getUserListVisibleAttribute()
     {
 

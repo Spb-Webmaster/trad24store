@@ -1,8 +1,14 @@
 <?php
 
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\SignInController;
+use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\ChangeContacts\ChangeContactsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Pages\CategoryController;
 use App\Http\Controllers\Pages\ProductController;
@@ -13,6 +19,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeTable\TimeTableController;
 use App\Http\Controllers\Users\Search\MediatorSearchController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\UserBlockedMiddleware;
+use App\Http\Middleware\UserPublishedMiddleware;
 use App\MoonShine\Controllers\MoonshineChangeContactController;
 use App\MoonShine\Controllers\MoonshineDiplom;
 use App\MoonShine\Controllers\MoonshineIndex;
@@ -20,6 +29,109 @@ use App\MoonShine\Controllers\MoonshineService;
 use App\MoonShine\Controllers\MoonshineSetting;
 use App\MoonShine\Controllers\MoonshineTraining;
 use Illuminate\Support\Facades\Route;
+use Spatie\Honeypot\ProtectAgainstSpam;
+
+
+/**
+ * Auth
+ */
+
+Route::controller(SignInController::class)->group(function () {
+
+    Route::get('/login', 'page')
+        ->name('login')->middleware(RedirectIfAuthenticated::class);
+
+    Route::post('/login', 'handle')->name('login.handle');
+
+});
+
+Route::controller(SignUpController::class)->group(function () {
+
+    Route::get('/sign-up', 'page')
+        ->name('register')
+        ->middleware(RedirectIfAuthenticated::class);
+
+    Route::post('/sign-up', 'handle')->middleware(ProtectAgainstSpam::class)
+        ->name('register.handle');
+
+});
+
+Route::controller(ForgotPasswordController::class)->group(function () {
+
+    Route::get('/forgot-password', 'page')
+        ->name('forgot')
+        ->middleware(RedirectIfAuthenticated::class);
+
+    Route::post('/forgot-password', 'handle')
+        ->name('forgot.handel')
+        ->middleware(RedirectIfAuthenticated::class);
+
+});
+
+Route::controller(ResetPasswordController::class)->group(function () {
+
+    Route::get('/reset-password/{token}','page')
+        ->name('password.reset')
+        ->middleware(RedirectIfAuthenticated::class);
+
+    Route::post('/reset-password', 'handle')
+        ->name('password.handle')
+        ->middleware(RedirectIfAuthenticated::class);
+
+});
+
+Route::controller(LogoutController::class)->group(function () {
+
+    Route::post('/logout', 'page')->name('logout');
+
+});
+
+/**
+ *  Auth
+ */
+
+
+/**
+ *  Cabinet
+ */
+
+Route::controller(DashboardController::class)->group(function () {
+
+    Route::get('/cabinet', 'page')
+        ->name('cabinet')
+       // ->middleware(UserPublishedMiddleware::class)
+    ;
+
+
+    Route::get('/cabinet/edit', 'edit')
+        ->name('cabinet.edit');
+
+
+
+    Route::get('/cabinet-blocked', 'blocked')
+        ->name('blocked')
+        ->middleware(UserBlockedMiddleware::class);
+
+
+    Route::post('/cabinet/setting.handel', 'settingHandel')
+        ->name('setting.handel');
+
+    Route::post('/cabinet/setting_full.handel', 'settingFullHandel')
+        ->name('setting_full.handel');
+
+
+
+
+    Route::post('/cabinet/setting-password.handel', 'settingPasswordHandel')
+        ->name('setting.password.handel');
+
+
+});
+
+/**
+ *  Cabinet
+ */
+
 
 /**
  * страницы
@@ -78,7 +190,7 @@ Route::controller(AjaxController::class)->group(function () {
 
 
 
-    /* загрузка аватара*/ // нет метода!!31.08 todo
+    /* загрузка аватара*/ //
     Route::post('/cabinet/upload-avatar', 'uploadAvatar')->name('uploadAvatar');
 
 });

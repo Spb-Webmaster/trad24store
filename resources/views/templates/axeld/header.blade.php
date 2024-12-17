@@ -39,7 +39,7 @@
                                             src="{{ Storage::url('/images/axeld/lupa.svg') }}" alt="Поиск"></a></div>
                             </div>
                             <div class="m_cab">
-                                <a class="link_to_profile modal-trigger" href="#mod_login"><img
+                                <a class="link_to_profile modal-trigger" href="{{ route('login') }}"><img
                                         src="{{ Storage::url('/images/axeld/icons/Off.svg') }}" alt="Аватар"><span>Мой Кабинет</span></a>
 
 

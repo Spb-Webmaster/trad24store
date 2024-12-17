@@ -138,7 +138,7 @@
     padding: 0 0 36px 0; }
 
 .auth {
-  background-color: #F1F1F1;
+  background-color: #F5F5F7;
   width: 100%;
   min-height: 516px;
   background-size: cover;
@@ -168,5 +168,8 @@
   text-align: center; }
   .login_back a:hover {
     text-decoration: underline; }
+
+main.m_cabinet {
+  padding-bottom: 0; }
 
 /*# sourceMappingURL=register.css.map */

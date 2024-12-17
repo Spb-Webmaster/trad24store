@@ -5,8 +5,10 @@ import {
     search_lessons,
     send_sign_up,
     replace,
-    feedback
+    feedback,
+    upload_f
 } from './include/ajax';
+import { toggle_type } from './include/cabinet';
 import { imask } from './include/imask';
 import { input_label, _iserror } from './include/input';
 import { close_flash } from './include/flash';
@@ -22,6 +24,7 @@ import { canche_contacts, toggle_contacts } from './include/canche_contacts';
 import { city } from './include/city';
 import { chosen } from './include/select';
 import { bid } from './include/bid';
+import {localDataPicker, datepicker_birthdate} from "./include/datapicker";
 
 
 
@@ -52,5 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
     send_sign_up() // отправка заявки на обучение
     feedback() // отзыв для пользователя
     replace() // перезагрузка js на определенную страницу
+    localDataPicker() // календарик основные настройки
+    datepicker_birthdate() // календарь дня рождения
+    upload_f()  // pзагрузка файлов (Аватар)
+    toggle_type()  // изменение полей при редактировании личного кабинета
 
 });

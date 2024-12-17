@@ -12,5 +12,5 @@
     '_is-error' => $isError,
     'inputClass'
 ]) }}
->{{ $value  }}</textarea><label class="labelInput" for="{{ $id }}">{{ $placeholder }}</label>
+>{!! $value !!}</textarea><label class="labelInput" for="{{ $id }}">{{ $placeholder }}</label>
 

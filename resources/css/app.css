@@ -21,6 +21,9 @@
 @import "./auth/flash.scss";
 @import "./auth/register.scss";
 
+@import "./cabinet/cabinet.scss";
+@import "./datepicker/datepicker.scss";
+
 @import "./fancybox.scss";
 @import "./loader_map.css";
 @import "./forms/loader.css";

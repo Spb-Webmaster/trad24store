@@ -77,6 +77,9 @@ textarea.input {
     top: 21px;
     color: #667085; }
 
+.textarea_input .labelInput {
+  font-size: 13px; }
+
 .slotButtons {
   text-decoration: none; }
   .slotButtons a {

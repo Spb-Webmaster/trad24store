@@ -43,7 +43,6 @@ export function call_me() {
 }
 
 
-
 export function send_blue_form() {
     /* send_form__js Звонок  (mini форма на главной)*/
     $('body').on('click', '.send_form__js', function (event) {
@@ -259,6 +258,7 @@ export function search_lessons() {
 
 }
 
+
 export function  send_sign_up() {
     /* отправить форму для записи на курс */
     $('body').on('click', '.sign_up__js', function (event) {
@@ -322,6 +322,7 @@ export function  replace() {
     /* перезагрузка */
 
 }
+
 
 export function feedback() {
 
@@ -400,3 +401,59 @@ export function feedback() {
     /* оставить отзыв для медиатора */
 
 }
+
+/*  загрузка аватара */
+export function upload_f() {
+
+
+    $('.upload_f').change(function (event) {
+        if (window.FormData === undefined) {
+            alert('В вашем браузере FormData не поддерживается')
+        } else {
+            var Parent = $(this).parents('.image-upload__cabinet');
+            event.preventDefault();
+            let form = $(this).parents('form').get(0);
+            let formData = new FormData(form);
+
+
+            $.ajax({
+                async: true,
+                url: '/cabinet/upload-avatar',
+                headers: {
+                    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                contentType: false,
+                data: formData,
+                cache: false,
+                processData: false,
+                success: function (result) {
+                    console.log(result);
+
+                    if (result.success == true) {
+
+                        console.log(result.avatar)
+                        Parent.find('.site_avatar').css('background-image', 'url("' + result.avatar + '")');
+                        $('.site_avatar').css('background-image', 'url("' + result.avatar + '")');
+                        if ($('.enter_to_website__a').length) {
+                            $('.enter_to_website__a .site_avatar').css('background-image', 'url("' + result.avatar + '")');
+                        }
+                    } else {
+                        console.log(result);
+                        alert('Ошибка при загрузке аватара.');
+
+                    }
+                },
+                error: function (data) {
+                    console.log(data.err);
+                    console.log(data);
+                }
+            });
+
+
+        }
+    });
+    return true;
+
+}
+/*  загрузка аватара */

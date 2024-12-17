@@ -92,14 +92,15 @@ class UserResource extends ModelResource
             ID::make()
                 ->sortable(),
             Image::make(__('Аватар'), 'avatar')->sortable(),
+            BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource()),
 
             Text::make(__('Имя'), 'name')->sortable(),
             Slug::make(__('Телефон'), 'phone'),
             Slug::make(__('Email'), 'email'),
             Switcher::make('Статус', 'status'),
             Switcher::make('Публ.', 'published')->updateOnPreview(),
-            Switcher::make('Публ. контактов', 'active_contact'),
-            Text::make('Пол', 'sex'),
+            //Switcher::make('Публ. контактов', 'active_contact'),
+
             BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )   ->inLine(
                 separator: '<br>',
                 badge: fn($model, $value) => Badge::make($value, 'success'),

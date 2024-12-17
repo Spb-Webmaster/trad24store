@@ -234,6 +234,7 @@ return [
         'price' => '"Стоимость"',
         'mediator_search' => '"Медиатор"',
         'feedback' => '"Отзыв"',
+        'status' => '"Статус"',
 
     ],
 ];
