@@ -116,8 +116,15 @@ class DashboardController extends Controller
         //sphere
         //oput
         //dop
+        //-- соц. сети
+        //active_contact
+        //telegram
+        //whatsapp
+        //instagram
+        //social
+        //website
 
-        dd($request->all());
+      //  dd($request->all());
 
         $session_user = $request->session()->get('user');
 
@@ -189,6 +196,46 @@ class DashboardController extends Controller
             $user->status = $request->status; // статус
 
 
+            /**
+             * ссылки на сети
+             */
+            $user->active_contact = $request->active_contact; // показывать контакты или нет
+
+            if ($request->telegram) {
+
+                $user->telegram = $request->telegram; // telegram
+            }
+
+
+            if ($request->whatsapp) {
+
+                $user->whatsapp = $request->whatsapp; // whatsapp
+            }
+
+
+            if ($request->social) {
+
+                $user->social = $request->social; // social
+            }
+
+
+            if ($request->instagram) {
+
+                $user->instagram = $request->instagram; // instagram
+            }
+
+
+
+            if ($request->website) {
+
+                $user->website = $request->website; // website
+            }
+
+            /**
+             * тексты из textarea
+             */
+
+
             if (textarea($request->certificate)) {
 
                 $user->certificate = textarea($request->certificate); // сертификат (textarea)
@@ -208,6 +255,9 @@ class DashboardController extends Controller
 
                 $user->dop = textarea($request->dop); // допорлнительно (textarea)
             }
+            /**
+             * запишем, что есть
+             */
 
             $user->save();  //это обновит запись с помощью id=$request->id
 

@@ -9,11 +9,11 @@
                 <div class="selectClass _active_contact">
                     <select class="js-chosen" data-placeholder="Показать в профиле" name="active_contact" id="registerActive_contact">
 
-                        <option value="Да" @if($user->active_contact)
+                        <option value="1" @if($user->active_contact)
                             {{ 'selected' }}
                             @endif>Да
                         </option>
-                        <option value="Нет" @if($user->active_contact == 0)
+                        <option value="0" @if($user->active_contact == 0)
                             {{ 'selected' }}
                             @endif>Нет
                         </option>
@@ -136,7 +136,7 @@
                     type="text"
                     id="registerWebsite"
                     name="website"
-                    placeholder="Соц. сеть"
+                    placeholder="Web Site"
                     value="{{ (old('website'))?:((isset($user->website))?$user->website:'')  }}"
                     class="input website"
                     :isError="$errors->has('website')"
