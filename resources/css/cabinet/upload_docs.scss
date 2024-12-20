@@ -1,0 +1,158 @@
+@charset "utf-8";
+$color: #282828;
+$colorRed: #EF533F;
+$colorCCC: #CCCCCC;
+$colorGrey: #667085;
+$colorBlue: #095C9A;
+$colorGreen: #0f6567;
+$colorYellow: #FF931E;
+
+
+$maxWidth: 1440;
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+@mixin family {
+    font-family: 'Source Sans Pro', "Arial Narrow", Arial, Helvetica, sans-serif;
+
+
+}
+
+
+@mixin Inter {
+    font-family: 'Inter Variable', sans-serif;
+}
+
+@mixin Roboto {
+    font-family: 'Roboto Flex Variable', sans-serif;
+}
+
+////////////////////////////
+////////////////////////////
+////////////////////////////
+////////////////////////////
+////////////////////////////
+
+.input-file-row {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.input-file {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.input-file span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 15px;
+    vertical-align: middle;
+    color:#fff;
+    text-align: center;
+    border-radius: 6px;
+    background-color: $colorBlue;
+    line-height: 26px;
+    height: 46px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 1px solid $colorBlue;
+    margin: 0;
+    transition: background-color 0.2s;
+}
+.input-file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+/* Focus */
+.input-file input[type=file]:focus + span {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Hover/Active */
+.input-file:hover span {
+    background-color: #fff;
+    color: $colorBlue;
+    border: 1px solid $colorBlue;
+}
+.input-file:active span {
+    background-color: #fff;
+    color: $colorBlue;
+    border: 1px solid $colorBlue;}
+
+/* Disabled */
+.input-file input[type=file]:disabled + span {
+    background-color: #eee;
+}
+
+/* Список файлов */
+.input-file-list {
+    padding: 0;
+    display: flex;
+
+
+    .input-file-list-item {
+        margin: 8px 30px 8px 10px;
+        position: relative;
+        min-width: 34px;
+    }
+    ._ext {
+        width: 30px;
+        height: 30px;
+        min-height: 30px;
+        min-width: 30px;
+        position: relative;
+
+
+    }
+
+    .input-file-list-remove {
+            color: red;
+            text-decoration: none;
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid red;
+            width: 15px;
+            height: 15px;
+            min-width: 15px;
+            min-height: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 81%;
+            padding: 0 0 3px 4px;
+        top: -7px;
+        right: -17px;
+
+    }
+}
+.error_max_files {
+    font-size: 14px;
+    color: $colorRed;
+}
+.input-file-row-load {
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+}
+.text_load_file {
+    font-size: 14px;
+    position: relative;
+    padding: 6px 0 4px 0;
+    text-align: right;
+}

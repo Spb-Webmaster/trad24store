@@ -13,6 +13,7 @@ use App\Models\User;
 use Domain\Comment\ViewModels\CommentViewModel;
 use Domain\Diplom\ViewModels\DiplomViewModel;
 use Domain\Timetable\ViewModels\TimetableViewModel;
+use Domain\User\ViewModels\UserFilesViewModel;
 use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -312,6 +313,161 @@ class AjaxController extends Controller
         }
 
         return response()->json(['error' => $validator->errors()]);
+
+    }
+
+    /**
+     * Метод загрузки документов
+     */
+
+    public function uploadDocs(Request $request)
+    {
+
+
+        $files =  $request->file('file');
+
+
+        $user_id = auth()->user()->id;
+
+        if(!$user_id) {
+            dd('Нет  auth()->user()->id');
+        }
+
+        $field = ($request->field)?:null;
+
+        if(!$field) {
+            dd('Нет  $request->field');
+        }
+
+        if($files) {
+            $count = count($files);
+            $storage = Storage::disk('public');
+            $destinationPath = 'users/' . $user_id . '/docs';
+
+            if (!$storage->exists($destinationPath)) {
+                $storage->makeDirectory($destinationPath);
+            }
+
+            // $success = Storage::deleteDirectory($destinationPath); // удалять паку не будем
+
+            foreach ($files as $k => $file) {
+
+
+                $newFileName = $file->getClientOriginalName();
+                $file->storeAs($destinationPath, $newFileName);
+                $puth_files[$k]['json_file_file'] = $destinationPath . '/' . $newFileName; // для БД
+
+            }
+        } else {
+            dd('Нет  $request->file(\'file\')');
+        }
+
+
+
+        $uploaded_files = UserFilesViewModel::make()->user_get_files($user_id, $field, $count); //получим все ранее загркженный файлы
+
+        $user_files_field = array(); // создадим новаый массив для слияния
+
+        if(!is_null($uploaded_files)) {
+
+            $user_files_field = array_merge($uploaded_files, $puth_files); // слияние массивов
+
+        } else {
+
+            $user_files_field = $puth_files; // если ранее загруженных файлов нет, то берет, то, что сейчас загрузили
+        }
+
+        $user = User::find($user_id);
+
+
+        $user->$field = $user_files_field;
+        $user->save();
+
+
+        $new_files = UserFilesViewModel::make()->json_files($user->$field);
+
+
+
+            /**
+             * возвращаем назад в браузер
+             */
+
+            return response()->json([
+                'request' => $request,
+                'new_files' => $new_files,
+            ]);
+
+
+    }
+
+
+ /**
+     * Метод удаления и обновления документов
+     */
+
+    public function deleteDocs(Request $request)
+    {
+
+        //dump($request->all());
+
+        if($request->delete ) {
+            Storage::delete(trim($request->delete));
+        }
+
+        $files =  $request->file;
+
+        $user_id = auth()->user()->id;
+
+        if(!$user_id) {
+            dd('Нет  auth()->user()->id');
+        }
+
+        $field = ($request->field)?:null;
+
+        if(!$field) {
+            dd('Нет  $request->field');
+        }
+
+        $user = User::find($user_id);
+
+        if($files) {
+            $count = count($files);
+            $storage = Storage::disk('public');
+            $destinationPath = 'users/' . $user_id . '/docs';
+
+            if (!$storage->exists($destinationPath)) {
+                $storage->makeDirectory($destinationPath);
+            }
+
+            // $success = Storage::deleteDirectory($destinationPath); // удалять паку не будем
+
+            foreach ($files as $k => $file) {
+
+                $puth_files[$k]['json_file_file'] = $file; // для БД
+
+            }
+
+
+            $user->$field = $puth_files;
+            $user->save();
+
+        } else {
+
+            $user->$field = [];
+            $user->save();
+        }
+
+
+
+
+            /**
+             * возвращаем назад в браузер
+             */
+
+            return response()->json([
+                'request' => $request
+            ]);
+
 
     }
 

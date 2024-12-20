@@ -117,7 +117,7 @@ class DashboardController extends Controller
         //oput
         //dop
 
-       // dd($request->all());
+        dd($request->all());
 
         $session_user = $request->session()->get('user');
 
@@ -182,7 +182,7 @@ class DashboardController extends Controller
 
             if ($request->company) {
 
-                $user->company = $request->company; // организация 
+                $user->company = $request->company; // организация
             }
 
 

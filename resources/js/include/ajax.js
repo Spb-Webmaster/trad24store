@@ -56,6 +56,7 @@ export function send_blue_form() {
 
         $.ajax({
             url: "/send-mail/order-call-blue-form",
+
             method: "POST",
             data: {
                 "_token": $('meta[name="csrf-token"]').attr('content'),

@@ -58,6 +58,15 @@
   .c__flex .c__flex_33_right {
     padding-left: 0.5%; }
 
+.active_contact {
+  padding: 10px;
+  width: 100%;
+  background: #095C9A;
+  color: #fff;
+  border-radius: 6px;
+  margin: 15px 0 0 0;
+  font-size: 15px; }
+
 .slotButtons__right {
   display: flex;
   justify-content: right; }

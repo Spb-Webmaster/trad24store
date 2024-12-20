@@ -25,12 +25,26 @@
                             <div class="cabinet_radius12_fff">
 
 
-                                <div class="c__title_subtitle">
-                                    <h3 class="F_h1">{{ __('Редактировать профиль') }}</h3>
-                                    <div class="F_h2 pad_t5"><span>{{__('Изменения будут проверены модератоом')}}</span></div>
-                                </div>
+
+
                                 @include('dashboard.forms.edit_profile_fulldata')
 
+
+
+
+                                <div class="c__title_subtitle pad_t32">
+                                    <h3 class="F_h1">{{ __('Мои документы. Личные документы не публикуются') }}</h3>
+                                    <div class="F_h2 pad_t5"><span></span></div>
+                                </div>
+
+                                @include('dashboard.forms.edit_profile_self_user_files')
+
+                                <div class="c__title_subtitle ">
+                                    <h3 class="F_h1">{{ __('Сертификаты') }}</h3>
+                                    <div class="F_h2 pad_t5"><span></span></div>
+                                </div>
+
+                                @include('dashboard.forms.edit_profile_certificate_user_files')
 
 
                             </div>

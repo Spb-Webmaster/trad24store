@@ -8,7 +8,7 @@ import {
     feedback,
     upload_f
 } from './include/ajax';
-import { toggle_type } from './include/cabinet';
+import {cabinet_toggle_type} from './include/cabinet';
 import { imask } from './include/imask';
 import { input_label, _iserror } from './include/input';
 import { close_flash } from './include/flash';
@@ -25,6 +25,7 @@ import { city } from './include/city';
 import { chosen } from './include/select';
 import { bid } from './include/bid';
 import {localDataPicker, datepicker_birthdate} from "./include/datapicker";
+import {upload_doc, removeFilesLoadItem, titleFiles} from "./include/upload_docs";
 
 
 
@@ -58,6 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
     localDataPicker() // календарик основные настройки
     datepicker_birthdate() // календарь дня рождения
     upload_f()  // pзагрузка файлов (Аватар)
-    toggle_type()  // изменение полей при редактировании личного кабинета
+    cabinet_toggle_type()  // изменение полей при редактировании личного кабинета
+    upload_doc()  //основной загрузчик
+    removeFilesLoadItem()   // удаляем загружаемый файл (записанный в БД и сохраненный, только предварительное нажатие, далее нужно сохранить)
+    titleFiles()  // подпись к скачаваемым файлам
+
+
+
+
 
 });

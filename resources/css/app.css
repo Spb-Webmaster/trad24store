@@ -22,6 +22,7 @@
 @import "./auth/register.scss";
 
 @import "./cabinet/cabinet.scss";
+@import "./cabinet/upload_docs.scss";
 @import "./datepicker/datepicker.scss";
 
 @import "./fancybox.scss";

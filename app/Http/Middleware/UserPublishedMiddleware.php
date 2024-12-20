@@ -14,13 +14,11 @@ class UserPublishedMiddleware
 
         $user = auth()->user();
         if ($user) {
-            if ($user->published) {
-                return $next($request);
-            } else {
-                return redirect('/cabinet-blocked');
-            }
 
+            return $next($request);
         }
+
+
         return redirect('/login');
     }
 }

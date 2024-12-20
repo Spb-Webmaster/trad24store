@@ -99,12 +99,15 @@ Route::controller(DashboardController::class)->group(function () {
 
     Route::get('/cabinet', 'page')
         ->name('cabinet')
+        ->middleware(UserPublishedMiddleware::class);
        // ->middleware(UserPublishedMiddleware::class)
     ;
 
 
     Route::get('/cabinet/edit', 'edit')
-        ->name('cabinet.edit');
+        ->name('cabinet.edit')
+        ->middleware(UserPublishedMiddleware::class);
+
 
 
 
@@ -114,16 +117,22 @@ Route::controller(DashboardController::class)->group(function () {
 
 
     Route::post('/cabinet/setting.handel', 'settingHandel')
-        ->name('setting.handel');
+        ->name('setting.handel')
+        ->middleware(UserPublishedMiddleware::class);
+
 
     Route::post('/cabinet/setting_full.handel', 'settingFullHandel')
-        ->name('setting_full.handel');
+        ->name('setting_full.handel')
+        ->middleware(UserPublishedMiddleware::class);
+
 
 
 
 
     Route::post('/cabinet/setting-password.handel', 'settingPasswordHandel')
-        ->name('setting.password.handel');
+        ->name('setting.password.handel')
+        ->middleware(UserPublishedMiddleware::class);
+
 
 
 });
@@ -188,10 +197,11 @@ Route::controller(AjaxController::class)->group(function () {
     Route::post('/send-mail/order-sing-up-lesson', 'sing_up_lesson'); // запись на курсы
     Route::post('/send-mail/feedback', 'feedback'); // оставление отзывы о медиаторе
 
-
-
     /* загрузка аватара*/ //
     Route::post('/cabinet/upload-avatar', 'uploadAvatar')->name('uploadAvatar');
+    /* загрузка документов*/
+    Route::post('/cabinet/upload-docs', 'uploadDocs')->name('uploadDocs');
+    Route::post('/cabinet/delete-docs', 'deleteDocs')->name('deleteDocs');
 
 });
 /**

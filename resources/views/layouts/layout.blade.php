@@ -36,6 +36,11 @@
 @include('include.modals.temp_forms.sign_up')
 @include('include.modals.temp_forms.bid')
 @include('include.modals.temp_forms.feedback')
+<div id="dialog-confirm" class="display_none" title="">
+    <div class="desc">
+    <p><span class="ui-icon ui-icon-alert"></span>Данный файл будет удален</p>
+    </div>
+</div>
 
 
 </body>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Domain\User\QueryBuilders\SearchQueryBuilder;
+use Domain\User\ViewModels\UserFilesViewModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -302,33 +303,33 @@ class User extends Authenticatable
     public function getCitiesAttribute()
     {
 
-      return UserCity::query()->select('id','title')->get();
+        return UserCity::query()->select('id', 'title')->get();
 
     }
 
     public function getLanguagesAttribute()
     {
 
-      return UserLanguage::query()->select('id','title')->get();
+        return UserLanguage::query()->select('id', 'title')->get();
 
     }
 
     public function getListsAttribute()
     {
 
-      return UserList::query()->select('id','title')->get();
+        return UserList::query()->select('id', 'title')->get();
 
     }
 
     public function getTypesAttribute()
     {
 
-      return UserType::query()->select('id','title')->get();
+        return UserType::query()->select('id', 'title')->get();
 
     }
 
 
-    public function getCityAttribute(): array | bool
+    public function getCityAttribute(): array|bool
     {
         if (count($this->user_city)) {
 
@@ -336,7 +337,7 @@ class User extends Authenticatable
                 $result[$item->id] = $item->title;
             }
 
-        return $result;
+            return $result;
 
         }
         return false;
@@ -376,6 +377,210 @@ class User extends Authenticatable
         return false;
 
     }
+
+    /**
+     * @return array
+     * файлы пользоватеоей
+     * Удостоверение личности
+     * $user->files_user_idcard
+     */
+    public function getFilesUserIdcardAttribute()
+    {
+
+        if ($this->user_idcard) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_idcard as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_idcard);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+    /**
+     * @return array
+     * файлы пользоватеоей
+     * Справка об отсуствии судимости:
+     * $user->files_user_judge
+     */
+
+    public function getFilesUserJudgeAttribute()
+    {
+
+        if ($this->user_judge) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_judge as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_judge);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+
+    /**
+     * @return array
+     * файлы пользоватеоей
+     * Справка с псих диспансера:
+     * $user->files_user_judge
+     */
+
+    public function getFilesUserCrazyAttribute()
+    {
+
+        if ($this->user_crazy) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_crazy as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_crazy);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+    /**
+     * @return array
+     * файлы пользоватеоей
+     * Диплом:
+     * $user->files_user_diplom
+     */
+
+    public function getFilesUserDiplomAttribute()
+    {
+
+        if ($this->user_diplom) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_diplom as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_diplom);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+    /**
+     * @return array
+     * файлы пользоватеоей
+     * Общий курс медиатора
+     * $user->files_user_cert_mediator
+     */
+
+    public function getFilesUserCertMediatorAttribute()
+    {
+
+        if ($this->user_cert_mediator) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_cert_mediator as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_cert_mediator);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+   /**
+     * @return array
+     * файлы пользоватеоей
+     * Спец. курс медиатора:
+     * $user->files_user_special_cert_mediator
+     */
+
+    public function getFilesUserSpecialCertMediatorAttribute()
+    {
+
+        if ($this->user_special_cert_mediator) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_special_cert_mediator as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_special_cert_mediator);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+   /**
+     * @return array
+     * файлы пользоватеоей
+     * Курс медиатор тренер:
+     * $user->files_user_mediator_trener
+     */
+
+    public function getFilesUserMediatorTrenerAttribute()
+    {
+
+        if ($this->user_mediator_trener) {
+            $ok = false;
+            $arr = array();
+            foreach ($this->user_mediator_trener as $k => $g) {
+                if ($g['json_file_file']) {
+                    $ok = true;
+                }
+            }
+            if ($ok) {
+                $arr = UserFilesViewModel::make()->json_files($this->user_mediator_trener);
+            }
+            return $arr;
+
+        }
+        return [];
+
+    }
+
+
+
+
+
+
+
+
 
 
     /**
