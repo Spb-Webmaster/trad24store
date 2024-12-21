@@ -1,12 +1,10 @@
 @extends('layouts.layout')
-
 <x-seo.meta
     title="{{ $item->user_type->title }}  - {{ $item->username }} | {{ $item->email }}"
     description="{{ $item->user_type->title }} - {{ $item->username }}"
     keywords="{{ $item->user_type->title }} {{ $item->username }} "
 
 />
-
 @section('content')
     <main>
         <div class="block">
@@ -63,6 +61,8 @@
 
                                                 @endforeach</div>
                                         </div>
+                                        @if($item->active_contact)
+
                                         <div class="item_address _item_opt">
                                             <div class="_label">Адрес:</div>
                                             <div class="_value">
@@ -73,6 +73,7 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        @endif
                                         <div class="item_status _item_opt">
                                             <div class="_label">Статус:</div>
                                             <div class="_value">
@@ -88,7 +89,7 @@
                                             <div class="item_sphere _item_opt">
                                                 <div class="_label">Сфера специализации:</div>
                                                 <div class="_value">
-                                                    {{ $item->sphere }}
+                                                    {!!  $item->sphere !!}
                                                 </div>
                                             </div>
                                         @endif
@@ -112,7 +113,7 @@
                                                 <div class="_value">
                                                     <div class="_value">
 
-                                                        {{ $item->oput }}
+                                                        {!!   $item->oput !!}
 
                                                     </div>
                                                 </div>
@@ -124,7 +125,7 @@
                                                 <div class="_label">Дополнительно:</div>
                                                 <div class="_value">
                                                     <div class="_value">
-                                                        {{ $item->dop }}
+                                                        {!!  $item->dop !!}
                                                     </div>
                                                 </div>
                                             </div>

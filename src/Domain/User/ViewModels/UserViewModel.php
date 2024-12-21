@@ -28,7 +28,7 @@ class UserViewModel
 
         $result = User::query()
             ->get_data(1)
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $result;
     }
 
@@ -37,7 +37,7 @@ class UserViewModel
     {
         $result = User::query()
             ->get_data(2)
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $result;
     }
 
@@ -45,7 +45,7 @@ class UserViewModel
     {
         $result = User::query()
             ->get_data(3)
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $result;
     }
 
@@ -61,7 +61,7 @@ class UserViewModel
             ->orderBy('user_list_title', 'desc')
             ->orderBy('user_diplom', 'desc')
             ->orderBy('avatar', 'desc')
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $users;
     }
 

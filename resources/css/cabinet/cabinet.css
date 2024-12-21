@@ -602,6 +602,17 @@
   .yellow_mess p {
     line-height: 1.4em; }
 
+.green_mess {
+  background: #43D38B;
+  color: #fff; }
+  .green_mess .Y_h2 {
+    padding: 5px 0 16px 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2em; }
+  .green_mess p {
+    line-height: 1.4em; }
+
 /** //////////////  Кабинет левая  часть, баннер публикации/**/
 
 /*# sourceMappingURL=cabinet.css.map */

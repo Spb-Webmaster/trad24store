@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\ChangeContacts\ChangeContactsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Report\ReportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Pages\CategoryController;
 use App\Http\Controllers\Pages\ProductController;
@@ -127,8 +128,6 @@ Route::controller(DashboardController::class)->group(function () {
 
 
 
-
-
     Route::post('/cabinet/setting-password.handel', 'settingPasswordHandel')
         ->name('setting.password.handel')
         ->middleware(UserPublishedMiddleware::class);
@@ -139,6 +138,25 @@ Route::controller(DashboardController::class)->group(function () {
 
 /**
  *  Cabinet
+ */
+
+/**
+ *  Отчеты
+ */
+
+Route::controller(ReportController::class)->group(function () {
+
+    Route::get('/reports', 'reports')
+        ->name('reports')
+        ->middleware(UserPublishedMiddleware::class);
+    Route::get('/reports/add', 'reportAdd')
+        ->name('reports.add')
+        ->middleware(UserPublishedMiddleware::class);
+});
+
+
+/**
+ *  Отчеты
  */
 
 

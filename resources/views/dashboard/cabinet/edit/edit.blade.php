@@ -1,7 +1,9 @@
 @extends('layouts.layout_cabinet')
-@section('title', ($seo_title) ?? __('Редактировать профиль') )
-@section('description', ($seo_description)?? __('Редактировать профиль') )
-@section('keywords', ($seo_keywords)?? __('Редактировать профиль') )
+<x-seo.meta
+    title="Редактировать профиль  - {{ $user->user }} "
+    description="Редактировать профиль"
+    keywords="Редактировать профиль"
+/>
 @section('cabinet')
     <main class="m_cabinet">
 

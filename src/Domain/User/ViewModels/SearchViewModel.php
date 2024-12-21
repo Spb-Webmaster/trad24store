@@ -15,7 +15,7 @@ class SearchViewModel
         $search = $request->mediator_search;
         $result = User::query()
             ->get_search_data($search, 1, $city)
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $result;
 
 
@@ -26,7 +26,7 @@ class SearchViewModel
         $search = $request->mediator_search;
         $result = User::query()
             ->get_search_data($search, 2, $city)
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $result;
 
 
@@ -38,7 +38,7 @@ class SearchViewModel
         $search = $request->mediator_search;
         $result = User::query()
             ->get_search_data($search, 3, $city)
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
         return $result;
 
 

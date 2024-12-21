@@ -27,7 +27,19 @@
     </div>
 </div>
 
-<div class="c__block registerCompany__js @if($user->user_type->id != 2) display_none @endif ">
+@php
+    $company = '';
+        if(isset($user->user_type->id)) {
+            if($user->user_type->id != 2) {
+                $company = 'display_none';
+            }
+        } else {
+               $company = 'display_none';
+
+        }
+@endphp
+
+<div class="c__block registerCompany__js  {{ $company }}">
     <div class="c__flex">
         <div class="c__flex_100">
             <div class="text_input">
@@ -272,15 +284,16 @@
     <div class="c__flex">
         <div class="c__flex_100">
             <div class="text_input textarea_input">
-                <x-forms.textarea
-                    type="textarea"
+                <x-forms.text-input_fromLabel
+                    type="text"
+                    id="registerCertificate"
                     name="certificate"
                     placeholder="Сертификат"
-                    value="{!!  (isset($user->certificate))? strip_tags($user->certificate, '<code><b><i><strong>') : (old('certificate')?:'') !!}"
+                    value="{{ (old('certificate'))?:((isset($user->certificate))?$user->certificate:'')  }}"
                     class="input certificate"
+                    :isError="$errors->has('certificate')"
                 />
                 <x-forms.error class="error_certificate"/>
-
             </div>
 
 

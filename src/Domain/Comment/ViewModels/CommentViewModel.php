@@ -39,7 +39,7 @@ class CommentViewModel
             ->where('published', 1)
             ->where('user_id', $id)
             ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->paginate(config('site.constants.paginate'));
     }
 
     /**
@@ -52,13 +52,13 @@ class CommentViewModel
     public function rating($id): float
     {
         $stars = UserComment::query()
-          //  ->where('published', 1)
+            //  ->where('published', 1)
             ->select('stars')
             ->where('user_id', $id)
             ->get();
 
-
-        if ($stars) {
+        $result = array();
+        if (count($stars)) {
             $count = count($stars); // количество отзывов
             foreach ($stars as $item) {
                 $result[] = $item->stars;
@@ -66,12 +66,9 @@ class CommentViewModel
 
             $sum = array_sum($result); //сумма отзывов
             $arif = ceil($sum / $count);
-
+            return (isset($arif)) ? $arif : 0;
         }
-
-
-           return (isset($arif))?$arif:0;
-
+        return 0;
 
 
     }

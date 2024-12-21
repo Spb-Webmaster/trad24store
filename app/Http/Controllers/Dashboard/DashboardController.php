@@ -225,7 +225,6 @@ class DashboardController extends Controller
             }
 
 
-
             if ($request->website) {
 
                 $user->website = $request->website; // website
@@ -236,9 +235,9 @@ class DashboardController extends Controller
              */
 
 
-            if (textarea($request->certificate)) {
+            if ($request->certificate) {
 
-                $user->certificate = textarea($request->certificate); // сертификат (textarea)
+                $user->certificate = strip_tags($request->certificate); // сертификат (text)
             }
 
             if (textarea($request->sphere)) {

@@ -105,7 +105,7 @@ class User extends Authenticatable
 
     public function user_mediator(): HasMany
     {
-        return $this->hasMany(UserMediator::class);
+        return $this->hasMany(UserMediator::class)->orderBy('created_at', 'desc');
     }
 
     public function user_list(): BelongsToMany
@@ -142,6 +142,22 @@ class User extends Authenticatable
         ];
     }
 
+    public function getUserAttribute()
+    {
+
+        if($this->username) {
+            return $this->username;
+        }
+        return $this->name;
+
+
+    }
+
+    /**
+     * @return float|int
+     * user_mediator_sum
+     * Все медиации пользователя
+     */
 
     public function getUserMediatorSumAttribute()
     {
@@ -167,6 +183,12 @@ class User extends Authenticatable
 
     }
 
+    /**
+     * @return float|int
+     * user_mediator_sem
+     * Медиация - семейная
+     */
+
 
     public function getUserMediatorSemAttribute()
     {
@@ -183,6 +205,12 @@ class User extends Authenticatable
 
     }
 
+    /**
+     * @return float|int
+     * user_mediator_ugo
+     * Медиация - Уголовная
+     */
+
     public function getUserMediatorUgoAttribute()
     {
         if (count($this->user_mediator)) {
@@ -198,6 +226,12 @@ class User extends Authenticatable
 
     }
 
+    /**
+     * @return float|int
+     * user_mediator_gra
+     * Медиация - Гражданская
+     */
+
     public function getUserMediatorGraAttribute()
     {
         if (count($this->user_mediator)) {
@@ -212,7 +246,11 @@ class User extends Authenticatable
         return 0;
 
     }
-
+    /**
+     * @return float|int
+     * user_mediator_kor
+     * Медиация - Корпаративная
+     */
     public function getUserMediatorKorAttribute()
     {
         if (count($this->user_mediator)) {
@@ -227,7 +265,11 @@ class User extends Authenticatable
         return 0;
 
     }
-
+    /**
+     * @return float|int
+     * user_mediator_uve
+     * Медиация - Ювенальная
+     */
     public function getUserMediatorUveAttribute()
     {
         if (count($this->user_mediator)) {
@@ -242,7 +284,11 @@ class User extends Authenticatable
         return 0;
 
     }
-
+    /**
+     * @return float|int
+     * user_mediator_tru
+     * Медиация - Трудовая
+     */
     public function getUserMediatorTruAttribute()
     {
         if (count($this->user_mediator)) {
@@ -257,6 +303,12 @@ class User extends Authenticatable
         return 0;
 
     }
+
+    /**
+     * @return float|int
+     * user_mediator_ban
+     * Медиация - Банковские споры
+     */
 
     public function getUserMediatorBanAttribute()
     {

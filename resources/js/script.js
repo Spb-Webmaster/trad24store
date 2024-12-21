@@ -26,6 +26,7 @@ import { chosen } from './include/select';
 import { bid } from './include/bid';
 import {localDataPicker, datepicker_birthdate} from "./include/datapicker";
 import {upload_doc, removeFilesLoadItem, titleFiles} from "./include/upload_docs";
+import {report_toggle} from "./include/report";
 
 
 
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     upload_doc()  //основной загрузчик
     removeFilesLoadItem()   // удаляем загружаемый файл (записанный в БД и сохраненный, только предварительное нажатие, далее нужно сохранить)
     titleFiles()  // подпись к скачаваемым файлам
+    report_toggle()  // toggle отчет (развернуть - свернуть)
 
 
 
