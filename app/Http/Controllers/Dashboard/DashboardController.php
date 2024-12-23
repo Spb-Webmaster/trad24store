@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Events\UserUpdate\UploadUserSelfFormEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateFormRequest;
 use App\Http\Requests\UpdateFullFormRequest;
 use App\Http\Requests\UpdatePasswordFormRequest;
+use App\Mail\UpdateUserSelf;
 use App\Models\User;
 
 use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -20,6 +23,9 @@ class DashboardController extends Controller
          */
 
         $user = auth()->user();
+        if(!$user) {
+            abort(404);
+        }
 
         /**
          *  запустим сессию для проверки этого юзера в settingHandel
@@ -82,14 +88,20 @@ class DashboardController extends Controller
          */
         if ($session_user == $request->id) {
             $user = User::query()
-                ->where('id', auth()->user()->id)
+                ->where('id', $request->id)
                 ->update([
                     'name' => $request->name,
                     'username' => $request->username,
                     'phone' => $request->phone,
                     'birthday' => ($request->birthday) ?: auth()->user()->birthday,
+                    'published' => 0, /** снять с пуликации **/
                 ]);
+            if (!is_null($user)) {
+                UploadUserSelfFormEvent::dispatch($request);   /** событие, создание токена, отправка админу  **/
+            }
         }
+
+
         flash()->info(config('message_flash.info.user_self_update'));
 
 
@@ -254,6 +266,13 @@ class DashboardController extends Controller
 
                 $user->dop = textarea($request->dop); // допорлнительно (textarea)
             }
+            /**
+             * заблокируем user
+             */
+
+
+                $user->published = 0; // заблокируем
+
             /**
              * запишем, что есть
              */

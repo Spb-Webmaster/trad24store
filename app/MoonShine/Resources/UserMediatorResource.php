@@ -48,7 +48,6 @@ class UserMediatorResource extends ModelResource
         return [
             ID::make(),
 
-            Text::make('Название', 'title'),
             BelongsTo::make('Пользователь', 'user', resource: new UserResource())->searchable(),
         ];
     }
@@ -78,6 +77,9 @@ class UserMediatorResource extends ModelResource
             Switcher::make('Трудовые споры', 'tru'),
 
             Switcher::make('Банковские споры', 'ban'),
+
+            Switcher::make('Публ.', 'published')->updateOnPreview(),
+
 
 
 
@@ -160,6 +162,11 @@ class UserMediatorResource extends ModelResource
 
                                 ]),
 
+                                Collapse::make('Публикация', [
+
+                                    Switcher::make('Публикация', 'published')->default(0),
+
+                                ]),
 
                             ])
                                 ->columnSpan(6)

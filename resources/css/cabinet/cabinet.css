@@ -75,7 +75,8 @@
   width: 100%;
   height: 46px;
   border-radius: 6px;
-  border: 1px solid #dddddd; }
+  border: 1px solid #dddddd;
+  margin: 2px 0; }
 
 .birthdate {
   display: flex;

@@ -145,7 +145,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 
 
                 MenuItem::make(
-                    static fn() => __('Фронт'),
+                    static fn() => __('Настройки'),
                     new SettingPage()
                 )->icon('heroicons.adjustments-vertical'),
                 MenuItem::make(

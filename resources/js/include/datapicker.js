@@ -26,12 +26,30 @@ export function localDataPicker() {
 }
 
 export function datepicker_birthdate() {
-    $(".datepicker-birthdate").datepicker({
+    $(".datepicker__js").datepicker({
             changeMonth: true,
             changeYear: true,
             maxDate: "-16Y",
             minDate: "-80Y",
             yearRange: "-80:-16",
+            onSelect: function () {
+                var dateObject = $(this).datepicker('getDate');
+                $('#alternate').text(moment(dateObject).format('LL'));
+
+            }
+
+        });
+
+}
+
+export function datepicker_report() {
+    $(".datepicker_report__js").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: new Date(),
+        /*     maxDate: "-16Y",
+             minDate: "-80Y",
+             yearRange: "-80:-16",*/
             onSelect: function () {
                 var dateObject = $(this).datepicker('getDate');
                 $('#alternate').text(moment(dateObject).format('LL'));

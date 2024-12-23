@@ -673,3 +673,23 @@ if (!function_exists('textarea')) {
 
 
 
+
+/**
+ * изменяем дату для сохранения
+ */
+
+if (!function_exists('report_month')) {
+    function report_month($date): string
+    {
+        $old_date_timestamp = strtotime($date);
+        if($old_date_timestamp) {
+            return date("Y-m-d H:i:s", $old_date_timestamp);
+        } else {
+            return '';
+        }
+
+    }
+}
+
+
+

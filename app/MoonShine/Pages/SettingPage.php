@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Pages;
 
 
+use App\MoonShine\Fields\Node;
 use Illuminate\Support\Facades\Storage;
 use MoonShine\Components\Card;
 use MoonShine\Components\FormBuilder;
@@ -158,6 +159,33 @@ class SettingPage extends Page
                                     ]),
 
                                 ])->columnSpan(6),
+
+
+                            ])
+
+
+                        ]),
+
+                        Tab::make(__('Email получателя системных сообщений'), [
+
+                            Divider::make('Опции'),
+                            Grid::make([
+                                Column::make([
+
+                                    Block::make([
+                                        Json::make('Электронная почта', 'json_emails')->fields([
+
+                                            Text::make('', 'json_email')->hint('Владелец этого email будет получать все уведомления (изменения) при редактировании личных кабинетов пользователями.'),
+
+                                        ])->vertical()->creatable(limit: 3)
+                                            ->removable()->default((isset($json_emails))? $json_emails : ''),
+
+
+
+                                    ]),
+
+                                ])->columnSpan(12),
+
 
 
                             ])

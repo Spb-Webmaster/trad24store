@@ -51,7 +51,7 @@
             <x-forms.error class="error_username"/>
         </div>
 
-        <div class="text_input pad_t6_important">
+        <div class="text_input ">
 
             <div class="birthdate_wrap">
                 @if(isset($user->birthday))
@@ -59,7 +59,7 @@
                         {{ __('Дата рождения') }}
 
                         <div class="birthdate_pic">
-                            <input type="text" name="birthday" class="datepicker-birthdate"
+                            <input type="text" name="birthday" class="datepicker__js datepicker-birthdate"
                                    value="{{ ((isset($user->birthday))?$user->birthday:'') }}"/>
                             <a href="javascript:void(0);" class="datepicker-birthdate_result"
                                id="alternate">{{ rusdate3($user->birthday) }}</a>
@@ -71,7 +71,7 @@
                         <span>{{ __('Дата рождения') }}</span>
 
                         <div class="birthdate_pic">
-                            <input type="text" name="birthday" class="datepicker-birthdate" value="1970-01-01"/>
+                            <input type="text" name="birthday" class="datepicker__js datepicker-birthdate" value="1970-01-01"/>
                             <a href="javascript:void(0);" class="datepicker-birthdate_result"
                                id="alternate">{{ __('Добавить') }}</a>
                         </div>

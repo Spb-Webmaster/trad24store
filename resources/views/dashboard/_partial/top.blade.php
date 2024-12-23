@@ -1,5 +1,6 @@
 <div class="hbox__top pad_b1">
-
+    {{--$view - передаются в include (может не быть )--}}
+    {{--$title - передаются в include (может не быть )  --}}
 @if(!isset($view))
 
     <div class="cab_top_flex">

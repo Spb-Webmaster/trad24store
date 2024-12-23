@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_languages', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('slug')->nullable();
-            $table->timestamps();
+        Schema::table('user_mediators', function (Blueprint $table) {
+            $table->integer('published')->default(0);
+
         });
-
-
     }
 
     /**
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_languages');
+        Schema::table('user_mediators', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -20,26 +20,33 @@ class UserMediator extends Model
         'ban',
         'desc',
         'params',
-        'user_id'
+        'published',
+        'user_id',
+        'created_at' // добавлено для предотвращенияч конфликта сохранения из админки и из личного кабинета
     ];
     protected $casts = [
         'params' => 'collection'
     ];
 
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    protected static function boot()
+
+
+
+    protected
+    static function boot()
     {
         parent::boot();
 
         # Проверка данных  перед сохранением
         static::saving(function ($Moonshine) {
-            $Moonshine->title = $Moonshine->user->name . ': '. rusdate_month($Moonshine->created_at) ;
-
+            if (isset($Moonshine->user->name)) {
+                $Moonshine->title = $Moonshine->user->name . ': ' . rusdate_month($Moonshine->created_at);
+            }
         });
 
 

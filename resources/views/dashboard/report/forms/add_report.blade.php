@@ -2,7 +2,7 @@
     <x-forms.auth-form
         title=""
         subtitle=""
-        action="{{ route('setting_full.handel') }}"
+        action="{{ route('reports_add.handel') }}"
         method="POST"
         enctype="multipart/form-data"
     >
@@ -19,7 +19,7 @@
             <div class=" text_input w_30">
                 <input type="hidden" value="{{ $user->id  }}" name="id">
                 <x-forms.primary-button>
-                    {{ __('Изменить профиль') }}
+                    {{ __('Отправить') }}
                 </x-forms.primary-button>
             </div>
         </div>

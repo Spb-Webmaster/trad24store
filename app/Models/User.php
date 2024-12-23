@@ -105,7 +105,11 @@ class User extends Authenticatable
 
     public function user_mediator(): HasMany
     {
-        return $this->hasMany(UserMediator::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(UserMediator::class)->where('published', 1)->orderBy('created_at', 'desc');
+    }
+    public function user_mediator_nopublished(): HasMany
+    {
+        return $this->hasMany(UserMediator::class, 'user_id')->orderBy('created_at', 'desc');
     }
 
     public function user_list(): BelongsToMany
@@ -128,6 +132,10 @@ class User extends Authenticatable
         return $this->hasMany(UserComment::class);
     }
 
+    public function user_token(): HasMany
+    {
+        return $this->hasMany(UserToken::class);
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -142,6 +150,10 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * @return mixed|string|null
+     * Можно всегда выводить $user->user
+     */
     public function getUserAttribute()
     {
 
@@ -179,6 +191,27 @@ class User extends Authenticatable
 
         }
         return 0;
+
+
+    }
+
+    /**
+     * @return string
+     *
+     * user_html_report_options
+     *
+     */
+
+    public function getUserHtmlReportOptionsAttribute():string
+    {
+        settype($result, "string");
+        for ($i=1;$i<=50;$i++)
+        {
+            $result .= '<option value="'.$i.'">'. $i .'</option>';
+        }
+
+
+        return $result;
 
 
     }

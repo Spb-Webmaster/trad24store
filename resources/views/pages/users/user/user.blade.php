@@ -265,36 +265,16 @@
                                 @endif
 
                                 @if( $item->user_mediator_sum )
-                                    <div class="count_to_mediators">
-                                        <div class="count_t_m_top">
-                                            <div class="count_m">Количество медиации:
-                                                <span>{{ $item->user_mediator_sum }}</span></div>
-                                        </div>
-                                        <div class="count_t_m_middle">
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Семейная</div>
-                                                <span>{{ $item->user_mediator_sem }}</span></div><!--.count_m_opt-->
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Уголовная</div>
-                                                <span>{{ $item->user_mediator_ugo }}</span></div><!--.count_m_opt-->
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Гражданская</div>
-                                                <span>{{ $item->user_mediator_gra }}</span></div><!--.count_m_opt-->
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Корпоративная</div>
-                                                <span>{{ $item->user_mediator_kor }}</span></div><!--.count_m_opt-->
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Ювенальная</div>
-                                                <span>{{ $item->user_mediator_uve }}</span></div><!--.count_m_opt-->
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Трудовые споры</div>
-                                                <span>{{ $item->user_mediator_tru }}</span></div><!--.count_m_opt-->
-                                            <div class="count_m_opt">
-                                                <div class="name_medi">Банковские споры</div>
-                                                <span>{{ $item->user_mediator_ban }}</span></div><!--.count_m_opt-->
-                                        </div>
-                                        <div class="count_t_m_bottom"></div>
-                                    </div>
+                             <x-dashboard.report.report_sum
+                             sum="{{$item->user_mediator_sum}}"
+                             sem="{{$item->user_mediator_sem}}"
+                             ugo="{{$item->user_mediator_ugo}}"
+                             gra="{{$item->user_mediator_gra}}"
+                             kor="{{$item->user_mediator_kor}}"
+                             uve="{{$item->user_mediator_uve}}"
+                             tru="{{$item->user_mediator_tru}}"
+                             ban="{{$item->user_mediator_ban}}"
+                             />
                                 @endif
 
                             </div>

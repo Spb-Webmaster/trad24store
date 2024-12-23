@@ -4,22 +4,24 @@
     method="POST"
 >
 
+
+
     <div class="text_input">
-        <x-forms.text-input
-            id="loginEmail"
-            type="email"
-            name="email"
-            placeholder="E-mail"
-            required="true"
-            value="{{ old('email') }}"
-            :isError="$errors->has('email')"
-        />
-        @error('email')
-        <x-forms.error>
-            {{ $message }}
-        </x-forms.error>
-        @enderror
+
+    <x-forms.text-input_fromLabel
+        type="text"
+        id="enterPhoneEmail"
+        name="phone_email"
+        placeholder="Номер телефона или email"
+        required="true"
+        class="input phone_email"
+        value="{{ old('phone_email') }}"
+        :isError="$errors->has('phone_email')"
+    />
+    <x-forms.error class="error_phone_email"/>
+
     </div>
+
     <div class="text_input">
         <x-forms.text-input
             id="loginPassword"

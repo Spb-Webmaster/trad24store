@@ -10,6 +10,7 @@ use App\Http\Controllers\ChangeContacts\ChangeContactsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Report\ReportController;
+use App\Http\Controllers\Dashboard\TokenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Pages\CategoryController;
 use App\Http\Controllers\Pages\ProductController;
@@ -42,7 +43,7 @@ Route::controller(SignInController::class)->group(function () {
     Route::get('/login', 'page')
         ->name('login')->middleware(RedirectIfAuthenticated::class);
 
-    Route::post('/login', 'handle')->name('login.handle');
+    Route::post('/login', 'handlePhoneEmail')->name('login.handle');
 
 });
 
@@ -149,14 +150,36 @@ Route::controller(ReportController::class)->group(function () {
     Route::get('/reports', 'reports')
         ->name('reports')
         ->middleware(UserPublishedMiddleware::class);
+
     Route::get('/reports/add', 'reportAdd')
         ->name('reports.add')
+        ->middleware(UserPublishedMiddleware::class);
+
+
+    Route::post('/reports/add.handel', 'reportAddHandel')
+        ->name('reports_add.handel')
         ->middleware(UserPublishedMiddleware::class);
 });
 
 
 /**
  *  Отчеты
+ */
+
+/**
+ *  Токены
+ */
+
+Route::controller(TokenController::class)->group(function () {
+
+    Route::get('/token/{token}/user/{id}', 'update_user_self')
+        ->name('update_user_self');
+
+});
+
+
+/**
+ *  Токены
  */
 
 

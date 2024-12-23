@@ -35,7 +35,7 @@
                             <div class="cabinet_radius12_fff">
 
 
-                                @if($user->user_mediator)
+                                @if(count($user->user_mediator_nopublished))
                                     <div class="m_reports">
                                         @foreach($reports as $report)
 
@@ -62,9 +62,12 @@
                                                         </div><!--.row_h_3-->
                                                     </div>
                                                     <div class="col s4">
-                                                        <div class="row_h_moderation_green">
-                                                            <span class="ic_"></span><i>Отчет принят</i>
-                                                        </div><!--.row_h-->
+
+
+                                                        <x-dashboard.report.published published="{{$report->published}}"/>
+
+
+
                                                     </div>
                                                     <div class="col s1">
                                                         <div class="report_Stroke report_Stroke__js">
@@ -126,6 +129,12 @@
 
                                     </div>
 
+                                @else
+
+                                    <div class="c__title_subtitle">
+                                        <h3 class="F_h1">Отчеты</h3>
+                                        <div class="F_h2 pad_t5"><span>Нет отправленных отчетов</span></div>
+                                    </div>
                             @endif
 
 

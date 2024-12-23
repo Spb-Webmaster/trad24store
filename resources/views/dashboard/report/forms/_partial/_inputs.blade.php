@@ -4,15 +4,39 @@
 
         <div class="c__flex_50 c__flex_50_left">
 
+
+            <div class="text_input pad_t6_important">
+                <span class="blue_label">Выбрать периуд медиации</span>
+
+                <div class="birthdate_wrap">
+
+                        <div class="birthdate">
+
+                            <span>{{ __('Учитывается месяц') }}</span>
+
+                            <div class="birthdate_pic">
+                                <input type="text" name="month" class="datepicker_report__js datepicker-birthdate" value=""/>
+                                <a href="javascript:void(0);" class="datepicker-birthdate_result"
+                                   id="alternate">{{ __('Выбрать') }}</a>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _sem">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="sem" id="registerSem">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="sem"
+                            id="registerSem">
 
                         <option value="">Семейная медиация</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -26,12 +50,11 @@
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _ugo">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="ugo" id="registerUgo">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="ugo"
+                            id="registerUgo">
 
                         <option value="">Уголовная медиация</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -45,12 +68,11 @@
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _gra">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="gra" id="registerGra">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="gra"
+                            id="registerGra">
 
                         <option value="">Гражданская медиация</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -63,12 +85,11 @@
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _uve">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="uve" id="registerUve">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="uve"
+                            id="registerUve">
 
                         <option value="">Ювенальная медиация</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -81,12 +102,11 @@
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _kor">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="kor" id="registerKor">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="kor"
+                            id="registerKor">
 
                         <option value="">Корпоративная медиация</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -99,12 +119,11 @@
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _tru">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="tru" id="registerTru">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="tru"
+                            id="registerTru">
 
                         <option value="">Трудовые споры</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -117,12 +136,11 @@
             <div class="text_input">
                 <span class="blue_label">Количество проведенных медиаций</span>
                 <div class="selectClass _ban">
-                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="ban" id="registerBan">
+                    <select class="js-chosen" data-placeholder="Количество проведенных медиаций" name="ban"
+                            id="registerBan">
 
                         <option value="">Банковские споры</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-
+                        {!!  $user->user_html_report_options !!}
 
 
                     </select>
@@ -138,7 +156,17 @@
         <div class="c__flex_50 c__flex_50_right">
 
             <div class="text_input">
+                <div class="medi_summ">
+                    @if($user->user_mediator_sum==0)
 
+                        <div class="em_18">Вы пока не создали ни одного отчета о проведенных медиациях</div>
+                    @else
+
+                        <div class="em_18">Общее количество проведенных медиаций <br><br><span
+                                class="b_36">{{ $user->user_mediator_sum }}</span></div>
+                    @endif
+
+                </div>
 
             </div>
 

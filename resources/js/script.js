@@ -24,7 +24,7 @@ import { canche_contacts, toggle_contacts } from './include/canche_contacts';
 import { city } from './include/city';
 import { chosen } from './include/select';
 import { bid } from './include/bid';
-import {localDataPicker, datepicker_birthdate} from "./include/datapicker";
+import {localDataPicker, datepicker_birthdate, datepicker_report} from "./include/datapicker";
 import {upload_doc, removeFilesLoadItem, titleFiles} from "./include/upload_docs";
 import {report_toggle} from "./include/report";
 
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     replace() // перезагрузка js на определенную страницу
     localDataPicker() // календарик основные настройки
     datepicker_birthdate() // календарь дня рождения
+    datepicker_report() // периуд отчетов
     upload_f()  // pзагрузка файлов (Аватар)
     cabinet_toggle_type()  // изменение полей при редактировании личного кабинета
     upload_doc()  //основной загрузчик

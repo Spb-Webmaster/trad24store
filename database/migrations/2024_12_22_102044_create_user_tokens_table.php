@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_languages', function (Blueprint $table) {
+        Schema::create('user_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->nullable();
+            $table->string('token');
+            $table->integer('published')->default(1);
+            $table->foreignIdFor(\App\Models\User::class)
+                ->nullable()
+                ->constrained()
+                ->cascadeOnDelete();
+
+
             $table->timestamps();
         });
 
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_languages');
+        Schema::dropIfExists('user_tokens');
     }
 };

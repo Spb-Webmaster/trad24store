@@ -381,6 +381,7 @@ class AjaxController extends Controller
 
 
         $user->$field = $user_files_field;
+        $user->published = 0; /** снять с пуликации **/
         $user->save();
 
 
@@ -519,6 +520,7 @@ class AjaxController extends Controller
             ->where('id', auth()->user()->id)
             ->update([
                 'avatar' => $avatar,
+                'published' => 0 /** снять с пуликации **/
             ]);
 
         $resp = array();

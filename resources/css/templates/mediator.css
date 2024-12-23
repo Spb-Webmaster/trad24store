@@ -120,12 +120,15 @@
     .flex_search_form .s_input_right .clear_form_2:hover {
       color: #095C9A; }
 
+.mediator_right .count_to_mediators {
+  margin: 23px 0 10px 0;
+  background: #F5F5F7; }
+
 .count_to_mediators {
   width: 100%;
-  background: #F5F5F7;
   border-radius: 12px;
-  border: 1px solid #E0E0E0;
-  margin: 23px 0 10px 0; }
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0; }
 
 .count_t_m_top {
   width: 100%;
@@ -275,6 +278,9 @@
   .option__report .rep_option {
     padding: 0 10px 0 0; }
 
+/**
+Иклнки модерации, зеленая и желтая
+ */
 .row_h_moderation_green {
   color: #43D38B;
   width: 100%;
@@ -296,6 +302,28 @@
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTEiIHN0cm9rZT0iIzQzRDM4QiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTggMTMuNTcxNEwxMS40Mjg2IDE1Ljg1NzFMMTYgOSIgc3Ryb2tlPSIjNDNEMzhCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K"); }
+
+.row_h_moderation_yellow {
+  color: #FF931E;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0 15px; }
+  .row_h_moderation_yellow .ic_yellow {
+    margin-right: 10px; }
+  .row_h_moderation_yellow i {
+    font-style: normal; }
+
+.ic_yellow {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  min-width: 24px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC42MzY0IDEzLjM2MzlDMjAuNjM2NCAxOC4xMzM5IDE2Ljc3IDIyLjAwMDMgMTIgMjIuMDAwM0M3LjIzMDAxIDIyLjAwMDMgMy4zNjM2NSAxOC4xMzM5IDMuMzYzNjUgMTMuMzYzOUMzLjM2MzY1IDguNTkzOSA3LjIzMDAxIDQuNzI3NTQgMTIgNC43Mjc1NEMxNi43NyA0LjcyNzU0IDIwLjYzNjQgOC41OTM5IDIwLjYzNjQgMTMuMzYzOVoiIHN0cm9rZT0iI0ZGOTMxRSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTguMzYzNjUgMTMuODE3OUgxMlY5LjI3MjQ2IiBzdHJva2U9IiNGRjkzMUUiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTIgNS42MzYzNkw2LjU0NTQ1IDIiIHN0cm9rZT0iI0ZGOTMxRSIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjIgNS42MzYzNkwxNy40NTQ2IDIiIHN0cm9rZT0iI0ZGOTMxRSIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K"); }
 
 .report_Stroke {
   padding: 0 15px;
@@ -341,6 +369,28 @@
   text-decoration: none;
   position: relative;
   max-width: 300px; }
+
+.medi_summ {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 10px; }
+
+.em_18 {
+  max-width: 300px;
+  font-style: italic;
+  font-family: 'Source Sans Pro', "Arial Narrow", Arial, Helvetica, sans-serif;
+  position: relative;
+  font-size: 19px;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 41px 10px  10px 10px; }
+
+.b_36 {
+  font-size: 36px;
+  color: #095C9A;
+  font-weight: bold;
+  position: relative; }
 
 /* //////////// отчеты медиаторов */
 
