@@ -363,7 +363,15 @@ class User extends Authenticatable
 
         if ($this->teacher == 1) {
 
-            return 'Преподаватель';
+            return config('site.constants.teacher_1');
+        }
+        if ($this->teacher == 2) {
+
+            return config('site.constants.teacher_2');
+        }
+        if ($this->teacher == 0) {
+
+            return config('site.constants.teacher_0');
         }
 
         return false;
@@ -376,6 +384,8 @@ class User extends Authenticatable
         if ($this->status == 1) {
 
             return 'Действующий';
+
+
         }
         if ($this->status == 0) {
 

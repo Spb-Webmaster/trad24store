@@ -5,7 +5,7 @@
     keywords="{{$lesson_item->keywords}}"
 />
 @section('canonical')
-<link rel="canonical" href="http://mediator.test/raspisanie/almaty/professionalnyy-mediator"/>
+<link rel="canonical" href="/raspisanie/almaty/professionalnyy-mediator"/>
 @endsection
 
 @section('content')

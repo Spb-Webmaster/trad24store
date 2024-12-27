@@ -32,7 +32,7 @@
         <div class="c__flex_50 c__flex_50_right">
 
             <div class="text_input">
-                <div class="active_contact">Введите данные ваших профилей в соц. сетях. У вас есть возможность запретить показ этих данных.</div>
+                <div class="active_contact">{{ config('site.constants.active_contact_text') }}</div>
 
 
             </div>

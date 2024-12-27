@@ -6,7 +6,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UploadUserFormEvent
+class UpdateUserFormEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Events\UserUpdate\UpdateUserEvent;
+use App\Events\UserUpdate\UpdateUserFormEvent;
+use App\Events\UserUpdate\UpdateUserSelfFormEvent;
+use App\Events\UserUpdate\UploadUserFormEvent;
 use App\Events\UserUpdate\UploadUserSelfFormEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateFormRequest;
@@ -96,8 +100,8 @@ class DashboardController extends Controller
                     'birthday' => ($request->birthday) ?: auth()->user()->birthday,
                     'published' => 0, /** снять с пуликации **/
                 ]);
-            if (!is_null($user)) {
-                UploadUserSelfFormEvent::dispatch($request);   /** событие, создание токена, отправка админу  **/
+            if ($user) {
+                UpdateUserSelfFormEvent::dispatch($request);   /** событие, создание токена, отправка админу  **/
             }
         }
 
@@ -242,6 +246,11 @@ class DashboardController extends Controller
                 $user->website = $request->website; // website
             }
 
+            if ($request->teacher) {
+
+                $user->teacher = $request->teacher; // преподаватель
+            }
+
             /**
              * тексты из textarea
              */
@@ -266,21 +275,33 @@ class DashboardController extends Controller
 
                 $user->dop = textarea($request->dop); // допорлнительно (textarea)
             }
-            /**
-             * заблокируем user
-             */
 
 
-                $user->published = 0; // заблокируем
+            $user->published = 0; /** заблокируем */
+
+            $dirty = $user->getDirty(); /** что изменилось */
 
             /**
              * запишем, что есть
              */
 
-            $user->save();  //это обновит запись с помощью id=$request->id
+            $result = $user->save();  //это обновит запись с помощью id=$request->id
+
+
+
+            if ($result) {
+
+            //    dd($user);
+
+               UpdateUserFormEvent::dispatch($user);   /** событие, создание токена, отправка админу  **/
+
+            }
 
 
         }
+
+        flash()->info(config('message_flash.info.user_self_update'));
+
         return redirect()->intended(route('cabinet.edit'));
 
     }

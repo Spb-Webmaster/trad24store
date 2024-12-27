@@ -38,7 +38,7 @@
                                         </div>
                                         <div class="mediator_left__content">
                                             @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
-                                            <h2 class="h2_blue">{{ ($item->username)?: $item->name  }}</h2>
+                                            <h2 class="h2_blue">{{ $item->user  }}</h2>
                                             <div class="desc">
                                                 <p class="">{{ $item->user_type->type }}</p>
                                                 @if($item->certificate)
@@ -202,6 +202,15 @@
                                         </div>
 
                                     </div>
+                                    <div class="m_cont">
+                                        <div class="m_cont__label">
+                                            Telegram:
+                                        </div>
+                                        <div class="m_cont__value">
+                                            {{ ($item->telegram)?:' - ' }}
+                                        </div>
+
+                                    </div>
 
                                     <div class="m_cont">
                                         <div class="m_cont__label">
@@ -213,15 +222,7 @@
 
                                     </div>
 
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            Telegram:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            {{ ($item->telegram)?:' - ' }}
-                                        </div>
 
-                                    </div>
 
                                     <div class="m_cont">
                                         <div class="m_cont__label">

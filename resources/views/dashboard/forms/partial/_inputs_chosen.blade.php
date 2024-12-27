@@ -282,6 +282,57 @@
 <div class="c__block">
 
     <div class="c__flex">
+
+        <div class="c__flex_50 c__flex_50_left">
+
+            <div class="text_input">
+                <span class="blue_label">Курс тренер медиатор</span>
+                <div class="selectClass _teacher">
+                    <select class="js-chosen" data-placeholder="Курс тренер медиатор" name="teacher" id="registerTeacher">
+
+                        <option value="0" @if(!$user->teacher)
+                            {{ 'selected' }}
+                            @endif>{{ config('site.constants.teacher_0') }}
+                        </option>
+                        <option value="1" @if($user->teacher == 1)
+                            {{ 'selected' }}
+                            @endif>{{ config('site.constants.teacher_1') }}
+                        </option>
+                        <option value="2" @if($user->teacher == 2)
+                            {{ 'selected' }}
+                            @endif>{{ config('site.constants.teacher_2') }}
+                        </option>
+
+
+                    </select>
+                    <label class="labelInput show" for="registerTeacher"></label>
+                    <x-forms.error class="error_teacher"/>
+                </div>
+
+            </div>
+
+
+        </div><!--.c__flex_50_left-->
+
+        <div class="c__flex_50 c__flex_50_right">
+
+            <div class="text_input">
+                <div class="active_contact">{{ config('site.constants.teacher_text') }}</div>
+
+
+            </div>
+
+
+        </div><!--.c__flex_50_right-->
+
+    </div><!--.c__flex-->
+</div>
+
+
+
+<div class="c__block">
+
+    <div class="c__flex">
         <div class="c__flex_100">
             <div class="text_input textarea_input">
                 <x-forms.text-input_fromLabel

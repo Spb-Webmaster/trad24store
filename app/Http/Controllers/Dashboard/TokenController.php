@@ -9,6 +9,7 @@ use App\Models\UserToken;
 class TokenController extends Controller
 {
     public function update_user_self($token, $id){
+
         if($token) {
             $user_token = UserToken::query()->where('token', $token)->first();  /** проверим токен */
         }
@@ -29,10 +30,10 @@ class TokenController extends Controller
             return view('dashboard.token.token');
         }
 
-
-        $user->user_token()->delete();
+        $user->user_token()->delete(); /** удалим вске токены этого пользователя  */
 
         $user->published = 1;
+
         $user->save();  /** опубликуем  user */
 
         flash()->info(config('message_flash.info.user_update'));

@@ -9,14 +9,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class UpdateUserSelf extends Mailable
+class UpdateUser extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public  array $data)
+    public function __construct(public  object $item)
     {
         //
     }
@@ -27,7 +27,7 @@ class UpdateUserSelf extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Изменение личных данных личного кабинете',
+            subject: 'Изменение данных личного кабинета',
         );
     }
 
@@ -37,7 +37,7 @@ class UpdateUserSelf extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'html.email.user_events.update_user_self_form',
+            view: 'html.email.user_events.update_user_form',
         );
     }
 
