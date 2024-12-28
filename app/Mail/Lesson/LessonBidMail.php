@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Lesson;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class UpdateUser extends Mailable
+class LessonBidMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public  object $item)
+    public function __construct(public  array $data)
     {
         //
     }
@@ -27,7 +26,7 @@ class UpdateUser extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Изменение данных личного кабинета',
+            subject: 'Форма заявки на обучение  - ' . $this->data['title'],
         );
     }
 
@@ -37,7 +36,7 @@ class UpdateUser extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'html.email.user_events.update_user_form',
+            view: 'html.email.order_sing_up_lesson_form',
         );
     }
 

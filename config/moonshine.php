@@ -66,7 +66,7 @@ return [
         'default_with_export' => true,
     ],
 
-    'auth' => [
+    'Auth' => [
         'enable' => true,
         'middleware' => Authenticate::class,
         'fields' => [

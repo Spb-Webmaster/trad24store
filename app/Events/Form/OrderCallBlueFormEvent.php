@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Events;
-
+namespace App\Events\Form;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SingUpLessonFormEvent
+class OrderCallBlueFormEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

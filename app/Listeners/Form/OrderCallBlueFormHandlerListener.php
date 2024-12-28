@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Form;
 
-use App\Events\OrderCallBlueFormEvent;
+use App\Events\Form\OrderCallBlueFormEvent;
+use App\Mail\Form\BidMail;
+use App\Mail\Form\OrderCallBlueMail;
 use App\Mail\SendMails;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
+use Support\Traits\CreatorToken;
+use Support\Traits\EmailAddressCollector;
 
 class OrderCallBlueFormHandlerListener
 {
+    use EmailAddressCollector;
+    use CreatorToken;
     /**
      * Create the event listener.
      */
@@ -23,13 +28,15 @@ class OrderCallBlueFormHandlerListener
      */
     public function handle(OrderCallBlueFormEvent $event): void
     {
+        /** по старому "сделаем" все переменные тут */
+
         $data['phone'] = $event->request->phone;
         $data['name'] = $event->request->name;
         $data['email'] = $event->request->email;
         $data['url'] = $event->request->url;
 
-        $sendMail =  new SendMails();
-        $sendMail->sendOrderBlueFormCall($data);
+
+        Mail::to($this->emails())->send(new OrderCallBlueMail($data));
 
     }
 }

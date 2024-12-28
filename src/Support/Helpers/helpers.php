@@ -176,9 +176,12 @@ if (!function_exists('birthdate2')) {
         if($birthdate == '1970-01-01') {
             return null;
         }
-        $date = new DateTime($birthdate);
-        $formattedDate = $date->format('d.m.Y');
-        return $formattedDate;
+        if(strtotime($birthdate)){
+            $date = new DateTime($birthdate);
+            $formattedDate = $date->format('d.m.Y');
+            return $formattedDate;
+        }
+        return  null;
     }
 }
 if (!function_exists('rusbirthdate')) {
@@ -405,6 +408,9 @@ if (!function_exists('rusdate2')) {
 if (!function_exists('rusdate3')) {
     function rusdate3($date): string|null
     {
+        if(is_null($date)) {
+            return ' - ';
+        }
         $timestump = strtotime($date);
         $month = [1 => "января", 2 => "февраля", 3 => "марта", 4 => "апреля", 5 => "мая", 6 => "июня", 7 => "июля", 8 => "августа", 9 => "сентября", 10 => "октября", 11 => "ноября", 12 => "декабря"];
 

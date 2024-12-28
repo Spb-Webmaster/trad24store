@@ -101,6 +101,7 @@ class DashboardController extends Controller
                     'published' => 0, /** снять с пуликации **/
                 ]);
             if ($user) {
+
                 UpdateUserSelfFormEvent::dispatch($request);   /** событие, создание токена, отправка админу  **/
             }
         }

@@ -1,16 +1,20 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\lesson;
 
-use App\Events\BidFormEvent;
-use App\Events\OrderCallEvent;
-use App\Events\SingUpLessonFormEvent;
-use App\Mail\SendMails;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Events\Lesson\SingUpLessonFormEvent;
+use App\Mail\Lesson\LessonBidMail;
+use Illuminate\Support\Facades\Mail;
+use Support\Traits\CreatorToken;
+use Support\Traits\EmailAddressCollector;
 
 class SingUpLessonFormHandlerListener
 {
+
+
+
+    use EmailAddressCollector;
+    use CreatorToken;
     /**
      * Create the event listener.
      */
@@ -21,10 +25,13 @@ class SingUpLessonFormHandlerListener
 
     /**
      * Handle the event.
-     * сообщение user, о том, нужно поззвонить (заказ звонка)
+     * сообщение user, о том, регистрация на урок
      */
     public function handle(SingUpLessonFormEvent $event): void
     {
+
+        /** по старому "сделаем" все переменные тут */
+
         $data['name'] = $event->request->name;
         $data['phone'] = $event->request->phone;
         $data['email'] = $event->request->email;
@@ -35,8 +42,10 @@ class SingUpLessonFormHandlerListener
         $data['city'] = (is_null($event->request->city))? ' - ': $event->request->city;
         $data['url'] = $event->request->url;
 
-        $sendMail =  new SendMails();
-        $sendMail->sendSingUpLessonForm($data);
+        Mail::to($this->emails())->send(new LessonBidMail($data));
+
+
+
 
     }
 }

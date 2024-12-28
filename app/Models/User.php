@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Events\Auth\ResetPasswordEvent;
 use Domain\User\QueryBuilders\SearchQueryBuilder;
 use Domain\User\ViewModels\UserFilesViewModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -672,6 +672,23 @@ class User extends Authenticatable
 
 
 
+    /**
+     * Замена стандартного сброса пароля
+     */
+
+    public function sendPasswordResetNotification($token)
+    {
+
+        settype($data, "array");
+        $data['email'] = $this->getEmailForPasswordReset();
+        $data['token'] = $token;
+
+        /**
+         * Событие отправка сообщения о сбросе пароля
+         */
+
+        ResetPasswordEvent::dispatch($data);
+    }
 
 
 

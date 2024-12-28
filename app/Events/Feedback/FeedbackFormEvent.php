@@ -1,32 +1,28 @@
 <?php
 
-namespace App\Events;
+namespace App\Events\Feedback;
 
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CreateUserEvent
+class FeedbackFormEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
+    public $request;
     /**
      * Create a new event instance.
      * Создайте новый экземпляр события.
      */
-    public function __construct($user)
+    public function __construct($request)
     {
-        $this->user = $user;
+        $this->request = $request;
     }
 
     /**
      * Get the channels the event should broadcast on.
-     * Найдите каналы, по которым должно транслироваться мероприятие.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
@@ -37,3 +33,4 @@ class CreateUserEvent
         ];
     }
 }
+

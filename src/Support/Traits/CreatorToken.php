@@ -13,13 +13,13 @@ trait CreatorToken
         $hash = $this->token();
 
         $user_token = new UserToken;
-        $user_token->token = $hash;
-        $user_token->user_id = $id;
-        $result = $user_token->save();
+            $user_token->token = $hash;
+            $user_token->user_id = $id;
+            $result = $user_token->save();
 
-        if($result) {
-            return $hash;
-        }
+            if ($result) {
+                return $hash;
+            }
 
         return false;
 

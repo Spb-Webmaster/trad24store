@@ -131,7 +131,7 @@ class TimetableViewModel
 
             $str .= '<div class="wrap_tr"><div class="flex_tr">';
             $str .= '<div class="td__ td1">' . (($item->date) ?: ' - ') . '</div>';
-            $str .= '<div class="td__ td2">' . (($item->title) ? $fancy : ' - ') . ' <span class="link">' . $link_lesson . '</span></div>';
+            $str .= '<div class="td__ td2"><div class="b"><span>Записаться</span></div>' . (($item->title) ? $fancy : ' - ') . ' <span class="link">' . $link_lesson . '</span></div>';
             $str .= '<div class="td__ td3">' . (($item->message) ?: ' - ') . '</div>';
             $str .= '<div class="td__ td4">' . (($item->time) ?: ' - ') . '</div>';
             $str .= '<div class="td__ td5">' . (($item->price) ? (($item->price_prefix) ? 'от ' : '') . price($item->price) . ' ' . config('currency.currency.KZT') : ' - ') . '</div>';

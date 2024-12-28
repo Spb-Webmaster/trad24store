@@ -122,7 +122,7 @@ class UserViewModel
         $u = array();
         if ($id = session('feedback_user')) { // если в сессии feedback_user, то получаем результаты
             session()->forget('feedback_user'); // удалим
-            $user = $this->user($id);
+            $user = User::find($id); /** получаем пользователя */
             if ($user) {
                 $u = array(
                     'user_name' => ($user->username) ?: $user->name,

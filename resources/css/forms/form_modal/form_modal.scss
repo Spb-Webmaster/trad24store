@@ -412,9 +412,28 @@ min-height: 200px;
 
     }
 
-
+.td__ {
+    position: relative;
+}
 }
 
+.b {
+    height: 20px;
+    position: absolute;
+    top: -20px;
+    span {
+        font-size: 12px;
+        font-weight: 100;
+        border-radius: 6px;
+        height: 20px;
+        color: #fff;
+        position:absolute;
+        background: #43D38B;
+        display: flex;
+        align-items: center;
+        padding: 0 7px;
+    }
+}
 .form_lesson_flex {
     padding: 0 0 16px 0;
     display: flex;

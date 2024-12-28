@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Auth;
 
-use App\Events\CreateUserEvent;
-use App\Mail\SendMails;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Events\Auth\CreateUserEvent;
+use App\Mail\Auth\SignUnUserMail;
+use Illuminate\Support\Facades\Mail;
+use Support\Traits\CreatorToken;
+use Support\Traits\EmailAddressCollector;
 
 class CreateUserHandlerListener
 {
+    use EmailAddressCollector;
+    use CreatorToken;
     /**
      * Create the event listener.
      */
@@ -25,8 +28,9 @@ class CreateUserHandlerListener
     {
 
                 $user = $event->user;
-                $sendMail =  new SendMails();
-                $sendMail->send_to_User($user);
+                Mail::to($user->email)->send(new SignUnUserMail($user));
+
+
 
     }
 }

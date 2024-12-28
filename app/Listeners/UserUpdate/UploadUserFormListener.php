@@ -3,9 +3,7 @@
 namespace App\Listeners\UserUpdate;
 
 use App\Events\UserUpdate\UpdateUserFormEvent;
-use App\Mail\SendMails;
-use App\Mail\UpdateUser;
-use App\Mail\UpdateUserSelf;
+use App\Mail\Dashboard\UpdateUserMail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Support\Traits\CreatorToken;
@@ -46,7 +44,7 @@ class UploadUserFormListener
 
         $item->hash = $hash; /** добаваим hash */
 
-        Mail::to($this->emails())->send(new UpdateUser($item));
+        Mail::to($this->emails())->send(new UpdateUserMail($item));
 
 
     }

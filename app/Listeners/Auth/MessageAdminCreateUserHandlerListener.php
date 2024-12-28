@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Auth;
 
-use App\Events\MessageAdminCreateUserEvent;
-use App\Mail\SendMails;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Events\Auth\MessageAdminCreateUserEvent;
+use App\Mail\Auth\SignUnAdminMail;
+use Illuminate\Support\Facades\Mail;
+use Support\Traits\CreatorToken;
+use Support\Traits\EmailAddressCollector;
 
 class MessageAdminCreateUserHandlerListener
 {
+    use EmailAddressCollector;
+    use CreatorToken;
     /**
      * Create the event listener.
      */
@@ -24,7 +27,7 @@ class MessageAdminCreateUserHandlerListener
     public function handle(MessageAdminCreateUserEvent $event): void
     {
         $user = $event->user;
-        $sendMail =  new SendMails();
-        $sendMail->send_to_Admin($user);
+        Mail::to($this->emails())->send(new SignUnAdminMail($user));
+
     }
 }

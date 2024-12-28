@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Form;
 
-use App\Events\OrderCallEvent;
+use App\Events\Form\OrderCallEvent;
+use App\Mail\Form\OrderCallMail;
 use App\Mail\SendMails;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
+use Support\Traits\CreatorToken;
+use Support\Traits\EmailAddressCollector;
 
 class OrderCallHandlerListener
 {
+    use EmailAddressCollector;
+    use CreatorToken;
     /**
      * Create the event listener.
      */
@@ -27,8 +31,8 @@ class OrderCallHandlerListener
         $data['name'] = $event->request->name;
         $data['url'] = $event->request->url;
 
-        $sendMail =  new SendMails();
-        $sendMail->sendOrderCall($data);
+        Mail::to($this->emails())->send(new OrderCallMail($data));
+
 
     }
 }

@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\BidFormEvent;
-use App\Events\FeedbackFormEvent;
-use App\Events\OrderCallBlueFormEvent;
-use App\Events\OrderCallEvent;
-
-use App\Events\SingUpLessonFormEvent;
+use App\Events\Feedback\FeedbackFormEvent;
+use App\Events\Form\BidFormEvent;
+use App\Events\Form\OrderCallBlueFormEvent;
+use App\Events\Form\OrderCallEvent;
+use App\Events\Lesson\SingUpLessonFormEvent;
+use App\Events\UserUpdate\UploadUserDocsFormEvent;
 use App\Models\User;
-
 use Domain\Comment\ViewModels\CommentViewModel;
 use Domain\Diplom\ViewModels\DiplomViewModel;
 use Domain\Timetable\ViewModels\TimetableViewModel;
 use Domain\User\ViewModels\UserFilesViewModel;
 use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AjaxController extends Controller
 {
@@ -273,35 +272,34 @@ class AjaxController extends Controller
     {
 
 
-
-        $user = UserViewModel::make()->feedback_user_session();
-
-        if (count($user)) {
-            $request->request->add($user);
-            $stars = CommentViewModel::make()->rating($user['user_id']); // пересчет рейтинга
-
-        }
-
-
-
-
         $validator = Validator::make($request->all(), [
             'phone' => ['required', 'string', 'min:5'],
             'email' => ['required', 'email', 'email:dns'],
             'feedback' => ['required'],
         ]);
-
         if ($validator->passes()) {
 
+        /* dump($request->all());
+         dump(session('feedback_user'));*/
+
+        $user = UserViewModel::make()->feedback_user_session(); /** пользователь для которого нужны результаты */
+
+        if (count($user)) {
+            $request->request->add($user); /** добавляем   **/
+            $stars = CommentViewModel::make()->rating($user['user_id']); /**  пересчет рейтинга */
+
+        }
 
 
             /**
              * Событие отправка сообщения админу (Отзыв о медиаторе)
              */
 
-            FeedbackFormEvent::dispatch($request);
 
-            CommentViewModel::make()->store($request);
+            CommentViewModel::make()->store($request); /** сохраним отзыв  **/
+
+            FeedbackFormEvent::dispatch($request);  /** событие, отправка админу  **/
+
 
             /**
              * возвращаем назад в браузер
@@ -330,7 +328,7 @@ class AjaxController extends Controller
         $user_id = auth()->user()->id;
 
         if(!$user_id) {
-            dd('Нет  auth()->user()->id');
+            dd('Нет  Auth()->user()->id');
         }
 
         $field = ($request->field)?:null;
@@ -388,6 +386,8 @@ class AjaxController extends Controller
         $new_files = UserFilesViewModel::make()->json_files($user->$field);
 
 
+        $user_files_field = array_merge(['files' =>$user_files_field], ['id' =>$user->id]); /** добавим id пользователя */
+        UploadUserDocsFormEvent::dispatch($user_files_field);   /** событие, создание токена, отправка админу  **/
 
             /**
              * возвращаем назад в браузер
@@ -420,7 +420,7 @@ class AjaxController extends Controller
         $user_id = auth()->user()->id;
 
         if(!$user_id) {
-            dd('Нет  auth()->user()->id');
+            dd('Нет  Auth()->user()->id');
         }
 
         $field = ($request->field)?:null;

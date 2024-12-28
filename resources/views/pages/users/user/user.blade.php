@@ -17,6 +17,7 @@
 
             </div>
         </div>
+
         <div class="block">
             <h1 class="h1">{{ $item->user_type->title }}</h1>
             <div class="content_Flex">
@@ -287,10 +288,6 @@
 
             </div>
         </div>
-
-        </div>
-
-
     </main>
 @endsection
 

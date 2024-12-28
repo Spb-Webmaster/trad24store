@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Events\UserUpdate;
+namespace App\Events\Auth;
+
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UploadUserDocsFormEvent
+class MessageAdminCreateUserEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $request;
 
+    public $user;
     /**
      * Create a new event instance.
      * Создайте новый экземпляр события.
      */
-    public function __construct($request)
+    public function __construct($user)
     {
-        $this->request = $request;
-
+        $this->user = $user;
     }
 
     /**

@@ -3,11 +3,9 @@
 namespace App\Listeners\UserUpdate;
 
 use App\Events\UserUpdate\UpdateUserSelfFormEvent;
-use App\Mail\UpdateUserSelf;
-use App\Models\UserToken;
+use App\Mail\Dashboard\UpdateUserSelfMail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use Support\Traits\CreatorToken;
 use Support\Traits\EmailAddressCollector;
 
@@ -39,8 +37,13 @@ class UploadUserSelfFormListener
             exit;
         }
 
-        $data = array_merge($data, ['hash' => $hash]);
-        Mail::to($this->emails())->send(new UpdateUserSelf($data));
+
+        if (is_array($data)) {
+            $data = array_merge($data, ['hash' => $hash]);
+
+        }
+
+        Mail::to($this->emails())->send(new UpdateUserSelfMail($data));
 
 
     }

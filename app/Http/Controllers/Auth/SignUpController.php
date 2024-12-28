@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\CreateUserEvent;
-use App\Events\MessageAdminCreateUserEvent;
+use App\Events\Auth\CreateUserEvent;
+use App\Events\Auth\MessageAdminCreateUserEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpFormRequest;
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 
 

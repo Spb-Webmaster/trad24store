@@ -1,30 +1,29 @@
 <?php
 
-namespace App\Events;
-use Illuminate\Broadcasting\Channel;
+namespace App\Events\Auth;
+
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class BidFormEvent
+class CreateUserEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $request;
+    public $user;
     /**
      * Create a new event instance.
      * Создайте новый экземпляр события.
      */
-    public function __construct($request)
+    public function __construct($user)
     {
-        $this->request = $request;
+        $this->user = $user;
     }
 
     /**
      * Get the channels the event should broadcast on.
+     * Найдите каналы, по которым должно транслироваться мероприятие.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */

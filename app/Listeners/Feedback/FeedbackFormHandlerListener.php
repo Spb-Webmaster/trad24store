@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Feedback;
 
-use App\Events\FeedbackFormEvent;
-use App\Events\OrderCallEvent;
-use App\Mail\SendMails;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Events\Feedback\FeedbackFormEvent;
+use App\Mail\Feedback\FeedbackMail;
+use Illuminate\Support\Facades\Mail;
+use Support\Traits\CreatorToken;
+use Support\Traits\EmailAddressCollector;
 
 class FeedbackFormHandlerListener
 {
+
+    use EmailAddressCollector;
+    use CreatorToken;
     /**
      * Create the event listener.
      */
@@ -24,6 +27,8 @@ class FeedbackFormHandlerListener
      */
     public function handle(FeedbackFormEvent $event): void
     {
+        /** по старому "сделаем" все переменные тут */
+
         $data['name'] = $event->request->name;
         $data['phone'] = $event->request->phone;
         $data['email'] = $event->request->email;
@@ -34,9 +39,7 @@ class FeedbackFormHandlerListener
         $data['mediator_email'] = ($event->request->user_email)?:' - ';
         $data['stars'] = $event->request->feedback_star;
 
-
-        $sendMail =  new SendMails();
-        $sendMail->feedback($data);
+         Mail::to($this->emails())->send(new FeedbackMail($data));
 
     }
 }
