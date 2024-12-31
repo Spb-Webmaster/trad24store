@@ -86,13 +86,16 @@
     background: #095C9A;
     color: #282828; }
 
+@media screen and (max-width: 1068px) {
+  .button {
+    font-size: calc(15px + 3 * ((100vw - 320px) / 1120)); } }
 @media (max-width: 793px) {
   .button_big {
     height: 46px;
     font-size: 16px; }
 
   .button_normal {
-    height: 36px;
+    height: 50px;
     font-size: 15px; }
 
   .button_white, .button_red, .button_white_red {

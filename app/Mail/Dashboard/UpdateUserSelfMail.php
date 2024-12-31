@@ -17,7 +17,6 @@ class UpdateUserSelfMail extends Mailable
      */
     public function __construct(public  array $data)
     {
-        //
     }
 
     /**
@@ -25,6 +24,7 @@ class UpdateUserSelfMail extends Mailable
      */
     public function envelope(): Envelope
     {
+
         return new Envelope(
             subject: 'Изменение личных данных личного кабинете',
         );

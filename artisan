@@ -13,3 +13,28 @@ $status = (require_once __DIR__.'/bootstrap/app.php')
     ->handleCommand(new ArgvInput);
 
 exit($status);
+?>
+<div class="bl_02_mod_res bl_02_mod_res_22">
+    <div class="bl_02_mod_res_title">Ближайшие мероприятия</div>
+    <div class="bl_02_mod_b01">
+
+        <div class="ob_ ob22" style="text-align: center;padding-top: 12px;">
+            <strong>Стили ведения переговоров</strong>
+            <span class="minidisco"  style="font-size: 19px; text-align: center">10, 11, 12 апреля 2025 г.</span>
+        </div>
+        <div class="ob_but" style="padding: 11px 0 11px 0"><a href="/schedule/stili-vedeniya-peregovorov" data-old="#modal1"
+                                                              class="bb0 top_vopros   modal-trigger"><span>Подробнее</span></a>
+        </div>
+
+
+        <div class="ob_ ob22" style="text-align: center;padding-top: 12px;">
+            <strong>Основы деловых коммуникаций </strong>
+            <span class="minidisco"  style="font-size: 19px; text-align: center">17, 18, 19 апреля 2025 г.</span>
+        </div>
+        <div class="ob_but" style="padding: 11px 0 11px 0"><a href="/schedule/osnovy-delovyh-kommunikacij" data-old="#modal1"
+                                                              class="bb0 top_vopros   modal-trigger"><span>Подробнее</span></a>
+        </div>
+    </div>
+
+</div>
+

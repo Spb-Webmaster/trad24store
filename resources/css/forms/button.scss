@@ -148,6 +148,15 @@ $maxWidth: 1440;
 }
 
 
+@media screen and (max-width: 1068px) {
+
+    .button {
+
+        @include adaptiv-font(18, 15);
+
+    }
+}
+
 @media (max-width: 793px) {
     .button_big {
         height: 46px;
@@ -156,7 +165,7 @@ $maxWidth: 1440;
 
     }
     .button_normal {
-        height: 36px;
+        height: 50px;
         font-size: 15px;
 
 

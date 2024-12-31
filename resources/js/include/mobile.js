@@ -9,8 +9,9 @@ export function mobile_menu () {
 
         if ($(this).hasClass('active')) {
 
-            $('.fLogin').hide();
             $('.fMenu').hide();
+            $('.fContacts').hide();
+            $('.fLogin').hide();
 
             $('.mob_menu_content').fadeOut();
             $(this).removeClass('active');
@@ -18,6 +19,7 @@ export function mobile_menu () {
 
         } else {
             $('.fMenu').show();
+            $('.fContacts').hide();
             $('.fLogin').hide();
 
             $('.mob_menu_content').fadeIn();
@@ -27,12 +29,13 @@ export function mobile_menu () {
     });
 
 
-    $('body').on('click', '.m_f5', function (event) {
+    $('body').on('click', '.m_f4', function (event) {
 
         if ($(this).hasClass('active')) {
 
-            $('.fLogin').hide();
             $('.fMenu').hide();
+            $('.fContacts').hide();
+            $('.fLogin').hide();
 
             $('.mob_menu_content').fadeOut();
             $(this).removeClass('active');
@@ -40,6 +43,32 @@ export function mobile_menu () {
 
         } else {
             $('.fMenu').hide();
+            $('.fContacts').show();
+            $('.fLogin').hide();
+
+            $('.mob_menu_content').fadeIn();
+            $('.m_f').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
+
+
+    $('body').on('click', '.m_f5', function (event) {
+
+        if ($(this).hasClass('active')) {
+
+            $('.fMenu').hide();
+            $('.fContacts').hide();
+            $('.fLogin').hide();
+
+            $('.mob_menu_content').fadeOut();
+            $(this).removeClass('active');
+
+
+        } else {
+            $('.fMenu').hide();
+            $('.fContacts').hide();
             $('.fLogin').show();
 
             $('.mob_menu_content').fadeIn();
@@ -65,14 +94,13 @@ export function mobile_menu_close () {
 export function add__mobile_menu() {
 
     // добавляем в мобильное меню пункты у который есть class="add__mobile_menu"
-    $('.add__mobile_menu').each(function (index) {
-        let active;
-        if ($(this).hasClass('active')) {
-            active = 'active';
-        } else {
-            active = '';
-        }
-        $('.fMenu').append('<li><a class="' + active + '" href="' + $(this).attr('href') + '">' + $(this).text() + '</a></li>');
+    $('.add__mobile_menu').each(function (index, h) {
+
+        let  Class;
+
+        Class = $(h).parent('li').attr('class');
+
+        $('.fMenu').append('<li><a class="' + Class + '" href="' + $(this).attr('href') + '">' + $(this).text() + '</a></li>');
 
 
     });

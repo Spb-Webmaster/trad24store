@@ -5,7 +5,7 @@
                 class="add__mobile_menu  {{ active_linkMenu(config('app.app_url')) }}"
                 href="{{config('app.app_url')}}">{{ __('Главная') }}</a></li>
 
-        <li class=""><a href="#" class="add__mobile_menu down">О нас</a>
+        <li class=""><a href="#" class="down">О нас</a>
             @if(isset($categories))
 
                 <ul class="submenu">

@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Events\UserUpdate\UpdateUserEvent;
 use App\Events\UserUpdate\UpdateUserFormEvent;
 use App\Events\UserUpdate\UpdateUserSelfFormEvent;
-use App\Events\UserUpdate\UploadUserFormEvent;
-use App\Events\UserUpdate\UploadUserSelfFormEvent;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateFormRequest;
 use App\Http\Requests\UpdateFullFormRequest;
 use App\Http\Requests\UpdatePasswordFormRequest;
-use App\Mail\UpdateUserSelf;
 use App\Models\User;
+
 
 use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\RedirectResponse;

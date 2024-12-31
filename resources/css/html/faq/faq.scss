@@ -80,3 +80,26 @@ $maxWidth: 1440;
 
     }
 }
+
+@media screen and (max-width: 968px) {
+
+    .faq {
+
+
+
+        .faq_question_answer {
+            .faq_question {
+                @include adaptiv-font(22, 16);
+
+            }
+          .faq_question .faq_close {
+                font-size: 35px;
+            }
+            .faq_answer {
+                .faq_answer__text {
+                    padding:16px 24px;
+                }
+            }
+        }
+    }
+}

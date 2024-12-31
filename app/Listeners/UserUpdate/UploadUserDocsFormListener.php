@@ -4,6 +4,7 @@ namespace App\Listeners\UserUpdate;
 
 
 use App\Events\UserUpdate\UploadUserDocsFormEvent;
+use App\Jobs\UserUpdate\UpdateUserDocsJob;
 use App\Mail\Dashboard\UpdateUserDocsMail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -45,7 +46,10 @@ class UploadUserDocsFormListener
         }
 
 
-        Mail::to($this->emails())->send(new UpdateUserDocsMail($data));
+
+        UpdateUserDocsJob::dispatch($data); // Job
+
+      //  Mail::to($this->emails())->send(new UpdateUserDocsMail($data));
 
     }
 }

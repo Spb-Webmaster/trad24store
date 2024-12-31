@@ -30,7 +30,7 @@
 </div><!--.content_-->
 
 @include('templates.axeld.footer')
-{{--@include('html.mobile.bottom')--}}
+@include('html.mobile.bottom')
 @include('include.connect.connect')
 @include('include.modals.temp_forms.call_me')
 @include('include.modals.temp_forms.sign_up')

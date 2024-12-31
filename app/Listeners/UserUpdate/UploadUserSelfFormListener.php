@@ -3,9 +3,8 @@
 namespace App\Listeners\UserUpdate;
 
 use App\Events\UserUpdate\UpdateUserSelfFormEvent;
-use App\Mail\Dashboard\UpdateUserSelfMail;
+use App\Jobs\UserUpdate\UpdateUserSelfJob;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Support\Traits\CreatorToken;
 use Support\Traits\EmailAddressCollector;
 
@@ -43,7 +42,11 @@ class UploadUserSelfFormListener
 
         }
 
-        Mail::to($this->emails())->send(new UpdateUserSelfMail($data));
+
+        UpdateUserSelfJob::dispatch($data); // Job
+
+
+        //   Mail::to($this->emails())->send(new UpdateUserSelfMail($data));
 
 
     }

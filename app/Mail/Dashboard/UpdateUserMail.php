@@ -15,9 +15,8 @@ class UpdateUserMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public  object $item)
+    public function __construct(public array $data)
     {
-        //
     }
 
     /**
@@ -25,6 +24,7 @@ class UpdateUserMail extends Mailable
      */
     public function envelope(): Envelope
     {
+
         return new Envelope(
             subject: 'Изменение данных личного кабинета',
         );
@@ -35,6 +35,9 @@ class UpdateUserMail extends Mailable
      */
     public function content(): Content
     {
+
+
+
         return new Content(
             view: 'html.email.user_events.update_user_form',
         );

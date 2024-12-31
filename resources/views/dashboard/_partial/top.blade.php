@@ -9,7 +9,7 @@
     </div>
     <div class="cab_top_flex__right">
         <a class="@if(isset($class)){{ $class }}@endif cab_top_butt_edit" href="{{ route('cabinet.edit') }}">
-            {{ __('Редактировать профиль')  }}
+            Редактировать <span>профиль</span>
         </a>
     </div>
 

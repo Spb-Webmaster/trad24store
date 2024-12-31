@@ -149,6 +149,8 @@ header .link_to_profile {
 header .m_cab {
   width: 200px;
   padding: 0 0 0 18px; }
+  header .m_cab i {
+    font-style: normal; }
   header .m_cab span {
     padding: 0 0 0 12px; }
 header .m_lang {

@@ -279,16 +279,19 @@ class AjaxController extends Controller
         ]);
         if ($validator->passes()) {
 
-        /* dump($request->all());
-         dump(session('feedback_user'));*/
+            /* dump($request->all());
+             dump(session('feedback_user'));*/
 
-        $user = UserViewModel::make()->feedback_user_session(); /** пользователь для которого нужны результаты */
+            $user = UserViewModel::make()->feedback_user_session();
+            /** пользователь для которого нужны результаты */
 
-        if (count($user)) {
-            $request->request->add($user); /** добавляем   **/
-            $stars = CommentViewModel::make()->rating($user['user_id']); /**  пересчет рейтинга */
+            if (count($user)) {
+                $request->request->add($user);
+                /** добавляем   **/
+                $stars = CommentViewModel::make()->rating($user['user_id']);
+                /**  пересчет рейтинга */
 
-        }
+            }
 
 
             /**
@@ -296,9 +299,11 @@ class AjaxController extends Controller
              */
 
 
-            CommentViewModel::make()->store($request); /** сохраним отзыв  **/
+            CommentViewModel::make()->store($request);
+            /** сохраним отзыв  **/
 
-            FeedbackFormEvent::dispatch($request);  /** событие, отправка админу  **/
+            FeedbackFormEvent::dispatch($request);
+            /** событие, отправка админу  **/
 
 
             /**
@@ -322,22 +327,22 @@ class AjaxController extends Controller
     {
 
 
-        $files =  $request->file('file');
+        $files = $request->file('file');
 
 
         $user_id = auth()->user()->id;
 
-        if(!$user_id) {
+        if (!$user_id) {
             dd('Нет  Auth()->user()->id');
         }
 
-        $field = ($request->field)?:null;
+        $field = ($request->field) ?: null;
 
-        if(!$field) {
+        if (!$field) {
             dd('Нет  $request->field');
         }
 
-        if($files) {
+        if ($files) {
             $count = count($files);
             $storage = Storage::disk('public');
             $destinationPath = 'users/' . $user_id . '/docs';
@@ -361,48 +366,57 @@ class AjaxController extends Controller
         }
 
 
+        /** слияние ранее загружанных файлов */
+             $uploaded_files = UserFilesViewModel::make()->user_get_files($user_id, $field, $count); //получим все ранее загркженный файлы
 
-        $uploaded_files = UserFilesViewModel::make()->user_get_files($user_id, $field, $count); //получим все ранее загркженный файлы
 
-        $user_files_field = array(); // создадим новаый массив для слияния
+                $user_files_field = array(); // создадим новаый массив для слияния
 
-        if(!is_null($uploaded_files)) {
+                if(!is_null($uploaded_files)) {
 
-            $user_files_field = array_merge($uploaded_files, $puth_files); // слияние массивов
+                    $user_files_field = array_merge($uploaded_files, $puth_files); // слияние массивов
 
-        } else {
+                } else {
 
-            $user_files_field = $puth_files; // если ранее загруженных файлов нет, то берет, то, что сейчас загрузили
-        }
+                    $user_files_field = $puth_files; // если ранее загруженных файлов нет, то берет, то, что сейчас загрузили
+                }
+
+        /** слияние ранее загружанных файлов  - решил не делать */
+
+
 
         $user = User::find($user_id);
 
+        $user->$field = $user_files_field; /** все новые файлы */
 
-        $user->$field = $user_files_field;
-        $user->published = 0; /** снять с пуликации **/
+        $user->published = 0;   /** снять с пуликации **/
+
         $user->save();
 
 
         $new_files = UserFilesViewModel::make()->json_files($user->$field);
 
 
-        $user_files_field = array_merge(['files' =>$user_files_field], ['id' =>$user->id]); /** добавим id пользователя */
-        UploadUserDocsFormEvent::dispatch($user_files_field);   /** событие, создание токена, отправка админу  **/
+        $user_files_field = array_merge(['files' => $puth_files], ['id' => $user->id]); /** на модерацию тольлко загруженные */
 
-            /**
-             * возвращаем назад в браузер
-             */
+        /** добавим id пользователя */
+        UploadUserDocsFormEvent::dispatch($user_files_field);
+        /** событие, создание токена, отправка админу  **/
 
-            return response()->json([
-                'request' => $request,
-                'new_files' => $new_files,
-            ]);
+        /**
+         * возвращаем назад в браузер
+         */
+
+        return response()->json([
+            'request' => $request,
+            'new_files' => $new_files,
+        ]);
 
 
     }
 
 
- /**
+    /**
      * Метод удаления и обновления документов
      */
 
@@ -411,27 +425,27 @@ class AjaxController extends Controller
 
         //dump($request->all());
 
-        if($request->delete ) {
+        if ($request->delete) {
             Storage::delete(trim($request->delete));
         }
 
-        $files =  $request->file;
+        $files = $request->file;
 
         $user_id = auth()->user()->id;
 
-        if(!$user_id) {
+        if (!$user_id) {
             dd('Нет  Auth()->user()->id');
         }
 
-        $field = ($request->field)?:null;
+        $field = ($request->field) ?: null;
 
-        if(!$field) {
+        if (!$field) {
             dd('Нет  $request->field');
         }
 
         $user = User::find($user_id);
 
-        if($files) {
+        if ($files) {
             $count = count($files);
             $storage = Storage::disk('public');
             $destinationPath = 'users/' . $user_id . '/docs';
@@ -459,15 +473,13 @@ class AjaxController extends Controller
         }
 
 
+        /**
+         * возвращаем назад в браузер
+         */
 
-
-            /**
-             * возвращаем назад в браузер
-             */
-
-            return response()->json([
-                'request' => $request
-            ]);
+        return response()->json([
+            'request' => $request
+        ]);
 
 
     }
@@ -520,7 +532,7 @@ class AjaxController extends Controller
             ->where('id', auth()->user()->id)
             ->update([
                 'avatar' => $avatar,
-                'published' => 0 /** снять с пуликации **/
+                'published' => 0/** снять с пуликации **/
             ]);
 
         $resp = array();

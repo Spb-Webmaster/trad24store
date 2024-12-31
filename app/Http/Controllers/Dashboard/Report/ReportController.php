@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Report;
 
+use App\Events\Report\ReportAddFormEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReportAddFormRequest;
 use App\Http\Requests\UpdateFormRequest;
@@ -143,6 +144,12 @@ class ReportController extends Controller
 
 
             $user_mediator->save();  //это обновит запись с помощью id=$request->id
+
+            ReportAddFormEvent::dispatch($user_mediator);   /** событие, создание токена, отправка админу  **/
+
+
+            flash()->info(config('message_flash.info.report_add'));
+
 
         }
 

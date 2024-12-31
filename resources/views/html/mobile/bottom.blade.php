@@ -11,11 +11,14 @@
         </span><!--.m_m_top_lang-->
         </div>
         <div class="fMenu tab_plane" data-mf="m_f3"></div>
+
         <div class="fContacts tab_plane" data-mf="m_f4">
             <div class="contact_mobilie">
                 @include('include.connect._change_contacts')
             </div>
         </div>
+
+
         <div class="fLogin tab_plane" data-mf="m_f5">
             @auth()
                 @php
@@ -61,14 +64,11 @@
 <div class="mobile_menu">
     <div class="mob_flex">
 
-        <a class="m_f m_f2 {{ active_linkMenu('/') }} " href="/">
+
+
+        <a class="m_f m_f1 {{ active_linkMenu(asset(route('home'))) }}" href="/">
             <div class="m_img"></div>
             <span>{{ __('Главная') }}</span>
-        </a>
-
-        <a class="m_f m_f1 " href="{{ route('cabinet.policy') }}">
-            <div class="m_img"></div>
-            <span>{{ __('Полисы') }}</span>
         </a>
         <div class="m_f m_f3" data-mf="m_f3">
             <div class="m_img"></div>

@@ -22,18 +22,21 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot-password', [ 'forgot' => $forgot]);
     }
 
+
+
     public function handle(ForgotPasswordFormRequest $request):RedirectResponse
     {
-
 
         $status = Password::sendResetLink(
             $request->only('email')
         );
 
+
         /**
          * Событие отправка сообщения опроеделено в моделе User!!!
+         * !!!!!!!!!!!!! ------------------------ !!!!!!!!!!!!!!!!
+         * Зайди в модель!
          */
-
 
         if($status === Password::RESET_LINK_SENT) {
             flash()->info(__($status));

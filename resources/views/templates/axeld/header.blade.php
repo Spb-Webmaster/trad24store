@@ -40,7 +40,7 @@
                             </div>
                             <div class="m_cab">
                                 <a class="link_to_profile modal-trigger" href="{{ route('login') }}"><img
-                                        src="{{ Storage::url('/images/axeld/icons/Off.svg') }}" alt="Аватар"><span>Мой Кабинет</span></a>
+                                        src="{{ Storage::url('/images/axeld/icons/Off.svg') }}" alt="Аватар"><span><i>Мой</i> Кабинет</span></a>
 
 
                             </div>

@@ -4,15 +4,14 @@ export function menu_js() {
         //    console.log($(this).parent('li').find('.submenu').html());
 
         let Href, Text, Class;
+
         if ($(this).hasClass('add__mobile_menu')) {
             Href = $(h).attr('href');
             Text = $(h).text();
-            Class = $(h).attr('class');
+            Class = $(h).parent('li').attr('class');
 
-
-
+            console.log(Class);
             $('.ob_menu_hor__js').append('<a  data-id="'+index+'" class="' + Class + '" href="' + Href + '">' + Text + '</a>');
-
 
         }
 

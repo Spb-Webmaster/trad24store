@@ -104,7 +104,6 @@ header {
         margin-left: auto;
 
 
-
     }
 
     .SFlex {
@@ -132,9 +131,9 @@ header {
     }
 
     .soc_tel__left {
-            width: 94px;
-            min-width: 94px;
-            padding: 0 0 0 12px;
+        width: 94px;
+        min-width: 94px;
+        padding: 0 0 0 12px;
 
 
     }
@@ -142,15 +141,18 @@ header {
     .soc_tel__right {
         width: 100%;
     }
+
     .active_sity {
         position: relative;
         min-height: 40px;
         padding: 0;
+
         .arrow_bottom_svg {
             position: relative;
             top: 2px;
         }
     }
+
     .active_sity_flex {
         position: relative;
         min-height: 40px;
@@ -159,6 +161,7 @@ header {
         justify-content: flex-end;
         align-items: center;
     }
+
     .black_phone {
         color: #000;
         margin: 0 18px 0 0;
@@ -166,6 +169,7 @@ header {
         font-size: 16px;
         min-width: 100px;
     }
+
     .ssityy {
         color: #6F7893;
         margin: 0 5px 0 0;
@@ -179,11 +183,13 @@ header {
         text-align: right;
         font-size: 15px;
     }
+
     .list_sitys {
         position: absolute;
         display: none;
         z-index: 101;
     }
+
     .wrapp_sity {
         position: relative;
         width: 280px;
@@ -195,6 +201,7 @@ header {
         border-radius: 2px;
         z-index: 10;
     }
+
     .city_li {
         display: flex;
         justify-content: space-between;
@@ -204,9 +211,11 @@ header {
         flex-wrap: nowrap;
         cursor: pointer;
     }
+
     .city_li a {
         text-decoration: none;
     }
+
     .u_1 {
         text-align: center;
         height: 40px;
@@ -214,14 +223,17 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
+
         a {
             width: 100%;
         }
-         img {
+
+        img {
             width: 18px;
             height: 18px;
         }
     }
+
     .link_to_profile {
         height: 40px;
         width: 100%;
@@ -232,23 +244,32 @@ header {
         text-decoration: none;
         cursor: pointer;
     }
+
     .m_cab {
         width: 200px;
         padding: 0 0 0 18px;
+
+        i {
+            font-style: normal;
+        }
+
         span {
             padding: 0 0 0 12px;
         }
     }
+
     .m_lang {
         width: 200px;
         display: flex;
         justify-content: end;
         align-items: center;
     }
+
     .bor_r {
         border-right: 1px solid #E0E0E0;
     }
 }
+
 .wrapp_block_81 {
     position: relative;
     height: 81px;

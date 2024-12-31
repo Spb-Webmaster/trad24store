@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Events\Auth\ResetPasswordEvent;
 use Domain\User\QueryBuilders\SearchQueryBuilder;
 use Domain\User\ViewModels\UserFilesViewModel;
@@ -669,6 +668,12 @@ class User extends Authenticatable
 
     }
 
+    public function getHashAttribute()
+    {
+
+
+    }
+
 
 
 
@@ -687,7 +692,7 @@ class User extends Authenticatable
          * Событие отправка сообщения о сбросе пароля
          */
 
-        ResetPasswordEvent::dispatch($data);
+       ResetPasswordEvent::dispatch($data);
     }
 
 

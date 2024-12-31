@@ -5,7 +5,7 @@
     keywords="контакты"
 />
 @section('content')
-
+    <main>
     <section class="unitedStates catalogContacts our-services pad_b1">
         <div class="block">
             <div class="brod pad_b1_important">
@@ -159,7 +159,7 @@
         }
 
     </script>
-
+    </main>
 @endsection
 
 

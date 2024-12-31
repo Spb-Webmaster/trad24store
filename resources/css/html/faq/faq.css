@@ -31,4 +31,12 @@
       background: #f7f7f7;
       padding: 24px; }
 
+@media screen and (max-width: 968px) {
+  .faq .faq_question_answer .faq_question {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 1120)); }
+  .faq .faq_question_answer .faq_question .faq_close {
+    font-size: 35px; }
+  .faq .faq_question_answer .faq_answer .faq_answer__text {
+    padding: 16px 24px; } }
+
 /*# sourceMappingURL=faq.css.map */
