@@ -143,4 +143,39 @@ class UserViewModel
     }
 
 
+
+
+
+
+
+
+    /**
+     * заблокировать
+     */
+    public function blocked($id) {
+
+        $user = User::find($id);
+        if($user) {
+            $user->published = 0;
+            $user->save();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * разболокировать
+     */
+    public function unblock($id) {
+        $user = User::find($id);
+        if($user) {
+            $user->published = 1;
+            $user->save();
+            return true;
+        }
+        return false;
+    }
+
+
+
 }

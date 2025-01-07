@@ -626,6 +626,7 @@ $maxWidth: 1440;
 
 
 }
+
 ._r_range_flex {
     display: flex;
     min-height: 88px;
@@ -657,6 +658,7 @@ $maxWidth: 1440;
     position: relative;
 
 }
+
 ._r_to {
     padding-right: 0;
 }
@@ -664,34 +666,95 @@ $maxWidth: 1440;
 .button_excel {
 
 
+    height: 46px;
+    border: 1px solid #119d11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #119d11;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
 
-        height: 46px;
-        border: 1px solid #119d11;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 400;
-        font-style: normal;
-        background-color: #119d11;
-        width: 100%;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.3s;
-        text-decoration: none;
-
-background-size: 20%;
+    background-size: 20%;
     background-position: 6px 3px;
     background-repeat: no-repeat;
     background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPgo8c3ZnIHdpZHRoPSI4MHB4IiBoZWlnaHQ9IjgwcHgiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iNC40OTQiIHkxPSItMjA5Mi4wODYiIHgyPSIxMy44MzIiIHkyPSItMjA3NS45MTQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAyMTAwKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE4ODg0ZiIvPjxzdG9wIG9mZnNldD0iMC41IiBzdG9wLWNvbG9yPSIjMTE3ZTQzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGI2NjMxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHRpdGxlPmZpbGVfdHlwZV9leGNlbDwvdGl0bGU+PHBhdGggZD0iTTE5LjU4MSwxNS4zNSw4LjUxMiwxMy40VjI3LjgwOUExLjE5MiwxLjE5MiwwLDAsMCw5LjcwNSwyOWgxOS4xQTEuMTkyLDEuMTkyLDAsMCwwLDMwLDI3LjgwOWgwVjIyLjVaIiBzdHlsZT0iZmlsbDojMTg1YzM3Ii8+PHBhdGggZD0iTTE5LjU4MSwzSDkuNzA1QTEuMTkyLDEuMTkyLDAsMCwwLDguNTEyLDQuMTkxaDBWOS41TDE5LjU4MSwxNmw1Ljg2MSwxLjk1TDMwLDE2VjkuNVoiIHN0eWxlPSJmaWxsOiMyMWEzNjYiLz48cGF0aCBkPSJNOC41MTIsOS41SDE5LjU4MVYxNkg4LjUxMloiIHN0eWxlPSJmaWxsOiMxMDdjNDEiLz48cGF0aCBkPSJNMTYuNDM0LDguMkg4LjUxMlYyNC40NWg3LjkyMmExLjIsMS4yLDAsMCwwLDEuMTk0LTEuMTkxVjkuMzkxQTEuMiwxLjIsMCwwLDAsMTYuNDM0LDguMloiIHN0eWxlPSJvcGFjaXR5OjAuMTAwMDAwMDAxNDkwMTE2MTI7aXNvbGF0aW9uOmlzb2xhdGUiLz48cGF0aCBkPSJNMTUuNzgzLDguODVIOC41MTJWMjUuMWg3LjI3MWExLjIsMS4yLDAsMCwwLDEuMTk0LTEuMTkxVjEwLjA0MUExLjIsMS4yLDAsMCwwLDE1Ljc4Myw4Ljg1WiIgc3R5bGU9Im9wYWNpdHk6MC4yMDAwMDAwMDI5ODAyMzIyNDtpc29sYXRpb246aXNvbGF0ZSIvPjxwYXRoIGQ9Ik0xNS43ODMsOC44NUg4LjUxMlYyMy44aDcuMjcxYTEuMiwxLjIsMCwwLDAsMS4xOTQtMS4xOTFWMTAuMDQxQTEuMiwxLjIsMCwwLDAsMTUuNzgzLDguODVaIiBzdHlsZT0ib3BhY2l0eTowLjIwMDAwMDAwMjk4MDIzMjI0O2lzb2xhdGlvbjppc29sYXRlIi8+PHBhdGggZD0iTTE1LjEzMiw4Ljg1SDguNTEyVjIzLjhoNi42MmExLjIsMS4yLDAsMCwwLDEuMTk0LTEuMTkxVjEwLjA0MUExLjIsMS4yLDAsMCwwLDE1LjEzMiw4Ljg1WiIgc3R5bGU9Im9wYWNpdHk6MC4yMDAwMDAwMDI5ODAyMzIyNDtpc29sYXRpb246aXNvbGF0ZSIvPjxwYXRoIGQ9Ik0zLjE5NCw4Ljg1SDE1LjEzMmExLjE5MywxLjE5MywwLDAsMSwxLjE5NCwxLjE5MVYyMS45NTlhMS4xOTMsMS4xOTMsMCwwLDEtMS4xOTQsMS4xOTFIMy4xOTRBMS4xOTIsMS4xOTIsMCwwLDEsMiwyMS45NTlWMTAuMDQxQTEuMTkyLDEuMTkyLDAsMCwxLDMuMTk0LDguODVaIiBzdHlsZT0iZmlsbDp1cmwoI2EpIi8+PHBhdGggZD0iTTUuNywxOS44NzNsMi41MTEtMy44ODQtMi4zLTMuODYySDcuNzU4TDkuMDEzLDE0LjZjLjExNi4yMzQuMi40MDguMjM4LjUyNGguMDE3Yy4wODItLjE4OC4xNjktLjM2OS4yNi0uNTQ2bDEuMzQyLTIuNDQ3aDEuN2wtMi4zNTksMy44NCwyLjQxOSwzLjkwNUgxMC44MjFsLTEuNDUtMi43MTFBMi4zNTUsMi4zNTUsMCwwLDEsOS4yLDE2LjhIOS4xNzZhMS42ODgsMS42ODgsMCwwLDEtLjE2OC4zNTFMNy41MTUsMTkuODczWiIgc3R5bGU9ImZpbGw6I2ZmZiIvPjxwYXRoIGQ9Ik0yOC44MDYsM0gxOS41ODFWOS41SDMwVjQuMTkxQTEuMTkyLDEuMTkyLDAsMCwwLDI4LjgwNiwzWiIgc3R5bGU9ImZpbGw6IzMzYzQ4MSIvPjxwYXRoIGQ9Ik0xOS41ODEsMTZIMzB2Ni41SDE5LjU4MVoiIHN0eWxlPSJmaWxsOiMxMDdjNDEiLz48L3N2Zz4=');
 
 }
-.button_excel:hover  {
+
+.button_excel:hover {
     background-color: #43D38B;
     border: 1px solid #43D38B;
 
 }
+
+.mediator_flex_0 {
+    width: 100%;
+    display: flex;
+    position: relative;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 24px;
+    margin:0 0 20px 0;
+    .mediator_left__flex_0 {
+        width: 50%;
+        position: relative;
+        padding: 0 12px 0 0;
+
+
+    }
+
+    .mediator_right__flex_0 {
+        width: 50%;
+        position: relative;
+        padding: 0 0 0 12px;
+    }
+
+    .blocked,
+    .unblock {
+        background-color: #ccc;
+        border-color: #ccc;
+        cursor: initial;
+
+    }
+    .blocked:hover,
+    .unblock:hover {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: #fff;
+
+    }
+    .blocked.active {
+        cursor: pointer;
+        background-color: $colorRed;
+        border-color: $colorRed ;
+
+    }
+    .blocked.active:hover  {
+        background-color: #fff;
+        border-color: $colorRed ;
+        color: $colorRed;
+    }
+    .unblock.active {
+        background-color: #43D38B;
+        border-color: #43D38B ;
+        cursor: pointer;
+
+    }
+    .unblock.active:hover {
+        background-color: #fff;
+        border-color: #43D38B ;
+        color: #43D38B;
+    }
+}
+
 @media screen and (max-width: 968px) {
     ._r_range_flex {
         display: flex;
@@ -700,7 +763,7 @@ background-size: 20%;
         flex-direction: column;
 
         ._r_range_left {
-            width:  100%;
+            width: 100%;
             position: relative;
             display: flex;
             align-items: center;
@@ -709,7 +772,7 @@ background-size: 20%;
 
         ._r_range_right {
             min-height: 58px;
-            width:  100%;
+            width: 100%;
         }
     }
 
@@ -718,7 +781,7 @@ background-size: 20%;
         background-size: 36px;
         background-position: 6px 4px;
     }
-    ._r_from,  {
+    ._r_from, {
         padding: 12px 10px 12px 0 !important;
         width: 50%;
         position: relative;
@@ -730,11 +793,123 @@ background-size: 20%;
 
         position: relative;
     }
+
+
+    /* //////////// скачивание excel */
+
+    .mediator__flex {
+        display: block;
+
+        .mediator_left {
+            width: 100%;
+            padding-right: 0;
+            padding-left: 0;
+
+        }
+
+        .mediator_right {
+            width: 100%;
+            padding-right: 0;
+            padding-left: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+
+        }
+    }
+    .mediator__flex {
+        .mediator_left__flex_1 {
+
+            .mediator_left__content .h2_blue {
+                @include adaptiv-font(38, 22);
+
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 888px) {
+
+    .mediator__flex {
+        .mediator__options {
+            ._item_opt {
+                display: block;
+                padding: 12px 0;
+
+                ._label {
+                    width: 100%;
+                    padding-bottom: 5px;
+                }
+
+                ._value {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .com_responce {
+        .com_responce__flex {
+            display: block;
+            width: 100%;
+
+            .com_responce__left {
+                width: 100%;
+                min-width: 200px;
+                position: relative;
+                padding-bottom: 10px;
+            }
+        }
+
+        .com_responce_tr {
+            padding: 20px 16px 21px 16px;
+
+        }
+    }
 }
 
 
-/* //////////// скачивание excel */
+@media screen and (max-width: 640px) {
 
+    .mediator__flex {
+        .mediator_left__flex_1 {
+
+            .mediator_left__avatar {
+                width: 140px;
+                min-width: 140px;
+                position: relative;
+                padding: 20px;
+
+                .m_avamed {
+                    width: 90px !important;
+                    height: 90px !important;
+                    position: relative;
+                    background-size: cover;
+                    border-bottom: 1px solid #E0E0E0;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    border-radius: 50%;
+                    margin: 0 auto;
+                }
+
+            }
+
+
+        }
+
+        .mediator__options {
+            border: 1px solid #E0E0E0;
+            margin: 20px 0;
+            border-radius: 12px;
+            padding: 20px 10px;
+        }
+    }
+    .cab_top_flex__left {
+        h1 {
+            padding-right: 10px !important;
+        }
+    }
+}
 
 
 

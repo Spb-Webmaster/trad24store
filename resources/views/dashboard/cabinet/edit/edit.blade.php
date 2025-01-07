@@ -26,13 +26,7 @@
 
                             <div class="cabinet_radius12_fff">
 
-
-
-
                                 @include('dashboard.forms.edit_profile_fulldata')
-
-
-
 
                                 <div class="c__title_subtitle pad_t32">
                                     <h3 class="F_h1">{{ __('Мои документы. Личные документы не публикуются') }}</h3>

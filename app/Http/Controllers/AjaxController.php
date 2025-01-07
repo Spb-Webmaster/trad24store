@@ -427,7 +427,7 @@ class AjaxController extends Controller
     public function deleteDocs(Request $request)
     {
 
-        //dump($request->all());
+        //dd($request->all());
 
         if ($request->delete) {
             Storage::delete(trim($request->delete));

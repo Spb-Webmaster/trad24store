@@ -81,10 +81,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('Отзывы'),
                     new UserCommentResource()
                 )->icon('heroicons.outline.chat-bubble-left'),
-                MenuItem::make(
+      /*          MenuItem::make(
                     static fn() => __('moonshine::ui.resource.role_title'),
                     new MoonShineUserRoleResource()
-                ),
+                ),*/
             ]),
             MenuGroup::make(static fn() => __('Страницы'), [
 
@@ -152,6 +152,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('Режимы показа'),
                     new ChangeContactPage()
                 )->icon('heroicons.cog'),
+                MenuItem::make(
+                    static fn() => __('Типы медиаторов'),
+                    new UserTypeResource()
+                )->icon('heroicons.outline.document'),
 
             ]),
 
@@ -173,6 +177,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                         static fn() => __('Города'),
                         new TimeTableCityResource()
                     )->icon('heroicons.outline.building-office-2'),
+
                     /*               MenuItem::make(
                                        static fn() => __('Месяцы'),
                                        new TimeTableMonthResource()

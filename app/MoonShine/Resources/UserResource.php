@@ -41,6 +41,8 @@ use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<User>
+ * @method
+
  */
 class UserResource extends ModelResource
 {
@@ -62,12 +64,10 @@ class UserResource extends ModelResource
                 ->useOnImport()
                 ->showOnExport(),
 
-            Text::make('Имя', 'name')
-                ->useOnImport()
-                ->showOnExport(),
-            Text::make('Email', 'email')
-                ->useOnImport()
-                ->showOnExport(),
+            Text::make('Имя', 'name'),
+            Switcher::make('Менеджер.', 'manager'),
+
+            Text::make('Email', 'email'),
             BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
             BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
             BelongsToMany::make('Города', 'user_city', 'title', resource: new UserCityResource() )->selectMode(),
@@ -123,10 +123,22 @@ class UserResource extends ModelResource
                     Tab::make(__('Общие настройки'), [
                         Grid::make([
                             Column::make([
+                                Collapse::make('Сделать пользователя менеджером', [
+
+                                    Switcher::make('Менеджер', 'manager')->default(0)->hint('Включая эту опцию, вы добавляете пользователю большие полномочия, по редактированию личного кабинета других пользователей'),
+
+                                ]),
+
+                            ])
+                                ->columnSpan(12),
+                                ]),
+                        Grid::make([
+                            Column::make([
 
 
                                 Collapse::make('Имя/Email', [
                                     Text::make('Имя', 'name')->required(),
+                                    Text::make(__('ФИО'), 'username'),
                                     Text::make(__('Email'), 'email'),
                                     Select::make('Пол', 'sex')->options([
                                         'Мужчина' => 'Мужчина',

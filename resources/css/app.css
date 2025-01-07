@@ -40,6 +40,8 @@
 @import "./templates/footer.scss";
 @import "./templates/page.scss";
 @import "./chosen/chosen.scss";
+@import "./admin-users/users.scss";
+@import "./admin-users/user.scss";
 
 @import "html/stars/stars.scss";
 @import "html/faq/faq.scss";

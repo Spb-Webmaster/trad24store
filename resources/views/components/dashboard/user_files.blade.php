@@ -5,12 +5,13 @@
    'count' => 4,
    'free' => 0,
    'field' => '',
+   'manager' => '',
 ])
 
 @php
     $empty_file = '<div class="input-file-list-item"><span class="input-file-list-name"><img class="_ext" src="'.Storage::url('images/icons/none.svg').'" title="null"></span></div>';
 @endphp
-<div class="c__block wrapp_loading__js">
+<div class="c__block wrapp_loading__js @if($manager) manager_checked @endif">
 
     <div class="blue_label blue_label__js">{{ $title }}</div>
     <div class="c__flex parent_loading__js">
@@ -47,7 +48,7 @@
 
         <div class="c__flex_50 c__flex_50_right">
             <div class="text_input">
-
+                @if(!$manager)
                 <div class="input-file-row">
                     <label class="input-file">
                         <input type="file" data-field="{{ $field }}" name="{{ $field.'[]' }}" multiple
@@ -58,7 +59,7 @@
                 </div>
                 <div class="text_load_file">Файлов для загрузки: <span class="limit__js">{{ $count  - $free }}</span>
                 </div>
-
+                @endif
 
             </div>
         </div><!--.c__flex_50_right-->

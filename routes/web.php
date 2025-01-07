@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\ChangeContacts\ChangeContactsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Manager\ManagerController;
 use App\Http\Controllers\Dashboard\Report\ReportController;
 use App\Http\Controllers\Dashboard\TokenController;
 use App\Http\Controllers\HomeController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeTable\TimeTableController;
 use App\Http\Controllers\Users\Search\MediatorSearchController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Middleware\ManagerMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\UserBlockedMiddleware;
 use App\Http\Middleware\UserPublishedMiddleware;
@@ -326,6 +328,39 @@ Route::controller(TestController::class)->group(function () {
     Route::get('/test', 'test')->name('test');
 
 });
+
+
+/**
+ * менеджеры
+ */
+
+Route::controller(ManagerController::class)->group(function () {
+    Route::get('/m_users', 'users')
+        ->name('m_users')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::get('/m_users/user/{id}', 'user')
+        ->name('m_user')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_users/search', 'user_search')
+        ->name('search.users')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_users/blocked', 'blocked')
+        ->name('blocked')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_users/unblock', 'unblock')
+        ->name('unblock')
+        ->middleware(ManagerMiddleware::class);
+
+
+});
+
+/**
+ * менеджеры
+ *
 
 
 /**

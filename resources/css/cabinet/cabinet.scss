@@ -462,7 +462,12 @@ $maxWidth: 1440;
      background: #cff4fc!important;
      border-radius: 8px
  }
-
+.background_alert {
+    background-color: #f8d7da !important;
+    div, p, a {
+        color:#842029 !important;
+    }
+}
 
 .blockYourManeger {
     .blockYourManeger__top {
@@ -595,7 +600,7 @@ $maxWidth: 1440;
     text-align: center;
     display: inline-table;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
     width: auto;
     min-width: 18px;
     height: 18px;
@@ -603,7 +608,7 @@ $maxWidth: 1440;
     line-height: normal;
     right: 0;
     margin: 0  2px;
-    padding: 0 3px;
+    padding:  3px 0 ;
 }
 .LC_senior_ball {
     border-radius: 20px;
@@ -613,7 +618,7 @@ $maxWidth: 1440;
     text-align: center;
     display: inline-table;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
     width: auto;
     min-width: 18px;
     height: 18px;
@@ -621,7 +626,7 @@ $maxWidth: 1440;
     line-height: normal;
     right: 0;
     margin: 0  2px;
-    padding: 0 3px;
+    padding: 3px 0 ;
 }
 
 

@@ -62,6 +62,18 @@ a:hover {
 .color_grey {
   color: #667085; }
 
+.color_grey_12 {
+  color: #667085;
+  font-size: 12px; }
+
+.color_grey_13 {
+  color: #667085;
+  font-size: 13px; }
+
+.color_grey_14 {
+  color: #667085;
+  font-size: 14px; }
+
 .color_grey_16 {
   color: #667085;
   font-size: 16px; }

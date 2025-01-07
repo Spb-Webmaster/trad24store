@@ -64,16 +64,16 @@
                                         </div>
                                         @if($item->active_contact)
 
-                                        <div class="item_address _item_opt">
-                                            <div class="_label">Адрес:</div>
-                                            <div class="_value">
-                                                @if($item->street)
-                                                    {{ $item->street }},
-                                                    <span>д.</span> {{ ($item->home)?:' - ' }},
-                                                    <span>Офис/кв.</span> {{ ($item->office)?:' - '}}
-                                                @endif
+                                            <div class="item_address _item_opt">
+                                                <div class="_label">Адрес:</div>
+                                                <div class="_value">
+                                                    @if($item->street)
+                                                        {{ $item->street }},
+                                                        <span>д.</span> {{ ($item->home)?:' - ' }},
+                                                        <span>Офис/кв.</span> {{ ($item->office)?:' - '}}
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
                                         @endif
                                         <div class="item_status _item_opt">
                                             <div class="_label">Статус:</div>
@@ -158,8 +158,6 @@
                                         @endif
 
                                     </div>
-
-                @include('pages.users.partial.comments')
 
 
                                 </div>
@@ -267,19 +265,27 @@
                                 @endif
 
                                 @if( $item->user_mediator_sum )
-                             <x-dashboard.report.report_sum
-                             sum="{{$item->user_mediator_sum}}"
-                             sem="{{$item->user_mediator_sem}}"
-                             ugo="{{$item->user_mediator_ugo}}"
-                             gra="{{$item->user_mediator_gra}}"
-                             kor="{{$item->user_mediator_kor}}"
-                             uve="{{$item->user_mediator_uve}}"
-                             tru="{{$item->user_mediator_tru}}"
-                             ban="{{$item->user_mediator_ban}}"
-                             />
+                                    <x-dashboard.report.report_sum
+                                        sum="{{$item->user_mediator_sum}}"
+                                        sem="{{$item->user_mediator_sem}}"
+                                        ugo="{{$item->user_mediator_ugo}}"
+                                        gra="{{$item->user_mediator_gra}}"
+                                        kor="{{$item->user_mediator_kor}}"
+                                        uve="{{$item->user_mediator_uve}}"
+                                        tru="{{$item->user_mediator_tru}}"
+                                        ban="{{$item->user_mediator_ban}}"
+                                    />
                                 @endif
 
                             </div>
+                        </div>
+
+                        <div class="mediator__flex">
+                            <div class="mediator_left">
+                                @include('pages.users.partial.comments')
+                            </div>
+                            <div class="mediator_right"></div>
+
                         </div>
 
                     </div>

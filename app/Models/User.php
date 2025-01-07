@@ -71,6 +71,7 @@ class User extends Authenticatable
         'birthday',
         'stars',
         'old_id',
+        'manager',
     ];
 
     protected $casts = [
@@ -110,6 +111,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserMediator::class, 'user_id')->orderBy('created_at', 'desc');
     }
+    public function user_mediator_on_checking(): HasMany
+    {
+        return $this->hasMany(UserMediator::class, 'user_id')->where('published', 0);
+    }
+
+
 
     public function user_list(): BelongsToMany
     {
@@ -156,7 +163,7 @@ class User extends Authenticatable
     public function getUserAttribute()
     {
 
-        if($this->username) {
+        if(isset($this->username)) {
             return $this->username;
         }
         return $this->name;
@@ -168,6 +175,7 @@ class User extends Authenticatable
      * @return float|int
      * user_mediator_sum
      * Все медиации пользователя
+     * $user->user_mediator_sum
      */
 
     public function getUserMediatorSumAttribute()

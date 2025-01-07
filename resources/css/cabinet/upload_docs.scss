@@ -156,3 +156,11 @@ $maxWidth: 1440;
     padding: 6px 0 4px 0;
     text-align: right;
 }
+
+
+.manager_checked {
+    .input-file-list-remove {
+        display: none !important;
+    }
+
+}

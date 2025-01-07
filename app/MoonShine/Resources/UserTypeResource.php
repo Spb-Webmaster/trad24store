@@ -164,7 +164,7 @@ class UserTypeResource extends ModelResource
 
     public function getActiveActions(): array
     {
-        return ['create', /*'view',*/ 'update', 'delete', 'massDelete'];
+        return [/*'create', 'view', 'update', 'delete', 'massDelete'*/];
     }
 
 

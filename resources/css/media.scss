@@ -1249,6 +1249,24 @@ $maxWidth: 1440;
 }
 
 @media (max-width: 888px) {
+
+    .brod ul {
+        display: inline-block;
+        li {
+            display: inline-block;
+            a, span {
+                display: inline-block;
+
+                padding-left: 4px !important;
+                padding-right: 4px !important;
+            }
+            &:first-child a {
+                padding-left: 4px !important;
+            }
+
+        }
+    }
+
     .m_report .row .col.s3 {
         width: 0;
         display: none;
