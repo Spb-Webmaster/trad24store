@@ -6,7 +6,9 @@ import {
     send_sign_up,
     replace,
     feedback,
-    upload_f
+    excel_report,
+    upload_f,
+
 } from './include/ajax';
 import {cabinet_toggle_type} from './include/cabinet';
 import { imask } from './include/imask';
@@ -24,7 +26,7 @@ import { canche_contacts, toggle_contacts } from './include/canche_contacts';
 import { city } from './include/city';
 import { chosen } from './include/select';
 import { bid } from './include/bid';
-import {localDataPicker, datepicker_birthdate, datepicker_report} from "./include/datapicker";
+import {localDataPicker, datepicker_birthdate, datepicker_report, datepicker_range} from "./include/datapicker";
 import {upload_doc, removeFilesLoadItem, titleFiles} from "./include/upload_docs";
 import {report_toggle} from "./include/report";
 
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     input_label() // input движение label
     close_flash() // закрытие flash
     autocomplete() // autocomplete-ajax
+    excel_report() // сформировать отчет excel
    // menu_js() // манипуляции с меню
     yandex_map_object('43db27ba-be61-4e84-b139-ff37ad4802b8') // карта в объект
     mobile_menu() // работа мобильного меню
@@ -59,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
     replace() // перезагрузка js на определенную страницу
     localDataPicker() // календарик основные настройки
     datepicker_birthdate() // календарь дня рождения
-    datepicker_report() // периуд отчетов
+    datepicker_report() // месяц создаваемого отчета
+    datepicker_range() // периуд созданных отчетов
     upload_f()  // pзагрузка файлов (Аватар)
     cabinet_toggle_type()  // изменение полей при редактировании личного кабинета
     upload_doc()  //основной загрузчик

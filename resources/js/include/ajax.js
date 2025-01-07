@@ -42,7 +42,6 @@ export function call_me() {
 
 }
 
-
 export function send_blue_form() {
     /* send_form__js Звонок  (mini форма на главной)*/
     $('body').on('click', '.send_form__js', function (event) {
@@ -89,7 +88,6 @@ export function send_blue_form() {
     /* send_form__js Звонок (mini форма на главной)*/
 
 }
-
 
 export function search_diplom_form() {
     /* search_diplom__js поиск диплама */
@@ -165,7 +163,6 @@ export function search_diplom_form() {
 
 
     }
-
 
 export function search_lessons() {
     /* отправка формы при смене города */
@@ -259,7 +256,6 @@ export function search_lessons() {
 
 }
 
-
 export function  send_sign_up() {
     /* отправить форму для записи на курс */
     $('body').on('click', '.sign_up__js', function (event) {
@@ -310,7 +306,6 @@ export function  send_sign_up() {
 
 }
 
-
 export function  replace() {
     /* перезагрузка */
     $('body').on('click', '.clear_form_2__js', function (event) {
@@ -323,7 +318,6 @@ export function  replace() {
     /* перезагрузка */
 
 }
-
 
 export function feedback() {
 
@@ -400,6 +394,47 @@ export function feedback() {
 
     });
     /* оставить отзыв для медиатора */
+
+}
+
+export function excel_report() {
+    /* button_excel__js Сформировать отчет */
+    $('body').on('click', '.button_excel__js', function (event) {
+
+        var Parents = $(this).parents('._r_range');
+        var From = Parents.find('input[name="from"]').val();
+        var To = Parents.find('input[name="to"]').val();
+        var Id = Parents.find('input[name="id"]').val();
+      //  loader(Parents);
+
+        $.ajax({
+            url: "/generate/excel_report",
+            method: "POST",
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                "from": From,
+                "to": To,
+                "id": Id,
+            },
+            success: function (response) {
+                if (response.error) {
+                    printErrorMsg(Parents, response.error);
+
+
+                } else {
+
+                    var link = document.createElement('a');
+                    link.setAttribute('href', response.filename);
+                    link.setAttribute('download', response.filename);
+                    link.click();
+                    alert('Файл "' + response.file + '" успешно скачан.');
+
+                }
+            }
+        });
+
+    });
+    /* button_excel__js Сформировать отчет */
 
 }
 

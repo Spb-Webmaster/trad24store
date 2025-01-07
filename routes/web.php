@@ -237,6 +237,7 @@ Route::controller(AjaxController::class)->group(function () {
     Route::post('/redirect/redirect-mounth-city', 'redirect_mounth_city'); // выдача расписания с нужным месяцем
     Route::post('/send-mail/order-sing-up-lesson', 'sing_up_lesson'); // запись на курсы
     Route::post('/send-mail/feedback', 'feedback'); // оставление отзывы о медиаторе
+    Route::post('/generate/excel_report', 'generate_excel'); // сформировать excel очеты о медиации
 
     /* загрузка аватара*/ //
     Route::post('/cabinet/upload-avatar', 'uploadAvatar')->name('uploadAvatar');

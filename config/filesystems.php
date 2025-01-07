@@ -45,6 +45,14 @@ return [
             'throw' => false,
         ],
 
+        'export' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/export'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'moonshine' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

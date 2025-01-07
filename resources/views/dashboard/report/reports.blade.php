@@ -24,13 +24,65 @@
                         </div>
                         <div class="cabinet__right">
                             @include('dashboard.menu.cabinet_menu')
-                            <div class="cabinet_radius12_fff yellow_mess">
-                                <div class="_report_flex">
-                                  {{--  <div class="Y_h2">Отчет</div>--}}
-                                    <a href="{{ route('reports.add') }}" class="send_report"><span>Отправить отчет</span></a>                         </div>
-                            </div>
+
+
+
+                            @include('dashboard.report._partial.yellow_buton')
+
                             <br>
                             <br>
+                            @if($user->user_mediator_sum)
+                                {{--Если есть отчеты--}}
+                                <div class="cabinet_radius12_fff">
+                                    <div class="c__title_subtitle pad_b13_important">
+                                        <h3 class="F_h1">Сформировать отчет</h3>
+                                        <div class="F_h2 pad_t5"><span>Выберите диапазон дат и получите отчет в excel файле </span>
+                                        </div>
+                                    </div>
+                                    <div class="_r_range_flex _r_range">
+                                        <div class="_r_range_left">
+                                            <div class="_r_from">
+                                                <div class="text_input">
+                                                <x-forms.text-input_fromLabel
+                                                    type="text"
+                                                    id="from"
+                                                    name="from"
+                                                    placeholder="Выбрать дату (От ...)"
+                                                    required="true"
+                                                    class="input from"
+                                                    value="{{ (old('from'))?:''  }}"
+                                                    :isError="$errors->has('from')"
+                                                />
+                                                <x-forms.error class="error_from"/>
+                                                </div>
+                                            </div>
+                                            <div class="_r_to">
+                                                <div class="text_input">
+                                                <x-forms.text-input_fromLabel
+                                                    type="text"
+                                                    id="to"
+                                                    name="to"
+                                                    placeholder="Выбрать дату (До ...)"
+                                                    required="true"
+                                                    class="input to"
+                                                    value="{{ (old('to'))?:''  }}"
+                                                    :isError="$errors->has('to')"
+                                                />
+                                                <x-forms.error class="error_to"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="_r_range_right">
+                                            <input type="hidden" name="id" value="{{$user->id}}">
+                                            <div class="button_excel button_excel__js"><span>Скачать</span></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                            @endif
 
                             <div class="cabinet_radius12_fff">
 
@@ -64,8 +116,8 @@
                                                     <div class="col s4">
 
 
-                                                        <x-dashboard.report.published published="{{$report->published}}"/>
-
+                                                        <x-dashboard.report.published
+                                                            published="{{$report->published}}"/>
 
 
                                                     </div>
@@ -117,15 +169,14 @@
                                                             <div class="rep_option_int">{{ $report->ban }}</div>
                                                         </div>
 
-                                                        </div>
                                                     </div>
+                                                </div>
 
 
+                                            </div><!--.m_report-->
 
-                                    </div><!--.m_report-->
-
-                                    @endforeach
-                                            {{ $reports->withQueryString()->links('pagination::default') }}
+                                        @endforeach
+                                        {{ $reports->withQueryString()->links('pagination::default') }}
 
                                     </div>
 
@@ -135,17 +186,17 @@
                                         <h3 class="F_h1">Отчеты</h3>
                                         <div class="F_h2 pad_t5"><span>Нет отправленных отчетов</span></div>
                                     </div>
-                            @endif
+                                @endif
+
+
+                            </div>
 
 
                         </div>
-
-
                     </div>
-                </div>
 
-            </div>
-        </div><!--.cabinet-->
+                </div>
+            </div><!--.cabinet-->
         </div>
     </main>
 @endsection

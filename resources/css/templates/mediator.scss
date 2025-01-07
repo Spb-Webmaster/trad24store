@@ -209,6 +209,7 @@ $maxWidth: 1440;
         }
     }
 }
+
 .mediator_right {
     .count_to_mediators {
         margin: 23px 0 10px 0;
@@ -216,6 +217,7 @@ $maxWidth: 1440;
 
     }
 }
+
 .count_to_mediators {
     width: 100%;
     border-radius: 12px;
@@ -429,6 +431,7 @@ $maxWidth: 1440;
 .option__report {
     padding: 20px 0 30px 0;
     border-top: 1px solid #E0E0E0;
+
     .rep_option_med {
 
         width: 100%;
@@ -436,6 +439,7 @@ $maxWidth: 1440;
         justify-content: end;
         padding: 10px 53px 10px 15px;
     }
+
     .rep_option {
         padding: 0 10px 0 0;
     }
@@ -532,6 +536,7 @@ $maxWidth: 1440;
     transition: 0.3s;
 
 }
+
 .active {
     .smoke {
         transform: rotate(180deg);
@@ -539,9 +544,11 @@ $maxWidth: 1440;
 
     }
 }
+
 ._report_flex {
     display: flex;
     justify-content: center;
+
     .Y_h2 {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -549,6 +556,7 @@ $maxWidth: 1440;
 
     }
 }
+
 .send_report {
     color: $colorYellow;
     width: 100%;
@@ -566,12 +574,14 @@ $maxWidth: 1440;
     max-width: 300px;
 
 }
+
 .medi_summ {
     display: flex;
     width: 100%;
     justify-content: end;
     padding: 10px;
 }
+
 .em_18 {
     max-width: 300px;
 
@@ -581,14 +591,150 @@ $maxWidth: 1440;
     font-size: 19px;
     line-height: 1.3em;
     margin: 0;
-    padding:41px 10px  10px 10px;
+    padding: 41px 10px 10px 10px;
 }
+
 .b_36 {
     font-size: 36px;
     color: $colorBlue;
     font-weight: bold;
     position: relative;
 }
+
 /* //////////// отчеты медиаторов */
+
+/* скачивание excel  */
+
+._report_statistic {
+
+    width: 100%;
+    min-height: 88px;
+    position: relative;
+    display: flex;
+
+    ._report_statistic__left {
+        width: 40%;
+        position: relative;
+    }
+
+    ._report_statistic__right {
+        width: 60%;
+        position: relative;
+        padding: 0 10px 0 24px;
+        min-width: 195px;
+    }
+
+
+}
+._r_range_flex {
+    display: flex;
+    min-height: 88px;
+    align-items: center;
+    position: relative;
+
+    ._r_range_left {
+        width: 80%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 88px;
+    }
+
+    ._r_range_right {
+        width: 20%;
+        position: relative;
+        min-height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+}
+
+._r_from,
+._r_to {
+    padding: 12px 24px 12px 0;
+    width: 48%;
+    position: relative;
+
+}
+._r_to {
+    padding-right: 0;
+}
+
+.button_excel {
+
+
+
+        height: 46px;
+        border: 1px solid #119d11;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #119d11;
+        width: 100%;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+
+background-size: 20%;
+    background-position: 6px 3px;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPgo8c3ZnIHdpZHRoPSI4MHB4IiBoZWlnaHQ9IjgwcHgiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iNC40OTQiIHkxPSItMjA5Mi4wODYiIHgyPSIxMy44MzIiIHkyPSItMjA3NS45MTQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAyMTAwKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE4ODg0ZiIvPjxzdG9wIG9mZnNldD0iMC41IiBzdG9wLWNvbG9yPSIjMTE3ZTQzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGI2NjMxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHRpdGxlPmZpbGVfdHlwZV9leGNlbDwvdGl0bGU+PHBhdGggZD0iTTE5LjU4MSwxNS4zNSw4LjUxMiwxMy40VjI3LjgwOUExLjE5MiwxLjE5MiwwLDAsMCw5LjcwNSwyOWgxOS4xQTEuMTkyLDEuMTkyLDAsMCwwLDMwLDI3LjgwOWgwVjIyLjVaIiBzdHlsZT0iZmlsbDojMTg1YzM3Ii8+PHBhdGggZD0iTTE5LjU4MSwzSDkuNzA1QTEuMTkyLDEuMTkyLDAsMCwwLDguNTEyLDQuMTkxaDBWOS41TDE5LjU4MSwxNmw1Ljg2MSwxLjk1TDMwLDE2VjkuNVoiIHN0eWxlPSJmaWxsOiMyMWEzNjYiLz48cGF0aCBkPSJNOC41MTIsOS41SDE5LjU4MVYxNkg4LjUxMloiIHN0eWxlPSJmaWxsOiMxMDdjNDEiLz48cGF0aCBkPSJNMTYuNDM0LDguMkg4LjUxMlYyNC40NWg3LjkyMmExLjIsMS4yLDAsMCwwLDEuMTk0LTEuMTkxVjkuMzkxQTEuMiwxLjIsMCwwLDAsMTYuNDM0LDguMloiIHN0eWxlPSJvcGFjaXR5OjAuMTAwMDAwMDAxNDkwMTE2MTI7aXNvbGF0aW9uOmlzb2xhdGUiLz48cGF0aCBkPSJNMTUuNzgzLDguODVIOC41MTJWMjUuMWg3LjI3MWExLjIsMS4yLDAsMCwwLDEuMTk0LTEuMTkxVjEwLjA0MUExLjIsMS4yLDAsMCwwLDE1Ljc4Myw4Ljg1WiIgc3R5bGU9Im9wYWNpdHk6MC4yMDAwMDAwMDI5ODAyMzIyNDtpc29sYXRpb246aXNvbGF0ZSIvPjxwYXRoIGQ9Ik0xNS43ODMsOC44NUg4LjUxMlYyMy44aDcuMjcxYTEuMiwxLjIsMCwwLDAsMS4xOTQtMS4xOTFWMTAuMDQxQTEuMiwxLjIsMCwwLDAsMTUuNzgzLDguODVaIiBzdHlsZT0ib3BhY2l0eTowLjIwMDAwMDAwMjk4MDIzMjI0O2lzb2xhdGlvbjppc29sYXRlIi8+PHBhdGggZD0iTTE1LjEzMiw4Ljg1SDguNTEyVjIzLjhoNi42MmExLjIsMS4yLDAsMCwwLDEuMTk0LTEuMTkxVjEwLjA0MUExLjIsMS4yLDAsMCwwLDE1LjEzMiw4Ljg1WiIgc3R5bGU9Im9wYWNpdHk6MC4yMDAwMDAwMDI5ODAyMzIyNDtpc29sYXRpb246aXNvbGF0ZSIvPjxwYXRoIGQ9Ik0zLjE5NCw4Ljg1SDE1LjEzMmExLjE5MywxLjE5MywwLDAsMSwxLjE5NCwxLjE5MVYyMS45NTlhMS4xOTMsMS4xOTMsMCwwLDEtMS4xOTQsMS4xOTFIMy4xOTRBMS4xOTIsMS4xOTIsMCwwLDEsMiwyMS45NTlWMTAuMDQxQTEuMTkyLDEuMTkyLDAsMCwxLDMuMTk0LDguODVaIiBzdHlsZT0iZmlsbDp1cmwoI2EpIi8+PHBhdGggZD0iTTUuNywxOS44NzNsMi41MTEtMy44ODQtMi4zLTMuODYySDcuNzU4TDkuMDEzLDE0LjZjLjExNi4yMzQuMi40MDguMjM4LjUyNGguMDE3Yy4wODItLjE4OC4xNjktLjM2OS4yNi0uNTQ2bDEuMzQyLTIuNDQ3aDEuN2wtMi4zNTksMy44NCwyLjQxOSwzLjkwNUgxMC44MjFsLTEuNDUtMi43MTFBMi4zNTUsMi4zNTUsMCwwLDEsOS4yLDE2LjhIOS4xNzZhMS42ODgsMS42ODgsMCwwLDEtLjE2OC4zNTFMNy41MTUsMTkuODczWiIgc3R5bGU9ImZpbGw6I2ZmZiIvPjxwYXRoIGQ9Ik0yOC44MDYsM0gxOS41ODFWOS41SDMwVjQuMTkxQTEuMTkyLDEuMTkyLDAsMCwwLDI4LjgwNiwzWiIgc3R5bGU9ImZpbGw6IzMzYzQ4MSIvPjxwYXRoIGQ9Ik0xOS41ODEsMTZIMzB2Ni41SDE5LjU4MVoiIHN0eWxlPSJmaWxsOiMxMDdjNDEiLz48L3N2Zz4=');
+
+}
+.button_excel:hover  {
+    background-color: #43D38B;
+    border: 1px solid #43D38B;
+
+}
+@media screen and (max-width: 968px) {
+    ._r_range_flex {
+        display: flex;
+        align-items: center;
+        position: relative;
+        flex-direction: column;
+
+        ._r_range_left {
+            width:  100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 58px;
+        }
+
+        ._r_range_right {
+            min-height: 58px;
+            width:  100%;
+        }
+    }
+
+    .button_excel {
+
+        background-size: 36px;
+        background-position: 6px 4px;
+    }
+    ._r_from,  {
+        padding: 12px 10px 12px 0 !important;
+        width: 50%;
+        position: relative;
+    }
+
+    ._r_to {
+        padding: 12px 0 12px 10px !important;
+        width: 50%;
+
+        position: relative;
+    }
+}
+
+
+/* //////////// скачивание excel */
+
+
 
 

@@ -8,15 +8,19 @@ use App\Events\Form\OrderCallBlueFormEvent;
 use App\Events\Form\OrderCallEvent;
 use App\Events\Lesson\SingUpLessonFormEvent;
 use App\Events\UserUpdate\UploadUserDocsFormEvent;
+use App\Exports\ReportExport;
 use App\Models\User;
 use Domain\Comment\ViewModels\CommentViewModel;
 use Domain\Diplom\ViewModels\DiplomViewModel;
+use Domain\Report\ViewModels\ReportExcel;
 use Domain\Timetable\ViewModels\TimetableViewModel;
 use Domain\User\ViewModels\UserFilesViewModel;
 use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AjaxController extends Controller
 {
@@ -481,6 +485,53 @@ class AjaxController extends Controller
             'request' => $request
         ]);
 
+
+    }
+
+    /**
+     * Метод создания excel отчета за определенный периуд
+     */
+
+    public function generate_excel(Request $request)
+    {
+
+        $session_user = $request->session()->get('user');
+
+        /**
+         *  Проверка совпадения сессии и $request->id
+         */
+        if ($session_user == $request->id) {
+
+
+            $validator = Validator::make($request->all(), [
+                'from' => ['required'],
+                'to' => ['required'],
+            ]);
+            if ($validator->passes()) {
+
+                $dates = $request->toArray();
+
+                $filename = User::find($dates['id'])->user . '-'. $dates['from'] .'-'.$dates['to'].'.xlsx';
+
+                  $result =  Excel::store(new ReportExport($dates), $filename, 'export');
+
+
+                /**
+                 * возвращаем назад в браузер
+                 */
+
+                return response()->json([
+                    'request' => $request,
+                    'result' => $result,
+                    'file' => $filename,
+                    'filename' => '/storage/export/'.$filename
+                ]);
+
+            }
+        }
+
+
+        return response()->json(['error' => $validator->errors()]);
 
     }
 
