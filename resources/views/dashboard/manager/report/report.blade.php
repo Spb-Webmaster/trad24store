@@ -37,13 +37,7 @@
 
 
 
-
-
-
-
                                 <div class="dashboardBox">
-
-
 
                                     <div class="c__block">
 
