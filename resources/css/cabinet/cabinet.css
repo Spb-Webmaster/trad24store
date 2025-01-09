@@ -494,6 +494,8 @@
       background: #282828;
       position: absolute;
       z-index: 1; }
+    .v_s_c__flex .v_s_c__item a {
+      position: relative; }
     .v_s_c__flex .v_s_c__item span, .v_s_c__flex .v_s_c__item a {
       height: 84px;
       display: flex;
@@ -518,6 +520,20 @@
 .cabinet .v_s_c__flex .v_s_c__item.active span:before, .cabinet .v_s_c__flex .v_s_c__item.active a:before {
   content: "";
   display: none !important; }
+
+._int {
+  position: absolute;
+  font-size: 10px !important;
+  font-weight: 100 !important;
+  text-decoration: none;
+  top: 16px;
+  right: -3px;
+  border-radius: 20px;
+  color: #fff !important;
+  background: #EF533F;
+  width: 15px !important;
+  height: 15px !important;
+  min-width: 15px !important; }
 
 /* ///////menu */
 /* Кнопка выход  */

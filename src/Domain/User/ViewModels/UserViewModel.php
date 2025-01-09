@@ -5,6 +5,7 @@ namespace Domain\User\ViewModels;
 
 use App\Models\User;
 use App\Models\UserCity;
+use App\Models\UserMediator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -145,10 +146,6 @@ class UserViewModel
 
 
 
-
-
-
-
     /**
      * заблокировать
      */
@@ -174,6 +171,24 @@ class UserViewModel
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return
+     * все заблокированные user-ы
+     */
+    public function users_no_publiched()
+    {
+
+        $users = User::query()
+            ->where('published', 0)
+            ->get()->count();
+        if($users) {
+            return $users;
+        }
+        return 0;
+
+
     }
 
 

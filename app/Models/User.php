@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Events\Auth\ResetPasswordEvent;
+use Domain\Report\ViewModels\ReportViewModel;
 use Domain\User\QueryBuilders\SearchQueryBuilder;
 use Domain\User\ViewModels\UserFilesViewModel;
+use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -205,16 +207,21 @@ class User extends Authenticatable
     /**
      * @return string
      *
-     * user_html_report_options
+     * user_html_report_options()
      *
      */
 
-    public function getUserHtmlReportOptionsAttribute():string
+    public function UserHtmlReportOptions($select = null):string
     {
         settype($result, "string");
         for ($i=1;$i<=50;$i++)
         {
-            $result .= '<option value="'.$i.'">'. $i .'</option>';
+            if($select == $i) {
+                $selected = 'selected';
+            } else {
+                $selected = '';
+            }
+            $result .= '<option '. $selected .'  value="'.$i.'">'. $i .'</option>';
         }
 
 
@@ -365,6 +372,18 @@ class User extends Authenticatable
 
     }
 
+    public function periud_report($id) {
+
+        $int = ReportViewModel::make()->periud_report($id);
+
+        if($int) {
+            return $int;
+        }
+        return false;
+
+
+
+    }
     public function getUserTeacherAttribute()
     {
 

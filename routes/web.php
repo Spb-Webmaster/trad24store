@@ -44,7 +44,6 @@ Route::controller(SignInController::class)->group(function () {
 
     Route::get('/login', 'page')
         ->name('login')->middleware(RedirectIfAuthenticated::class);
-
     Route::post('/login', 'handlePhoneEmail')->name('login.handle');
 
 });
@@ -157,10 +156,18 @@ Route::controller(ReportController::class)->group(function () {
         ->name('reports.add')
         ->middleware(UserPublishedMiddleware::class);
 
-
     Route::post('/reports/add.handel', 'reportAddHandel')
         ->name('reports_add.handel')
         ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/reports/update/{id}', 'reportUpdate')
+        ->name('reports.update')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::post('/reports/reports_update.handel', 'reportUpdateHandel')
+        ->name('reports_update.handel')
+        ->middleware(UserPublishedMiddleware::class);
+
 });
 
 
@@ -335,6 +342,8 @@ Route::controller(TestController::class)->group(function () {
  */
 
 Route::controller(ManagerController::class)->group(function () {
+
+    /** работа с user */
     Route::get('/m_users', 'users')
         ->name('m_users')
         ->middleware(ManagerMiddleware::class);
@@ -354,6 +363,30 @@ Route::controller(ManagerController::class)->group(function () {
     Route::post('/m_users/unblock', 'unblock')
         ->name('unblock')
         ->middleware(ManagerMiddleware::class);
+    /** работа с user */
+
+    /** работа с отчетами */
+    Route::get('/m_reports', 'reports')
+        ->name('m_reports')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::get('/m_reports/report/{id}', 'report')
+        ->name('report')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_reports/search_user_report', 'search_user_report')
+        ->name('search_user_report')
+        ->middleware(ManagerMiddleware::class);
+
+
+    Route::post('/m_users/blocked_report', 'blocked_report')
+        ->name('blocked_report')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_users/unblock_report', 'unblock_report')
+        ->name('unblock_report')
+        ->middleware(ManagerMiddleware::class);
+
 
 
 });

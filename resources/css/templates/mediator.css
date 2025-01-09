@@ -267,16 +267,48 @@
   .m_report .row .col.s4 {
     width: 33.333%; }
 
-.option__report {
+.option__report .rep_option_med {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 10px 53px 10px 15px; }
+.option__report .rep_option {
+  padding: 0 10px 0 0; }
+
+.report_flex {
+  width: 100%;
+  display: flex;
   padding: 20px 0 30px 0;
   border-top: 1px solid #E0E0E0; }
-  .option__report .rep_option_med {
-    width: 100%;
+  .report_flex .report_flex__left {
+    width: 65%;
+    padding: 10px 30px 16px 30px;
+    line-height: 1.4em; }
+  .report_flex .report_flex__right {
+    width: 35%; }
+
+.no_publish {
+  padding: 20px 53px 20px 10px;
+  display: flex;
+  justify-content: end; }
+  .no_publish a.no_publish_button {
+    max-width: 150px;
+    height: 42px;
+    text-decoration: none;
     display: flex;
-    justify-content: end;
-    padding: 10px 53px 10px 15px; }
-  .option__report .rep_option {
-    padding: 0 10px 0 0; }
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: #FF931E;
+    border: 1px solid #FF931E;
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    border-radius: 6px; }
+  .no_publish a.no_publish_button:hover {
+    color: #FF931E;
+    background: #fff; }
 
 /**
 Иклнки модерации, зеленая и желтая
@@ -302,6 +334,26 @@
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTEiIHN0cm9rZT0iIzQzRDM4QiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTggMTMuNTcxNEwxMS40Mjg2IDE1Ljg1NzFMMTYgOSIgc3Ryb2tlPSIjNDNEMzhCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K"); }
+
+.row_h_moderation_red {
+  color: #EF533F;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0 15px; }
+  .row_h_moderation_red .ic_red {
+    margin-right: 10px;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    min-height: 24px;
+    min-width: 24px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIHN0cm9rZT0iI0ZGNjM2MyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik04IDE2TDE2IDgiIHN0cm9rZT0iI0ZGOTMxRSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNOCA4TDE2IDE2IiBzdHJva2U9IiNGRjYzNjMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTggMTZMMTYgOCIgc3Ryb2tlPSIjRkY2MzYzIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo="); }
+  .row_h_moderation_red i {
+    font-style: normal; }
 
 .row_h_moderation_yellow {
   color: #FF931E;
@@ -504,6 +556,24 @@
     border-color: #43D38B;
     color: #43D38B; }
 
+.suret_text.desc {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 24px;
+  line-height: 1.4em;
+  color: #667085;
+  font-size: 14px; }
+  .suret_text.desc h3 {
+    color: #095C9A;
+    line-height: 1.3em;
+    padding: 0 0 10px 0;
+    font-size: 20px; }
+
+.text_act {
+  padding: 14px 0 4px 0;
+  color: #282828;
+  font-size: 15px; }
+
 @media screen and (max-width: 968px) {
   ._r_range_flex {
     display: flex;
@@ -551,6 +621,9 @@
   .mediator__flex .mediator_left__flex_1 .mediator_left__content .h2_blue {
     font-size: calc(22px + 16 * ((100vw - 320px) / 1120)); } }
 @media screen and (max-width: 888px) {
+  .m_report .report_full {
+    font-size: 15px !important; }
+
   .mediator__flex .mediator__options ._item_opt {
     display: block;
     padding: 12px 0; }
@@ -569,7 +642,17 @@
       position: relative;
       padding-bottom: 10px; }
   .com_responce .com_responce_tr {
-    padding: 20px 16px 21px 16px; } }
+    padding: 20px 16px 21px 16px; }
+
+  .report_flex {
+    display: block; }
+    .report_flex .report_flex__left {
+      width: 100%;
+      padding: 0 16px 24px 16px; }
+    .report_flex .report_flex__right {
+      width: 100%;
+      padding-right: 0;
+      padding-left: 0; } }
 @media screen and (max-width: 640px) {
   .mediator__flex .mediator_left__flex_1 .mediator_left__avatar {
     width: 140px;

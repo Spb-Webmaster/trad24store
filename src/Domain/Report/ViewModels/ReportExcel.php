@@ -34,12 +34,6 @@ class ReportExcel
     }
 
 
-    public function report_excel($data)
-    {
-
-
-
-    }
 
 
 }

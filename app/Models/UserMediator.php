@@ -21,8 +21,9 @@ class UserMediator extends Model
         'desc',
         'params',
         'published',
+        'active',
         'user_id',
-        'created_at' // добавлено для предотвращенияч конфликта сохранения из админки и из личного кабинета
+        'created_at' /** добавлено для предотвращенияч конфликта сохранения из админки и из личного кабинета */
     ];
     protected $casts = [
         'params' => 'collection'

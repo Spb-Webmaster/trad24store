@@ -1,5 +1,6 @@
 <div class="c__block">
 
+
     <div class="c__flex">
 
         <div class="c__flex_50 c__flex_50_left">
@@ -36,7 +37,7 @@
                             id="registerSem">
 
                         <option value="">Семейная медиация</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>
@@ -54,7 +55,7 @@
                             id="registerUgo">
 
                         <option value="">Уголовная медиация</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>
@@ -72,7 +73,7 @@
                             id="registerGra">
 
                         <option value="">Гражданская медиация</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>
@@ -89,7 +90,7 @@
                             id="registerUve">
 
                         <option value="">Ювенальная медиация</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>
@@ -106,7 +107,7 @@
                             id="registerKor">
 
                         <option value="">Корпоративная медиация</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>
@@ -123,7 +124,7 @@
                             id="registerTru">
 
                         <option value="">Трудовые споры</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>
@@ -140,7 +141,7 @@
                             id="registerBan">
 
                         <option value="">Банковские споры</option>
-                        {!!  $user->user_html_report_options !!}
+                        {!!  $user->UserHtmlReportOptions() !!}
 
 
                     </select>

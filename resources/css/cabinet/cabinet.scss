@@ -682,6 +682,7 @@ $maxWidth: 1440;
         position: relative;
         margin: 0 20px;
 
+
         &.active span:before,
         &.active a:before {
             content: '';
@@ -695,7 +696,9 @@ $maxWidth: 1440;
             z-index: 1;
 
         }
-
+a {
+    position: relative;
+}
         span, a {
             height: 84px;
             display: flex;
@@ -705,6 +708,7 @@ $maxWidth: 1440;
             text-decoration: none;
             transition: 0.2s;
             color: $color;
+
         }
 
         a:hover {
@@ -734,6 +738,22 @@ $maxWidth: 1440;
 .cabinet .v_s_c__flex .v_s_c__item.active span:before, .cabinet .v_s_c__flex .v_s_c__item.active a:before {
     content: "";
     display: none !important;
+}
+
+
+._int {
+    position: absolute;
+    font-size: 10px !important;
+    font-weight: 100 !important;
+    text-decoration: none;
+    top: 16px;
+    right: -3px;
+    border-radius: 20px;
+    color: #fff !important;
+    background: $colorRed;
+    width: 15px !important;
+    height: 15px !important;
+    min-width: 15px !important;
 }
 
 /* ///////menu */

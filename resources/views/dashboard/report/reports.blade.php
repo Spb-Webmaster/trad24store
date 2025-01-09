@@ -117,7 +117,9 @@
 
 
                                                         <x-dashboard.report.published
-                                                            published="{{$report->published}}"/>
+                                                            published="{{$report->published}}"
+                                                            active="{{$report->active}}"
+                                                        />
 
 
                                                     </div>
@@ -130,43 +132,59 @@
 
                                                 <div class="report_full display_none">
 
-                                                    <div class="option__report ">
+                                                    <div class="report_flex">
+                                                        <div class="report_flex__left desc">
+                                                            {!! $report->desc !!}
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Семейная</div>
-                                                            <div class="rep_option_int">{{ $report->sem }}</div>
                                                         </div>
+                                                        <div class="report_flex__right">
+                                                            <div class="option__report ">
+
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Семейная</div>
+                                                                    <div class="rep_option_int">{{ $report->sem }}</div>
+                                                                </div>
 
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Уголовная</div>
-                                                            <div class="rep_option_int">{{ $report->ugo }}</div>
-                                                        </div>
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Уголовная</div>
+                                                                    <div class="rep_option_int">{{ $report->ugo }}</div>
+                                                                </div>
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Гражданская</div>
-                                                            <div class="rep_option_int">{{ $report->gra }}</div>
-                                                        </div>
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Гражданская</div>
+                                                                    <div class="rep_option_int">{{ $report->gra }}</div>
+                                                                </div>
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Ювенальная</div>
-                                                            <div class="rep_option_int">{{ $report->uve }}</div>
-                                                        </div>
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Ювенальная</div>
+                                                                    <div class="rep_option_int">{{ $report->uve }}</div>
+                                                                </div>
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Корпоративная</div>
-                                                            <div class="rep_option_int">{{ $report->kor }}</div>
-                                                        </div>
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Корпоративная</div>
+                                                                    <div class="rep_option_int">{{ $report->kor }}</div>
+                                                                </div>
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Трудовые споры</div>
-                                                            <div class="rep_option_int">{{ $report->tru }}</div>
-                                                        </div>
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Трудовые споры</div>
+                                                                    <div class="rep_option_int">{{ $report->tru }}</div>
+                                                                </div>
 
 
-                                                        <div class="rep_option_med">
-                                                            <div class="rep_option">Банковские споры</div>
-                                                            <div class="rep_option_int">{{ $report->ban }}</div>
+                                                                <div class="rep_option_med">
+                                                                    <div class="rep_option">Банковские споры</div>
+                                                                    <div class="rep_option_int">{{ $report->ban }}</div>
+                                                                </div>
+
+
+                                                                @if(!$report->active)
+                                                                    <div class="no_publish">
+                                                                    <a href="{{ route('reports.update', ['id'=> $report->id]) }}" class="no_publish_button">Переделать</a>
+                                                                    </div>
+                                                                @endif
+
+                                                            </div>
                                                         </div>
 
                                                     </div>

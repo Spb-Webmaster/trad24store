@@ -4,10 +4,19 @@
    {{--         <div class="v_s_c__item {{ active_linkMenu(asset(route('cabinet.policy')), 'find')  }}"><a href="{{ route('cabinet.policy') }}">{{ __('Полисы') }}</a></div>--}}
            {{-- <div class="v_s_c__item"><a href="{{ route('cabinet.test') }}">{{ __('Статьи') }}</a></div>--}}
             <div class="v_s_c__item {{ active_linkMenu(asset(route('cabinet')), 'find')  }}"><a href="{{ route('cabinet') }}">{{ __('Настройки') }}</a></div>
-            <div class="v_s_c__item {{ active_linkMenu(asset(route('reports')), 'find')  }}"><a href="{{ route('reports') }}">{{ __('Отчеты') }}</a></div>
+            <div class="v_s_c__item {{ active_linkMenu(asset(route('reports')), 'find')  }}"><a href="{{ route('reports') }}">{{ __('Мои отчеты') }}</a></div>
 
             @if(auth()->user()->manager)
-            <div class="v_s_c__item {{ active_linkMenu(asset(route('m_users')), 'find')  }}"><a href="{{ route('m_users') }}">{{ __('Медиаторы') }}</a></div>
+            <div class="v_s_c__item {{ active_linkMenu(asset(route('m_users')), 'find')  }}"><a href="{{ route('m_users') }}">{{ __('Медиаторы') }}
+                    @if($users_no_publiched)
+                    <span class="_int">{{ $users_no_publiched }}</span>
+                    @endif
+                </a></div>
+            <div class="v_s_c__item {{ active_linkMenu(asset(route('m_reports')), 'find')  }}"><a href="{{ route('m_reports') }}">{{ __('Отчеты') }}
+                    @if($report_no_publiched)
+                        <span class="_int">{{ $report_no_publiched }}</span>
+                    @endif
+                </a></div>
             @endif
 
         </div>

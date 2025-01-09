@@ -1,8 +1,8 @@
 @extends('layouts.layout_cabinet')
 <x-seo.meta
-    title="Cоздать отчет | Кабинет пользователя | Отчеты  - {{ $user->user }} "
-    description="Кабинет пользователя | Отчеты"
-    keywords="Кабинет пользователя | Отчеты"
+    title="Редактировать | Отчеты  - {{ $user->user }} "
+    description="Кабинет пользователя | Редактировать"
+    keywords="Кабинет пользователя | Редактировать"
 />
 
 @section('cabinet')
@@ -15,6 +15,7 @@
                     @include('dashboard._partial.top')
 
                     <div class="cabinet__flex  height_100">
+
                         <div class="cabinet__left">
                             <div class="cl">
 
@@ -22,12 +23,14 @@
 
                             </div>
                         </div>
+
                         <div class="cabinet__right">
+
                             @include('dashboard.menu.cabinet_menu')
 
                             <div class="cabinet_radius12_fff">
 
-                                @include('dashboard.report.forms.add_report')
+                                @include('dashboard.report.forms.update_report')
 
 
                             </div>
