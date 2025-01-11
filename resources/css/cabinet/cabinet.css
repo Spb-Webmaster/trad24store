@@ -58,7 +58,7 @@
   .c__flex .c__flex_33_right {
     padding-left: 0.5%; }
 
-.active_contact {
+.active_contact, .explanation {
   padding: 10px;
   width: 100%;
   background: #095C9A;
@@ -66,6 +66,17 @@
   border-radius: 6px;
   margin: 15px 0 0 0;
   font-size: 15px; }
+
+.active_contact.explanation {
+  margin: 5px 0 0 0; }
+
+.explanation {
+  position: relative;
+  top: -10px; }
+  .explanation.explanation_yes {
+    background-color: #43D38B; }
+  .explanation.explanation_non {
+    background-color: #FF931E; }
 
 .slotButtons__right {
   display: flex;
@@ -148,7 +159,7 @@
   border-radius: 50%; }
 
 .c__title_subtitle {
-  padding: 6px 0  24px 0; }
+  padding: 6px 0 24px 0; }
 
 .c__title_subtitle_flex {
   display: flex;
@@ -232,7 +243,7 @@
     font-weight: 900;
     font-size: 20px;
     line-height: 1.2em;
-    padding: 10px 0  6px 0;
+    padding: 10px 0 6px 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -395,7 +406,7 @@
   position: relative;
   line-height: normal;
   right: 0;
-  margin: 0  3px; }
+  margin: 0 3px; }
 
 .LC_senior_manager {
   border-radius: 20px;
@@ -411,7 +422,7 @@
   position: relative;
   line-height: normal;
   right: 0;
-  margin: 0  2px; }
+  margin: 0 2px; }
 
 .LC_senior_cash {
   border-radius: 20px;
@@ -428,7 +439,7 @@
   position: relative;
   line-height: normal;
   right: 0;
-  margin: 0  2px;
+  margin: 0 2px;
   padding: 3px 0; }
 
 .LC_senior_ball {
@@ -446,7 +457,7 @@
   position: relative;
   line-height: normal;
   right: 0;
-  margin: 0  2px;
+  margin: 0 2px;
   padding: 3px 0; }
 
 .site_avatar {
@@ -623,6 +634,26 @@
     line-height: 1.2em; }
   .yellow_mess p {
     line-height: 1.4em; }
+  .yellow_mess a {
+    color: #fff;
+    position: relative; }
+  .yellow_mess a:hover {
+    color: #fff; }
+  .yellow_mess .subscr a:after {
+    top: -2px;
+    right: -30px;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    border-radius: 5px;
+    width: 21px;
+    height: 21px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPg0KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBkPSJNMTYuMTkgMkg3LjgxQzQuMTcgMiAyIDQuMTcgMiA3LjgxVjE2LjE4QzIgMTkuODMgNC4xNyAyMiA3LjgxIDIySDE2LjE4QzE5LjgyIDIyIDIxLjk5IDE5LjgzIDIxLjk5IDE2LjE5VjcuODFDMjIgNC4xNyAxOS44MyAyIDE2LjE5IDJaTTguMTggMTYuNzdDOC4xNiAxNi43NyA4LjEzIDE2Ljc3IDguMTEgMTYuNzdDNy4xNCAxNi42OCA2LjIzIDE2LjIzIDUuNTUgMTUuNTFDMy45NSAxMy44MyAzLjk1IDExLjEgNS41NSA5LjQyTDcuNzQgNy4xMkM4LjUyIDYuMyA5LjU3IDUuODQgMTAuNjkgNS44NEMxMS44MSA1Ljg0IDEyLjg2IDYuMjkgMTMuNjQgNy4xMkMxNS4yNCA4LjggMTUuMjQgMTEuNTMgMTMuNjQgMTMuMjFMMTIuNTUgMTQuMzZDMTIuMjYgMTQuNjYgMTEuNzkgMTQuNjcgMTEuNDkgMTQuMzlDMTEuMTkgMTQuMSAxMS4xOCAxMy42MyAxMS40NiAxMy4zM0wxMi41NSAxMi4xOEMxMy42MSAxMS4wNyAxMy42MSA5LjI2IDEyLjU1IDguMTZDMTEuNTYgNy4xMiA5LjgyIDcuMTIgOC44MiA4LjE2TDYuNjMgMTAuNDZDNS41NyAxMS41NyA1LjU3IDEzLjM4IDYuNjMgMTQuNDhDNy4wNiAxNC45NCA3LjY0IDE1LjIyIDguMjUgMTUuMjhDOC42NiAxNS4zMiA4Ljk2IDE1LjY5IDguOTIgMTYuMUM4Ljg5IDE2LjQ4IDguNTYgMTYuNzcgOC4xOCAxNi43N1pNMTguNDUgMTQuNTlMMTYuMjYgMTYuODlDMTUuNDggMTcuNzEgMTQuNDMgMTguMTcgMTMuMzEgMTguMTdDMTIuMTkgMTguMTcgMTEuMTQgMTcuNzIgMTAuMzYgMTYuODlDOC43NiAxNS4yMSA4Ljc2IDEyLjQ4IDEwLjM2IDEwLjhMMTEuNDUgOS42NUMxMS43NCA5LjM1IDEyLjIxIDkuMzQgMTIuNTEgOS42MkMxMi44MSA5LjkxIDEyLjgyIDEwLjM4IDEyLjU0IDEwLjY4TDExLjQ1IDExLjgzQzEwLjM5IDEyLjk0IDEwLjM5IDE0Ljc1IDExLjQ1IDE1Ljg1QzEyLjQ0IDE2Ljg5IDE0LjE4IDE2LjkgMTUuMTggMTUuODVMMTcuMzcgMTMuNTVDMTguNDMgMTIuNDQgMTguNDMgMTAuNjMgMTcuMzcgOS41M0MxNi45NCA5LjA3IDE2LjM2IDguNzkgMTUuNzUgOC43M0MxNS4zNCA4LjY5IDE1LjA0IDguMzIgMTUuMDggNy45MUMxNS4xMiA3LjUgMTUuNDggNy4xOSAxNS45IDcuMjRDMTYuODcgNy4zNCAxNy43OCA3Ljc4IDE4LjQ2IDguNUMyMC4wNSAxMC4xNyAyMC4wNSAxMi45MSAxOC40NSAxNC41OVoiIGZpbGw9IiNGRjkzMUUiLz4NCjwvc3ZnPg==");
+    text-decoration: none; }
 
 .green_mess {
   background: #43D38B;
@@ -634,6 +665,30 @@
     line-height: 1.2em; }
   .green_mess p {
     line-height: 1.4em; }
+
+/** полписка //
+ */
+.li_s {
+  font-size: 16px;
+  padding: 15px 0 10px 0; }
+  .li_s .li_text_s {
+    background-position: 0 9px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAuMDAwMiIgY3k9IjkuOTk5OTgiIHI9IjkuMTY2NjciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNNi42NjY1IDExLjMwOTVMOS41MjM2NSAxMy4yMTQzTDEzLjMzMzIgNy41IiBzdHJva2U9IndoaXRlIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
+    color: #fff;
+    line-height: 1.3em;
+    padding: 7px 0 7px 37px; }
+
+/** Подписка в модальном окне /**/
+.alax_inputs .li_s {
+  font-size: 16px;
+  padding: 15px 0 10px 0; }
+  .alax_inputs .li_s .li_text_s {
+    background-position: 0 9px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAuMDAwMiIgY3k9IjkuOTk5OTgiIHI9IjkuMTY2NjciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNNi42NjY1IDExLjMwOTVMOS41MjM2NSAxMy4yMTQzTDEzLjMzMzIgNy41IiBzdHJva2U9IndoaXRlIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
+    line-height: 1.3em;
+    padding: 7px 0 7px 37px; }
 
 /** //////////////  Кабинет левая  часть, баннер публикации/**/
 

@@ -73,7 +73,7 @@ Route::controller(ForgotPasswordController::class)->group(function () {
 
 Route::controller(ResetPasswordController::class)->group(function () {
 
-    Route::get('/reset-password/{token}','page')
+    Route::get('/reset-password/{token}', 'page')
         ->name('password.reset')
         ->middleware(RedirectIfAuthenticated::class);
 
@@ -102,16 +102,13 @@ Route::controller(DashboardController::class)->group(function () {
 
     Route::get('/cabinet', 'page')
         ->name('cabinet')
-        ->middleware(UserPublishedMiddleware::class);
-       // ->middleware(UserPublishedMiddleware::class)
+        ->middleware(UserPublishedMiddleware::class);// ->middleware(UserPublishedMiddleware::class)
     ;
 
 
     Route::get('/cabinet/edit', 'edit')
         ->name('cabinet.edit')
         ->middleware(UserPublishedMiddleware::class);
-
-
 
 
     Route::get('/cabinet-blocked', 'blocked')
@@ -129,11 +126,9 @@ Route::controller(DashboardController::class)->group(function () {
         ->middleware(UserPublishedMiddleware::class);
 
 
-
     Route::post('/cabinet/setting-password.handel', 'settingPasswordHandel')
         ->name('setting.password.handel')
         ->middleware(UserPublishedMiddleware::class);
-
 
 
 });
@@ -230,14 +225,14 @@ Route::controller(TimeTableController::class)->group(function () {
 });
 
 /**
- * расписание
- *
-/**
  * AjaxController
  */
 Route::controller(AjaxController::class)->group(function () {
 
     Route::post('/send-mail/order-call', 'OrderCall');
+    Route::post('/send-mail/order-pay', 'OrderPay')
+        ->middleware(UserPublishedMiddleware::class);
+
     Route::post('/send-mail/order-call-blue-form', 'OrderCallBlue_form');
     Route::post('/send-mail/bid', 'bid');
     Route::post('/set-city/city-action', 'city'); // записать город
@@ -298,7 +293,6 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/reestr/professionalnye-mediatory/{id}', 'prof_mediator')->name('prof_mediator');
     Route::get('/reestr/organizatsii-mediatorov/{id}', 'company_mediator')->name('company_mediator');
     Route::get('/reestr/neprofessionalnye-mediatory/{id}', 'notprof_mediator')->name('notprof_mediator');
-
 
 
 });
@@ -388,13 +382,7 @@ Route::controller(ManagerController::class)->group(function () {
         ->middleware(ManagerMiddleware::class);
 
 
-
 });
-
-/**
- * менеджеры
- *
-
 
 /**
  */
@@ -408,7 +396,6 @@ Route::controller(ChangeContactsController::class)->group(function () {
     Route::post('/canche.contacts', 'canche_contacts');
 });
 /**
-
  */
 
 Route::controller(PageController::class)->group(function () {

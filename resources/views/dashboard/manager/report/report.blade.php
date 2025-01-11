@@ -28,7 +28,7 @@
 
                                 <div class="c__title_subtitle">
                                     <h3 class="F_h1">{{ __('Медиатор') }} / <span class="blue">{{ $item->user->user }}</span>
-                                        @if(!$item->user->published) / <span class="color_red">Заблокирован!</span>
+                                        @if(!$item->user->published) / <span class="color_red">Ожидает модерации</span>
 
                                         @endif
                                     </h3>

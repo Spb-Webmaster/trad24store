@@ -16,6 +16,21 @@
     <br>
     <br>
 @endif
+@if(!$user->user_pay)
+    <div class="cabinet_radius12_fff yellow_mess">
+        @include('dashboard.left_bar._partial.pay_no')
+    </div>
+    <br>
+    <br>
+@else
+    <div class="cabinet_radius12_fff green_mess">
+        @include('dashboard.left_bar._partial.pay')
+    </div>
+    <br>
+    <br>
+@endif
+
+
 
 
 @if( $user->user_mediator_sum )

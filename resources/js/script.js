@@ -7,7 +7,7 @@ import {
     replace,
     feedback,
     excel_report,
-    upload_f,
+    upload_f, pay_me,
 
 } from './include/ajax';
 import {cabinet_toggle_type} from './include/cabinet';
@@ -35,6 +35,7 @@ import {report_toggle} from "./include/report";
 document.addEventListener('DOMContentLoaded', function () {
 
     call_me() // отправка заявки модальное окно
+    pay_me() // отправка заявки на платную подписку
     send_blue_form() // отправка заявки статическая синяя
     translate() // зперевод translate
     imask() // маска на поле input input[name="phone"]

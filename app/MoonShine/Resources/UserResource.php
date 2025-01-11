@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
+use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Components\Badge;
 use MoonShine\Decorations\Collapse;
 use MoonShine\Decorations\Column;
@@ -18,11 +19,13 @@ use MoonShine\Decorations\Tabs;
 use MoonShine\Enums\ClickAction;
 use MoonShine\Fields\Date;
 use MoonShine\Fields\File;
+use MoonShine\Fields\Hidden;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Json;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Password;
 use MoonShine\Fields\PasswordRepeat;
+use MoonShine\Fields\Position;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Select;
@@ -42,7 +45,6 @@ use MoonShine\Components\MoonShineComponent;
 /**
  * @extends ModelResource<User>
  * @method
-
  */
 class UserResource extends ModelResource
 {
@@ -57,6 +59,14 @@ class UserResource extends ModelResource
     protected ?ClickAction $clickAction = ClickAction::EDIT;
 
 
+    public function pay_date()
+    {
+        $time = strtotime('+1 year', time());
+        return date('d.m.Y', $time);
+
+
+    }
+
     public function filters(): array
     {
         return [
@@ -66,12 +76,13 @@ class UserResource extends ModelResource
 
             Text::make('Имя', 'name'),
             Switcher::make('Менеджер.', 'manager'),
+            Switcher::make('Подписка', 'pay'),
 
             Text::make('Email', 'email'),
             BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
-            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
-            BelongsToMany::make('Города', 'user_city', 'title', resource: new UserCityResource() )->selectMode(),
-            BelongsToMany::make('Виды медиации', 'user_list', 'title', resource: new UserListResource() )->selectMode(),
+            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource())->selectMode(),
+            BelongsToMany::make('Города', 'user_city', 'title', resource: new UserCityResource())->selectMode(),
+            BelongsToMany::make('Виды медиации', 'user_list', 'title', resource: new UserListResource())->selectMode(),
             Number::make('Звезды', 'stars')
                 ->stars()
                 ->min(0)
@@ -92,20 +103,27 @@ class UserResource extends ModelResource
             ID::make()
                 ->sortable(),
             Image::make(__('Аватар'), 'avatar')->sortable(),
-            BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource()),
+            BelongsTo::make('Кат.', 'user_type', resource: new UserTypeResource()),
+
+
+
 
             Text::make(__('Имя'), 'name')->sortable(),
             Slug::make(__('Телефон'), 'phone'),
             Slug::make(__('Email'), 'email'),
             Switcher::make('Статус', 'status'),
             Switcher::make('Публ.', 'published')->updateOnPreview(),
-            //Switcher::make('Публ. контактов', 'active_contact'),
+            /**Switcher::make('Публ. контактов', 'active_contact'),*/
 
-            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource() )   ->inLine(
+            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource())->inLine(
                 separator: '<br>',
                 badge: fn($model, $value) => Badge::make($value, 'success'),
 
             ),
+            Json::make('Pay', 'pay')->fields([
+                Switcher::make('', 'pay_status'),
+
+            ])->creatable(false),
 
 
         ];
@@ -131,7 +149,7 @@ class UserResource extends ModelResource
 
                             ])
                                 ->columnSpan(12),
-                                ]),
+                        ]),
                         Grid::make([
                             Column::make([
 
@@ -169,8 +187,28 @@ class UserResource extends ModelResource
 
                                     Switcher::make('Статус действующий', 'status')->default(1),
 
-                                    BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())->searchable(),
 
+                                    BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())
+                                        ->searchable(),
+
+
+                                ]),
+
+
+                                Collapse::make('Платно', [
+
+
+
+                                Json::make('Платное размещение', 'pay')->fields([
+
+                                        Select::make('Статус', 'pay_status')->options([
+                                            '0' => 'Нет',
+                                            '1' => 'Включена',
+                                            '2' => 'В ожидании',
+                                        ])->default(0),
+                                        Date::make('Дата окончания', 'pay_date'),
+
+                                    ])->creatable(false)->vertical(),
 
                                 ]),
 
@@ -181,8 +219,6 @@ class UserResource extends ModelResource
                                         ->min(0)
                                         ->max(5)
                                         ->step(1)->default(0),
-
-
 
 
                                 ]),
@@ -201,17 +237,17 @@ class UserResource extends ModelResource
                                     Textarea::make('Дополнительно', 'dop'),
                                     Collapse::make('Виды медиации', [
 
-                                        BelongsToMany::make('', 'user_list', 'title', resource: new UserListResource() )->selectMode(),
+                                        BelongsToMany::make('', 'user_list', 'title', resource: new UserListResource())->selectMode(),
 
                                     ]),
                                     Collapse::make('Язык медиации', [
 
-                                        BelongsToMany::make('', 'user_language', 'title', resource: new UserLanguageResource() )->selectMode(),
+                                        BelongsToMany::make('', 'user_language', 'title', resource: new UserLanguageResource())->selectMode(),
 
                                     ]),
-                                   Collapse::make('Города медиации', [
+                                    Collapse::make('Города медиации', [
 
-                                        BelongsToMany::make('', 'user_city', 'title', resource: new UserCityResource() )->selectMode(),
+                                        BelongsToMany::make('', 'user_city', 'title', resource: new UserCityResource())->selectMode(),
 
                                     ]),
 

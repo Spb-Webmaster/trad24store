@@ -4,7 +4,6 @@ namespace App\Listeners\Form;
 
 use App\Events\Form\OrderCallEvent;
 use App\Mail\Form\OrderCallMail;
-use App\Mail\SendMails;
 use Illuminate\Support\Facades\Mail;
 use Support\Traits\CreatorToken;
 use Support\Traits\EmailAddressCollector;

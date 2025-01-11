@@ -7,6 +7,7 @@ use App\Events\Form\BidFormEvent;
 use App\Events\Form\OrderCallBlueFormEvent;
 use App\Events\Form\OrderCallEvent;
 use App\Events\Lesson\SingUpLessonFormEvent;
+use App\Events\Pay\OrderPayEvent;
 use App\Events\UserUpdate\UploadUserDocsFormEvent;
 use App\Exports\ReportExport;
 use App\Models\User;
@@ -56,6 +57,47 @@ class AjaxController extends Controller
         }
 
         return response()->json(['error' => $validator->errors()]);
+
+    }
+
+
+    /**
+     * Метод отправки сообщения "Подписка на сервисе"
+     */
+
+    public function OrderPay(Request $request)
+    {
+
+
+        /**
+         * Статус "в ожидании"
+         */
+
+        $user = User::find(auth()->user()->id);
+
+        $date = null;
+        foreach ($user->pay as $item) {
+            $date = $item['pay_date'];
+        }
+
+        $user->update(['pay' => [0 => ['pay_status' => 2, 'pay_date' => $date]]]); /** изменим статус */
+
+
+        /**
+         * Событие отправка сообщения админу (Подписка на сервисе)
+         */
+
+        OrderPayEvent::dispatch($request);
+
+        /**
+         * возвращаем назад в браузер
+         */
+
+        return response()->json([
+            'request' => $request
+
+        ]);
+
 
     }
 
@@ -371,29 +413,30 @@ class AjaxController extends Controller
 
 
         /** слияние ранее загружанных файлов */
-             $uploaded_files = UserFilesViewModel::make()->user_get_files($user_id, $field, $count); //получим все ранее загркженный файлы
+        $uploaded_files = UserFilesViewModel::make()->user_get_files($user_id, $field, $count); //получим все ранее загркженный файлы
 
 
-                $user_files_field = array(); // создадим новаый массив для слияния
+        $user_files_field = array(); // создадим новаый массив для слияния
 
-                if(!is_null($uploaded_files)) {
+        if (!is_null($uploaded_files)) {
 
-                    $user_files_field = array_merge($uploaded_files, $puth_files); // слияние массивов
+            $user_files_field = array_merge($uploaded_files, $puth_files); // слияние массивов
 
-                } else {
+        } else {
 
-                    $user_files_field = $puth_files; // если ранее загруженных файлов нет, то берет, то, что сейчас загрузили
-                }
+            $user_files_field = $puth_files; // если ранее загруженных файлов нет, то берет, то, что сейчас загрузили
+        }
 
         /** слияние ранее загружанных файлов  - решил не делать */
 
 
-
         $user = User::find($user_id);
 
-        $user->$field = $user_files_field; /** все новые файлы */
+        $user->$field = $user_files_field;
+        /** все новые файлы */
 
-        $user->published = 0;   /** снять с пуликации **/
+        $user->published = 0;
+        /** снять с пуликации **/
 
         $user->save();
 
@@ -401,7 +444,8 @@ class AjaxController extends Controller
         $new_files = UserFilesViewModel::make()->json_files($user->$field);
 
 
-        $user_files_field = array_merge(['files' => $puth_files], ['id' => $user->id]); /** на модерацию тольлко загруженные */
+        $user_files_field = array_merge(['files' => $puth_files], ['id' => $user->id]);
+        /** на модерацию тольлко загруженные */
 
         /** добавим id пользователя */
         UploadUserDocsFormEvent::dispatch($user_files_field);
@@ -511,9 +555,9 @@ class AjaxController extends Controller
 
                 $dates = $request->toArray();
 
-                $filename = User::find($dates['id'])->user . '-'. $dates['from'] .'-'.$dates['to'].'.xlsx';
+                $filename = User::find($dates['id'])->user . '-' . $dates['from'] . '-' . $dates['to'] . '.xlsx';
 
-                  $result =  Excel::store(new ReportExport($dates), $filename, 'export');
+                $result = Excel::store(new ReportExport($dates), $filename, 'export');
 
 
                 /**
@@ -524,7 +568,7 @@ class AjaxController extends Controller
                     'request' => $request,
                     'result' => $result,
                     'file' => $filename,
-                    'filename' => '/storage/export/'.$filename
+                    'filename' => '/storage/export/' . $filename
                 ]);
 
             }

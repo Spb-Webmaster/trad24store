@@ -74,6 +74,8 @@ class User extends Authenticatable
         'stars',
         'old_id',
         'manager',
+        'pay',
+
     ];
 
     protected $casts = [
@@ -88,6 +90,7 @@ class User extends Authenticatable
         'user_registered' => 'collection', //8
         'user_statute' => 'collection', //9
         'user_order_head' => 'collection', //10
+        'pay' => 'collection',
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -109,15 +112,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserMediator::class)->where('published', 1)->orderBy('created_at', 'desc');
     }
+
     public function user_mediator_nopublished(): HasMany
     {
         return $this->hasMany(UserMediator::class, 'user_id')->orderBy('created_at', 'desc');
     }
+
     public function user_mediator_on_checking(): HasMany
     {
         return $this->hasMany(UserMediator::class, 'user_id')->where('published', 0);
     }
-
 
 
     public function user_list(): BelongsToMany
@@ -165,11 +169,47 @@ class User extends Authenticatable
     public function getUserAttribute()
     {
 
-        if(isset($this->username)) {
+        if (isset($this->username)) {
             return $this->username;
         }
         return $this->name;
 
+
+    }
+
+
+    /**
+     * @return mixed|string|null
+     * Можно всегда выводить $user->user_pay
+     * если оплачено, проверим не прошла ли дата и тогда выведем дату
+     * иначе false
+     */
+    public function getUserPayAttribute()
+    {
+
+        if (isset($this->pay)) {
+
+            foreach ($this->pay as $pay) {
+
+                if (isset($pay['pay_status']) and $pay['pay_status'] != 0) {
+
+                    $date = $pay['pay_date'];
+                    $diff = strtotime($date) - time();
+                    //  echo round($diff / 3600); //  часов
+                    $d = round($diff / 86400); //  дней
+                    if ($d > 1) {
+                        return rusdate3($pay['pay_date']);
+                    } else {
+                        return false;
+
+                    }
+
+                }
+            }
+
+        }
+
+        return false;
 
     }
 
@@ -211,17 +251,16 @@ class User extends Authenticatable
      *
      */
 
-    public function UserHtmlReportOptions($select = null):string
+    public function UserHtmlReportOptions($select = null): string
     {
         settype($result, "string");
-        for ($i=1;$i<=50;$i++)
-        {
-            if($select == $i) {
+        for ($i = 1; $i <= 50; $i++) {
+            if ($select == $i) {
                 $selected = 'selected';
             } else {
                 $selected = '';
             }
-            $result .= '<option '. $selected .'  value="'.$i.'">'. $i .'</option>';
+            $result .= '<option ' . $selected . '  value="' . $i . '">' . $i . '</option>';
         }
 
 
@@ -293,6 +332,7 @@ class User extends Authenticatable
         return 0;
 
     }
+
     /**
      * @return float|int
      * user_mediator_kor
@@ -312,6 +352,7 @@ class User extends Authenticatable
         return 0;
 
     }
+
     /**
      * @return float|int
      * user_mediator_uve
@@ -331,6 +372,7 @@ class User extends Authenticatable
         return 0;
 
     }
+
     /**
      * @return float|int
      * user_mediator_tru
@@ -372,18 +414,19 @@ class User extends Authenticatable
 
     }
 
-    public function periud_report($id) {
+    public function periud_report($id)
+    {
 
         $int = ReportViewModel::make()->periud_report($id);
 
-        if($int) {
+        if ($int) {
             return $int;
         }
         return false;
 
 
-
     }
+
     public function getUserTeacherAttribute()
     {
 
@@ -639,7 +682,7 @@ class User extends Authenticatable
 
     }
 
-   /**
+    /**
      * @return array
      * файлы пользоватеоей
      * Спец. курс медиатора:
@@ -667,7 +710,7 @@ class User extends Authenticatable
 
     }
 
-   /**
+    /**
      * @return array
      * файлы пользоватеоей
      * Курс медиатор тренер:
@@ -702,8 +745,6 @@ class User extends Authenticatable
     }
 
 
-
-
     /**
      * Замена стандартного сброса пароля
      */
@@ -719,12 +760,8 @@ class User extends Authenticatable
          * Событие отправка сообщения о сбросе пароля
          */
 
-       ResetPasswordEvent::dispatch($data);
+        ResetPasswordEvent::dispatch($data);
     }
-
-
-
-
 
 
     /**
@@ -743,16 +780,24 @@ class User extends Authenticatable
         # Проверка данных  перед сохранением
         static::saving(function ($Moonshine) {
 
+
             $Moonshine->phone = phone($Moonshine->phone);
 
         });
 
+        static::saved(function ($Moonshine) {
 
-        static::created(function () {
+
+        });
+
+        static::created(function ($Moonshine) {
+
+
             cache_clear();
         });
 
-        static::updated(function () {
+        static::updated(function ($Moonshine) {
+
             cache_clear();
         });
 

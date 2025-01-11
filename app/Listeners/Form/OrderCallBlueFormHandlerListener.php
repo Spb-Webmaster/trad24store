@@ -5,7 +5,6 @@ namespace App\Listeners\Form;
 use App\Events\Form\OrderCallBlueFormEvent;
 use App\Mail\Form\BidMail;
 use App\Mail\Form\OrderCallBlueMail;
-use App\Mail\SendMails;
 use Illuminate\Support\Facades\Mail;
 use Support\Traits\CreatorToken;
 use Support\Traits\EmailAddressCollector;

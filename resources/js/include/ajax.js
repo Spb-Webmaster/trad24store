@@ -42,8 +42,44 @@ export function call_me() {
 
 }
 
+export function pay_me() {
+    /* pay_me__js заявка об оплате */
+    $('body').on('click', '.pay_me__js', function (event) {
+
+        var Parents = $(this).parents('.F_form');
+        loader(Parents);
+
+        $.ajax({
+            url: "/send-mail/order-pay",
+            method: "POST",
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                "url": url(),
+            },
+            success: function (response) {
+                if (response.error) {
+                    setTimeout(function () {
+                        Parents.find('.wrapper_loader ').css('display', 'none');
+                        printErrorMsg(Parents, response.error);
+                    }, 1000);
+
+                } else {
+                    setTimeout(function () {
+                        Parents.find('.wrapper_loader ').css('display', 'none');
+                        Parents.find('.F_form__body').hide();
+                        Parents.find('.F_responce').show();
+                    }, 1000);
+                }
+            }
+        });
+
+    });
+    /* pay_me__js заявка об оплате */
+
+}
+
 export function send_blue_form() {
-    /* send_form__js Звонок  (mini форма на главной)*/
+    /* send_form__js */
     $('body').on('click', '.send_form__js', function (event) {
 
         var Parents = $(this).parents('.F_form');
