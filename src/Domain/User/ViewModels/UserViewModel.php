@@ -68,7 +68,6 @@ class UserViewModel
 
     /**
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Builder|\LaravelIdea\Helper\App\Models\_IH_User_QB|mixed|null
      * аккаунт медиатора
      */
 
@@ -86,10 +85,9 @@ class UserViewModel
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection
      * порлучаем все используемые города
      */
-    public function cities_mediators(): Collection|null
+    public function cities_mediators()
     {
 
         $user_city = DB::table('user_user_city')

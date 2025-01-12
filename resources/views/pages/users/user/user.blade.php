@@ -161,27 +161,18 @@
 
 
                                 </div>
+
+                                        @include('pages.users.partial.comments')
+
+
                             </div>
 
                             <div class="mediator_right">
                                 <h3 class="h3_bold">Контакты</h3>
 
-                                @if($item->active_contact)
 
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            Адрес:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            @if($item->street)
-                                                {{ $item->street }},
-                                                <span>д.</span> {{ ($item->home)?:' - ' }},
-                                                <span>Офис/кв.</span> {{ ($item->office)?:' - '}}
-                                            @endif
-                                        </div>
-
-                                    </div>
-
+                                @if($item->status_pay_subscr() == 0)
+                                    {{-- Нет подписки--}}
                                     <div class="m_cont">
                                         <div class="m_cont__label">
                                             Почта:
@@ -201,69 +192,147 @@
                                         </div>
 
                                     </div>
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            Telegram:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            {{ ($item->telegram)?:' - ' }}
-                                        </div>
-
-                                    </div>
-
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            WhatsApp:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            {{ ($item->whatsapp)?:' - ' }}
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            Instagram:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            {{ ($item->instagram)?:' - ' }}
-                                        </div>
-
-                                    </div>
-
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            FaceBook:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            {{ ($item->social)?:' - ' }}
-                                        </div>
-
-                                    </div>
-
-                                    <div class="m_cont">
-                                        <div class="m_cont__label">
-                                            WebSite:
-                                        </div>
-                                        <div class="m_cont__value">
-                                            {{ ($item->website)?:' - ' }}
-                                        </div>
-
-                                    </div>
-
-                                @else
-
-                                    <div class="m_cont">
-
-                                        <div class="__stop_contacts">
-                                            <div class="m_cont__value">Контакты скрыты пользователем</div>
-                                        </div>
-                                    </div>
-
                                 @endif
 
+                                @if($item->status_pay_subscr() == 2)
+                                    {{-- Ожидает--}}
+                                    <div class="m_cont">
+                                        <div class="m_cont__label">
+                                            Почта:
+                                        </div>
+                                        <div class="m_cont__value">
+                                            {{ $item->email }}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="m_cont">
+                                        <div class="m_cont__label">
+                                            Телефон:
+                                        </div>
+                                        <div class="m_cont__value">
+                                            {{ (format_phone($item->phone))?:' - ' }}
+                                        </div>
+
+                                    </div>
+                                @endif
+
+                                @if($item->status_pay_subscr() == 1)
+                                    {{-- Есть подписка--}}
+
+                                @if($item->active_contact)
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Адрес:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                @if($item->street)
+                                                    {{ $item->street }},
+                                                    <span>д.</span> {{ ($item->home)?:' - ' }},
+                                                    <span>Офис/кв.</span> {{ ($item->office)?:' - '}}
+                                                @endif
+                                            </div>
+
+                                        </div>
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Почта:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ $item->email }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Телефон:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ (format_phone($item->phone))?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Telegram:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ ($item->telegram)?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                WhatsApp:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ ($item->whatsapp)?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Instagram:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ ($item->instagram)?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                FaceBook:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ ($item->social)?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                WebSite:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ ($item->website)?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+                                    @else
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Почта:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ $item->email }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="m_cont">
+                                            <div class="m_cont__label">
+                                                Телефон:
+                                            </div>
+                                            <div class="m_cont__value">
+                                                {{ (format_phone($item->phone))?:' - ' }}
+                                            </div>
+
+                                        </div>
+
+                                    @endif
+                                @endif
                                 @if( $item->user_mediator_sum )
                                     <x-dashboard.report.report_sum
                                         sum="{{$item->user_mediator_sum}}"
@@ -280,13 +349,7 @@
                             </div>
                         </div>
 
-                        <div class="mediator__flex">
-                            <div class="mediator_left">
-                                @include('pages.users.partial.comments')
-                            </div>
-                            <div class="mediator_right"></div>
 
-                        </div>
 
                     </div>
                 </div>

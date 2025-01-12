@@ -111,9 +111,9 @@ Route::controller(DashboardController::class)->group(function () {
         ->middleware(UserPublishedMiddleware::class);
 
 
-    Route::get('/cabinet-blocked', 'blocked')
+/*    Route::get('/cabinet-blocked', 'blocked')
         ->name('blocked')
-        ->middleware(UserBlockedMiddleware::class);
+        ->middleware(UserBlockedMiddleware::class);*/
 
 
     Route::post('/cabinet/setting.handel', 'settingHandel')

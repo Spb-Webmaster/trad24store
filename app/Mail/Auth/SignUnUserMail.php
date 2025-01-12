@@ -36,6 +36,7 @@ class SignUnUserMail extends Mailable
      */
     public function content(): Content
     {
+
         return new Content(
             view: 'html.email.auth.register_user',
         );

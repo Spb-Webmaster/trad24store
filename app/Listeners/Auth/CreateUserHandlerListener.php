@@ -28,6 +28,8 @@ class CreateUserHandlerListener
     {
 
                 $user = $event->user;
+
+
                 Mail::to($user->email)->send(new SignUnUserMail($user));
 
 

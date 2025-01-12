@@ -2,7 +2,6 @@
 @section('title', 'Создан аккаунт')
 @section('description', 'Данные для входа.')
 @section('content')
-
     <p style="word-wrap: break-word;"><b>{{__('Логин')}}</b> - <span style="color: #282828">{{ $user['email']  }}</span><br>
         <b>{{__('Пароль')}}</b> - <span style="color: #282828">{{ $user['password']  }}</span><br>
 

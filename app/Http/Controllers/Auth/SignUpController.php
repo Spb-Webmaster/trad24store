@@ -22,7 +22,7 @@ class SignUpController extends Controller
     {
 
 
-        $user = User::query()->create([
+       $user = User::query()->create([
 
             'name' => $request->name,
             'email' => $request->email,
@@ -30,18 +30,19 @@ class SignUpController extends Controller
 
         ]);
 
-       // event(new Registered($user)); // события
         /**
          * Событие отправка сообщения новому пользователю
          */
 
-        CreateUserEvent::dispatch($request);
+
+        CreateUserEvent::dispatch($user);
 
         /**
          * Событие отправка сообщения админу
          */
 
-        MessageAdminCreateUserEvent::dispatch($request);
+
+        MessageAdminCreateUserEvent::dispatch($user);
 
         auth()->login($user, true); // залогинили
 

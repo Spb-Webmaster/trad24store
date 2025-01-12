@@ -25,7 +25,7 @@ class DashboardController extends Controller
          */
 
         $user = auth()->user();
-        if(!$user) {
+        if (!$user) {
             abort(404);
         }
 
@@ -96,11 +96,12 @@ class DashboardController extends Controller
                     'username' => $request->username,
                     'phone' => $request->phone,
                     'birthday' => ($request->birthday) ?: auth()->user()->birthday,
-                    'published' => 0, /** снять с пуликации **/
+                    'published' => 0,/** снять с пуликации **/
                 ]);
             if ($user) {
 
-                UpdateUserSelfFormEvent::dispatch($request);   /** событие, создание токена, отправка админу  **/
+                UpdateUserSelfFormEvent::dispatch($request);
+                /** событие, создание токена, отправка админу  **/
             }
         }
 
@@ -139,7 +140,7 @@ class DashboardController extends Controller
         //social
         //website
 
-      //  dd($request->all());
+        //  dd($request->all());
 
         $session_user = $request->session()->get('user');
 
@@ -210,11 +211,18 @@ class DashboardController extends Controller
 
             $user->status = $request->status; // статус
 
+            /**
+             * показ котактов
+             */
+
+            if (isset($request->active_contact)) {
+                $user->active_contact = $request->active_contact; // показывать контакты или нет
+            }
+
 
             /**
              * ссылки на сети
              */
-            $user->active_contact = $request->active_contact; // показывать контакты или нет
 
             if ($request->telegram) {
 
@@ -276,9 +284,11 @@ class DashboardController extends Controller
             }
 
 
-            $user->published = 0; /** заблокируем */
+            $user->published = 0;
+            /** заблокируем */
 
-            $dirty = $user->getDirty(); /** что изменилось */
+            $dirty = $user->getDirty();
+            /** что изменилось */
 
             /**
              * запишем, что есть
@@ -287,12 +297,12 @@ class DashboardController extends Controller
             $result = $user->save();  //это обновит запись с помощью id=$request->id
 
 
-
             if ($result) {
 
-            //    dd($user);
+                //    dd($user);
 
-               UpdateUserFormEvent::dispatch($user);   /** событие, создание токена, отправка админу  **/
+                UpdateUserFormEvent::dispatch($user);
+                /** событие, создание токена, отправка админу  **/
 
             }
 

@@ -4,11 +4,11 @@
 <br>
 <br>
 @if($user->published)
-<div class="cabinet_radius12_fff green_mess">
-    @include('dashboard.left_bar._partial.published_yes')
-</div>
-<br>
-<br>
+    <div class="cabinet_radius12_fff green_mess">
+        @include('dashboard.left_bar._partial.published_yes')
+    </div>
+    <br>
+    <br>
 @else
     <div class="cabinet_radius12_fff yellow_mess">
         @include('dashboard.left_bar._partial.published_no')
@@ -16,18 +16,28 @@
     <br>
     <br>
 @endif
-@if(!$user->user_pay)
+
+@if($user->status_pay_subscr() == 0)
     <div class="cabinet_radius12_fff yellow_mess">
         @include('dashboard.left_bar._partial.pay_no')
     </div>
     <br>
     <br>
 @else
-    <div class="cabinet_radius12_fff green_mess">
-        @include('dashboard.left_bar._partial.pay')
-    </div>
-    <br>
-    <br>
+    @if($user->status_pay_subscr() == 1)
+        <div class="cabinet_radius12_fff green_mess">
+            @include('dashboard.left_bar._partial.pay')
+        </div>
+        <br>
+        <br>
+    @endif
+    @if($user->status_pay_subscr() == 2)
+        <div class="cabinet_radius12_fff yellow_mess">
+            @include('dashboard.left_bar._partial.pay_wait')
+        </div>
+        <br>
+        <br>
+    @endif
 @endif
 
 

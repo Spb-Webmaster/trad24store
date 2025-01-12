@@ -412,6 +412,7 @@ class AjaxController extends Controller
         }
 
 
+
         /** слияние ранее загружанных файлов */
         $uploaded_files = UserFilesViewModel::make()->user_get_files($user_id, $field, $count); //получим все ранее загркженный файлы
 

@@ -1,55 +1,66 @@
-@if($user->user_pay)
-    <div class="c__block pad_b38">
-
-        <div class="c__flex">
-
-
-            <div class="c__flex_50 c__flex_50_left">
-
-                <div class="text_input">
-                    <span class="blue_label">Показать в профиле</span>
-                    <div class="selectClass _active_contact">
-                        <select class="js-chosen" data-placeholder="Показать в профиле" name="active_contact"
-                                id="registerActive_contact">
-
-                            <option value="1" @if($user->active_contact)
-                                {{ 'selected' }}
-                                @endif>Да
-                            </option>
-                            <option value="0" @if(!$user->active_contact)
-                                {{ 'selected' }}
-                                @endif>Нет
-                            </option>
-
-
-                        </select>
-                        <label class="labelInput show" for="registerActive_contact"></label>
-                        <x-forms.error class="error_active_contact"/>
-                    </div>
-
-                </div>
-
-
-            </div><!--.c__flex_50_left-->
-
-            <div class="c__flex_50 c__flex_50_right">
-
-                <div class="text_input">
-                    <div class="active_contact">{{ config('site.constants.active_contact_text') }}</div>
-                </div>
-
-
-            </div><!--.c__flex_50_right-->
-
-        </div><!--.c__flex-->
-    </div>
-@else
+@if($user->status_pay_subscr() == 0)
     <div class="cabinet_radius12_fff yellow_mess">
         @include('dashboard.left_bar._partial.pay_no')
     </div>
     <br>
     <br>
+@else
+    @if($user->status_pay_subscr() == 1)
+        <div class="c__block pad_b38">
+
+            <div class="c__flex">
+
+
+                <div class="c__flex_50 c__flex_50_left">
+
+                    <div class="text_input">
+                        <span class="blue_label">Показать в профиле</span>
+                        <div class="selectClass _active_contact">
+                            <select class="js-chosen" data-placeholder="Показать в профиле" name="active_contact"
+                                    id="registerActive_contact">
+
+                                <option value="1" @if($user->active_contact)
+                                    {{ 'selected' }}
+                                    @endif>Да
+                                </option>
+                                <option value="0" @if(!$user->active_contact)
+                                    {{ 'selected' }}
+                                    @endif>Нет
+                                </option>
+
+
+                            </select>
+                            <label class="labelInput show" for="registerActive_contact"></label>
+                            <x-forms.error class="error_active_contact"/>
+                        </div>
+
+                    </div>
+
+
+                </div><!--.c__flex_50_left-->
+
+                <div class="c__flex_50 c__flex_50_right">
+
+                    <div class="text_input">
+                        <div class="active_contact">{{ config('site.constants.active_contact_text') }}</div>
+                    </div>
+
+
+                </div><!--.c__flex_50_right-->
+
+            </div><!--.c__flex-->
+        </div>
+    @endif
+    @if($user->status_pay_subscr() == 2)
+        <div class="cabinet_radius12_fff yellow_mess">
+            @include('dashboard.left_bar._partial.pay_wait')
+        </div>
+        <br>
+        <br>
+    @endif
 @endif
+
+
 <div class="c__block">
     <span class="blue_label">Введите полный url адрес вашей страницы в telegram</span>
 
@@ -72,9 +83,18 @@
         <div class="c__flex_50 c__flex_50_right">
 
             <div class="text_input">
-                @if(!$user->user_pay)
-                    <div class="active_contact explanation">{{ config('site.constants.explanation') }}</div>
-                @else
+
+                @if($user->status_pay_subscr() == 0)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 2)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation_wait') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 1)
                     <div class="_explanation">
                         @if($user->active_contact)
                             <div class="explanation explanation_yes">
@@ -87,6 +107,7 @@
                         @endif
                     </div>
                 @endif
+
             </div>
 
         </div><!--.c__flex_50_right-->
@@ -115,9 +136,17 @@
 
         <div class="c__flex_50 c__flex_50_right">
             <div class="text_input">
-                @if(!$user->user_pay)
-                    <div class="active_contact explanation">{{ config('site.constants.explanation') }}</div>
-                @else
+                @if($user->status_pay_subscr() == 0)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 2)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation_wait') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 1)
                     <div class="_explanation">
                         @if($user->active_contact)
                             <div class="explanation explanation_yes">
@@ -131,9 +160,10 @@
                     </div>
                 @endif
             </div>
-        </div><!--.c__flex_50_right-->
 
-    </div>
+        </div>
+    </div><!--.c__flex_50_right-->
+
 </div>
 
 <div class="c__block">
@@ -158,9 +188,17 @@
         <div class="c__flex_50 c__flex_50_right">
 
             <div class="text_input">
-                @if(!$user->user_pay)
-                    <div class="active_contact explanation">{{ config('site.constants.explanation') }}</div>
-                @else
+                @if($user->status_pay_subscr() == 0)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 2)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation_wait') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 1)
                     <div class="_explanation">
                         @if($user->active_contact)
                             <div class="explanation explanation_yes">
@@ -174,11 +212,11 @@
                     </div>
                 @endif
             </div>
+        </div>
 
-        </div><!--.c__flex_50_right-->
+    </div><!--.c__flex_50_right-->
 
 
-    </div>
 </div>
 
 <div class="c__block">
@@ -204,21 +242,28 @@
 
         <div class="c__flex_50 c__flex_50_right">
             <div class="text_input">
-
-            @if(!$user->user_pay)
-                    <div class="active_contact explanation">{{ config('site.constants.explanation') }}</div>
-            @else
-                <div class="_explanation">
-                    @if($user->active_contact)
-                        <div class="explanation explanation_yes">
-                            {{ config('site.constants.explanation_yes') }}
-                        </div>
-                    @else
-                        <div class="explanation explanation_non">
-                            {{ config('site.constants.explanation_non') }}
-                        </div>
-                    @endif
-                </div>
+                @if($user->status_pay_subscr() == 0)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 2)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation_wait') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 1)
+                    <div class="_explanation">
+                        @if($user->active_contact)
+                            <div class="explanation explanation_yes">
+                                {{ config('site.constants.explanation_yes') }}
+                            </div>
+                        @else
+                            <div class="explanation explanation_non">
+                                {{ config('site.constants.explanation_non') }}
+                            </div>
+                        @endif
+                    </div>
                 @endif
             </div>
 
@@ -248,9 +293,17 @@
         <div class="c__flex_50 c__flex_50_right">
 
             <div class="text_input">
-                @if(!$user->user_pay)
-                    <div class="active_contact explanation">{{ config('site.constants.explanation') }}</div>
-                @else
+                @if($user->status_pay_subscr() == 0)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 2)
+                    <div class="active_contact explanation">
+                        {{ config('site.constants.explanation_wait') }}
+                    </div>
+                @endif
+                @if($user->status_pay_subscr() == 1)
                     <div class="_explanation">
                         @if($user->active_contact)
                             <div class="explanation explanation_yes">
@@ -264,7 +317,8 @@
                     </div>
                 @endif
             </div>
+        </div>
 
-        </div><!--.c__flex_50_right-->
-    </div>
+    </div><!--.c__flex_50_right-->
 </div>
+

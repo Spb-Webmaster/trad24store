@@ -27,6 +27,7 @@ class MessageAdminCreateUserHandlerListener
     public function handle(MessageAdminCreateUserEvent $event): void
     {
         $user = $event->user;
+
         Mail::to($this->emails())->send(new SignUnAdminMail($user));
 
     }

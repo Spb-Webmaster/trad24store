@@ -191,17 +191,23 @@ class User extends Authenticatable
 
             foreach ($this->pay as $pay) {
 
-                if (isset($pay['pay_status']) and $pay['pay_status'] != 0) {
+                if (isset($pay['pay_status'])) {
 
-                    $date = $pay['pay_date'];
-                    $diff = strtotime($date) - time();
-                    //  echo round($diff / 3600); //  часов
-                    $d = round($diff / 86400); //  дней
-                    if ($d > 1) {
-                        return rusdate3($pay['pay_date']);
-                    } else {
+                    if($pay['pay_status'] == 1) {
+                        if(isset($pay['pay_date'])) {
+                            $date = $pay['pay_date'];
+                            $diff = strtotime($date) - time();
+                            //  echo round($diff / 3600); //  часов
+                            $d = round($diff / 86400); //  дней
+                            if ($d > 1) {
+                                return rusdate3($pay['pay_date']);
+                            }
+                        }
+                        return 'Периуд не установлен';
+                    }
+
+                    if($pay['pay_status'] == 2) {
                         return false;
-
                     }
 
                 }
@@ -210,6 +216,37 @@ class User extends Authenticatable
         }
 
         return false;
+
+    }
+
+
+
+    public function status_pay_subscr(): int
+    {
+
+        if (isset($this->pay)) {
+
+            foreach ($this->pay as $pay) {
+
+                if (isset($pay['pay_status'])) {
+
+                    if($pay['pay_status'] == 0) {
+                                return 0;
+                    }
+                    if($pay['pay_status'] == 1) {
+                                return 1;
+                    }
+
+                    if($pay['pay_status'] == 2) {
+                               return 2;
+                    }
+
+                }
+            }
+
+        }
+        return 0;
+
 
     }
 
