@@ -26,11 +26,15 @@ use App\MoonShine\Resources\TimeTableCityResource;
 use App\MoonShine\Resources\TimeTableLessonResource;
 use App\MoonShine\Resources\TimeTableMonthResource;
 use App\MoonShine\Resources\TrainingResource;
+use App\MoonShine\Resources\UserAdResource;
 use App\MoonShine\Resources\UserCityResource;
 use App\MoonShine\Resources\UserCommentResource;
+use App\MoonShine\Resources\UserDocResource;
 use App\MoonShine\Resources\UserLanguageResource;
+use App\MoonShine\Resources\UserLawResource;
 use App\MoonShine\Resources\UserListResource;
 use App\MoonShine\Resources\UserMediatorResource;
+use App\MoonShine\Resources\UserNewResource;
 use App\MoonShine\Resources\UserResource;
 use App\MoonShine\Resources\UserTypeResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -77,6 +81,24 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('Пользователи'),
                     new UserResource()
                 )->icon('heroicons.outline.user-group'),
+                MenuGroup::make(static fn() => __('Страницы для пользователей'), [
+                    MenuItem::make(
+                        static fn() => __('Новости'),
+                        new UserNewResource()
+                    )->icon('heroicons.outline.bars-3'),
+                    MenuItem::make(
+                        static fn() => __('Объявления'),
+                        new UserAdResource()
+                    )->icon('heroicons.outline.bars-3'),
+                    MenuItem::make(
+                        static fn() => __('Законы'),
+                        new UserLawResource()
+                    )->icon('heroicons.outline.bars-3'),
+                    MenuItem::make(
+                        static fn() => __('Документы'),
+                        new UserDocResource()
+                    )->icon('heroicons.outline.bars-3'),
+                    ]),
                 MenuItem::make(
                     static fn() => __('Отзывы'),
                     new UserCommentResource()

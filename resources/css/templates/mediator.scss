@@ -302,6 +302,28 @@ $maxWidth: 1440;
             .com_responce__name {
                 padding: 0 0 4px 0;
                 color: $colorBlue;
+                max-width: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .com_responce__phone {
+                padding:12px 0 4px 0;
+                color: $colorBlue;
+                max-width: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .com_responce__email {
+                padding: 2px 0 4px 0;
+                color: $colorBlue;
+                max-width: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
 
             .s_stars_s {
@@ -777,6 +799,28 @@ $maxWidth: 1440;
 
 }
 
+.mediator_border_0 {
+    width: 100%;
+    position: relative;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding:19px 24px 24px 24px;
+    margin: 0 0 20px 0;
+}
+.delete_user {
+    .blocked.active {
+        cursor: pointer;
+        background-color: $colorRed;
+        border-color: $colorRed;
+
+    }
+
+    .blocked.active:hover {
+        background-color: #fff;
+        border-color: $colorRed;
+        color: $colorRed;
+    }
+}
 .mediator_flex_0 {
     width: 100%;
     display: flex;

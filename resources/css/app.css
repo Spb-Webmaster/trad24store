@@ -21,6 +21,7 @@
 @import "./auth/flash.scss";
 @import "./auth/register.scss";
 
+@import "./cabinet/user_page.scss";
 @import "./cabinet/cabinet.scss";
 @import "./cabinet/upload_docs.scss";
 @import "./datepicker/datepicker.scss";

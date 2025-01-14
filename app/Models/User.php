@@ -69,12 +69,14 @@ class User extends Authenticatable
         'teacher',
         'sex',
         'active_contact',
+        'active_comments',
         'certificate',
         'birthday',
         'stars',
         'old_id',
         'manager',
         'pay',
+        'request_delete',
 
     ];
 

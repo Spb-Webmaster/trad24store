@@ -32,7 +32,11 @@ class OrderPayHandlerListener
         $data['user'] = $user->user;
         $data['phone'] = format_phone($user->phone);
         $data['email'] = $user->email;
-        $data['price'] = '1000 ' . config('currency.currency.KZT');
+        if(config2('moonshine.setting.json_subscrprice')) {
+            $data['price'] = config2('moonshine.setting.json_subscrprice') . config('currency.currency.KZT');
+        } else {
+            $data['price'] = '-';
+        }
         $data['url'] = $event->request->url;
 
         Mail::to($this->emails())->send(new OrderPayMail($data));

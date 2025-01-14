@@ -11,13 +11,9 @@ class UserPublishedMiddleware
     public function handle(Request $request, Closure $next): Response|string
     {
 
-
-        $user = auth()->user();
-        if ($user) {
-
+        if (auth()->check()) {
             return $next($request);
         }
-
 
         return redirect('/login');
     }

@@ -186,7 +186,25 @@
       position: relative; }
       .com_responce .com_responce__flex .com_responce__left .com_responce__name {
         padding: 0 0 4px 0;
-        color: #095C9A; }
+        color: #095C9A;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .com_responce .com_responce__flex .com_responce__left .com_responce__phone {
+        padding: 12px 0 4px 0;
+        color: #095C9A;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .com_responce .com_responce__flex .com_responce__left .com_responce__email {
+        padding: 2px 0 4px 0;
+        color: #095C9A;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
       .com_responce .com_responce__flex .com_responce__left .s_stars_s {
         position: relative;
         left: -10px; }
@@ -512,6 +530,23 @@
 .button_excel:hover {
   background-color: #43D38B;
   border: 1px solid #43D38B; }
+
+.mediator_border_0 {
+  width: 100%;
+  position: relative;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 19px 24px 24px 24px;
+  margin: 0 0 20px 0; }
+
+.delete_user .blocked.active {
+  cursor: pointer;
+  background-color: #EF533F;
+  border-color: #EF533F; }
+.delete_user .blocked.active:hover {
+  background-color: #fff;
+  border-color: #EF533F;
+  color: #EF533F; }
 
 .mediator_flex_0 {
   width: 100%;

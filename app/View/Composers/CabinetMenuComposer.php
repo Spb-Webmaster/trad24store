@@ -5,6 +5,7 @@ namespace App\View\Composers;
 
 
 
+use Domain\Comment\ViewModels\CommentViewModel;
 use Domain\Report\ViewModels\ReportViewModel;
 use Domain\Service\ViewModels\ServiceViewModel;
 use Domain\Training\ViewModels\TrainingViewModel;
@@ -20,12 +21,14 @@ class CabinetMenuComposer
 
         $users_no_publiched = UserViewModel::make()->users_no_publiched();
         $report_no_publiched = ReportViewModel::make()->reports_no_publiched();
+        $comment_no_publiched = CommentViewModel::make()->comment_no_publiched();
 
 
 
         $view->with([
             'users_no_publiched' => $users_no_publiched,
             'report_no_publiched' => $report_no_publiched,
+            'comment_no_publiched' => $comment_no_publiched,
         ]);
 
     }

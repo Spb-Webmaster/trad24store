@@ -46,13 +46,9 @@ class TimeTableMonthResource extends ModelResource
     public function filters(): array
     {
         return [
-            ID::make()
-                ->useOnImport()
-                ->showOnExport(),
+            ID::make(),
 
-            Text::make('Название', 'title')
-                ->useOnImport()
-                ->showOnExport(),
+            Text::make('Название', 'title'),
         ];
     }
 

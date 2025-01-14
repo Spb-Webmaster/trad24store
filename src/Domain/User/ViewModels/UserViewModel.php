@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserCity;
 use App\Models\UserMediator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Support\Traits\Makeable;
@@ -189,6 +190,40 @@ class UserViewModel
 
     }
 
+    public function active_comments($id, $active_comments) {
+
+
+        if(isset($active_comments)) {
+            $user = User::find($id);
+
+            if($active_comments) {
+                $user->active_comments = 1;
+            } else {
+                $user->active_comments = 0;
+            }
+            $user->save();
+            return $user;
+        }
+        return false;
+
+    }
+
+    /**
+     * @param $user
+     * @return |  или null или модель с изменннием
+     */
+
+    public function delete_user($user): model | null
+    {
+
+        $u = User::find($user->id);
+        if($u) {
+            $u->request_delete = 1;
+            $u->save();
+            return $u;
+        }
+        return null;
+    }
 
 
 }

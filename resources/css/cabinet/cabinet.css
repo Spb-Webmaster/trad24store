@@ -331,6 +331,10 @@
   background: #cff4fc !important;
   border-radius: 8px; }
 
+.background_green {
+  background: #cff4fc !important;
+  border-radius: 8px; }
+
 .background_alert {
   background-color: #f8d7da !important; }
   .background_alert div, .background_alert p, .background_alert a {

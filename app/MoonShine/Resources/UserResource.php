@@ -26,6 +26,7 @@ use MoonShine\Fields\Number;
 use MoonShine\Fields\Password;
 use MoonShine\Fields\PasswordRepeat;
 use MoonShine\Fields\Position;
+use MoonShine\Fields\Preview;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Select;
@@ -115,15 +116,15 @@ class UserResource extends ModelResource
             Switcher::make('Публ.', 'published')->updateOnPreview(),
             /**Switcher::make('Публ. контактов', 'active_contact'),*/
 
-            BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource())->inLine(
+   /*         BelongsToMany::make('Язык', 'user_language', 'title', resource: new UserLanguageResource())->inLine(
                 separator: '<br>',
                 badge: fn($model, $value) => Badge::make($value, 'success'),
 
-            ),
+            ),*/
             Json::make('Pay', 'pay')->fields([
                 Switcher::make('', 'pay_status'),
-
-            ])->creatable(false),
+            ]),
+            Preview::make('Удалить', 'request_delete')->boolean(hideTrue: false, hideFalse: false)
 
 
         ];
@@ -188,14 +189,23 @@ class UserResource extends ModelResource
                                     Switcher::make('Статус действующий', 'status')->default(1),
 
 
+
+
+
                                     BelongsTo::make('Категория', 'user_type', resource: new UserTypeResource())
                                         ->searchable(),
 
 
                                 ]),
 
+                                Collapse::make('Удаление', [
+                                    Preview::make('Запрос на удление анкеты', 'request_delete')
+                                        ->badge(fn($status, Field $field) => $status === 1 ? 'error' : 'success')->hint('Если "1" - запрос на удаление получен!'),
+                                    Preview::make('Если пользователь передумал удалять анкету, необходимо сменить статус удаления.')->hint('Включенный переключатель - статус "Удаление", выключенный переключатель - статус "Обычный режим"'),
+                                    Switcher::make('', 'request_delete'),
+                                ]),
 
-                                Collapse::make('Платно', [
+                                    Collapse::make('Платно', [
 
 
 

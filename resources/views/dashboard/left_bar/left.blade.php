@@ -42,7 +42,6 @@
 
 
 
-
 @if( $user->user_mediator_sum )
     <x-dashboard.report.report_sum
         sum="{{$user->user_mediator_sum}}"
@@ -57,6 +56,18 @@
     <br>
     <br>
 @endif
+
+
+<div class="cabinet_radius12_fff">
+    @if($user->request_delete)
+    @include('dashboard.left_bar._partial.request_delete')
+    @else
+        @include('dashboard.left_bar._partial.delete_user')
+
+    @endif
+</div>
+<br>
+<br>
 
 
 <div class="cabinet_radius12_fff pad_t10_important pad_b10_important">

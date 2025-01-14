@@ -11,11 +11,12 @@ class UserBlockedMiddleware
     public function handle(Request $request, Closure $next): Response|string
     {
 
+        if (auth()->check()) {
+            $user = auth()->user();
 
-        $user = auth()->user();
-        if ($user) {
             if ($user->published == 0) {
                 return $next($request);
+
             }
         }
 

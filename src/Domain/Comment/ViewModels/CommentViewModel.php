@@ -72,6 +72,22 @@ class CommentViewModel
 
 
     }
+    /**
+     * @return
+     * все оправленные на модерацию отзывы
+     */
+    public function comment_no_publiched() {
+
+
+        $comments = UserComment::query()
+            ->where('published', 0)
+            ->get()->count();
+        if($comments) {
+            return $comments;
+        }
+        return 0;
+
+    }
 
 
 }

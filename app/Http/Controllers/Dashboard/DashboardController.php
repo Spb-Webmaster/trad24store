@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Events\Auth\DeleteUserEvent;
 use App\Events\UserUpdate\UpdateUserFormEvent;
 use App\Events\UserUpdate\UpdateUserSelfFormEvent;
 
@@ -372,5 +373,27 @@ class DashboardController extends Controller
 
     }
 
+    /**
+     * Метод отправки письма для удаления пользователя
+     */
+    public function delete_user()
+    {
+
+        $user = auth()->user();
+
+
+        $new_user = UserViewModel::make()->delete_user($user);
+
+        if ($new_user->request_delete) {
+           DeleteUserEvent::dispatch($user);
+            flash()->info(config('message_flash.info.delete_user'));
+        } else {
+            flash()->alert(config('message_flash.alert.delete_user'));
+
+        }
+
+        return redirect()->back();
+
+    }
 
 }

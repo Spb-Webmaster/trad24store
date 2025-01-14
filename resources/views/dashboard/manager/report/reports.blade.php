@@ -104,7 +104,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <a href="{{ route('report', ['id' => $item->id]) }}"
+                                                    <a href="{{ route('m_report', ['id' => $item->id]) }}"
                                                        class="a_user__personal">
                                                         @if($item->active)
                                                             <div class="color_grey_14">Модерация</div>
@@ -132,6 +132,14 @@
                                         </div>
 
                                         {{ $items->withQueryString()->links('pagination::default') }}
+
+                                    @else
+                                        <div class="cabinet_radius12_fff green_mess">
+                                            <div class="">
+                                                <p>Нет отчетов на модерации</p>
+                                            </div>
+                                        </div>
+
 
                                     @endif
 

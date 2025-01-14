@@ -161,9 +161,9 @@
 
 
                                 </div>
-
+                                @if($item->active_comments)
                                         @include('pages.users.partial.comments')
-
+                                @endif
 
                             </div>
 
@@ -333,6 +333,8 @@
 
                                     @endif
                                 @endif
+
+
                                 @if( $item->user_mediator_sum )
                                     <x-dashboard.report.report_sum
                                         sum="{{$item->user_mediator_sum}}"

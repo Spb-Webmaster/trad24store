@@ -8,10 +8,12 @@ use App\Http\Controllers\Auth\SignInController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\ChangeContacts\ChangeContactsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Dashboard\Comment\CommentController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Manager\ManagerController;
 use App\Http\Controllers\Dashboard\Report\ReportController;
 use App\Http\Controllers\Dashboard\TokenController;
+use App\Http\Controllers\Dashboard\UserPage\UserPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Pages\CategoryController;
 use App\Http\Controllers\Pages\ProductController;
@@ -103,7 +105,7 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('/cabinet', 'page')
         ->name('cabinet')
         ->middleware(UserPublishedMiddleware::class);// ->middleware(UserPublishedMiddleware::class)
-    ;
+
 
 
     Route::get('/cabinet/edit', 'edit')
@@ -130,9 +132,47 @@ Route::controller(DashboardController::class)->group(function () {
         ->name('setting.password.handel')
         ->middleware(UserPublishedMiddleware::class);
 
+    Route::post('/cabinet/delete_user', 'delete_user')
+        ->name('delete_user')
+        ->middleware(UserPublishedMiddleware::class);
+
 
 });
 
+Route::controller(UserPageController::class)->group(function () {
+
+    Route::get('/m-user-news', 'm_user_news')
+        ->name('m_user_news')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-news/new/{id}', 'm_user_new')
+        ->name('m_user_new')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-ads', 'm_user_ads')
+        ->name('m_user_ads')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-ads/ad/{id}', 'm_user_ad')
+        ->name('m_user_ad')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-laws', 'm_user_laws')
+        ->name('m_user_laws')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-laws/law/{id}', 'm_user_law')
+        ->name('m_user_law')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-docs', 'm_user_docs')
+        ->name('m_user_docs')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::get('/m-user-docs/doc/{id}', 'm_user_doc')
+        ->name('m_user_doc')
+        ->middleware(UserPublishedMiddleware::class);
+});
 /**
  *  Cabinet
  */
@@ -168,6 +208,28 @@ Route::controller(ReportController::class)->group(function () {
 
 /**
  *  Отчеты
+ */
+
+/**
+ *  Отзывы comments
+ */
+
+Route::controller(CommentController::class)->group(function () {
+
+    Route::get('/comments', 'comments')
+        ->name('comments')
+        ->middleware(UserPublishedMiddleware::class);
+
+    Route::post('/comments', 'active_comments')
+        ->name('active_comments')
+        ->middleware(UserPublishedMiddleware::class);
+
+
+});
+
+
+/**
+ *  Отзывы comments
  */
 
 /**
@@ -365,7 +427,7 @@ Route::controller(ManagerController::class)->group(function () {
         ->middleware(ManagerMiddleware::class);
 
     Route::get('/m_reports/report/{id}', 'report')
-        ->name('report')
+        ->name('m_report')
         ->middleware(ManagerMiddleware::class);
 
     Route::post('/m_reports/search_user_report', 'search_user_report')
@@ -380,6 +442,27 @@ Route::controller(ManagerController::class)->group(function () {
     Route::post('/m_users/unblock_report', 'unblock_report')
         ->name('unblock_report')
         ->middleware(ManagerMiddleware::class);
+
+
+    /** работа с отзывами */
+    Route::get('/m_comments', 'comments')
+        ->name('m_comments')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::get('/m_comment/comment/{id}', 'comment')
+        ->name('m_comment')
+        ->middleware(ManagerMiddleware::class);
+
+
+
+    Route::post('/m_comment/delete_comment', 'delete_comment')
+        ->name('delete_comment')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_comment/published_comments', 'published_comments')
+        ->name('published_comments')
+        ->middleware(ManagerMiddleware::class);
+
 
 
 });

@@ -80,7 +80,8 @@ class AjaxController extends Controller
             $date = $item['pay_date'];
         }
 
-        $user->update(['pay' => [0 => ['pay_status' => 2, 'pay_date' => $date]]]); /** изменим статус */
+        $user->update(['pay' => [0 => ['pay_status' => 2, 'pay_date' => $date]]]);
+        /** изменим статус */
 
 
         /**
@@ -391,7 +392,8 @@ class AjaxController extends Controller
         if ($files) {
             $count = count($files);
             $storage = Storage::disk('public');
-            $destinationPath = 'users/' . $user_id . '/docs';
+            // $destinationPath = 'users/' . $user_id . '/docs';
+            $destinationPath = 'doc';
 
             if (!$storage->exists($destinationPath)) {
                 $storage->makeDirectory($destinationPath);
@@ -401,16 +403,18 @@ class AjaxController extends Controller
 
             foreach ($files as $k => $file) {
 
+                /** @var  $puth //все поменял, сохраняем только в папрку doc */
+                // $newFileName = $file->getClientOriginalName();
+                //$file->storeAs($destinationPath, $newFileName);
+                $puth = $file->store($destinationPath, 'public');
+                // $puth_files[$k]['json_file_file'] = $destinationPath . '/' . $newFileName; // для БД
+                $puth_files[$k]['json_file_file'] = $puth; // для БД
 
-                $newFileName = $file->getClientOriginalName();
-                $file->storeAs($destinationPath, $newFileName);
-                $puth_files[$k]['json_file_file'] = $destinationPath . '/' . $newFileName; // для БД
 
             }
         } else {
             dd('Нет  $request->file(\'file\')');
         }
-
 
 
         /** слияние ранее загружанных файлов */

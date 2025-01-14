@@ -19,6 +19,7 @@ use MoonShine\Fields\File;
 use MoonShine\Fields\Hidden;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Json;
+use MoonShine\Fields\Number;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
@@ -154,6 +155,44 @@ class SettingPage extends Page
 
                                         ])->vertical()->creatable(limit: 30)
                                             ->removable()->default((isset($json_service))? $json_service : ''),
+
+
+                                    ]),
+
+                                ])->columnSpan(6),
+
+
+                            ])
+
+
+                        ]),
+
+                        Tab::make(__('Платная подписка'), [
+
+                            Divider::make('Опции подписки'),
+                            Grid::make([
+                                Column::make([
+
+
+                                    Block::make([
+                                        Json::make('Описание', 'json_subscr')->fields([
+
+                                            Text::make('', 'json_subscr_label')->hint('Опция'),
+
+                                        ])->vertical()->creatable(limit: 30)
+                                            ->removable()->default((isset($json_subscr))? $json_subscr : ''),
+
+                                    ]),
+
+                                ])->columnSpan(6),
+
+                                Column::make([
+
+                                    Block::make([
+
+
+                                            Number::make('Стоимость', 'json_subscrprice')->hint('Цена подписки')->default((isset($json_subscrprice))? $json_subscrprice : ''),
+
 
 
                                     ]),

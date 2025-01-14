@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Manager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSearchRequest;
 use App\Models\User;
+use Domain\Manager\ViewModels\MCommentViewModel;
 use Domain\Manager\ViewModels\MReportViewModel;
 use Domain\Manager\ViewModels\MUserViewModel;
 use Domain\Report\ViewModels\ReportViewModel;
@@ -185,6 +186,72 @@ class ManagerController extends Controller
         return redirect(route('m_reports'));
 
     }
+    /**
+     * комментарии
+     */
+    public function comments() {
+
+        $user = auth()->user();
+
+        $items = MCommentViewModel::make()->comments();
+
+        if(!$items) {
+            abort(404);
+        }
+        return view('dashboard.manager.comment.comments', [
+            'user' => $user,
+            'items' => $items,
+        ]);
+
+
+    }
+
+    /**
+     *
+     *  отзыв по id
+     */
+
+    public function comment($id) {
+
+        $user = auth()->user();
+
+        $item = MCommentViewModel::make()->comment($id);
+        if(!$item) {
+            abort(404);
+        }
+
+        return view('dashboard.manager.comment.comment', [
+            'user' => $user,
+            'item' => $item,
+        ]);
+
+    }
+
+
+    /**
+     ** удалить отзыв
+     */
+    public function delete_comment(Request $request) {
+
+
+        $result = MCommentViewModel::make()->delete_comment($request->id);
+
+        return redirect(route('m_comments'));
+
+    }
+
+    /**
+    * опубликовываем отзыв
+    */
+    public function published_comments(Request $request) {
+
+
+        $result = MCommentViewModel::make()->published_comments($request->id);
+
+        return redirect(route('m_comments'));
+
+    }
+
 
 
 }

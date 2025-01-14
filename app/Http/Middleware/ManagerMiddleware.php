@@ -11,12 +11,14 @@ class ManagerMiddleware
     public function handle(Request $request, Closure $next): Response|string
     {
 
+        if (auth()->check()) {
+            $user = auth()->user();
+            if ($user->manager) {
 
-        $user = auth()->user();
-        if ($user->manager) {
-
-            return $next($request);
+                return $next($request);
+            }
         }
+
 
 
         return redirect(route('cabinet'));
