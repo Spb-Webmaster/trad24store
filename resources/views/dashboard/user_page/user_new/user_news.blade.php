@@ -27,25 +27,28 @@
                             <div class="cabinet_radius12_fff">
 
 
-                                <div class="c__title_subtitle">
-                                    <h3 class="F_h1">{{ __('Новости') }}</h3>
-                                    <div class="F_h2 pad_t5"><span>{{ __('Новости от администрации портала') }}</span>
-                                    </div>
-                                </div>
+
 
                                 @if(count($items))
+                                    <div class="c__title_subtitle">
+                                        <h3 class="F_h1">{{ __('Новости') }}</h3>
+                                        <div class="F_h2 pad_t5"><span>{{ __('Новости от администрации портала') }}</span>
+                                        </div>
+                                    </div>
                                     <div class="user_page">
 
                                         <div class="m_items">
                                             @foreach($items as $item)
                                                 <a href="{{ route('m_user_new', ['id' => $item->id]) }}" class="a_temp">
 
-                                                    @if($item->image)
+
+                                                    @if($item->image_exists)
+
                                                         <div class="m_item__flex">
                                                             <div class="m_item__left">
 
                                                                 <img width="250" height="188"
-                                                                     src="{{ intervention('250x188', $item->image, 'user_page', 'cover')  }}"
+                                                                     src="{{ intervention('250x188', $item->json_image, 'user_page', 'cover')  }}"
                                                                      alt="{{ $item->title }}"/>
 
                                                             </div>
@@ -60,7 +63,7 @@
                                                             <div
                                                                 class="user_item_date">{{ rusdate3($item->created_at) }}</div>
 
-                                                              @if($item->image)
+                                                            @if($item->image_exists)
                                                                       </div>
                                                         </div>
                                                               @endif
@@ -71,7 +74,11 @@
                                         </div>
 
                                     </div>
-
+                                @else
+                                    <div class="c__title_subtitle">
+                                        <h3 class="F_h1">Новости</h3>
+                                        <div class="F_h2 pad_t5"><span>Для вас нет новостей</span></div>
+                                    </div>
                                 @endif
 
 

@@ -23,6 +23,7 @@ import {slick} from "./include/slick";
 import {translate} from "./include/translate";
 import {faq} from "./include/faq";
 import { canche_contacts, toggle_contacts } from './include/canche_contacts';
+import { toggle_manager_menu } from './include/manager_menu';
 import { city } from './include/city';
 import { chosen } from './include/select';
 import { bid } from './include/bid';
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     removeFilesLoadItem()   // удаляем загружаемый файл (записанный в БД и сохраненный, только предварительное нажатие, далее нужно сохранить)
     titleFiles()  // подпись к скачаваемым файлам
     report_toggle()  // toggle отчет (развернуть - свернуть)
+    toggle_manager_menu() // меню менеджера с лева
 
 
 

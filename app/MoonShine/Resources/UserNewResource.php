@@ -66,7 +66,6 @@ class UserNewResource extends ModelResource
             ID::make()
                 ->sortable(),
 
-            Image::make('Изображение', 'image'),
             Text::make('Заголовок', 'title')->required(),
             Date::make(__('Дата создания'), 'created_at')
                 ->format("d.m.Y"),
@@ -96,11 +95,22 @@ class UserNewResource extends ModelResource
                                     Text::make('Заголовок', 'title')->required(),
                                     Slug::make('Алиас', 'slug')
                                         ->from('title')->unique(),
-                                    Image::make(__('Изображение'), 'image')
-                                        ->disk(config('moonshine.disk', 'moonshine'))
-                                        ->dir('user_page')
-                                        ->allowedExtensions(['jpg', 'png', 'jpeg', 'gif', 'svg'])
-                                        ->removable(),
+
+                                    Collapse::make('Изображение', [
+
+                                    Json::make('Изображение', 'image')->fields([
+
+                                        Switcher::make('Вывести на полную страницу', 'json_published')->default(1)->hint('Если включен переключатель, то изображение будет выведено на полную страницу материала.'),
+
+                                        Image::make(__('Изображение'), 'json_image')
+                                            ->disk(config('moonshine.disk', 'moonshine'))
+                                            ->dir('user_page')
+                                            ->allowedExtensions(['jpg', 'png', 'jpeg', 'gif', 'svg'])
+                                            ->removable(),
+
+                                    ])->vertical()->creatable(false)->removable(),
+                                    ]),
+
                                 ]),
 
 
@@ -137,6 +147,7 @@ class UserNewResource extends ModelResource
                                         ->removable(),
 
                                     Divider::make(),
+                                    Collapse::make('Изображение', [
 
                                     Json::make('Файлы', 'file')->fields([
                                         Text::make('Заголовок', 'json_file_title'),
@@ -153,10 +164,9 @@ class UserNewResource extends ModelResource
                                             ->dir('user_page')
                                             ->disk(config('moonshine.disk', 'moonshine'))
                                             ->removable(),
-                                        Text::make('Ссылка', 'json_file_link'),
 
                                     ])->vertical()->creatable(limit: 30)->removable(),
-
+                                    ]),
 
                                 ]),
                             ])  ->columnSpan(12)

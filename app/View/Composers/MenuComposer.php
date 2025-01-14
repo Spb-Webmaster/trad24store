@@ -24,12 +24,12 @@ class MenuComposer
         $timetable_cities = TimetableViewModel::make()->timetable_cities();
         $categories = CategoryViewModel::make()->categories();
 
+
         $view->with([
             'services' => $services,
             'trainings' => $trainings,
             'timetable_cities' => $timetable_cities,
             'categories' => $categories,
-
 
         ]);
 

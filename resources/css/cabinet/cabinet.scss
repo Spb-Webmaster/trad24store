@@ -138,8 +138,9 @@ $maxWidth: 1440;
     font-size: 15px;
 
 }
+
 .active_contact.explanation {
-margin: 5px 0 0 0;
+    margin: 5px 0 0 0;
 }
 
 .explanation {
@@ -513,6 +514,7 @@ margin: 5px 0 0 0;
     background: #cff4fc !important;
     border-radius: 8px
 }
+
 .background_green {
     background: #cff4fc !important;
     border-radius: 8px
@@ -1016,6 +1018,7 @@ margin: 5px 0 0 0;
         padding: 7px 0 7px 37px;
     }
 }
+
 /** Подписка в модальном окне /**/
 .alax_inputs {
     .li_s {
@@ -1033,7 +1036,99 @@ margin: 5px 0 0 0;
 }
 
 /** //////////////  Кабинет левая  часть, баннер публикации/**/
+/** Для менеджера левое меню /**/
 
+._left_m {
+    li {
+        border-left: 3px solid #F5F5F7;
+        padding: 0 10px 0 0;
+        position: relative;
+
+        a {
+            position: relative;
+            color: #282828;
+            font-size: 17px;
+            height: 50px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: 0.3s;
+            border-bottom: 1px solid #e0e0e0;
+            padding-left: 10px;
+            ._int {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                right: 10px;
+                top: 16px;
+
+            }
+        }
+
+        &:hover {
+            a {
+
+
+                background: #F5F5F7;
+            }
+        }
+
+    }
+
+    li.active {
+        border-left: 3px solid #095C9A;
+
+        a {
+            background: #F5F5F7;
+
+        }
+    }
+}
+
+
+/** //////////////  Для менеджера левое меню/**/
+
+
+@media screen and (max-width: 1120px) {
+
+    .v_s_c__flex {
+
+        .v_s_c__item {
+            position: relative;
+            margin: 0 10px;
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 968px) {
+
+    .v_s_c__flex {
+        justify-content: space-between;
+    }
+
+    .mob_cab_menu {
+        li.active {
+            a, span {
+                color: $colorBlue;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 793px) {
+
+    .hbox__submenu {
+        display: none !important;
+    }
+
+}
 
 
 

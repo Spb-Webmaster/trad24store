@@ -34,7 +34,6 @@ class UserViewModel
         return $result;
     }
 
-
     public function company_mediators()
     {
         $result = User::query()
@@ -50,7 +49,6 @@ class UserViewModel
             ->paginate(config('site.constants.paginate'));
         return $result;
     }
-
 
     public function mediators()
     {
@@ -141,8 +139,6 @@ class UserViewModel
             ->update(['stars' => $stars]);
 
     }
-
-
 
 
     /**

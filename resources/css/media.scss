@@ -1153,7 +1153,7 @@ $maxWidth: 1440;
             min-height: 56px;
             border-bottom: 1px solid rgba(40, 40, 40, 0.1);
 
-            a {
+            a , span.man{
                 box-sizing: border-box;
                 min-height: 56px;
                 color: $color;
@@ -1163,6 +1163,10 @@ $maxWidth: 1440;
                 padding: 0 16px;
                 font-size: 18px;
 
+            }
+            span.man {
+                font-weight: 900;
+                color: $colorBlue;
             }
 
             a:hover, a.active {

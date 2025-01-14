@@ -78,6 +78,15 @@ export function mobile_menu () {
     });
 
 
+/*if($('.hbox__submenu .view_subcategories_countries .v_s_c__item').length) {
+    $('.hbox__submenu .view_subcategories_countries .v_s_c__item').each(function (i) {
+        $('.mob_cab_menu__js').prepend('<li>' + $(this).html() + '</li>');
+
+    });
+}*/
+    //mob_cab_menu__js
+
+
 }
 
 export function mobile_menu_close () {

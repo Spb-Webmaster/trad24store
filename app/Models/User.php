@@ -233,14 +233,15 @@ class User extends Authenticatable
                 if (isset($pay['pay_status'])) {
 
                     if($pay['pay_status'] == 0) {
-                                return 0;
+                                return 0; // нет
                     }
+
                     if($pay['pay_status'] == 1) {
-                                return 1;
+                                return 1; // вкл
                     }
 
                     if($pay['pay_status'] == 2) {
-                               return 2;
+                               return 2; // ожид
                     }
 
                 }

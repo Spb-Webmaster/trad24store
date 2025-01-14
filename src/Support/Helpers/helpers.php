@@ -601,7 +601,7 @@ if (!function_exists('intervention')) {
 
         }
 
-        return 'storage/' . $resultPaht;
+        return '/storage/' . $resultPaht;
 
     }
 }

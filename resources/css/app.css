@@ -40,6 +40,7 @@
 @import "./templates/mediator.scss";
 @import "./templates/header.scss";
 @import "./templates/footer.scss";
+@import "./templates/manager_menu.scss";
 @import "./templates/page.scss";
 @import "./chosen/chosen.scss";
 @import "./admin-users/users.scss";

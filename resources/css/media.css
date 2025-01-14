@@ -643,7 +643,7 @@
     .fMenu li, .fLogin li {
       min-height: 56px;
       border-bottom: 1px solid rgba(40, 40, 40, 0.1); }
-      .fMenu li a, .fLogin li a {
+      .fMenu li a, .fMenu li span.man, .fLogin li a, .fLogin li span.man {
         box-sizing: border-box;
         min-height: 56px;
         color: #282828;
@@ -652,6 +652,9 @@
         line-height: 56px;
         padding: 0 16px;
         font-size: 18px; }
+      .fMenu li span.man, .fLogin li span.man {
+        font-weight: 900;
+        color: #095C9A; }
       .fMenu li a:hover, .fMenu li a.active, .fLogin li a:hover, .fLogin li a.active {
         color: #095C9A; }
     .fMenu li:last-child, .fLogin li:last-child {

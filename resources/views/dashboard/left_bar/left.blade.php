@@ -1,3 +1,32 @@
+@if($user->manager)
+    <div class="cabinet_radius12_fff">
+
+
+            <ul class="_left_m nav">
+                <li class="{{ active_linkMenu(asset(route('m_users')), 'find')  }}"><a href="{{ route('m_users') }}">{{ __('Медиаторы') }}
+                        @if($users_no_publiched)
+                            <span class="_int">{{ $users_no_publiched }}</span>
+                        @endif
+                    </a></li>
+                <li class="{{ active_linkMenu(asset(route('m_reports')), 'find')  }}"><a href="{{ route('m_reports') }}">{{ __('Отчеты') }}
+                        @if($report_no_publiched)
+                            <span class="_int">{{ $report_no_publiched }}</span>
+                        @endif
+                    </a></li>
+                <li class="{{ active_linkMenu(asset(route('m_comments')), 'find')  }}"><a href="{{ route('m_comments') }}">{{ __('Отзывы') }}
+                        @if($comment_no_publiched)
+                            <span class="_int">{{ $comment_no_publiched }}</span>
+                        @endif
+                    </a></li>
+            </ul>
+
+        </div><!--.left_bar-->
+
+    <br>
+    <br>
+
+@endif
+
 <div class="cabinet_radius12_fff">
     @include('dashboard.left_bar._partial.avatar')
 </div>
@@ -16,6 +45,8 @@
     <br>
     <br>
 @endif
+
+
 
 @if($user->status_pay_subscr() == 0)
     <div class="cabinet_radius12_fff yellow_mess">

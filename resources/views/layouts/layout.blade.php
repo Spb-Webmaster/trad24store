@@ -32,6 +32,8 @@
 @include('templates.axeld.footer')
 @include('html.mobile.bottom')
 @include('include.connect.connect')
+@include('dashboard.manager.menu.menu')
+
 @include('include.modals.temp_forms.call_me')
 @include('include.modals.temp_forms.sign_up')
 @include('include.modals.temp_forms.bid')
