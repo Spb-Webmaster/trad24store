@@ -26,6 +26,7 @@ class SignUpController extends Controller
 
             'name' => $request->name,
             'email' => $request->email,
+            'user_type_id' => 1, /** Профессилнальный медиатор */
             'password' => bcrypt($request->password)
 
         ]);

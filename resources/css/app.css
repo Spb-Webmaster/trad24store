@@ -46,6 +46,7 @@
 @import "./admin-users/users.scss";
 @import "./admin-users/user.scss";
 
+@import "html/tooltip/tooltip.scss";
 @import "html/stars/stars.scss";
 @import "html/faq/faq.scss";
 @import "html/logo/logo.scss";

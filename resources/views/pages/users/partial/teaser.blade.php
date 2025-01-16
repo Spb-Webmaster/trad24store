@@ -13,7 +13,7 @@
         </div>
         <div class="col_content">
 
-            <div class="row_content_flex_1">
+            <div class="row_content_flex_1   @if($item->status_pay_subscr()==1) _m_status_pay_subscr_1 @endif">
 
                 <div class="m_tleft">
                     @if($item->status_pay_subscr()==1)
@@ -23,7 +23,8 @@
                             @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
 
                         @else
-                            <div class="color_grey_14 pad_t6">Рейтин скрыт медиатором</div>
+
+                            <x-dashboard.icons.icons />
 
                         @endif
                     @else
@@ -42,12 +43,12 @@
                             @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
 
                         @else
-                            <div class="color_grey_12 ">Количество проведенных медиаций скрыто медиатором</div>
+                            <div class="color_grey_12 ">Уточните у медиатора{{--Количество проведенных медиаций скрыто медиатором--}}</div>
 
                         @endif
                     @else
 
-                        Количество проведенных медиаций: <span>{{ $item->user_mediator_sum }}</span>
+                        <i class="mob_none">Количество проведенных</i> <i class="mob_done">медиаций:</i> <span>{{ $item->user_mediator_sum }}</span>
 
                     @endif
                 </div>
@@ -64,9 +65,10 @@
                 <div class="row_sphere">
                     <span>Виды медиации: </span><span class="sp_sphere">
                     @foreach($item->user_list as $user_list)
-                            {{ $user_list->title }}@if ($loop->last)
+                            @if ($loop->last)
+                                {{ $user_list->title }}
                             @else
-                                ,
+                                {{ $user_list->title }},
                             @endif
                         @endforeach
                     </span>
@@ -75,9 +77,10 @@
 
             <div class="row_address ">
                 <span><i>Город:</i> {{$item->user_first_city}}</span>, <span>{{$item->street}}</span>,
-                <span>{{$item->home}}</span>@if($item->phone)
-                    <span> · {{format_phone($item->phone)}}</span>
-                @endif · <span
+                @if($item->home)<span class="_m_ho">{{$item->home}}  <i class="ii">·</i>  </span>@endif
+                @if($item->phone)
+                    <span class="_m_ph">{{format_phone($item->phone)}}</span>
+                @endif <i  class="ii">·</i> <span
                     class="blue_color">{{$item->email}}</span>
             </div>
 

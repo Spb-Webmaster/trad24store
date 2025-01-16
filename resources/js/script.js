@@ -30,6 +30,7 @@ import { bid } from './include/bid';
 import {localDataPicker, datepicker_birthdate, datepicker_report, datepicker_range} from "./include/datapicker";
 import {upload_doc, removeFilesLoadItem, titleFiles} from "./include/upload_docs";
 import {report_toggle} from "./include/report";
+import {tooltip} from "./include/tooltip";
 
 
 
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     titleFiles()  // подпись к скачаваемым файлам
     report_toggle()  // toggle отчет (развернуть - свернуть)
     toggle_manager_menu() // меню менеджера с лева
+    tooltip() // tooltip
 
 
 

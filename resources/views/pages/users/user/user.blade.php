@@ -47,7 +47,8 @@
 
                                             @endif
 
-                                            <div class="color_grey_14">Рейтин скрыт медиатором</div>
+                                        <x-dashboard.icons.icons/>
+
 
                                             @else
 
@@ -350,19 +351,41 @@
                                     @endif
                                 @endif
 
+                                @if($item->status_pay_subscr()==1)
+                                    {{--платно--}}
+                                    @if($item->active_mediator_result)
 
-                                @if( $item->user_mediator_sum )
-                                    <x-dashboard.report.report_sum
-                                        sum="{{$item->user_mediator_sum}}"
-                                        sem="{{$item->user_mediator_sem}}"
-                                        ugo="{{$item->user_mediator_ugo}}"
-                                        gra="{{$item->user_mediator_gra}}"
-                                        kor="{{$item->user_mediator_kor}}"
-                                        uve="{{$item->user_mediator_uve}}"
-                                        tru="{{$item->user_mediator_tru}}"
-                                        ban="{{$item->user_mediator_ban}}"
-                                    />
+                                        @if( $item->user_mediator_sum )
+                                            <x-dashboard.report.report_sum
+                                                sum="{{$item->user_mediator_sum}}"
+                                                sem="{{$item->user_mediator_sem}}"
+                                                ugo="{{$item->user_mediator_ugo}}"
+                                                gra="{{$item->user_mediator_gra}}"
+                                                kor="{{$item->user_mediator_kor}}"
+                                                uve="{{$item->user_mediator_uve}}"
+                                                tru="{{$item->user_mediator_tru}}"
+                                                ban="{{$item->user_mediator_ban}}"
+                                            />
+                                        @endif
+
+                                    @endif
+                                @else
+
+                                    @if( $item->user_mediator_sum )
+                                        <x-dashboard.report.report_sum
+                                            sum="{{$item->user_mediator_sum}}"
+                                            sem="{{$item->user_mediator_sem}}"
+                                            ugo="{{$item->user_mediator_ugo}}"
+                                            gra="{{$item->user_mediator_gra}}"
+                                            kor="{{$item->user_mediator_kor}}"
+                                            uve="{{$item->user_mediator_uve}}"
+                                            tru="{{$item->user_mediator_tru}}"
+                                            ban="{{$item->user_mediator_ban}}"
+                                        />
+                                    @endif
                                 @endif
+
+
 
                             </div>
                         </div>
