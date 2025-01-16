@@ -16,11 +16,40 @@
             <div class="row_content_flex_1">
 
                 <div class="m_tleft">
-                    @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+                    @if($item->status_pay_subscr()==1)
+                        {{--платно--}}
+                        @if($item->active_stars)
+
+                            @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+
+                        @else
+                            <div class="color_grey_14 pad_t6">Рейтин скрыт медиатором</div>
+
+                        @endif
+                    @else
+
+                        @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+
+                    @endif
                 </div>
 
                 <div class="m_tright">
-                    Количество проведенных медиаций: <span>{{ $item->user_mediator_sum }}</span>
+
+                    @if($item->status_pay_subscr()==1)
+                        {{--платно--}}
+                        @if($item->active_stars)
+
+                            @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+
+                        @else
+                            <div class="color_grey_12 ">Количество проведенных медиаций скрыто медиатором</div>
+
+                        @endif
+                    @else
+
+                        Количество проведенных медиаций: <span>{{ $item->user_mediator_sum }}</span>
+
+                    @endif
                 </div>
 
             </div>
@@ -34,17 +63,21 @@
             @if($item->user_list_visible)
                 <div class="row_sphere">
                     <span>Виды медиации: </span><span class="sp_sphere">
-                    @foreach($item->user_list as $user_list){{ $user_list->title }}@if ($loop->last)
-                            @else,
+                    @foreach($item->user_list as $user_list)
+                            {{ $user_list->title }}@if ($loop->last)
+                            @else
+                                ,
                             @endif
-                    @endforeach
+                        @endforeach
                     </span>
                 </div>
             @endif
 
             <div class="row_address ">
                 <span><i>Город:</i> {{$item->user_first_city}}</span>, <span>{{$item->street}}</span>,
-                <span>{{$item->home}}</span>@if($item->phone) <span> · {{format_phone($item->phone)}}</span> @endif · <span
+                <span>{{$item->home}}</span>@if($item->phone)
+                    <span> · {{format_phone($item->phone)}}</span>
+                @endif · <span
                     class="blue_color">{{$item->email}}</span>
             </div>
 

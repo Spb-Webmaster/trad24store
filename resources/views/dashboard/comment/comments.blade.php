@@ -42,82 +42,9 @@
                                 @else
                                     @if($user->status_pay_subscr() == 1)
 
-
-
-
-
-                                        <div class="formCabinet">
-                                            <x-forms.auth-form
-                                                title=""
-                                                subtitle=""
-                                                action="{{ route('active_comments') }}"
-                                                method="POST"
-                                                enctype="multipart/form-data"
-                                            >
-
-                                                <div class="c__block pad_b8 pad_t20">
-                                                    <div class="c__flex">
-
-
-                                                        <div class="c__flex_50 c__flex_50_left">
-
-                                                            <div class="text_input">
-
-                                                                <span class="blue_label">Показать в профиле</span>
-                                                                <div class="selectClass _active_comments">
-                                                                    <select class="js-chosen" data-placeholder="Показать в профиле" name="active_comments"
-                                                                            id="registerActive_contact">
-
-                                                                        <option value="1" @if($user->active_comments)
-                                                                            {{ 'selected' }}
-                                                                            @endif>Да
-                                                                        </option>
-                                                                        <option value="0" @if(!$user->active_comments)
-                                                                            {{ 'selected' }}
-                                                                            @endif>Нет
-                                                                        </option>
-                                                                    </select>
-                                                                    <label class="labelInput show" for="registerActive_comments"></label>
-                                                                    <x-forms.error class="error_active_comments"/>
-                                                                </div>
-
-                                                            </div>
-
-
-                                                        </div><!--.c__flex_50_left-->
-
-                                                        <div class="c__flex_50 c__flex_50_right">
-
-                                                            <div class="text_input">
-                                                                <div class="active_contact">{{ config('site.constants.active_comments_text') }}</div>
-                                                            </div>
-
-
-                                                        </div><!--.c__flex_50_right-->
-
-                                                    </div><!--.c__flex-->
-                                                </div>
-
-                                                <div class="slotButtons slotButtons__right pad_t15">
-                                                    <div class=" text_input w_30">
-                                                        <input type="hidden" value="{{ $user->id  }}" name="id">
-                                                        <x-forms.primary-button>
-                                                            {{ __('Изменить профиль') }}
-                                                        </x-forms.primary-button>
-                                                    </div>
-                                                </div>
-
-                                            </x-forms.auth-form>
-
+                                        <div class="text_input">
+                                            <div class="active_contact">{!! config('site.constants.active_comments_text') !!}</div>
                                         </div>
-
-
-
-
-
-
-
-
                                     @endif
                                     @if($user->status_pay_subscr() == 2)
                                             <br>

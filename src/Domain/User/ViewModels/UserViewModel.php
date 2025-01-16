@@ -221,5 +221,32 @@ class UserViewModel
         return null;
     }
 
+    /**
+     * @param $request
+     * @param $user
+     * @return User|User[]|\LaravelIdea\Helper\App\Models\_IH_User_C|null
+     * изменим параметры платной подписки пользователя
+     */
+
+    public function user_subscription_bonus($request, $user = null)
+    {
+        $u = User::find($user->id);
+        if($u) {
+            if (isset($request->active_comments)) {
+                $u->active_comments = $request->active_comments;
+            }
+            if (isset($request->active_stars)) {
+                $u->active_stars = $request->active_stars;
+            }
+            if (isset($request->active_mediator_result)) {
+                $u->active_mediator_result = $request->active_mediator_result;
+            }
+            $u->save();
+            return $u;
+        }
+        return null;
+
+    }
+
 
 }

@@ -137,6 +137,15 @@ $maxWidth: 1440;
     margin: 15px 0 0 0;
     font-size: 15px;
 
+    a._dotted {
+        text-decoration: none;
+        border-bottom: 1px dotted #fff;
+        color: #fff;
+    }
+    a._dotted:hover {
+        border-bottom: none;
+    }
+
 }
 
 .active_contact.explanation {
@@ -1092,7 +1101,7 @@ $maxWidth: 1440;
 /** //////////////  Для менеджера левое меню/**/
 
 
-@media screen and (max-width: 1120px) {
+@media screen and (max-width: 1250px) {
 
     .v_s_c__flex {
 
@@ -1105,11 +1114,24 @@ $maxWidth: 1440;
 
 }
 
-@media screen and (max-width: 968px) {
-
+@media screen and (max-width: 1068px) {
     .v_s_c__flex {
         justify-content: space-between;
+
+
+        .v_s_c__item {
+            position: relative;
+            margin: 0 20px;
+        }
+        .v_s_c__item:first-child {
+            margin: 0 20px 0  20px;
+        }
+
+
     }
+}
+@media screen and (max-width: 968px) {
+
 
     .mob_cab_menu {
         li.active {
@@ -1118,15 +1140,15 @@ $maxWidth: 1440;
             }
         }
     }
-
+    .hbox__submenu {
+        display: none !important;
+    }
 }
 
 
 @media screen and (max-width: 793px) {
 
-    .hbox__submenu {
-        display: none !important;
-    }
+
 
 }
 

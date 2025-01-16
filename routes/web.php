@@ -135,7 +135,14 @@ Route::controller(DashboardController::class)->group(function () {
     Route::post('/cabinet/delete_user', 'delete_user')
         ->name('delete_user')
         ->middleware(UserPublishedMiddleware::class);
+    /** полписка платная */
+    Route::get('/subscription', 'user_subscription')
+        ->name('user_subscription')
+        ->middleware(UserPublishedMiddleware::class);
 
+    Route::post('/subscription', 'user_subscription_bonus')
+        ->name('user_subscription_bonus')
+        ->middleware(UserPublishedMiddleware::class);
 
 });
 

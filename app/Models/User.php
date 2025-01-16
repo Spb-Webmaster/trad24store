@@ -70,13 +70,15 @@ class User extends Authenticatable
         'sex',
         'active_contact',
         'active_comments',
+        'active_stars',
+        'active_mediator_result',
+        'request_delete',
         'certificate',
         'birthday',
         'stars',
         'old_id',
         'manager',
         'pay',
-        'request_delete',
 
     ];
 

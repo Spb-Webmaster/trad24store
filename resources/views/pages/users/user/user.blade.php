@@ -38,7 +38,23 @@
 
                                         </div>
                                         <div class="mediator_left__content">
-                                            @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+
+                                            @if($item->status_pay_subscr()==1) {{--платно--}}
+
+                                            @if($item->active_stars)
+
+                                                @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+
+                                            @endif
+
+                                            <div class="color_grey_14">Рейтин скрыт медиатором</div>
+
+                                            @else
+
+                                                @include('pages.users.partial.stars', ['star' =>  (!is_null($item->stars))?$item->stars:0 ])
+
+                                            @endif
+
                                             <h2 class="h2_blue">{{ $item->user  }}</h2>
                                             <div class="desc">
                                                 <p class="">{{ $item->user_type->type }}</p>

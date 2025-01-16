@@ -14,6 +14,7 @@ class UserNew extends Model
         'user_id',
         'image',
         'desc',
+        'teaser',
         'gallery',
         'file',
         'published',
@@ -55,7 +56,7 @@ class UserNew extends Model
         if (isset($this->image)) {
             foreach ($this->image as $image) {
                 if($image['json_image']) {
-                    return $image['json_image'];
+                    return (is_null($image['json_image'])) ? false : $image['json_image'];
                 }
             }
 
@@ -74,7 +75,7 @@ class UserNew extends Model
         if (isset($this->image)) {
             foreach ($this->image as $image) {
                 if($image['json_published']) {
-                    return $image['json_image'];
+                    return (is_null($image['json_image'])) ? false : $image['json_image'];
                 }
             }
 
@@ -83,7 +84,7 @@ class UserNew extends Model
     }
 
 
-     /**
+    /**
      * @return bool
      * Проверка, нужно ли выводить галерею
      * $item->gallery_visible
@@ -104,7 +105,7 @@ class UserNew extends Model
     }
 
 
-     /**
+    /**
      * @return bool
      * Проверка, нужно ли выводить файлы
      * $item->file_visible
@@ -152,5 +153,4 @@ class UserNew extends Model
 
 
     }
-
 }

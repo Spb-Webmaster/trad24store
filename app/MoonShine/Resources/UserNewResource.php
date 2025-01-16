@@ -123,7 +123,8 @@ class UserNewResource extends ModelResource
                                 Collapse::make('Публикация', [
 
                                     Switcher::make('Публикация', 'published')->default(1),
-
+                                    Date::make(__('Дата создания'), 'created_at')
+                                        ->format("d.m.Y"),
 
                                 ]),
 

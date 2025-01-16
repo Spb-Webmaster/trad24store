@@ -66,6 +66,12 @@
   border-radius: 6px;
   margin: 15px 0 0 0;
   font-size: 15px; }
+  .active_contact a._dotted, .explanation a._dotted {
+    text-decoration: none;
+    border-bottom: 1px dotted #fff;
+    color: #fff; }
+  .active_contact a._dotted:hover, .explanation a._dotted:hover {
+    border-bottom: none; }
 
 .active_contact.explanation {
   margin: 5px 0 0 0; }
@@ -728,17 +734,22 @@
     background: #F5F5F7; }
 
 /** //////////////  Для менеджера левое меню/**/
-@media screen and (max-width: 1120px) {
+@media screen and (max-width: 1250px) {
   .v_s_c__flex .v_s_c__item {
     position: relative;
     margin: 0 10px; } }
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 1068px) {
   .v_s_c__flex {
     justify-content: space-between; }
-
+    .v_s_c__flex .v_s_c__item {
+      position: relative;
+      margin: 0 20px; }
+    .v_s_c__flex .v_s_c__item:first-child {
+      margin: 0 20px 0  20px; } }
+@media screen and (max-width: 968px) {
   .mob_cab_menu li.active a, .mob_cab_menu li.active span {
-    color: #095C9A; } }
-@media screen and (max-width: 793px) {
+    color: #095C9A; }
+
   .hbox__submenu {
     display: none !important; } }
 

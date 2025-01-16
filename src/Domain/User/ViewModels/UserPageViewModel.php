@@ -26,6 +26,7 @@ class UserPageViewModel
 
       $items = $model::query()
           ->where('published', 1)
+          ->orderBy('created_at', 'desc')
           ->paginate(config('site.constants.paginate'));
 
       if($items) {

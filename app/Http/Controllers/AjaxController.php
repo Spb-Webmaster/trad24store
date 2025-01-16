@@ -76,10 +76,11 @@ class AjaxController extends Controller
         $user = User::find(auth()->user()->id);
 
         $date = null;
-        foreach ($user->pay as $item) {
-            $date = $item['pay_date'];
+        if(isset($user->pay)) {
+            foreach ($user->pay as $item) {
+                $date = $item['pay_date'];
+            }
         }
-
         $user->update(['pay' => [0 => ['pay_status' => 2, 'pay_date' => $date]]]);
         /** изменим статус */
 

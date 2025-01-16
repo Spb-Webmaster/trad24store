@@ -15,6 +15,9 @@
                 @if($user = auth()->user() )
                     @if($user->status_pay_subscr() == 1)
                         {{--оплачено--}}
+                        <div class="v_s_c__item {{ active_linkMenu(asset(route('user_subscription')), 'find')  }}"><a
+                                href="{{ route('user_subscription') }}">{{ __('Подписка') }}</a></div>
+
                         <div class="v_s_c__item {{ active_linkMenu(asset(route('m_user_news')), 'find')  }}"><a
                                 href="{{ route('m_user_news') }}">{{ __('Новости') }}</a></div>
 

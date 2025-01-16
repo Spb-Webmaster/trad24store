@@ -15,6 +15,7 @@ use App\Models\User;
 
 use Domain\User\ViewModels\UserViewModel;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
@@ -393,6 +394,62 @@ class DashboardController extends Controller
         }
 
         return redirect()->back();
+
+    }
+
+
+    /**
+     * Платная подписка
+     */
+
+    public function user_subscription() {
+
+        $user = auth()->user();
+
+        if($user->status_pay_subscr() != 1) {
+            /** если не оформлена */
+            abort(404);
+        }
+
+
+        return view('dashboard.subscription.subscription',
+            [
+                'user' => $user,
+            ]);
+
+
+    }
+    /**
+     * Платная подписка
+     * оформление
+     */
+
+    public function user_subscription_bonus(Request $request) {
+
+        $user = auth()->user();
+
+        if($user->status_pay_subscr() != 1) {
+            /** если не оформлена */
+
+           flash()->alert(config('message_flash.alert.role_error'));
+           return redirect(route('cabinet'));
+
+        }
+
+        $user = UserViewModel::make()->user_subscription_bonus($request, $user);
+
+        if(is_null($user)) {
+            flash()->alert(config('message_flash.alert.role_error'));
+            return redirect(route('cabinet'));
+        }
+
+
+
+        return view('dashboard.subscription.subscription',
+            [
+                'user' => $user,
+            ]);
+
 
     }
 

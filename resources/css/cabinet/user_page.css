@@ -15,8 +15,8 @@
     .user_page .m_items .a_temp .user_item_title {
       position: relative;
       width: 100%;
-      font-size: 19px;
-      padding: 0 0 10px 0;
+      font-size: 20px;
+      padding: 2px 0 10px 0;
       font-weight: 600;
       transition: 0.3s; }
     .user_page .m_items .a_temp .user_item_date {
@@ -27,6 +27,16 @@
       font-size: 15px; }
     .user_page .m_items .a_temp:hover .user_item_title {
       color: #095C9A; }
+    .user_page .m_items .a_temp .desc h1 {
+      font-size: 19px; }
+    .user_page .m_items .a_temp .desc h2 {
+      font-size: 19px; }
+    .user_page .m_items .a_temp .desc h3 {
+      font-size: 18px; }
+    .user_page .m_items .a_temp .desc h4 {
+      font-size: 18px; }
+    .user_page .m_items .a_temp .desc h5 {
+      font-size: 18px; }
   .user_page .m_item__flex {
     display: flex; }
     .user_page .m_item__flex .m_item__left {
