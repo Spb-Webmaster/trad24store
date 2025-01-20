@@ -20,9 +20,6 @@ class MUserViewModel
     {
 
 
-
-
-
         $users = User::query()
             ->orderBy('published', 'asc')
             /*            ->withAggregate('user_list', 'title')
@@ -35,7 +32,6 @@ class MUserViewModel
 
     /**
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Builder|\LaravelIdea\Helper\App\Models\_IH_User_QB|mixed|null
      * аккаунт медиатора
      */
 

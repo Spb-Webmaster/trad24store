@@ -303,6 +303,12 @@
   .C_F_ul {
     font-size: calc(16px + 10 * ((100vw - 320px) / 1120));
     padding: 20px 0; } }
+@media (min-width: 968px) {
+  .mobile_menu {
+    display: none !important; }
+
+  .mob_menu_content {
+    display: none !important; } }
 @media screen and (max-width: 968px) {
   .hbox__top {
     padding: 33px 0px 16px 0; }

@@ -22,7 +22,7 @@
                 <div class="C_Flex3">
                     <a class="button axeld_button_custom_1" href="https://mediator.kz/o-nas/assotsiatsiya"><span>Подробнее про нас</span></a>
                     <a class="button axeld_button_custom_2" data-fancybox=""
-                       href="#template_form2"><span>Перезвоните мне</span></a>
+                       href="#call_me"><span>Перезвоните мне</span></a>
                 </div>
             </div><!--.C_F_right-->
         </div>

@@ -28,7 +28,7 @@
 
             <div class="C_Flex3">
                 <a class="button axeld_button_custom_1" href="/reestr/professionalnye-mediatory"><span>Выбрать медиатора</span></a>
-                <a class="button axeld_button_custom_2" data-fancybox="" href="#template_form2"><span>Перезвоните мне</span></a>
+                <a class="button axeld_button_custom_2" data-fancybox="" href="#call_me"><span>Перезвоните мне</span></a>
             </div>
 
 

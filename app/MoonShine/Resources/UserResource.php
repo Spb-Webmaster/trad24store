@@ -87,8 +87,7 @@ class UserResource extends ModelResource
             Number::make('Звезды', 'stars')
                 ->stars()
                 ->min(0)
-                ->max(5)
-            ,
+                ->max(5),
 
         ];
     }

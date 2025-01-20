@@ -581,6 +581,19 @@ $maxWidth: 1440;
     }
 
 }
+@media (min-width: 968px) {
+    .mobile_menu {
+        display: none !important;
+
+    }
+    .mob_menu_content {
+        display: none !important;
+
+    }
+}
+
+
+
 
 @media screen and (max-width: 968px) {
 

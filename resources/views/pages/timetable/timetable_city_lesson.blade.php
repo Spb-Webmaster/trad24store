@@ -4,10 +4,11 @@
     description="{{$lesson_item->description}}"
     keywords="{{$lesson_item->keywords}}"
 />
+@if($lesson_item->canonical())
 @section('canonical')
-<link rel="canonical" href="/raspisanie/almaty/professionalnyy-mediator"/>
+<link rel="canonical" href="/raspisanie/{{$lesson_item->canonical()}}/{{$lesson_item->slug}}"/>
 @endsection
-
+@endif
 @section('content')
     <main class="{{ route_name() }}">
         <div class="block">

@@ -751,6 +751,9 @@
     color: #095C9A; }
 
   .hbox__submenu {
-    display: none !important; } }
+    display: none !important; }
+
+  ._int {
+    display: none; } }
 
 /*# sourceMappingURL=cabinet.css.map */

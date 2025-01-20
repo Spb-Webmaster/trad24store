@@ -31,7 +31,6 @@
                                         /
                                         @if(!$item->published)
                                             <span class="color_red">Ожидает модерации</span>
-
                                         @endif
                                     </h3>
                                     <div class="F_h2 pad_t5"><span>{{__('Персональные данные медиатора')}}</span></div>

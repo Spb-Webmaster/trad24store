@@ -54,6 +54,19 @@ class TimetableLesson extends Model
         return $this->belongsToMany(TimetableMonth::class);
     }
 
+
+
+    public function canonical() {
+        if(isset($this->timetable_city)) {
+            foreach ($this->timetable_city as $city){
+                return $city->slug; /** получаем первый город и это будет canonical */
+            }
+        }
+        return false;
+    }
+
+
+
     protected static function boot()
     {
         parent::boot();
