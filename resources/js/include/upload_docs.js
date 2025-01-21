@@ -56,7 +56,7 @@ export function upload_doc() {
                             Parent.find('.input-file-list').append('<div class="input-file-list-item">' + response.new_files[key]['html'] + '</div>');
                         }
                         for (let i = 0; i < Result; i++) {
-                            Parent.find('.input-file-list').append('<div class="input-file-list-item"><span class="input-file-list-name"><img class="_ext" src="http://mediator.test/storage/images/icons/none.svg" title="null"></span></div>')
+                            Parent.find('.input-file-list').append('<div class="input-file-list-item"><span class="input-file-list-name"><img class="_ext" src="/storage/images/icons/none.svg" title="null"></span></div>')
                         }
                         FileLoad.text(Result)
 
