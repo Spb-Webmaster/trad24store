@@ -291,3 +291,9 @@ main.m_cabinet
     padding-top: 10px;
     font-size: 18px !important;
 }
+
+@media (max-width: 793px) {
+    .formLogin__wrapp {
+        width: 98%;
+    }
+}
