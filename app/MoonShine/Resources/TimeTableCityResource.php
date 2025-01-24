@@ -34,6 +34,7 @@ use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<TimeTableCity>
+ *     страница ресурса добавления городов для расписания
  */
 class TimeTableCityResource extends ModelResource
 {
