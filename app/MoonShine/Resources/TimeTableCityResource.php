@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TimeTableCity;
+use App\Models\TimetableCity;
 
 use MoonShine\Decorations\Collapse;
 use MoonShine\Decorations\Column;
@@ -33,12 +33,12 @@ use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
 
 /**
- * @extends ModelResource<TimeTableCity>
+ * @extends
  *     страница ресурса добавления городов для расписания
  */
 class TimeTableCityResource extends ModelResource
 {
-    protected string $model = TimeTableCity::class;
+    protected string $model = TimetableCity::class;
 
     protected string $title = 'Города в расписании';
 
@@ -47,6 +47,8 @@ class TimeTableCityResource extends ModelResource
     protected string $sortColumn = 'sorting';
 
     protected ?ClickAction $clickAction = ClickAction::EDIT;
+
+
 
 
     public function filters(): array
@@ -69,6 +71,7 @@ class TimeTableCityResource extends ModelResource
 
     public function indexFields(): array
     {
+
         return [
             ID::make()
                 ->sortable(),

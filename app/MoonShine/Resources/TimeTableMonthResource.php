@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TimeTableMonth;
+use App\Models\TimetableMonth;
 
 use MoonShine\Decorations\Collapse;
 use MoonShine\Decorations\Column;
@@ -29,11 +29,11 @@ use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
 
 /**
- * @extends ModelResource<TimeTableMonth>
+ * @extends ModelResource<>
  */
 class TimeTableMonthResource extends ModelResource
 {
-    protected string $model = TimeTableMonth::class;
+    protected string $model = TimetableMonth::class;
 
     protected string $title = 'Месяцы';
 

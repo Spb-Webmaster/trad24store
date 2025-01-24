@@ -12,7 +12,7 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
-        "moonshine/moonshine": "^2.22",
+        "moonshine/moonshine": "^2.23.4",
         "spatie/laravel-honeypot": "^4.5"
     },
     "require-dev": {

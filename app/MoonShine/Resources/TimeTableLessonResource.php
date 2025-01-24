@@ -6,9 +6,8 @@ namespace App\MoonShine\Resources;
 
 use App\Models\TimetableCity;
 use App\MoonShine\Enum\StatusEmun;
-use App\MoonShine\Fields\Months;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TimeTableLesson;
+use App\Models\TimetableLesson;
 
 use MoonShine\Components\Badge;
 use MoonShine\Components\Link;
@@ -40,11 +39,11 @@ use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
 
 /**
- * @extends ModelResource<TimeTableLesson>
+ * @extends ModelResource<>
  */
 class TimeTableLessonResource extends ModelResource
 {
-    protected string $model = TimeTableLesson::class;
+    protected string $model = TimetableLesson::class;
 
     protected string $title = 'Предметы обучения';
 
