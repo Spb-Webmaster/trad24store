@@ -1,5 +1,6 @@
 <?php
 
+use App\Console\Commands\Test;
 use Illuminate\Support\Facades\Schedule;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -12,7 +13,7 @@ Artisan::command('inspire', function () {
     dd('hey');
 })->daily();*/
 
-Schedule::command(\App\Console\Commands\Test::class)->everyMinute();
+Schedule::command(Test::class)->daily();
 
 /*Schedule::command('app:example-command')->daily();*/
 

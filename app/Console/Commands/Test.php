@@ -34,7 +34,7 @@ class Test extends Command
         $data = array('title'=> 'Привет');
 
         Mail::to($this->emails())->send(new TestMail($data));
-        info('Command run every minute. ' . date('H:i:s'));
+        info('Command run. ' . date('H:i:s'));
       //  dd('Command run every minute.');
 
     }
