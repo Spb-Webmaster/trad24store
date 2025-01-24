@@ -28,6 +28,7 @@ class TimetableCity extends Model
         'published',
         'params',
         'module',
+        'test'
     ];
 
     protected $casts = [
