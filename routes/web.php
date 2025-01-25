@@ -415,7 +415,7 @@ Route::controller(ManagerController::class)->group(function () {
         ->name('m_user')
         ->middleware(ManagerMiddleware::class);
 
-    Route::post('/m_users/search', 'user_search')
+    Route::post('/m_users', 'user_search')
         ->name('search.users')
         ->middleware(ManagerMiddleware::class);
 
@@ -437,7 +437,7 @@ Route::controller(ManagerController::class)->group(function () {
         ->name('m_report')
         ->middleware(ManagerMiddleware::class);
 
-    Route::post('/m_reports/search_user_report', 'search_user_report')
+    Route::post('/m_reports', 'search_user_report')
         ->name('search_user_report')
         ->middleware(ManagerMiddleware::class);
 
@@ -470,6 +470,18 @@ Route::controller(ManagerController::class)->group(function () {
         ->name('published_comments')
         ->middleware(ManagerMiddleware::class);
 
+    /** работа с дипломами */
+    Route::get('/m_diploms', 'diploms')
+        ->name('m_diploms')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::get('/m_diploms/diplom/{id}', 'diplom')
+        ->name('m_diplom')
+        ->middleware(ManagerMiddleware::class);
+
+    Route::post('/m_diploms', 'search_diplom')
+        ->name('search_diplom')
+        ->middleware(ManagerMiddleware::class);
 
 
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSearchRequest;
 use App\Models\User;
 use Domain\Manager\ViewModels\MCommentViewModel;
+use Domain\Manager\ViewModels\MDiplomViewModel;
 use Domain\Manager\ViewModels\MReportViewModel;
 use Domain\Manager\ViewModels\MUserViewModel;
 use Domain\Report\ViewModels\ReportViewModel;
@@ -64,9 +65,14 @@ class ManagerController extends Controller
 
         $items = MUserViewModel::make()->user_search($request);
 
+        if(!count($items)) {
+            flash()->alert(config('message_flash.alert.search_error'));
+        }
+
         return view('dashboard.manager.user.users', [
             'user' => $user,
             'items' => $items,
+
         ]);
 
     }
@@ -151,7 +157,9 @@ class ManagerController extends Controller
         $user = auth()->user();
 
         $items = MReportViewModel::make()->search_user_report($request);
-
+        if(!count($items)) {
+            flash()->alert(config('message_flash.alert.search_error'));
+        }
         return view('dashboard.manager.report.reports', [
             'user' => $user,
             'items' => $items,
@@ -249,6 +257,65 @@ class ManagerController extends Controller
         $result = MCommentViewModel::make()->published_comments($request->id);
 
         return redirect(route('m_comments'));
+
+    }
+
+
+    /**
+    * все дипломы
+    */
+    public function diploms() {
+
+        $user = auth()->user();
+
+        $items = MDiplomViewModel::make()->diploms();
+        if(!$items) {
+            abort(404);
+        }
+
+        return view('dashboard.manager.diplom.diploms', [
+            'user' => $user,
+            'items' => $items,
+        ]);
+
+    }
+
+    /**
+     * @return
+     * диплом  для менеджера по id
+     */
+
+    public function diplom($id)
+    {
+
+        $user = auth()->user();
+
+        $item = MDiplomViewModel::make()->diplom($id);
+
+        return view('dashboard.manager.diplom.diplom', [
+            'user' => $user,
+            'item' => $item,
+        ]);
+    }
+
+
+    /**
+     * Метод вывода всех дипломов  по полям name,title
+     */
+    public function search_diplom(UserSearchRequest $request)
+    {
+
+
+        $user = auth()->user();
+
+        $items = MDiplomViewModel::make()->search_diplom($request);
+        if(!count($items)) {
+            flash()->alert(config('message_flash.alert.search_error'));
+        }
+        return view('dashboard.manager.diplom.diploms', [
+            'user' => $user,
+            'items' => $items,
+        ]);
 
     }
 

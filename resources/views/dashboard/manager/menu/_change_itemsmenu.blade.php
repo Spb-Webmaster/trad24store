@@ -16,4 +16,7 @@
             <span class="_int">{{ $comment_no_publiched }}</span>
         @endif
     </a></li>
+<li class="con_item {{ active_linkMenu(asset(route('m_diploms')), 'find')  }}"><a
+        href="{{ route('m_diploms') }}">{{ __('Дипломы') }}
+    </a></li>
 
